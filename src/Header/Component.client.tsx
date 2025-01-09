@@ -1,42 +1,55 @@
 'use client'
-import { useHeaderTheme } from '@/providers/HeaderTheme'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
-import React, { useEffect, useState } from 'react'
-
+import React from 'react'
 import type { Header } from '@/payload-types'
-
-import { Logo } from '@/components/Logo/Logo'
-import { HeaderNav } from './Nav'
 
 interface HeaderClientProps {
   data: Header
 }
 
-export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
-  /* Storing the value in a useState to avoid hydration errors */
-  const [theme, setTheme] = useState<string | null>(null)
-  const { headerTheme, setHeaderTheme } = useHeaderTheme()
-  const pathname = usePathname()
-
-  useEffect(() => {
-    setHeaderTheme(null)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pathname])
-
-  useEffect(() => {
-    if (headerTheme && headerTheme !== theme) setTheme(headerTheme)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [headerTheme])
+export const HeaderClient: React.FC<HeaderClientProps> = () => {
 
   return (
-    <header className="container relative z-20   " {...(theme ? { 'data-theme': theme } : {})}>
-      <div className="py-8 flex justify-between">
+    <header className="container relative z-20">
+      <nav className="container flex flex-row gap-3 justify-between">
+      <div className="text-center py-5">
         <Link href="/">
-          <Logo loading="eager" priority="high" className="invert dark:invert-0" />
+        <span className="block uppercase">The Water</span>
+        <span className="block uppercase">Treatment</span>
+        <span className="block uppercase">Center</span>
         </Link>
-        <HeaderNav data={data} />
       </div>
+      <div className="text-center py-5 uppercase">
+        <Link href="/about">
+          About
+          <span className="block uppercase">Who We Are</span>
+        </Link>
+      </div>
+      <div className="text-center py-5 uppercase">
+        <Link href="/">
+          Services
+          <span className="block uppercase">What We Do</span>
+        </Link>
+      </div>
+      <div className="text-center py-5 uppercase">
+        <Link href="/">
+          News
+          <span className="block uppercase">Latest Work</span>
+        </Link>
+      </div>
+      <div className="text-center py-5 uppercase">
+        <Link href="/">
+          About
+          <span className="block uppercase">Who We Are</span>
+        </Link>
+      </div>
+      <div className="text-center py-5 uppercase">
+        <Link href="/">
+          Contact
+          <span className="block uppercase">Get In Touch</span>
+        </Link>
+      </div>
+    </nav>
     </header>
   )
 }

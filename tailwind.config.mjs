@@ -53,6 +53,21 @@ export default {
         sm: 'calc(var(--radius) - 4px)',
       },
       colors: {
+        azul: {
+          DEFAULT: '#0A6EBD',
+        },
+        argentinian: {
+          DEFAULT: '#4BB3F8',
+        },
+        jet: {
+          DEFAULT: '#333333',
+        },
+        antiflashwhite: {
+          DEFAULT: '#F4F7F9',
+        },
+        selectiveyellow: {
+          DEFAULT: '#FFB72C',
+        },
         accent: {
           DEFAULT: 'hsl(var(--accent))',
           foreground: 'hsl(var(--accent-foreground))',

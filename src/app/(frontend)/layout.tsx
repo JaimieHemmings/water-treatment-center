@@ -17,7 +17,6 @@ import './globals.css'
 import { getServerSideURL } from '@/utilities/getURL'
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
-  const { isEnabled } = await draftMode()
 
   return (
     <html className={cn(GeistSans.variable, GeistMono.variable)} lang="en" suppressHydrationWarning>
@@ -28,12 +27,6 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       </head>
       <body>
         <Providers>
-          <AdminBar
-            adminBarProps={{
-              preview: isEnabled,
-            }}
-          />
-
           <Header />
           {children}
           <Footer />
