@@ -20,9 +20,14 @@ export const TextBlock: Block = {
       }),
       label: false,
     },
+    {
+      name: 'title',
+      type: 'text',
+      label: 'Title',
+    }
   ],
   labels: {
-    plural: 'Text Block',
-    singular: 'Text Blocks',
+    plural: 'Text Blocks',
+    singular: 'Text Block',
   },
 }

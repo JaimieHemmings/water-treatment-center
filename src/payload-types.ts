@@ -127,7 +127,7 @@ export interface Page {
       | null;
     media?: (number | null) | Media;
   };
-  layout: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | FormBlock | TextBlock)[];
+  layout: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | FormBlock | TextBlock | TwoColumn)[];
   meta?: {
     title?: string | null;
     /**
@@ -682,9 +682,21 @@ export interface TextBlock {
     };
     [k: string]: unknown;
   } | null;
+  title?: string | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'textBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TwoColumn".
+ */
+export interface TwoColumn {
+  contentleft?: string | null;
+  contentright?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'twoColumn';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -881,6 +893,7 @@ export interface PagesSelect<T extends boolean = true> {
         archive?: T | ArchiveBlockSelect<T>;
         formBlock?: T | FormBlockSelect<T>;
         textBlock?: T | TextBlockSelect<T>;
+        twoColumn?: T | TwoColumnSelect<T>;
       };
   meta?:
     | T
@@ -986,6 +999,17 @@ export interface FormBlockSelect<T extends boolean = true> {
  */
 export interface TextBlockSelect<T extends boolean = true> {
   content?: T;
+  title?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TwoColumn_select".
+ */
+export interface TwoColumnSelect<T extends boolean = true> {
+  contentleft?: T;
+  contentright?: T;
   id?: T;
   blockName?: T;
 }

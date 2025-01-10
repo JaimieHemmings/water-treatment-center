@@ -17,7 +17,7 @@ export const CallToActionBlock: React.FC<CTABlockProps> = ({ links, richText }) 
       >
         <source src="/water-drop.mp4" type="video/mp4" />
       </video>
-      <div className="w-full h-full absolute z-1 bg-jet opacity-70 top-0 left-0"></div>
+      <div className="w-full h-full absolute z-1 bg-gradient-to-br from-argentinian to-azul opacity-70 top-0 left-0"></div>
       <div className="container relative z-1">
         <div className="p-4 flex flex-col md:justify-between gap-4">
           <div className="flex justify-end">
@@ -25,7 +25,7 @@ export const CallToActionBlock: React.FC<CTABlockProps> = ({ links, richText }) 
               <h2 className="block text-selectiveyellow font-semibold pb-5">
                 GET IN TOUCH
               </h2>
-              {richText && <RichText className="mb-5 text-5xl text-white mr-0" data={richText} enableGutter={false} />}
+              {richText && <RichText className="mb-5 text-2xl md:text-5xl text-white mr-0" data={richText} enableGutter={false} />}
               <div className="flex justify-end">
                 {(links || []).map(({ link }, i) => {
                   return <CMSLink key={i} size="lg" {...link} />

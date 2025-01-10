@@ -9,6 +9,7 @@ import { ContentBlock } from '@/blocks/Content/Component'
 import { FormBlock } from '@/blocks/Form/Component'
 import { MediaBlock } from '@/blocks/MediaBlock/Component'
 import { TextBlock } from '@/blocks/TextBlock/Component'
+import { TwoColumnBlock } from './TwoColumnBlock/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -17,6 +18,7 @@ const blockComponents = {
   formBlock: FormBlock,
   mediaBlock: MediaBlock,
   textBlock: TextBlock,
+  twoColumn: TwoColumnBlock,
 }
 
 export const RenderBlocks: React.FC<{
@@ -37,10 +39,7 @@ export const RenderBlocks: React.FC<{
 
             if (Block) {
               return (
-                <div key={index}>
-                  {/* @ts-expect-error there may be some mismatch between the expected types here */}
-                  <Block {...block} disableInnerContainer />
-                </div>
+                <Block {...block} key={index} disableInnerContainer />
               )
             }
           }
