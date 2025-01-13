@@ -6,7 +6,7 @@ import type { Footer } from '@/payload-types'
 
 export async function Footer() {
   return (
-    <footer className="mt-auto border-t border-border bg-[#0a0a0a] text-white">
+    <footer className="mt-auto border-t border-border bg-jet text-white">
       <div className="container py-[5rem] gap-8 flex flex-row md:flex-row md:justify-between">
         <div>
           <Link className="flex items-center" href="/">

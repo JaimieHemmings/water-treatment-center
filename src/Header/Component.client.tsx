@@ -10,46 +10,34 @@ interface HeaderClientProps {
 export const HeaderClient: React.FC<HeaderClientProps> = () => {
 
   return (
-    <header className="container relative z-20">
-      <nav className="container flex flex-row gap-3 justify-between">
-      <div className="text-center py-5">
-        <Link href="/">
-        <span className="block uppercase">The Water</span>
-        <span className="block uppercase">Treatment</span>
-        <span className="block uppercase">Center</span>
+    <header id="navbar" className="w-full z-30 fixed top-0 left-0 bg-jet">
+      <nav className="flex flex-row justify-between container">
+        <Link href="/" className="text-xs font-semibold px-3 py-2">
+          <span className="block uppercase">The Water</span>
+          <span className="block uppercase">Treatment</span>
+          <span className="block uppercase">Center</span>
         </Link>
-      </div>
-      <div className="text-center py-5 uppercase">
-        <Link href="/about">
+        <Link href="/about" className="px-5 py-3 uppercase flex flex-col justify-center border-t-4 border-t-jet hover:border-t-selectiveyellow transition-all hover:bg-[#141414] text-sm flex-1">
           About
-          <span className="block uppercase">Who We Are</span>
+          <span className="block uppercase font-semibold">Who We Are</span>
         </Link>
-      </div>
-      <div className="text-center py-5 uppercase">
-        <Link href="/">
+        <Link href="/about" className="px-5 py-3 uppercase flex flex-col justify-center border-t-4 border-t-jet hover:border-t-selectiveyellow transition-all hover:bg-[#141414] text-sm flex-1">
           Services
-          <span className="block uppercase">What We Do</span>
+          <span className="block uppercase font-semibold">What We Do</span>
         </Link>
-      </div>
-      <div className="text-center py-5 uppercase">
-        <Link href="/">
+        <Link href="/about" className="px-5 py-3 uppercase flex flex-col justify-center border-t-4 border-t-jet hover:border-t-selectiveyellow transition-all hover:bg-[#141414] text-sm flex-1">
           News
-          <span className="block uppercase">Latest Work</span>
+          <span className="block uppercase font-semibold">Latest Work</span>
         </Link>
-      </div>
-      <div className="text-center py-5 uppercase">
-        <Link href="/">
+        <Link href="/about" className="px-5 py-3 uppercase flex flex-col justify-center border-t-4 border-t-jet hover:border-t-selectiveyellow transition-all hover:bg-[#141414] text-sm flex-1">
           About
-          <span className="block uppercase">Who We Are</span>
+          <span className="block uppercase font-semibold">Who We Are</span>
         </Link>
-      </div>
-      <div className="text-center py-5 uppercase">
-        <Link href="/">
+        <Link href="/" className="px-5 py-3 uppercase bg-selectiveyellow flex flex-col justify-center text-sm text-jet flex-1">
           Contact
-          <span className="block uppercase">Get In Touch</span>
+          <span className="block uppercase font-semibold">Get In Touch</span>
         </Link>
-      </div>
-    </nav>
+      </nav>
     </header>
   )
 }

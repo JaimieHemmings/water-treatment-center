@@ -101,3 +101,5 @@ html[data-theme='dark'],
 html[data-theme='light'] {
   opacity: initial;
 }
+
+.embla__slide {  flex: 0 0 100%;  min-width: 0;}
