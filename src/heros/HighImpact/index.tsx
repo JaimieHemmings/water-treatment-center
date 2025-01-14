@@ -1,6 +1,8 @@
 'use client'
-import React from 'react'
+
+import React, { useEffect } from "react";
 import useEmblaCarousel from 'embla-carousel-react'
+import Autoplay from 'embla-carousel-autoplay'
 import Image from 'next/image'
 
 import type { Page } from '@/payload-types'
@@ -8,7 +10,13 @@ import Link from 'next/link'
 
 export const HighImpactHero: React.FC<Page['hero']> = () => {
 
-  const [emblaRef] = useEmblaCarousel()
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [Autoplay({ delay: 5000 })]);
+
+  useEffect(() => {
+      if (emblaApi) {
+        // Embla API is ready
+      }
+    }, [emblaApi]);
 
   return (
   <div className="w-full">

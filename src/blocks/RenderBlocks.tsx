@@ -9,8 +9,9 @@ import { ContentBlock } from '@/blocks/Content/Component'
 import { FormBlock } from '@/blocks/Form/Component'
 import { MediaBlock } from '@/blocks/MediaBlock/Component'
 import { TextBlock } from '@/blocks/TextBlock/Component'
-import { TwoColumnBlock } from './TwoColumnBlock/Component'
+import { TwoColumnBlock } from '@/blocks/TwoColumnBlock/Component'
 import TeamCarousel from '@/blocks/TeamCarousel/Component'
+import { ProductsHome } from '@/blocks/ProductsHome/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -21,6 +22,7 @@ const blockComponents = {
   textBlock: TextBlock,
   twoColumn: TwoColumnBlock,
   teamCarousel: TeamCarousel,
+  productsHome: ProductsHome,
 }
 
 export const RenderBlocks: React.FC<{
