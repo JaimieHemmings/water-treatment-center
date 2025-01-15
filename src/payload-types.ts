@@ -97,6 +97,7 @@ export interface Page {
     | TwoColumn
     | TeamCarousel
     | ProductsHome
+    | ServicesBlock
   )[];
   meta?: {
     title?: string | null;
@@ -688,6 +689,15 @@ export interface ProductsHome {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ServicesBlock".
+ */
+export interface ServicesBlock {
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'servicesBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -867,6 +877,7 @@ export interface PagesSelect<T extends boolean = true> {
         twoColumn?: T | TwoColumnSelect<T>;
         teamCarousel?: T | TeamCarouselSelect<T>;
         productsHome?: T | ProductsHomeSelect<T>;
+        servicesBlock?: T | ServicesBlockSelect<T>;
       };
   meta?:
     | T
@@ -999,6 +1010,14 @@ export interface TeamCarouselSelect<T extends boolean = true> {
  * via the `definition` "ProductsHome_select".
  */
 export interface ProductsHomeSelect<T extends boolean = true> {
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ServicesBlock_select".
+ */
+export interface ServicesBlockSelect<T extends boolean = true> {
   id?: T;
   blockName?: T;
 }
