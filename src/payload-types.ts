@@ -99,6 +99,7 @@ export interface Page {
     | ProductsHome
     | ServicesBlock
     | BlogFeed
+    | ContactBlock
   )[];
   meta?: {
     title?: string | null;
@@ -708,6 +709,15 @@ export interface BlogFeed {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ContactBlock".
+ */
+export interface ContactBlock {
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'contactBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -889,6 +899,7 @@ export interface PagesSelect<T extends boolean = true> {
         productsHome?: T | ProductsHomeSelect<T>;
         servicesBlock?: T | ServicesBlockSelect<T>;
         blogFeed?: T | BlogFeedSelect<T>;
+        contactBlock?: T | ContactBlockSelect<T>;
       };
   meta?:
     | T
@@ -1037,6 +1048,14 @@ export interface ServicesBlockSelect<T extends boolean = true> {
  * via the `definition` "BlogFeed_select".
  */
 export interface BlogFeedSelect<T extends boolean = true> {
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ContactBlock_select".
+ */
+export interface ContactBlockSelect<T extends boolean = true> {
   id?: T;
   blockName?: T;
 }

@@ -7,7 +7,7 @@ export const BlogFeed: any = () => {
     <section className="w-full bg-jet py-[5rem]">
       <div className="container">
         <h2 className="block text-selectiveyellow font-semibold pb-5">Latest News &amp; Updates</h2>
-        <p className="text-5xl">Stay informed about water quality and solutions</p>
+        <p className="text-5xl font-semibold">Stay informed about water quality and solutions</p>
       </div>
       <div className="container pt-[5rem]">
         <div className=" flex flex-col md:flex-row gap-4 py-5">
