@@ -1,0 +1,33 @@
+.azul-overlay {
+  position: relative;
+}
+
+.azul-overlay::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 10;
+}
+
+.dots-overlay {
+  position: relative;
+}
+
+.dots-overlay::after {
+  content: "";
+  position: absolute;
+  bottom: 15px;
+  right: 0;
+  width: 400px;
+  height: 500px;
+  background-image: url("../../../public/dots.svg");
+  background-size: contain;
+  background-position: left bottom;
+  background-repeat: no-repeat;
+  z-index: 10;
+  transform: scaleX(-1);
+}

@@ -3,7 +3,7 @@ import React from "react";
 
 export const ServicesBlock: any = () => {
   return (
-    <section className="bg-argentinian py-[5rem] relative">
+    <section className="bg-azul py-[5rem] relative">
       <Image
         src="/dots.svg"
         alt="decorative image of dots"

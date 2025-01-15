@@ -56,7 +56,7 @@ const TeamCarousel: React.FC = () => {
               <div className="col-span-1">
                 <Image src={member.image} alt={`Team member ${member.name}`} width={500} height={500} className="w-full object-cover h-full" />
               </div>
-              <div className="col-span-1 flex flex-col justify-start bg-argentinian p-5">
+              <div className="col-span-1 flex flex-col justify-start bg-azul p-5">
                 <p className="text-4xl font-semibold py-5">{member.quote}</p>
                 <h3 className="text-xl pb-1 text-selectiveyellow font-semibold">{member.name}</h3>
                 <p className="text-md">{member.title}</p>

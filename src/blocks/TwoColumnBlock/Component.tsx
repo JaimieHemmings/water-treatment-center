@@ -3,7 +3,7 @@ import React from "react";
 export const TwoColumnBlock: any = ({ contentleft, contentright }) => {
   return (
     <section className="w-full bg-jet py-[5rem]">
-      <div className="container pb-5 flex flex-col md:flex-row justify-between md:border-b-8 border-argentinian">
+      <div className="container pb-5 flex flex-col md:flex-row justify-between md:border-b-8 border-azul">
         <div className="md:basis-1/3 pt-5 px-5 md:p-5">
           <p className="max-w-none md:prose-md prose mb-5 text-2xl md:text-md text-white font-light">
             {contentleft}
