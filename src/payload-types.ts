@@ -98,6 +98,7 @@ export interface Page {
     | TeamCarousel
     | ProductsHome
     | ServicesBlock
+    | BlogFeed
   )[];
   meta?: {
     title?: string | null;
@@ -698,6 +699,15 @@ export interface ServicesBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "BlogFeed".
+ */
+export interface BlogFeed {
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'blogFeed';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -878,6 +888,7 @@ export interface PagesSelect<T extends boolean = true> {
         teamCarousel?: T | TeamCarouselSelect<T>;
         productsHome?: T | ProductsHomeSelect<T>;
         servicesBlock?: T | ServicesBlockSelect<T>;
+        blogFeed?: T | BlogFeedSelect<T>;
       };
   meta?:
     | T
@@ -1018,6 +1029,14 @@ export interface ProductsHomeSelect<T extends boolean = true> {
  * via the `definition` "ServicesBlock_select".
  */
 export interface ServicesBlockSelect<T extends boolean = true> {
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "BlogFeed_select".
+ */
+export interface BlogFeedSelect<T extends boolean = true> {
   id?: T;
   blockName?: T;
 }

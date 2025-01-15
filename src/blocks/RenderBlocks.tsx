@@ -13,6 +13,7 @@ import { TwoColumnBlock } from '@/blocks/TwoColumnBlock/Component'
 import TeamCarousel from '@/blocks/TeamCarousel/Component'
 import { ProductsHome } from '@/blocks/ProductsHome/Component'
 import { ServicesBlock } from '@/blocks/Services/Component'
+import { BlogFeed } from '@/blocks/BlogFeed/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -25,6 +26,7 @@ const blockComponents = {
   teamCarousel: TeamCarousel,
   productsHome: ProductsHome,
   servicesBlock: ServicesBlock,
+  blogFeed: BlogFeed,
 }
 
 export const RenderBlocks: React.FC<{

@@ -10,6 +10,7 @@ import { MediaBlock } from '../../blocks/MediaBlock/config'
 import { TeamCarousel } from '../../blocks/TeamCarousel/config'
 import { TextBlock } from '@/blocks/TextBlock/config'
 import { TwoColumnBlock } from '@/blocks/TwoColumnBlock/config'
+import { BlogFeed } from '@/blocks/BlogFeed/config'
 import { ServicesBlock } from '@/blocks/Services/config'
 import { ProductsHome } from '@/blocks/ProductsHome/config'
 import { hero } from '@/heros/config'
@@ -80,7 +81,7 @@ export const Pages: CollectionConfig<'pages'> = {
             {
               name: 'layout',
               type: 'blocks',
-              blocks: [CallToAction, Content, MediaBlock, Archive, FormBlock, TextBlock, TwoColumnBlock, TeamCarousel, ProductsHome, ServicesBlock],
+              blocks: [CallToAction, Content, MediaBlock, Archive, FormBlock, TextBlock, TwoColumnBlock, TeamCarousel, ProductsHome, ServicesBlock, BlogFeed],
               required: true,
               admin: {
                 initCollapsed: true,
