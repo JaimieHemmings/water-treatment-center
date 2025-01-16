@@ -694,6 +694,14 @@ export interface ProductsHome {
  * via the `definition` "ServicesBlock".
  */
 export interface ServicesBlock {
+  title?: string | null;
+  subtitle?: string | null;
+  serviceOneTitle?: string | null;
+  serviceOneDescription?: string | null;
+  serviceOneImage?: (number | null) | Media;
+  serviceTwoTitle?: string | null;
+  serviceTwoDescription?: string | null;
+  serviceTwoImage?: (number | null) | Media;
   id?: string | null;
   blockName?: string | null;
   blockType: 'servicesBlock';
@@ -1040,6 +1048,14 @@ export interface ProductsHomeSelect<T extends boolean = true> {
  * via the `definition` "ServicesBlock_select".
  */
 export interface ServicesBlockSelect<T extends boolean = true> {
+  title?: T;
+  subtitle?: T;
+  serviceOneTitle?: T;
+  serviceOneDescription?: T;
+  serviceOneImage?: T;
+  serviceTwoTitle?: T;
+  serviceTwoDescription?: T;
+  serviceTwoImage?: T;
   id?: T;
   blockName?: T;
 }

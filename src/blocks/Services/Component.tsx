@@ -1,9 +1,60 @@
-import Image from "next/image";
-import React from "react";
+'use client';
 
-export const ServicesBlock: any = () => {
+import React, { useEffect, useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Image from 'next/image';
+
+gsap.registerPlugin(ScrollTrigger);
+
+interface ServicesBlockProps {
+  title: string;
+  subtitle: string;
+  serviceOneTitle: string;
+  serviceOneDescription: string;
+  serviceOneImage: { url: string };
+  serviceTwoTitle: string;
+  serviceTwoDescription: string;
+  serviceTwoImage: { url: string };
+}
+
+export const ServicesBlock: React.FC<ServicesBlockProps> = ({
+  title,
+  subtitle,
+  serviceOneTitle,
+  serviceOneDescription,
+  serviceOneImage,
+  serviceTwoTitle,
+  serviceTwoDescription,
+  serviceTwoImage,
+}) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const container = containerRef.current;
+
+    if (container) {
+      gsap.utils.toArray(".animate-text").forEach((text: any) => {
+        gsap.fromTo(
+          text,
+          { opacity: 0 },
+          {
+            opacity: 1,
+            scrollTrigger: {
+              trigger: text,
+              start: "top 90%",
+              end: "top 50%",
+              scrub: true,
+              toggleActions: "play reverse play reverse",
+            },
+          }
+        );
+      });
+    }
+  }, []);
+
   return (
-    <section className="bg-azul py-[5rem] relative">
+    <section className="bg-azul py-[5rem] relative" ref={containerRef}>
       <Image
         src="/dots.svg"
         alt="decorative image of dots"
@@ -19,17 +70,19 @@ export const ServicesBlock: any = () => {
         width="200"
       />
       <div className="container text-center">
-        <h1 className="text-6xl font-semibold md:max-w-[60%] mx-auto mb-3">
-          Comprehensive Repairs and Maintenance
+        <h1 className="text-6xl font-semibold md:max-w-[80%] lg:max-w-[60%] mx-auto mb-3">
+          {title}
         </h1>
-        <p>Keep your water systems running smoothly with our expert servicing solutions</p>
+        <p>{subtitle}</p>
       </div>
       <div className="container flex flex-col md:flex-row justify-between mx-auto gap-4 py-[5rem]">
         <div className="md:basis-1/2 p-5">
-          <h2 className="text-2xl md:text-4xl font-semibold pb-5">Repairs &amp; Maintenance</h2>
-          <p className="pb-5">From minor adjustments to major repairs, our skilled technicians are here to fix any issues and maintain the integrity of your water treatment systems, ensuring they deliver the highest quality water.</p>
+          <h2 className="text-2xl md:text-4xl font-semibold pb-5 animate-text">{serviceOneTitle}</h2>
+          <p className="pb-5 animate-text">
+            {serviceOneDescription}
+          </p>
           <ul>
-            <li>
+            <li className="animate-text">
               <Image
                 src="/tick.png"
                 alt="decorative image of dots"
@@ -37,8 +90,9 @@ export const ServicesBlock: any = () => {
                 height="20"
                 width="15"
               />
-              Expert technicians with years of experience</li>
-            <li>
+              Expert technicians with years of experience
+            </li>
+            <li className="animate-text">
               <Image
                 src="/tick.png"
                 alt="decorative image of dots"
@@ -51,15 +105,19 @@ export const ServicesBlock: any = () => {
           </ul>
         </div>
         <div className="md:basis-1/2">
-          <Image src="/technician.png" alt="Technician" width={500} height={500} className="mx-auto w-full h-auto" />
+          <Image src={serviceOneImage.url} alt="Technician" width={500} height={500} className="mx-auto w-full h-auto" />
         </div>
       </div>
       <div className="container flex flex-col justify-between mx-auto gap-4 md:flex-row-reverse relative z-20">
         <div className="md:basis-1/2 px-5">
-          <h2 className="text-2xl md:text-4xl font-semibold pb-5">UV System Servicing</h2>
-          <p className="pb-5">Regular servicing of your UV system is crucial for effective bacteria and virus removal. We provide comprehensive checks to ensure it operates at peak performance, delivering safe, clean water for your home.</p>
+          <h2 className="text-2xl md:text-4xl font-semibold pb-5 animate-text">
+            {serviceTwoTitle}
+          </h2>
+          <p className="pb-5 animate-text">
+            {serviceTwoDescription}
+          </p>
           <ul>
-            <li>
+            <li className="animate-text">
               <Image
                 src="/tick.png"
                 alt="decorative image of dots"
@@ -67,8 +125,9 @@ export const ServicesBlock: any = () => {
                 height="20"
                 width="15"
               />
-              Cost effective maintenance plans</li>
-            <li>
+              Cost effective maintenance plans
+            </li>
+            <li className="animate-text">
               <Image
                 src="/tick.png"
                 alt="decorative image of dots"
@@ -81,9 +140,9 @@ export const ServicesBlock: any = () => {
           </ul>
         </div>
         <div className="md:basis-1/2">
-          <Image src="/uv-system.png" alt="Technician" width={500} height={500} className="mx-auto w-full h-auto" />
+          <Image src={serviceTwoImage.url} alt="Technician" width={500} height={500} className="mx-auto w-full h-auto" />
         </div>
       </div>
     </section>
-  )
+  );
 };

@@ -23,8 +23,8 @@ export const CallToActionBlock: React.FC<CTABlockProps> = ({ links, richText }) 
           opacity: 1,
           scrollTrigger: {
             trigger: richTextElement,
-            start: "top 110%",
-            end: "top 90%",
+            start: "top 99%",
+            end: "top 60%",
             scrub: true,
             toggleActions: "play reverse play reverse",
           },
