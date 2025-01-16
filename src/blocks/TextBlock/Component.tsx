@@ -4,7 +4,7 @@ import RichText from "@/components/RichText";
 
 export const TextBlock: any = ({ content, title }) => {
   return (
-    <section className="w-full bg-jet py-10 pt-[10rem] bg-gradient-to-br from-argentinian to-azul">
+    <section className="w-full bg-jet py-[5rem] bg-gradient-to-br from-argentinian to-azul">
       <div className="container pb-5">
         <h2 className="block text-selectiveyellow font-semibold pb-5">
           { title }

@@ -7,14 +7,14 @@ export const ServicesBlock: any = () => {
       <Image
         src="/dots.svg"
         alt="decorative image of dots"
-        className="absolute bottom-0 right-0 z-10 scale-x-[-1]"
+        className="absolute bottom-[15px] right-0 z-10 scale-x-[-1]"
         height="300"
         width="200"
       />
       <Image
         src="/dots.svg"
         alt="decorative image of dots"
-        className="absolute top-0 left-0 z-10"
+        className="absolute top-[15px] left-0 z-10"
         height="300"
         width="200"
       />

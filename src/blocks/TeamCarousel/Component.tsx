@@ -16,16 +16,16 @@ const TeamCarousel: React.FC = () => {
       image: '/default-profile.avif'
     },
     2: {
-      name: 'Jane Doe',
+      name: 'Michael Smith',
       title: 'CTO',
-      quote: 'Description for team member 2.',
-      image: '/default-profile.avif'
+      quote: "I've seen firsthand how access to clean water transforms lives and businesses. We don't just sell filtration systems; we deliver peace of mind.",
+      image: '/default-profile-man.avif'
     },
     3: {
       name: 'John Smith',
-      title: 'Lead Developer',
-      quote: 'Description for team member 3.',
-      image: '/default-profile.avif'
+      title: 'Head of Marketing',
+      quote: 'Our cutting-edge technology ensures every drop of water meets the highest standards of purity.',
+      image: '/default-profile-man-2.avif'
     },
     4: {
       name: 'Jane Smith',

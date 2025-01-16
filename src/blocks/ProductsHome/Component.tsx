@@ -8,34 +8,57 @@ import Link from 'next/link'
 import './styles.css'
 
 export const ProductsHome: React.FC = () => {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false }, [Autoplay({ delay: 3000 })])
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    { loop: true },
+    [Autoplay({ delay: 3000 })]
+  )
 
   const products = {
     1: {
       name: 'Water Softeners',
       description: 'Eliminate hard water issues for softer skin, and longer lasting appliances.',
-      image: '/default-product.avif'
+      image: '/products/1.png'
     },
     2: {
-      name: 'Product 2',
-      description: 'Description for product 2.',
-      image: '/default-product.avif'
+      name: 'Reverse Osmosis Filters',
+      description: 'Achieve ultra-pure drinking water by removing harmful contaminants effectively.',
+      image: '/products/2.png'
     },
     3: {
-      name: 'Product 3',
-      description: 'Description for product 3.',
-      image: '/default-product.avif'
+      name: 'Bacteria Filters',
+      description: 'Safeguard your family&apos;s health by removing harmful bacteria from your water supply.',
+      image: '/products/3.png'
     },
     4: {
-      name: 'Product 4',
-      description: 'Description for product 4.',
-      image: '/default-product.avif'
+      name: 'Iron Filters',
+      description: 'Prevent stains and odor caused by excess iron in your water with powerful filtration.',
+      image: '/products/4.png'
     },
     5: {
-      name: 'Product 5',
-      description: 'Description for product 5.',
-      image: '/default-product.avif'
-    }
+      name: 'Flouride Filters',
+      description: 'Remove harmful fluoride from your water supply for a healthier lifestyle.',
+      image: '/products/5.png'
+    },
+    6: {
+      name: 'Water Softeners',
+      description: 'Eliminate hard water issues for softer skin, and longer lasting appliances.',
+      image: '/products/1.png'
+    },
+    7: {
+      name: 'Reverse Osmosis Filters',
+      description: 'Achieve ultra-pure drinking water by removing harmful contaminants effectively.',
+      image: '/products/2.png'
+    },
+    8: {
+      name: 'Bacteria Filters',
+      description: 'Safeguard your family&apos;s health by removing harmful bacteria from your water supply.',
+      image: '/products/3.png'
+    },
+    9: {
+      name: 'Iron Filters',
+      description: 'Prevent stains and odor caused by excess iron in your water with powerful filtration.',
+      image: '/products/4.png'
+    },
   }
 
   useEffect(() => {
@@ -58,11 +81,17 @@ export const ProductsHome: React.FC = () => {
       </div>
 
       <div className="embla py-5">
-        <div className="embla__viewport container mx-auto" ref={emblaRef}>
+        <div className="embla__viewport mx-auto" ref={emblaRef}>
           <div className="embla__container">
             {Object.entries(products).map(([key, product]) => (
               <div className="embla__slide" key={key}>
-                <Image src='/product-image.png' alt={product.name} width={500} height={500} />
+                <Image
+                  src={product.image}
+                  alt={product.name}
+                  width={340}
+                  height={340}
+                  className="max-w-full h-auto rounded-xl"
+                />
                 <div className="flex flex-col justify-start py-5 gap-3">
                   <h3 className="text-2xl font-semibold">{product.name}</h3>
                   <p className="">{product.description}</p>
