@@ -21,7 +21,7 @@ export const HighImpactHero: React.FC<Page['hero']> = () => {
 
   return (
   <div className="w-full relative">
-    <div className="embla overflow-hidden h-[50vh] md:h-[70vh]" ref={emblaRef}>    
+    <div className="embla overflow-hidden h-[80vh] md:h-[70vh]" ref={emblaRef}>    
       <div className="embla__container flex h-full">
 
         <div className="embla__slide azul-overlay dots-overlay">

@@ -22,7 +22,7 @@ export const TwoColumnBlock: React.FC<{ contentleft: string; contentright: strin
             trigger: container,
             start: "top 90%",
             end: "top 30%",
-            scrub: true,
+            scrub: 1,
             toggleActions: "play reverse play reverse",
           },
         }
@@ -31,14 +31,14 @@ export const TwoColumnBlock: React.FC<{ contentleft: string; contentright: strin
   }, []);
 
   return (
-    <section className="w-full bg-jet py-[5rem]" ref={containerRef}>
+    <section className="w-full bg-jet py-5 md:py-[5rem]" ref={containerRef}>
       <div className="container pb-5 flex flex-col md:flex-row justify-between md:border-b-8 border-azul">
-        <div className="md:basis-1/3 pt-5 px-5 md:p-5">
+        <div className="md:basis-1/3 pt-5 md:p-5">
           <p className="max-w-none md:prose-md prose mb-5 text-2xl md:text-md text-white font-light pt-3 animate-text">
             {contentleft}
           </p>
         </div>
-        <div className="md:basis-2/3 p-5">
+        <div className="md:basis-2/3 md:p-5">
           <p className="mb-5 text-2xl md:text-4xl text-white md:leading-[60px] font-light animate-text">
             {contentright}
           </p>

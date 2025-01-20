@@ -15,6 +15,7 @@ import { ProductsHome } from '@/blocks/ProductsHome/Component'
 import { ServicesBlock } from '@/blocks/Services/Component'
 import { BlogFeed } from '@/blocks/BlogFeed/Component'
 import { ContactBlock } from '@/blocks/ContactBlock/Component'
+import { AllBlogPosts } from '@/blocks/AllBlogPosts/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -29,6 +30,7 @@ const blockComponents = {
   servicesBlock: ServicesBlock,
   blogFeed: BlogFeed,
   contactBlock: ContactBlock,
+  allBlogPosts: AllBlogPosts,
 }
 
 export const RenderBlocks: React.FC<{

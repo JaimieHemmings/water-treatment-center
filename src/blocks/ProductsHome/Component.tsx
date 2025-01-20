@@ -68,11 +68,11 @@ export const ProductsHome: React.FC = () => {
   }, [emblaApi])
 
   return (
-    <section className="bg-jet py-[5rem] products">
+    <section className="bg-jet py-5 md:py-[5rem] products">
       <div className="container flex flex-col md:flex-row justify-between mx-auto gap-4">
         <div className="basis-3/4">
           <h2 className="block text-selectiveyellow font-semibold pb-5">Our Products</h2>
-          <p className="text-6xl">Best Water Purification Systems</p>
+          <p className="text-4xl md:text-6xl">Best Water Purification Systems</p>
           <p className="text-md pt-3">Explore our range of products designed to meet your unique water purification needs.</p>
         </div>
         <div className="basis-1/4 h-[100%] flex flex-col justify-end md:pt-[5rem]">
@@ -90,7 +90,7 @@ export const ProductsHome: React.FC = () => {
                   alt={product.name}
                   width={340}
                   height={340}
-                  className="max-w-full h-auto rounded-xl"
+                  className="w-full md:max-w-full h-auto rounded-xl"
                 />
                 <div className="flex flex-col justify-start py-5 gap-3">
                   <h3 className="text-2xl font-semibold">{product.name}</h3>

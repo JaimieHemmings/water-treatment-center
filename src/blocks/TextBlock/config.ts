@@ -5,6 +5,7 @@ import {
 } from '@payloadcms/richtext-lexical'
 
 export const TextBlock: Block = {
+  imageURL: '/block-images/text-block.webp',
   slug: 'textBlock',
   interfaceName: 'TextBlock',
   fields: [

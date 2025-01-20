@@ -24,8 +24,8 @@ export const BlogFeed: React.FC = () => {
             scrollTrigger: {
               trigger: text,
               start: "top 90%",
-              end: "top 50%",
-              scrub: true,
+              end: "top 70%",
+              scrub: 1,
               toggleActions: "play reverse play reverse",
             },
           }
@@ -35,14 +35,14 @@ export const BlogFeed: React.FC = () => {
       gsap.utils.toArray(".animate-image").forEach((image: any) => {
         gsap.fromTo(
           image,
-          { rotationX: 45, opacity: 0 },
+          { rotationY: 45, opacity: 0 },
           {
-            rotationX: 0, opacity: 1,
+            rotationY: 0, opacity: 1,
             scrollTrigger: {
               trigger: image,
               start: "top 100%",
-              end: "top 60%",
-              scrub: true,
+              end: "top 80%",
+              scrub: 1,
               toggleActions: "play reverse play reverse",
             },
           }

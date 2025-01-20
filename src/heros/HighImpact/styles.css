@@ -31,3 +31,10 @@
   z-index: 10;
   transform: scaleX(-1);
 }
+
+@media screen and (max-width: 568px) {
+  .dots-overlay::after {
+    width: 200px;
+    height: 300px;
+  }
+}

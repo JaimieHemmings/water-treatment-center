@@ -16,6 +16,7 @@ import { ProductsHome } from '@/blocks/ProductsHome/config'
 import { ContactBlock } from '@/blocks/ContactBlock/config'
 import { hero } from '@/heros/config'
 import { slugField } from '@/fields/slug'
+import { AllBlogPosts } from '@/blocks/AllBlogPosts/config'
 import { populatePublishedAt } from '../../hooks/populatePublishedAt'
 import { generatePreviewPath } from '../../utilities/generatePreviewPath'
 import { revalidateDelete, revalidatePage } from './hooks/revalidatePage'
@@ -82,7 +83,7 @@ export const Pages: CollectionConfig<'pages'> = {
             {
               name: 'layout',
               type: 'blocks',
-              blocks: [CallToAction, Content, MediaBlock, Archive, FormBlock, TextBlock, TwoColumnBlock, TeamCarousel, ProductsHome, ServicesBlock, BlogFeed, ContactBlock],
+              blocks: [CallToAction, Content, MediaBlock, Archive, FormBlock, TextBlock, TwoColumnBlock, TeamCarousel, ProductsHome, ServicesBlock, BlogFeed, ContactBlock, AllBlogPosts],
               required: true,
               admin: {
                 initCollapsed: true,

@@ -27,18 +27,6 @@ const TeamCarousel: React.FC = () => {
       quote: 'Our cutting-edge technology ensures every drop of water meets the highest standards of purity.',
       image: '/default-profile-man-2.avif'
     },
-    4: {
-      name: 'Jane Smith',
-      title: 'Head of Marketing',
-      quote: 'Description for team member 4.',
-      image: '/default-profile.avif'
-    },
-    5: {
-      name: 'John Doe Jr.',
-      title: 'Installation Engineer',
-      quote: 'Description for team member 5.',
-      image: '/default-profile.avif'
-    }
   };
 
   useEffect(() => {

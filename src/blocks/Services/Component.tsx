@@ -42,9 +42,9 @@ export const ServicesBlock: React.FC<ServicesBlockProps> = ({
             opacity: 1,
             scrollTrigger: {
               trigger: text,
-              start: "top 90%",
-              end: "top 50%",
-              scrub: true,
+              start: "top 99%",
+              end: "top 90%",
+              scrub: 1,
               toggleActions: "play reverse play reverse",
             },
           }
@@ -58,19 +58,19 @@ export const ServicesBlock: React.FC<ServicesBlockProps> = ({
       <Image
         src="/dots.svg"
         alt="decorative image of dots"
-        className="absolute bottom-[15px] right-0 z-10 scale-x-[-1]"
+        className="absolute bottom-[15px] right-0 z-10 scale-x-[-1] w-[200px] h-[300px] md:w-200px] md:h-[300px]"
         height="300"
         width="200"
       />
       <Image
         src="/dots.svg"
         alt="decorative image of dots"
-        className="absolute top-[15px] left-0 z-10"
+        className="absolute top-[15px] left-0 z-10  w-[200px] h-[300px] md:w-[200px] md:h-[300px]"
         height="300"
         width="200"
       />
       <div className="container text-center">
-        <h1 className="text-6xl font-semibold md:max-w-[80%] lg:max-w-[60%] mx-auto mb-3">
+        <h1 className="text-4xl md:text-6xl font-semibold md:max-w-[80%] lg:max-w-[60%] mx-auto mb-3">
           {title}
         </h1>
         <p>{subtitle}</p>
