@@ -16,21 +16,25 @@ export const TeamCarousel: Block = {
           type: 'upload',
           relationTo: 'media',
           label: 'Image',
+          required: true,
         },
         {
           name: 'name',
           type: 'text',
           label: 'Name',
+          required: true,
         },
         {
           name: 'title',
           type: 'text',
           label: 'Title',
+          required: true,
         },
         {
           name: 'quote',
           type: 'textarea',
           label: 'Quote',
+          required: true,
         },
       ],
     }

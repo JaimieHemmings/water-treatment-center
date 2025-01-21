@@ -679,10 +679,10 @@ export interface TwoColumn {
 export interface TeamCarousel {
   slides?:
     | {
-        image?: (number | null) | Media;
-        name?: string | null;
-        title?: string | null;
-        quote?: string | null;
+        image: number | Media;
+        name: string;
+        title: string;
+        quote: string;
         id?: string | null;
       }[]
     | null;
