@@ -6,6 +6,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import type { CallToActionBlock as CTABlockProps } from '@/payload-types'
 import RichText from '@/components/RichText'
 import { CMSLink } from '@/components/Link'
+import Bounded from '@/utilities/Bounded'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -34,7 +35,7 @@ export const CallToActionBlock: React.FC<CTABlockProps> = ({ links, richText }) 
   }, [])
 
   return (
-    <section className="w-full bg-jet py-10 pt-[10rem] relative overflow-hidden">
+    <section className="w-full bg-jet py-[5rem] relative overflow-hidden">
       <video 
         autoPlay 
         loop 
@@ -45,10 +46,10 @@ export const CallToActionBlock: React.FC<CTABlockProps> = ({ links, richText }) 
         <source src="/water-drop.mp4" type="video/mp4" />
       </video>
       <div className="w-full h-full absolute z-1 bg-gradient-to-br from-argentinian to-azul opacity-70 top-0 left-0"></div>
-      <div className="container relative z-1">
+      <Bounded>
         <div className="p-4 flex flex-col md:justify-between gap-4">
           <div className="flex justify-end">
-            <div className="md:w-[66%]">
+            <div className="md:w-[70%]">
               <h2 className="block text-selectiveyellow font-semibold pb-5">
                 GET IN TOUCH
               </h2>
@@ -65,7 +66,7 @@ export const CallToActionBlock: React.FC<CTABlockProps> = ({ links, richText }) 
             </div>
           </div>
         </div>
-      </div>
+      </Bounded>
     </section>
   )
 }

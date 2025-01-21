@@ -677,6 +677,15 @@ export interface TwoColumn {
  * via the `definition` "TeamCarousel".
  */
 export interface TeamCarousel {
+  slides?:
+    | {
+        image?: (number | null) | Media;
+        name?: string | null;
+        title?: string | null;
+        quote?: string | null;
+        id?: string | null;
+      }[]
+    | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'teamCarousel';
@@ -1043,6 +1052,15 @@ export interface TwoColumnSelect<T extends boolean = true> {
  * via the `definition` "TeamCarousel_select".
  */
 export interface TeamCarouselSelect<T extends boolean = true> {
+  slides?:
+    | T
+    | {
+        image?: T;
+        name?: T;
+        title?: T;
+        quote?: T;
+        id?: T;
+      };
   id?: T;
   blockName?: T;
 }
