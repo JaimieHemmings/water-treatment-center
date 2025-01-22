@@ -1,13 +1,5 @@
 import type { Field } from 'payload'
 
-import {
-  FixedToolbarFeature,
-  HeadingFeature,
-  InlineToolbarFeature,
-  lexicalEditor,
-} from '@payloadcms/richtext-lexical'
-
-
 export const hero: Field = {
   name: 'hero',
   type: 'group',
@@ -35,8 +27,55 @@ export const hero: Field = {
           value: 'lowImpact',
         },
       ],
-      required: true,
+    },
+    {
+      name: 'slides',
+      type: 'array',
+      label: 'Slides',
+      fields: [
+        {
+          name: 'image',
+          type: 'upload',
+          relationTo: 'media',
+          label: 'Image',
+          admin: {
+            condition: (_, siblingData) => !siblingData.video,
+          },
+        },
+        {
+          name: 'video',
+          type: 'upload',
+          relationTo: 'media',
+          label: 'Video',
+          admin: {
+            condition: (_, siblingData) => !siblingData.image,
+          },
+        },
+        {
+          name: 'titleStart',
+          type: 'text',
+          label: 'Title',
+          required: true,
+        },
+        {
+          name: 'titleHighlight',
+          type: 'text',
+          label: 'Title Highlight',
+          required: true,
+        },
+        {
+          name: 'titleEnd',
+          type: 'text',
+          label: 'Title End',
+          required: true,
+        },
+        {
+          name: 'paragraph',
+          type: 'text',
+          label: 'Paragraph',
+          required: true,
+        },
+      ],
     },
   ],
-  label: false,
-}
+};
