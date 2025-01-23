@@ -6,6 +6,7 @@ import Autoplay from 'embla-carousel-autoplay'
 import './styles.css'
 
 import Link from 'next/link'
+import Image from "next/image";
 
 interface Slide {
   titleStart: string;
@@ -50,6 +51,15 @@ export const HighImpactHero: React.FC<HeroProps> = ({ slides }) => {
               className="absolute inset-0 w-full h-full object-cover min-w-full min-h-full z-0">
               <source src={slide.video.url} type="video/mp4" />
             </video>
+            )}
+            {slide.image && (
+            <Image
+              src={slide.image.url}
+              alt={slide.image.alt}
+              width={1920}
+              height={1080}
+              className="absolute inset-0 w-full h-full object-cover min-w-full min-h-full z-0"
+            />
             )}
             <div className="container h-full flex flex-col justify-center items-center relative z-30">
               <h1 className="text-4xl md:text-[72px] text-center md:leading-[80px]">

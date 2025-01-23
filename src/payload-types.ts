@@ -719,12 +719,20 @@ export interface ProductsHome {
 export interface ServicesBlock {
   title?: string | null;
   subtitle?: string | null;
-  serviceOneTitle?: string | null;
-  serviceOneDescription?: string | null;
-  serviceOneImage?: (number | null) | Media;
-  serviceTwoTitle?: string | null;
-  serviceTwoDescription?: string | null;
-  serviceTwoImage?: (number | null) | Media;
+  rows?:
+    | {
+        title?: string | null;
+        description?: string | null;
+        image?: (number | null) | Media;
+        features?:
+          | {
+              description?: string | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+      }[]
+    | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'servicesBlock';
@@ -1160,12 +1168,20 @@ export interface ProductsHomeSelect<T extends boolean = true> {
 export interface ServicesBlockSelect<T extends boolean = true> {
   title?: T;
   subtitle?: T;
-  serviceOneTitle?: T;
-  serviceOneDescription?: T;
-  serviceOneImage?: T;
-  serviceTwoTitle?: T;
-  serviceTwoDescription?: T;
-  serviceTwoImage?: T;
+  rows?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        image?: T;
+        features?:
+          | T
+          | {
+              description?: T;
+              id?: T;
+            };
+        id?: T;
+      };
   id?: T;
   blockName?: T;
 }

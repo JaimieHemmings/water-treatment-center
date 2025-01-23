@@ -29,7 +29,7 @@ export async function Footer() {
         </div>
         <div className="flex flex-row gap-5">
           <div className="flex flex-col gap-5">
-            <h2 className="text-2xl text-selectiveyellow">Sitemap</h2>
+            <h2 className="text-2xl text-selectiveyellow">Quick Links</h2>
             <Link className="hover:text-selectiveyellow transition-colors duration-200" href="/">About</Link>
             <Link className="hover:text-selectiveyellow transition-colors duration-200" href="/">News</Link>
             <Link className="hover:text-selectiveyellow transition-colors duration-200" href="/">FAQ&apos;s</Link>

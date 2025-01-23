@@ -15,36 +15,43 @@ export const ServicesBlock: Block = {
       label: 'Subtitle',
     },
     {
-      name: 'serviceOneTitle',
-      type: 'text',
-      label: 'Service One Title',
-    },
-    {
-      name: 'serviceOneDescription',
-      type: 'text',
-      label: 'Service One Description',
-    },
-    {
-      name: 'serviceOneImage',
-      type: 'upload',
-      relationTo: 'media',
-      label: 'Service One Image',
-    },
-    {
-      name: 'serviceTwoTitle',
-      type: 'text',
-      label: 'Service Two Title',
-    },
-    {
-      name: 'serviceTwoDescription',
-      type: 'text',
-      label: 'Service Two Description',
-    },
-    {
-      name: 'serviceTwoImage',
-      type: 'upload',
-      relationTo: 'media',
-      label: 'Service Two Image',
+      name: 'rows',
+      type: 'array',
+      label: 'Rows',
+      minRows: 1,
+      maxRows: 3,
+      fields: [
+        {
+          name: 'title',
+          type: 'text',
+          label: 'Title',
+        },
+        {
+          name: 'description',
+          type: 'textarea',
+          label: 'Description',
+        },
+        {
+          name: 'image',
+          type: 'upload',
+          relationTo: 'media',
+          label: 'Image',
+        },
+        {
+          name: 'features',
+          type: 'array',
+          label: 'Features',
+          minRows: 1,
+          maxRows: 2,
+          fields: [
+            {
+              name: 'description',
+              type: 'textarea',
+              label: 'Description',
+            },
+          ],
+        },
+      ]
     },
   ],
   labels: {
