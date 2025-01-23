@@ -36,6 +36,7 @@ export const ServicesBlock: React.FC<ServicesBlockProps> = ({
   const containerRef = useRef<HTMLDivElement>(null);
   const rowRefs = useRef<(HTMLDivElement | null)[]>([]);
 
+
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
@@ -46,7 +47,6 @@ export const ServicesBlock: React.FC<ServicesBlockProps> = ({
       const textElements = rowElement.querySelectorAll('.animate-text-services');
       const imageElement = rowElement.querySelectorAll('.animate-img-services');
 
-      // Text animation
       gsap.fromTo(
         textElements,
         { opacity: 0, y: 50 },
@@ -64,7 +64,6 @@ export const ServicesBlock: React.FC<ServicesBlockProps> = ({
         }
       );
 
-      // Image scale animation
       if (imageElement) {
         gsap.fromTo(
           imageElement,
@@ -91,7 +90,6 @@ export const ServicesBlock: React.FC<ServicesBlockProps> = ({
 
   return (
     <section className="bg-azul py-20 relative" ref={containerRef}>
-      {/* Dot background images */}
       <Image
         src="/dots.svg"
         alt="Decorative dots"
@@ -116,7 +114,7 @@ export const ServicesBlock: React.FC<ServicesBlockProps> = ({
         {rows?.map((row, index) => (
           <div 
             key={index} 
-            ref={el => rowRefs.current[index] = el}
+            ref={el => {rowRefs.current[index] = el}}
             className={`flex flex-col md:flex-row gap-8 items-center 
               ${index % 2 === 1 ? 'md:flex-row-reverse' : ''}`}
           >
