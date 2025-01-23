@@ -22,7 +22,7 @@ export const CallToActionBlock: React.FC<CTABlockProps> = ({ links, richText }) 
       scrollTrigger: {
         trigger: container,
         start: "top 90%",
-        end: "top 60%",
+        end: "top 70%",
         scrub: 1,
       }
     });

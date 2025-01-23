@@ -5,15 +5,15 @@ import Image from 'next/image';
 
 interface Post {
   title: string;
-  publishDate: string;
+  publishedAt: string;
   excerpt: string;
-  featuredImage?: {
+  heroImage?: {
     url: string;
     alt: string;
   };
 }
 
-const BlogFeed: React.FC = () => {
+export const BlogFeed: React.FC = () => {
   const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
@@ -58,17 +58,22 @@ const BlogFeed: React.FC = () => {
       </div>
       <div className="container pt-[5rem]">
         {posts.map((post, index) => (
-          <div key={index} className="post-wrapper">
-            <h3>{post.title}</h3>
-            <p>{post.excerpt}</p>
-            {post.featuredImage && (
-              <Image width={500} height={500} src={post.featuredImage.url} alt={post.featuredImage.alt} />
-            )}
+          <div key={index} className={`flex flex-col gap-4 ${index % 2 === 1 ? 'md:flex-row-reverse' : 'md:flex-row'}`}>
+            <div className="basis-1/3">
+              <p className="text-sm text-gray-400">
+                {new Date(post.publishedAt).toLocaleDateString('en-GB')}
+              </p>
+              <h3 className="text-2xl text-selectiveyellow pt-1 pb-5">{post.title}</h3>
+              <p>{post.excerpt}</p>
+            </div>
+            <div className="basis-2/3">
+              {post.heroImage && (
+                <Image width={500} height={500} src={post.heroImage.url} alt={post.heroImage.alt} className="w-full h-auto object-cover" />
+              )}
+            </div>
           </div>
         ))}
       </div>
     </div>
   );
 };
-
-export default BlogFeed;
