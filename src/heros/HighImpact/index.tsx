@@ -62,10 +62,10 @@ export const HighImpactHero: React.FC<HeroProps> = ({ slides }) => {
             />
             )}
             <div className="container h-full flex flex-col justify-center items-center relative z-30">
-              <h1 className="text-4xl md:text-[72px] text-center md:leading-[80px]">
+              <h1 className="text-4xl md:text-[72px] text-center md:leading-[80px] text-white">
                 {slide.titleStart} <span className="text-selectiveyellow">{slide.titleHighlight}</span> {slide.titleEnd}
               </h1>
-              <p className="my-5 pt-5 text-lg text-center md:mx-auto md:max-w-[60%]">
+              <p className="my-5 pt-5 text-lg text-center md:mx-auto md:max-w-[60%] text-white">
                 {slide.paragraph}
               </p>
               <Link href="/contact" className="inline-flex items-center justify-center whitespace-nowrap font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-11 px-8 mt-3 bg-jet border border-selectiveyellow text-selectiveyellow hover:bg-selectiveyellow hover:text-jet text-lg relative z-30">Get A Quote</Link>

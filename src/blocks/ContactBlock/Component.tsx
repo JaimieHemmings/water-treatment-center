@@ -2,7 +2,7 @@ import React from "react";
 
 export const ContactBlock: any = () => {
   return (
-    <section className="w-full py-5 md:py-[10rem] bg-jet">
+    <section className="w-full py-5 md:py-[10rem] bg-jet text-white">
       <div className="container pb-5">
         <h2 className="block text-selectiveyellow font-semibold pb-5">
           Contact Us
