@@ -12,7 +12,7 @@ export const Products: CollectionConfig = {
     update: authenticated,
   },
   admin: {
-    defaultColumns: ['name', 'price', 'status', 'category'],
+    defaultColumns: ['name', 'status', 'category'],
     useAsTitle: 'name',
   },
   fields: [
@@ -24,8 +24,18 @@ export const Products: CollectionConfig = {
     },
     {
       name: 'description',
-      type: 'richText',
+      type: 'text',
       required: true,
+    },
+    {
+      name: 'excerpt',
+      type: 'textarea',
+      required: true,
+    },
+    {
+      name: 'featuredImage',
+      type: 'upload',
+      relationTo: 'media',
     },
     {
       name: 'images',
@@ -50,17 +60,6 @@ export const Products: CollectionConfig = {
           required: true,
         }
       ]
-    },
-    {
-      name: 'price',
-      type: 'number',
-      required: true,
-      min: 0,
-    },
-    {
-      name: 'compareAtPrice',
-      type: 'number',
-      min: 0,
     },
     {
       name: 'status',
@@ -93,30 +92,6 @@ export const Products: CollectionConfig = {
       type: 'text',
       required: true,
       unique: true,
-    },
-    {
-      name: 'inventory',
-      type: 'group',
-      fields: [
-        {
-          name: 'trackInventory',
-          type: 'checkbox',
-          defaultValue: true,
-        },
-        {
-          name: 'quantity',
-          type: 'number',
-          required: true,
-          defaultValue: 0,
-          min: 0,
-        },
-        {
-          name: 'lowStockThreshold',
-          type: 'number',
-          defaultValue: 5,
-          min: 0,
-        }
-      ]
     },
     {
       name: 'specifications',

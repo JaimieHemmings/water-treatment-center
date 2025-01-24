@@ -1,71 +1,66 @@
 'use client';
-
-import React, { useEffect } from 'react'
-import Autoplay from 'embla-carousel-autoplay'
-import useEmblaCarousel from 'embla-carousel-react'
+import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import './styles.css'
+import Autoplay from 'embla-carousel-autoplay'
+import useEmblaCarousel from 'embla-carousel-react'
 
-export const ProductsHome: React.FC = () => {
+interface Product {
+  id: string;
+  name: string;
+  excerpt: string;
+  featuredImage?: {
+    url: string;
+  };
+}
+
+interface ProductsResponse {
+  docs: Product[];
+}
+
+const ProductsHome: React.FC = () => {
+  const [products, setProducts] = useState<ProductsResponse | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<Error | null>(null);
+
   const [emblaRef, emblaApi] = useEmblaCarousel(
     { loop: true },
     [Autoplay({ delay: 3000 })]
   )
 
-  const products = {
-    1: {
-      name: 'Water Softeners',
-      description: 'Eliminate hard water issues for softer skin, and longer lasting appliances.',
-      image: '/products/1.png'
-    },
-    2: {
-      name: 'Reverse Osmosis Filters',
-      description: 'Achieve ultra-pure drinking water by removing harmful contaminants effectively.',
-      image: '/products/2.png'
-    },
-    3: {
-      name: 'Bacteria Filters',
-      description: 'Safeguard your family&apos;s health by removing harmful bacteria from your water supply.',
-      image: '/products/3.png'
-    },
-    4: {
-      name: 'Iron Filters',
-      description: 'Prevent stains and odor caused by excess iron in your water with powerful filtration.',
-      image: '/products/4.png'
-    },
-    5: {
-      name: 'Flouride Filters',
-      description: 'Remove harmful fluoride from your water supply for a healthier lifestyle.',
-      image: '/products/5.png'
-    },
-    6: {
-      name: 'Water Softeners',
-      description: 'Eliminate hard water issues for softer skin, and longer lasting appliances.',
-      image: '/products/1.png'
-    },
-    7: {
-      name: 'Reverse Osmosis Filters',
-      description: 'Achieve ultra-pure drinking water by removing harmful contaminants effectively.',
-      image: '/products/2.png'
-    },
-    8: {
-      name: 'Bacteria Filters',
-      description: 'Safeguard your family&apos;s health by removing harmful bacteria from your water supply.',
-      image: '/products/3.png'
-    },
-    9: {
-      name: 'Iron Filters',
-      description: 'Prevent stains and odor caused by excess iron in your water with powerful filtration.',
-      image: '/products/4.png'
-    },
-  }
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await fetch('/api/products?limit=12&sort=-createdAt');
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data: ProductsResponse = await response.json();
+        setProducts(data);
+        setLoading(false);
+      } catch (err) {
+        console.error('Error fetching products:', err);
+        setError(err instanceof Error ? err : new Error('Unknown error'));
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, []);
 
   useEffect(() => {
     if (emblaApi) {
       emblaApi.reInit()
     }
   }, [emblaApi])
+
+  if (loading) return <div className="min-h-[458px] bg-jet">Loading products...</div>;
+  if (error) return <div className="h-screen bg-jet">Error loading products: {error.message}</div>;
+  if (!products || !products.docs.length) {
+    console.log('No products found');
+    return <div className="h-screen bg-jet">No products found</div>;
+  }
 
   return (
     <section className="bg-jet py-5 md:py-[5rem] products">
@@ -83,18 +78,20 @@ export const ProductsHome: React.FC = () => {
       <div className="embla py-5">
         <div className="embla__viewport mx-auto" ref={emblaRef}>
           <div className="embla__container">
-            {Object.entries(products).map(([key, product]) => (
-              <div className="embla__slide" key={key}>
-                <Image
-                  src={product.image}
-                  alt={product.name}
-                  width={340}
-                  height={340}
-                  className="w-full md:max-w-full h-auto rounded-xl"
-                />
+            {products.docs.map((product) => (
+              <div className="embla__slide" key={product.id}>
+                {product.featuredImage && (
+                  <Image
+                    src={product.featuredImage.url}
+                    alt={product.name}
+                    width={340}
+                    height={340}
+                    className="w-full md:max-w-full h-auto rounded-xl"
+                  />
+                )}
                 <div className="flex flex-col justify-start py-5 gap-3">
                   <h3 className="text-2xl font-semibold">{product.name}</h3>
-                  <p className="">{product.description}</p>
+                  <p className="">{product.excerpt}</p>
                 </div>
               </div>
             ))}
@@ -102,7 +99,7 @@ export const ProductsHome: React.FC = () => {
         </div>
       </div>
     </section>
-  )
+  );
 };
 
 export default ProductsHome;

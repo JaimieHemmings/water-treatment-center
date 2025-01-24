@@ -771,36 +771,17 @@ export interface AllBlogPosts {
 export interface Product {
   id: number;
   name: string;
-  description: {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  };
+  description: string;
+  excerpt: string;
+  featuredImage?: (number | null) | Media;
   images: {
     image: number | Media;
     altText: string;
     id?: string | null;
   }[];
-  price: number;
-  compareAtPrice?: number | null;
   status: 'draft' | 'published' | 'archived';
   category: number | Category;
   sku: string;
-  inventory: {
-    trackInventory?: boolean | null;
-    quantity: number;
-    lowStockThreshold?: number | null;
-  };
   specifications?:
     | {
         name: string;
@@ -1376,6 +1357,8 @@ export interface UsersSelect<T extends boolean = true> {
 export interface ProductsSelect<T extends boolean = true> {
   name?: T;
   description?: T;
+  excerpt?: T;
+  featuredImage?: T;
   images?:
     | T
     | {
@@ -1383,18 +1366,9 @@ export interface ProductsSelect<T extends boolean = true> {
         altText?: T;
         id?: T;
       };
-  price?: T;
-  compareAtPrice?: T;
   status?: T;
   category?: T;
   sku?: T;
-  inventory?:
-    | T
-    | {
-        trackInventory?: T;
-        quantity?: T;
-        lowStockThreshold?: T;
-      };
   specifications?:
     | T
     | {
