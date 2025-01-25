@@ -1,34 +1,66 @@
-import { cn } from 'src/utilities/cn'
-import React from 'react'
+import { cn } from 'src/utilities/cn';
+import React from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
 
-import type { Post } from '@/payload-types'
-
-import { Card, CardPostData } from '@/components/Card'
-
-export type Props = {
-  posts: CardPostData[]
+interface HeroImage {
+  url: string;
+  alt: string;
 }
 
-export const CollectionArchive: React.FC<Props> = (props) => {
-  const { posts } = props
+interface Post {
+  id: string;
+  title: string;
+  slug: string;
+  meta?: {
+    description?: string;
+  };
+  heroImage?: HeroImage;
+}
 
+interface CollectionArchiveProps {
+  posts: Post[];
+}
+
+export const CollectionArchive: React.FC<CollectionArchiveProps> = ({ posts }) => {
+  console.log('posts:', posts);
   return (
     <div className={cn('container')}>
       <div>
-        <div className="grid grid-cols-4 sm:grid-cols-8 lg:grid-cols-12 gap-y-4 gap-x-4 lg:gap-y-8 lg:gap-x-8 xl:gap-x-8">
-          {posts?.map((result, index) => {
-            if (typeof result === 'object' && result !== null) {
-              return (
-                <div className="col-span-4" key={index}>
-                  <Card className="h-full" doc={result} relationTo="posts" showCategories />
+        <div className="py-[5rem]">
+          {posts?.map((post) => (
+            <div className="flex flex-col md:flex-row gap-4" key={post.id}>
+              <div className="basis-1/3">
+                <h3 className="text-2xl md:text-4xl font-semibold text-white">
+                  {post.title}
+                </h3>
+                <p className="text-xl md:text-2xl py-5">
+                  {post.meta?.description || 'No excerpt available'}
+                </p>
+                <Link
+                  href={`/news/${post.slug}`}
+                  className="block text-center items-center justify-center whitespace-nowrap font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 py-3 mt-3 border bg-selectiveyellow text-jet hover:bg-jet hover:text-selectiveyellow"
+                >
+                  Read More
+                </Link>
+              </div>
+              {post.heroImage && (
+                <div className="basis-2/3">
+                  <Image
+                    src={post.heroImage.url} 
+                    alt={post.heroImage.alt || 'No alt text available'} 
+                    width={800}
+                    height={600}
+                    className="w-full h-auto object-cover rounded-lg"
+                  />
                 </div>
-              )
-            }
-
-            return null
-          })}
+              )}
+            </div>
+          ))}
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
+
+export default CollectionArchive;
