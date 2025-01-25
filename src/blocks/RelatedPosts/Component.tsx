@@ -2,17 +2,9 @@ import clsx from 'clsx'
 import React from 'react'
 import RichText from '@/components/RichText'
 
-import type { Post } from '@/payload-types'
-
 import Card from '../../components/Card'
 
-export type RelatedPostsProps = {
-  className?: string
-  docs?: Post[]
-  introContent?: any
-}
-
-export const RelatedPosts: React.FC<RelatedPostsProps> = (props) => {
+export const RelatedPosts: React.FC<any> = (props) => {
   const { className, docs, introContent } = props
 
   return (
