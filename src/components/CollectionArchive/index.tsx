@@ -3,26 +3,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-interface HeroImage {
-  url: string;
-  alt: string;
-}
-
-interface Post {
-  id: string;
-  title: string;
-  slug: string;
-  meta?: {
-    description?: string;
-  };
-  heroImage?: HeroImage;
-}
-
-interface CollectionArchiveProps {
-  posts: Post[];
-}
-
-export const CollectionArchive: React.FC<CollectionArchiveProps> = ({ posts }) => {
+export const CollectionArchive: React.FC<any> = ({ posts }) => {
   console.log('posts:', posts);
   return (
     <div className={cn('container')}>
