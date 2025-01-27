@@ -11,7 +11,7 @@ interface TwoColumnBlockProps {
   contentleft: string;
   contentright: any;
   title: string;
-  mainContent: any;
+  mainContent?: any;
 }
 
 export const TwoColumnBlock: React.FC<TwoColumnBlockProps> = ({ contentleft, contentright, title, mainContent }) => {
@@ -59,7 +59,7 @@ export const TwoColumnBlock: React.FC<TwoColumnBlockProps> = ({ contentleft, con
   return (
     <section className="w-full bg-jet py-5 md:py-[5rem]" ref={containerRef}>
       
-      <div className="container pb-5">
+      <div className="container">
         <h2 className="block text-selectiveyellow font-semibold pb-5 animate-text-af29">
           {title}
         </h2>

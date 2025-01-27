@@ -680,7 +680,7 @@ export interface TextBlock {
  * via the `definition` "TwoColumn".
  */
 export interface TwoColumn {
-  title?: string | null;
+  title: string;
   mainContent?: {
     root: {
       type: string;
@@ -696,8 +696,8 @@ export interface TwoColumn {
     };
     [k: string]: unknown;
   } | null;
-  contentleft?: string | null;
-  contentright?: {
+  contentleft: string;
+  contentright: {
     root: {
       type: string;
       children: {
@@ -711,7 +711,7 @@ export interface TwoColumn {
       version: number;
     };
     [k: string]: unknown;
-  } | null;
+  };
   id?: string | null;
   blockName?: string | null;
   blockType: 'twoColumn';

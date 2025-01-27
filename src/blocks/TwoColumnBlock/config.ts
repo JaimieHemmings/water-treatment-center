@@ -9,6 +9,7 @@ export const TwoColumnBlock: Block = {
       name: 'title',
       type: 'text',
       label: 'Title',
+      required: true,
     },
     {
       name: 'mainContent',
@@ -19,10 +20,12 @@ export const TwoColumnBlock: Block = {
       name: 'contentleft',
       type: 'text',
       label: 'Left Column',
+      required: true,
     },{
       name: 'contentright',
       type: 'richText',
       label: 'Right Column',
+      required: true,
     },
   ],
   labels: {
