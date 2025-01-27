@@ -680,6 +680,22 @@ export interface TextBlock {
  * via the `definition` "TwoColumn".
  */
 export interface TwoColumn {
+  title?: string | null;
+  mainContent?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
   contentleft?: string | null;
   contentright?: {
     root: {
@@ -1154,6 +1170,8 @@ export interface TextBlockSelect<T extends boolean = true> {
  * via the `definition` "TwoColumn_select".
  */
 export interface TwoColumnSelect<T extends boolean = true> {
+  title?: T;
+  mainContent?: T;
   contentleft?: T;
   contentright?: T;
   id?: T;

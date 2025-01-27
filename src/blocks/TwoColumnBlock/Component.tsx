@@ -10,9 +10,11 @@ gsap.registerPlugin(ScrollTrigger);
 interface TwoColumnBlockProps {
   contentleft: string;
   contentright: any;
+  title: string;
+  mainContent: any;
 }
 
-export const TwoColumnBlock: React.FC<TwoColumnBlockProps> = ({ contentleft, contentright }) => {
+export const TwoColumnBlock: React.FC<TwoColumnBlockProps> = ({ contentleft, contentright, title, mainContent }) => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -56,6 +58,13 @@ export const TwoColumnBlock: React.FC<TwoColumnBlockProps> = ({ contentleft, con
 
   return (
     <section className="w-full bg-jet py-5 md:py-[5rem]" ref={containerRef}>
+      
+      <div className="container pb-5">
+        <h2 className="block text-selectiveyellow font-semibold pb-5 animate-text-af29">
+          {title}
+        </h2>
+        {mainContent && <RichText data={mainContent} enableGutter={false} className="max-w-none prose md:prose-md mb-5 text-2xl md:text-5xl text-white mr-0 animate-text-af29" />}
+      </div>
       <div className="container pb-5 flex flex-col md:flex-row justify-between md:border-b-8 border-azul">
         <div className="md:basis-1/3 pt-5 md:p-5">
           <p className="max-w-none md:prose-md prose mb-5 text-2xl md:text-md text-white font-light pt-3 animate-text-90b0">

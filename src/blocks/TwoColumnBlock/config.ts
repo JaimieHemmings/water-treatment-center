@@ -6,6 +6,16 @@ export const TwoColumnBlock: Block = {
   interfaceName: 'TwoColumn',
   fields: [
     {
+      name: 'title',
+      type: 'text',
+      label: 'Title',
+    },
+    {
+      name: 'mainContent',
+      type: 'richText',
+      label: 'Main Content',
+    },
+    {
       name: 'contentleft',
       type: 'text',
       label: 'Left Column',
