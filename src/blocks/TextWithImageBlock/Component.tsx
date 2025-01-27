@@ -23,8 +23,10 @@ export const TextWithImageBlock: React.FC<TextWithImageBlockProps> = ({
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLDivElement>(null);
+  const [imageLoaded, setImageLoaded] = React.useState(false);
 
   useEffect(() => {
+    if (!imageLoaded) return;
     const container = containerRef.current;
     const imageContainer = imageRef.current;
 
@@ -46,14 +48,13 @@ export const TextWithImageBlock: React.FC<TextWithImageBlockProps> = ({
       textElements,
       {
         opacity: 0,
-        y: 30,
+        y: 50,
       },
       {
         opacity: 1,
         y: 0,
-        duration: 0.8,
+        duration: 1,
         stagger: 0.2,
-        ease: "power3.out",
       }
     );
 
@@ -69,29 +70,15 @@ export const TextWithImageBlock: React.FC<TextWithImageBlockProps> = ({
         opacity: 1,
         rotate: 0,
         duration: 1,
-        ease: "power2.out",
       },
       "-=0.5"
     );
-
-    // Cleanup function
+    
     return () => {
       tl.kill();
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     };
-  }, []);
-
-  useEffect(() => {
-    const handleResize = () => {
-      ScrollTrigger.refresh();
-    };
-
-    window.addEventListener('resize', handleResize);
-    
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
+  }, [imageLoaded]);
 
   return (
     <section 
@@ -116,13 +103,14 @@ export const TextWithImageBlock: React.FC<TextWithImageBlockProps> = ({
       />
 
       <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-center gap-10">
-        <div ref={imageRef} className="basis-1/2 animate-img-6578">
-          <Image 
+        <div ref={imageRef} className="basis-1/2">
+          <Image
+            onLoad={() => setImageLoaded(true)}
             src={image.url} 
             alt={image.alt} 
             width={1080} 
             height={1080} 
-            className="rounded-full transform-gpu" 
+            className="rounded-full transform-gpu animate-img-6578" 
             priority
           />
         </div>
