@@ -66,7 +66,7 @@ export const TwoColumnBlock: React.FC<TwoColumnBlockProps> = ({ contentleft, con
         {mainContent && <RichText data={mainContent} enableGutter={false} className="max-w-none prose md:prose-md text-2xl md:text-5xl text-white mr-0 animate-text-af29" />}
       </div>
       <div className="container pb-5 flex flex-col md:flex-row justify-between md:border-b-8 border-azul">
-        <div className="md:basis-1/3 pt-5 md:p-5">
+        <div className="md:basis-1/3 pt-5">
           <p className="max-w-none md:prose-md prose mb-5 text-2xl md:text-md text-white font-light pt-3 animate-text-90b0">
             {contentleft}
           </p>
