@@ -20,6 +20,7 @@ import { AllBlogPosts } from '@/blocks/AllBlogPosts/config'
 import { populatePublishedAt } from '../../hooks/populatePublishedAt'
 import { generatePreviewPath } from '../../utilities/generatePreviewPath'
 import { revalidateDelete, revalidatePage } from './hooks/revalidatePage'
+import { TextWithImageBlock } from '@/blocks/TextWithImageBlock/config'
 
 import {
   MetaDescriptionField,
@@ -83,7 +84,7 @@ export const Pages: CollectionConfig<'pages'> = {
             {
               name: 'layout',
               type: 'blocks',
-              blocks: [CallToAction, Content, MediaBlock, Archive, FormBlock, TextBlock, TwoColumnBlock, TeamCarousel, ProductsHome, ServicesBlock, BlogFeed, ContactBlock, AllBlogPosts],
+              blocks: [CallToAction, Content, MediaBlock, Archive, FormBlock, TextBlock, TwoColumnBlock, TeamCarousel, ProductsHome, ServicesBlock, BlogFeed, ContactBlock, AllBlogPosts, TextWithImageBlock],
               required: true,
               admin: {
                 initCollapsed: true,

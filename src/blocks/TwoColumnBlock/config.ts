@@ -11,7 +11,7 @@ export const TwoColumnBlock: Block = {
       label: 'Left Column',
     },{
       name: 'contentright',
-      type: 'text',
+      type: 'richText',
       label: 'Right Column',
     },
   ],

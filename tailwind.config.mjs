@@ -66,7 +66,7 @@ export default {
           DEFAULT: '#F4F7F9',
         },
         selectiveyellow: {
-          DEFAULT: '#ffd700',
+          DEFAULT: '#fdce08',
         },
         accent: {
           DEFAULT: 'hsl(var(--accent))',

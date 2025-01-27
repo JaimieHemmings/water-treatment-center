@@ -114,6 +114,7 @@ export interface Page {
     | BlogFeed
     | ContactBlock
     | AllBlogPosts
+    | TextWithImageBlock
   )[];
   meta?: {
     title?: string | null;
@@ -680,7 +681,21 @@ export interface TextBlock {
  */
 export interface TwoColumn {
   contentleft?: string | null;
-  contentright?: string | null;
+  contentright?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'twoColumn';
@@ -763,6 +778,32 @@ export interface AllBlogPosts {
   id?: string | null;
   blockName?: string | null;
   blockType: 'allBlogPosts';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TextWithImageBlock".
+ */
+export interface TextWithImageBlock {
+  content?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  title?: string | null;
+  image: number | Media;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'textWithImageBlock';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -998,6 +1039,7 @@ export interface PagesSelect<T extends boolean = true> {
         blogFeed?: T | BlogFeedSelect<T>;
         contactBlock?: T | ContactBlockSelect<T>;
         allBlogPosts?: T | AllBlogPostsSelect<T>;
+        textWithImageBlock?: T | TextWithImageBlockSelect<T>;
       };
   meta?:
     | T
@@ -1187,6 +1229,17 @@ export interface ContactBlockSelect<T extends boolean = true> {
  * via the `definition` "AllBlogPosts_select".
  */
 export interface AllBlogPostsSelect<T extends boolean = true> {
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TextWithImageBlock_select".
+ */
+export interface TextWithImageBlockSelect<T extends boolean = true> {
+  content?: T;
+  title?: T;
+  image?: T;
   id?: T;
   blockName?: T;
 }

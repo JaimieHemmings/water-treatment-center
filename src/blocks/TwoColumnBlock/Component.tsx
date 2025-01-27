@@ -3,6 +3,7 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import RichText from "@/components/RichText";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -57,9 +58,7 @@ export const TwoColumnBlock: React.FC<{ contentleft: string; contentright: strin
           </p>
         </div>
         <div className="md:basis-2/3 md:p-5">
-          <p className="mb-5 text-2xl md:text-4xl text-white md:leading-[60px] font-light animate-text-90b0">
-            {contentright}
-          </p>
+          {contentright && <RichText data={contentright} enableGutter={false} className="max-w-none prose md:prose-md mb-5 text-md md:xl mr-0 animate-text-90b0 [&_strong]:font-bold" />}
         </div>
       </div>
     </section>
