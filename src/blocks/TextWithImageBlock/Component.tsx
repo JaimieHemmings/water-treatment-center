@@ -1,13 +1,11 @@
 'use client';
-
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import RichText from "@/components/RichText";
 import Image from "next/image";
 
-gsap.registerPlugin(ScrollTrigger)
+gsap.registerPlugin(ScrollTrigger);
 
 interface TextWithImageBlockProps {
   title: string;
@@ -15,60 +13,132 @@ interface TextWithImageBlockProps {
   image: {
     url: string;
     alt: string;
-  }
+  };
 }
 
-export const TextWithImageBlock: React.FC<TextWithImageBlockProps> = ({ content, title, image }) => {
+export const TextWithImageBlock: React.FC<TextWithImageBlockProps> = ({ 
+  content, 
+  title, 
+  image 
+}) => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const imageRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const container = containerRef.current;
-    if(!container) return;
+    const imageContainer = imageRef.current;
 
-    const animatedElements = container.querySelectorAll(".animate-text-a989");
+    if (!container || !imageContainer) return;
 
-    const animation = gsap.timeline({
+    const textElements = container.querySelectorAll(".animate-text");
+    const imageElement = imageContainer.querySelector("img");
+
+    const tl = gsap.timeline({
       scrollTrigger: {
         trigger: container,
-        start: "top 90%",
-        end: "top 60%",
-        scrub: 1,
+        start: "top 80%",
+        end: "top 30%",
+        toggleActions: "play none none reverse",
       }
     });
 
-    animation.fromTo(
-      animatedElements,
-      { 
+    tl.fromTo(
+      textElements,
+      {
         opacity: 0,
-        y: 50
+        y: 30,
       },
-      { 
+      {
         opacity: 1,
         y: 0,
+        duration: 0.8,
+        stagger: 0.2,
+        ease: "power3.out",
       }
     );
 
+    tl.fromTo(
+      imageElement,
+      {
+        scale: 0.8,
+        opacity: 0,
+        rotate: -10,
+      },
+      {
+        scale: 1,
+        opacity: 1,
+        rotate: 0,
+        duration: 1,
+        ease: "power2.out",
+      },
+      "-=0.5"
+    );
+
+    // Cleanup function
     return () => {
-      animation.kill();
+      tl.kill();
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     };
   }, []);
 
   useEffect(() => {
-    window.onload = () => {
+    const handleResize = () => {
       ScrollTrigger.refresh();
+    };
+
+    window.addEventListener('resize', handleResize);
+    
+    return () => {
+      window.removeEventListener('resize', handleResize);
     };
   }, []);
 
   return (
-    <section ref={containerRef} className="w-full py-[5rem] bg-selectiveyellow text-jet">
-      <div className="container flex flex-col md:flex-row items-center justify-center gap-10">
-        <div className="basis-1/2">
-          <Image src={image.url} alt={image.alt} width={1080} height={1080} layout="responsive" className="rounded-full" />
+    <section 
+      ref={containerRef} 
+      className="w-full py-20 bg-selectiveyellow text-jet relative overflow-hidden"
+    >
+      <Image
+        src="/dots.svg"
+        alt="Decorative dots"
+        className="absolute bottom-4 right-0 z-10 scale-x-[-1] w-48 h-72 opacity-50"
+        height={300}
+        width={200}
+        priority={false}
+      />
+      <Image
+        src="/dots.svg"
+        alt="Decorative dots"
+        className="absolute top-4 left-0 z-10 w-48 h-72 opacity-50"
+        height={300}
+        width={200}
+        priority={false}
+      />
+
+      <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-center gap-10">
+        <div ref={imageRef} className="basis-1/2">
+          <Image 
+            src={image.url} 
+            alt={image.alt} 
+            width={1080} 
+            height={1080} 
+            className="rounded-full transform-gpu" 
+            priority
+          />
         </div>
-        <div className="basis-1/2">
-          <h2 className="text-4xl md:text-5xl font-bold pb-5 text-white animate-text-a989">{title}</h2>
-          {content && <RichText data={content} enableGutter={false} className="max-w-none prose md:prose-md mb-5 text-md md:xl mr-0 animate-text-a989 [&_strong]:font-bold" />}
+        <div className="basis-1/2 space-y-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-white animate-text">
+            {title}
+          </h2>
+          {content && (
+            <div className="animate-text">
+              <RichText 
+                data={content}
+                enableGutter={false}
+                className="prose md:prose-lg text-jet max-w-none [&_strong]:font-bold"
+              />
+            </div>
+          )}
         </div>
       </div>
     </section>
