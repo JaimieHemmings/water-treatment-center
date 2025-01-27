@@ -7,7 +7,7 @@ import RichText from "@/components/RichText";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export const TwoColumnBlock: React.FC<{ contentleft: any; contentright: string }> = ({ contentleft, contentright }) => {
+export const TwoColumnBlock: React.FC<{ contentleft: string; contentright: any }> = ({ contentleft, contentright }) => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
