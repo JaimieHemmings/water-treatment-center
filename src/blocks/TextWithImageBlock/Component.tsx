@@ -30,8 +30,8 @@ export const TextWithImageBlock: React.FC<TextWithImageBlockProps> = ({
 
     if (!container || !imageContainer) return;
 
-    const textElements = container.querySelectorAll(".animate-text");
-    const imageElement = imageContainer.querySelector("img");
+    const textElements = container.querySelectorAll(".animate-text-6578");
+    const imageElement = imageContainer.querySelectorAll(".animate-img-6578");
 
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -101,7 +101,7 @@ export const TextWithImageBlock: React.FC<TextWithImageBlockProps> = ({
       <Image
         src="/dots.svg"
         alt="Decorative dots"
-        className="absolute bottom-4 right-0 z-10 scale-x-[-1] w-48 h-72 opacity-50"
+        className="absolute bottom-4 right-0 z-10 scale-x-[-1] w-48 h-72"
         height={300}
         width={200}
         priority={false}
@@ -109,14 +109,14 @@ export const TextWithImageBlock: React.FC<TextWithImageBlockProps> = ({
       <Image
         src="/dots.svg"
         alt="Decorative dots"
-        className="absolute top-4 left-0 z-10 w-48 h-72 opacity-50"
+        className="absolute top-4 left-0 z-10 w-48 h-72"
         height={300}
         width={200}
         priority={false}
       />
 
       <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-center gap-10">
-        <div ref={imageRef} className="basis-1/2">
+        <div ref={imageRef} className="basis-1/2 animate-img-6578">
           <Image 
             src={image.url} 
             alt={image.alt} 
@@ -127,11 +127,11 @@ export const TextWithImageBlock: React.FC<TextWithImageBlockProps> = ({
           />
         </div>
         <div className="basis-1/2 space-y-6">
-          <h2 className="text-4xl md:text-5xl font-bold text-white animate-text">
+          <h2 className="text-4xl md:text-5xl font-bold text-white animate-text-6578">
             {title}
           </h2>
           {content && (
-            <div className="animate-text">
+            <div className="animate-text-6578">
               <RichText 
                 data={content}
                 enableGutter={false}
