@@ -13,7 +13,7 @@ export const revalidate = 600
 
 type Args = {
   params: Promise<{
-    pageNumber: string
+    pageNumber: string | number
   }>
 }
 

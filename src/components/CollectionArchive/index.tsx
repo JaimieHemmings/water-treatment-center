@@ -10,21 +10,8 @@ if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-interface Post {
-  id: string;
-  title: string;
-  slug: string;
-  meta: {
-    description: string;
-  };
-  heroImage: {
-    url: string;
-    alt: string;
-  };
-}
-
 interface CollectionArchiveProps {
-  posts: Post[];
+  posts: any;
 }
 
 export const CollectionArchive: React.FC<CollectionArchiveProps> = ({ posts }) => {
@@ -75,7 +62,7 @@ export const CollectionArchive: React.FC<CollectionArchiveProps> = ({ posts }) =
     <div className={cn('container')} ref={containerRef}>
       <div>
         <div className="py-[5rem] flex flex-col gap-10">
-          {posts?.map((post: Post, index: number) => (
+          {posts?.map((post: any, index: number) => (
             <div
               className={`flex flex-col gap-10 ${index % 2 === 1 ? 'md:flex-row-reverse' : 'md:flex-row'}`}
               key={post.id}
