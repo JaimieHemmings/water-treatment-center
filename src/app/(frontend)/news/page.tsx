@@ -38,7 +38,7 @@ export default async function PostsPage() {
           alt="Hero image"
           width={1920}
           height={1080}
-          className="absolute inset-0 w-auto h-full object-cover"
+          className="absolute inset-0 w-full h-full object-cover"
           priority
         />
       <div className="container mx-auto h-full flex flex-col justify-center items-center relative z-10">
