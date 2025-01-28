@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import SectionTitle from "@/components/SectionTitle";
+import Link from 'next/link';
 
 interface Post {
   title: string;
@@ -12,6 +13,7 @@ interface Post {
     url: string;
     alt: string;
   };
+  slug: string;
 }
 
 export const BlogFeed: React.FC = () => {
@@ -48,9 +50,23 @@ export const BlogFeed: React.FC = () => {
   }
 
   return (
-    <div className="w-full bg-jet py-[5rem]">
+    <div className="w-full bg-jet py-[5rem] relative">
+      <Image
+        src="/dots.svg"
+        alt="Decorative dots"
+        className="absolute bottom-4 right-0 z-10 scale-x-[-1] w-48 h-72 md:w-48 md:h-72"
+        height={300}
+        width={200}
+      />
+      <Image
+        src="/dots.svg"
+        alt="Decorative dots"
+        className="absolute top-4 left-0 z-10 w-48 h-72 md:w-48 md:h-72"
+        height={300}
+        width={200}
+      />
       <SectionTitle title="Latest News & Updates" subtitle="Stay informed about water quality and solutions" />
-      <div className="container pt-[5rem]">
+      <div className="container pt-[5rem] flex flex-col justify-normal gap-10 relative z-10">
         {posts.map((post, index) => (
           <div key={index} className={`flex flex-col gap-4 ${index % 2 === 1 ? 'md:flex-row-reverse' : 'md:flex-row'}`}>
             <div className="basis-1/3">
@@ -59,6 +75,9 @@ export const BlogFeed: React.FC = () => {
               </p>
               <h3 className="text-2xl text-selectiveyellow pt-1 pb-5">{post.title}</h3>
               <p>{post.excerpt}</p>
+              <Link href={`/blog/${post.slug}`} className="inline-flex items-center justify-center whitespace-nowrap font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-11 px-8 mt-3 border bg-selectiveyellow text-jet hover:bg-jet hover:text-selectiveyellow text-lg hover:border-selectiveyellow">
+                Read More
+              </Link>
             </div>
             <div className="basis-2/3">
               {post.heroImage && (

@@ -108,7 +108,7 @@ export const ServicesBlock: React.FC<ServicesBlockProps> = ({
 
       <SectionTitle title={title} subtitle={subtitle} />
      
-      <div className="container flex flex-col gap-16 py-20">
+      <div className="container flex flex-col gap-16 py-20 relative z-10">
         {rows?.map((row, index) => (
           <div 
             key={index} 
@@ -116,7 +116,7 @@ export const ServicesBlock: React.FC<ServicesBlockProps> = ({
             className={`flex flex-col md:flex-row gap-8 items-center 
               ${index % 2 === 1 ? 'md:flex-row-reverse' : ''}`}
           >
-            <div className="md:basis-1/2 px-5 flex justify-center flex-col">
+            <div className="md:basis-1/2 flex justify-center flex-col">
               <h3 className="text-2xl md:text-4xl font-semibold pb-5 animate-text-services">
                 {row.title}
               </h3>
