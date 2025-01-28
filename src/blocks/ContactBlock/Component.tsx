@@ -7,7 +7,7 @@ export const ContactBlock: any = () => {
         <h2 className="block text-selectiveyellow font-semibold pb-5">
           Contact Us
         </h2>
-        <p className="text-4xl md:text-6xl font-semibold">We look forward to <span className="text-selectiveyellow">learning</span> how we can help you.</p>
+        <p className="text-5xl font-semibold">We look forward to <span className="text-selectiveyellow">learning</span> how we can help you.</p>
       </div>
       <div className="container flex flex-col md:flex-row py-5">
         <div className="basis-1/2 flex flex-col gap-4">

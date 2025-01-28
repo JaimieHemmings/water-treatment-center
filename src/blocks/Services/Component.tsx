@@ -3,6 +3,7 @@ import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Image from 'next/image';
+import SectionTitle from '@/components/SectionTitle';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -105,10 +106,7 @@ export const ServicesBlock: React.FC<ServicesBlockProps> = ({
         width={200}
       />
 
-      <div className="container">
-        <h2 className="text-selectiveyellow font-semibold pb-5">{title}</h2>
-        <p className="text-5xl font-semibold">{subtitle}</p>
-      </div>
+      <SectionTitle title={title} subtitle={subtitle} />
      
       <div className="container flex flex-col gap-16 py-20">
         {rows?.map((row, index) => (

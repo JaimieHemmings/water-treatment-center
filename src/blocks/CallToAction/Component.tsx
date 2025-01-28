@@ -66,13 +66,13 @@ export const CallToActionBlock: React.FC<CTABlockProps> = ({ links, richText }) 
       </video>
       <div className="w-full h-full absolute z-1 bg-gradient-to-br from-argentinian to-azul opacity-70 top-0 left-0"></div>
       <Bounded>
-        <div className="p-4 flex flex-col md:justify-between gap-4" ref={containerRef}>
-          <h2 className="block text-selectiveyellow font-semibold pb-5">
-            GET IN TOUCH
+        <div className="p-4" ref={containerRef}>
+          <h2 className="text-selectiveyellow font-semibold pb-5">
+            Get In Touch
           </h2>
           {richText && (
             <RichText
-              className="mb-5 text-2xl md:text-5xl text-white mr-0 animate-text-2329"
+              className="text-5xl font-semibold"
               data={richText}
               enableGutter={false}
             />

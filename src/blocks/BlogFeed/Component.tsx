@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
+import SectionTitle from "@/components/SectionTitle";
 
 interface Post {
   title: string;
@@ -48,14 +49,7 @@ export const BlogFeed: React.FC = () => {
 
   return (
     <div className="w-full bg-jet py-[5rem]">
-      <div className="container">
-        <h2 className="block text-selectiveyellow font-semibold pb-5">
-          Latest News & Updates
-        </h2>
-        <p className="text-5xl font-semibold">
-          Stay informed about water quality and solutions
-        </p>
-      </div>
+      <SectionTitle title="Latest News & Updates" subtitle="Stay informed about water quality and solutions" />
       <div className="container pt-[5rem]">
         {posts.map((post, index) => (
           <div key={index} className={`flex flex-col gap-4 ${index % 2 === 1 ? 'md:flex-row-reverse' : 'md:flex-row'}`}>

@@ -13,7 +13,7 @@ export const TwoColumnBlock: Block = {
     },
     {
       name: 'mainContent',
-      type: 'richText',
+      type: 'text',
       label: 'Main Content',
     },
     {
