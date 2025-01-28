@@ -14,6 +14,9 @@ interface Post {
     alt: string;
   };
   slug: string;
+  meta: {
+    description: string;
+  };
 }
 
 export const BlogFeed: React.FC = () => {
@@ -74,14 +77,14 @@ export const BlogFeed: React.FC = () => {
                 {new Date(post.publishedAt).toLocaleDateString('en-GB')}
               </p>
               <h3 className="text-2xl text-selectiveyellow pt-1 pb-5">{post.title}</h3>
-              <p>{post.excerpt}</p>
-              <Link href={`/blog/${post.slug}`} className="inline-flex items-center justify-center whitespace-nowrap font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-11 px-8 mt-3 border bg-selectiveyellow text-jet hover:bg-jet hover:text-selectiveyellow text-lg hover:border-selectiveyellow">
+              <p className="text-white">{post.meta.description}</p>
+              <Link href={`/news/${post.slug}`} className="inline-flex items-center justify-center whitespace-nowrap font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-11 px-8 mt-3 border bg-selectiveyellow text-jet border-jet hover:bg-jet hover:text-selectiveyellow text-lg hover:border-selectiveyellow">
                 Read More
               </Link>
             </div>
             <div className="basis-2/3">
               {post.heroImage && (
-                <Image width={500} height={500} src={post.heroImage.url} alt={post.heroImage.alt} className="w-full h-auto object-cover" />
+                <Image width={630} height={420} src={post.heroImage.url} alt={post.heroImage.alt} className="w-full h-auto object-cover rounded-xl" />
               )}
             </div>
           </div>
