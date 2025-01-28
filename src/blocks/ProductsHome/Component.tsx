@@ -64,13 +64,13 @@ const ProductsHome: React.FC = () => {
   }
 
   return (
-    <section className="bg-jet py-5 md:py-[5rem] products">
+    <section className="bg-jet py-5 md:py-[5rem] products text-white">
       <div className="container flex flex-col md:flex-row justify-between mx-auto gap-4">
         <div className="basis-3/4">
           <SectionTitle title="Our Products" subtitle="Best Water Purification Systems" />
         </div>
         <div className="basis-1/4 h-[100%] flex flex-col justify-end md:pt-[5rem]">
-          <Link href="#" className="inline-flex items-center justify-center whitespace-nowrap font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-11 px-8 mt-3 border bg-selectiveyellow text-jet hover:bg-jet hover:text-selectiveyellow text-lg hover:border-selectiveyellow">Learn More</Link>
+          <Link href="#" className="inline-flex items-center justify-center whitespace-nowrap font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-11 px-8 mt-3 border border-jet bg-selectiveyellow text-jet hover:bg-jet hover:text-selectiveyellow text-lg hover:border-selectiveyellow">Learn More</Link>
         </div>
       </div>
 

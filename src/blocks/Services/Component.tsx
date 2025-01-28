@@ -108,7 +108,7 @@ export const ServicesBlock: React.FC<ServicesBlockProps> = ({
 
       <SectionTitle title={title} subtitle={subtitle} />
      
-      <div className="container flex flex-col gap-16 py-20 relative z-10">
+      <div className="container flex flex-col gap-16 py-20 relative z-10 text-white">
         {rows?.map((row, index) => (
           <div 
             key={index} 

@@ -24,7 +24,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = () => {
   ]
 
   return (
-    <header id="navbar" className="w-full z-50 sticky top-0 left-0 bg-jet border-argentinian border-b-2">
+    <header id="navbar" className="w-full z-50 sticky top-0 left-0 bg-jet border-argentinian border-b-2 text-white">
       <nav className="relative flex flex-row justify-between container">
         <Link href="/" className="z-50 text-xs font-semibold px-3 py-2">
           <Image 
