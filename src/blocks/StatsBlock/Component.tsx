@@ -21,7 +21,7 @@ export const StatsBlock = React.memo(({
   titleHighlight,
   titleEnd,
   stats,
-  description = 'Join us in celebrating the journey from challenge to triumph, and discover how we can make your next project an extraordinary success.'
+  description
 }: StatsBlockProps) => {
   const containerRef = useRef<HTMLElement>(null);
   const statsRef = useRef<(HTMLLIElement | null)[]>([]);
@@ -57,12 +57,11 @@ export const StatsBlock = React.memo(({
       });
     }, containerRef);
 
-    // Cleanup function that kills both context and individual animations
     return () => {
       animations.forEach(anim => anim.kill());
       ctx.revert();
     };
-  }, [stats.length]); // Only re-run if number of stats changes
+  }, [stats.length]);
 
   return (
     <section
