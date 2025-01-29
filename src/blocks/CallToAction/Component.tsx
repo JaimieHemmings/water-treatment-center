@@ -74,7 +74,7 @@ export const CallToActionBlock: React.FC<CTABlockProps> = ({ links, richText }) 
           {richText && (
             <div ref={textRef}>
               <RichText
-                className="text-5xl font-semibold text-white animate-text-9090"
+                className="text-2xl md:text-5xl font-semibold text-white animate-text-9090"
                 data={richText}
                 enableGutter={false}
               />
