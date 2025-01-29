@@ -8,21 +8,25 @@ export const StatsBlock: Block = {
       name: 'titleStart',
       type: 'text',
       label: 'Title Start',
+      required: true,
     },
     {
       name: 'titleHighlight',
       type: 'text',
       label: 'Title Highlight',
+      required: true,
     },
     {
       name: 'titleEnd',
       type: 'text',
       label: 'Title End',
+      required: true,
     },
     {
       name: 'description',
       type: 'textarea',
       label: 'Description',
+      required: true,
     },
     {
       name: 'stats',
