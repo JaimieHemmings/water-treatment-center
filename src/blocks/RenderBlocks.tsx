@@ -17,6 +17,7 @@ import { BlogFeed } from '@/blocks/BlogFeed/Component'
 import { ContactBlock } from '@/blocks/ContactBlock/Component'
 import { AllBlogPosts } from '@/blocks/AllBlogPosts/Component'
 import { TextWithImageBlock } from '@/blocks/TextWithImageBlock/Component'
+import { StatsBlock } from '@/blocks/StatsBlock/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -33,6 +34,7 @@ const blockComponents = {
   contactBlock: ContactBlock,
   allBlogPosts: AllBlogPosts,
   textWithImageBlock: TextWithImageBlock,
+  statsBlock: StatsBlock,
 }
 
 export const RenderBlocks: React.FC<{

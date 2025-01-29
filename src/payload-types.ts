@@ -115,6 +115,7 @@ export interface Page {
     | ContactBlock
     | AllBlogPosts
     | TextWithImageBlock
+    | StatsBlock
   )[];
   meta?: {
     title?: string | null;
@@ -809,6 +810,26 @@ export interface TextWithImageBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "StatsBlock".
+ */
+export interface StatsBlock {
+  titleStart?: string | null;
+  titleHighlight?: string | null;
+  titleEnd?: string | null;
+  description?: string | null;
+  stats?:
+    | {
+        value?: string | null;
+        title?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'statsBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "products".
  */
 export interface Product {
@@ -1042,6 +1063,7 @@ export interface PagesSelect<T extends boolean = true> {
         contactBlock?: T | ContactBlockSelect<T>;
         allBlogPosts?: T | AllBlogPostsSelect<T>;
         textWithImageBlock?: T | TextWithImageBlockSelect<T>;
+        statsBlock?: T | StatsBlockSelect<T>;
       };
   meta?:
     | T
@@ -1244,6 +1266,25 @@ export interface TextWithImageBlockSelect<T extends boolean = true> {
   content?: T;
   title?: T;
   image?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "StatsBlock_select".
+ */
+export interface StatsBlockSelect<T extends boolean = true> {
+  titleStart?: T;
+  titleHighlight?: T;
+  titleEnd?: T;
+  description?: T;
+  stats?:
+    | T
+    | {
+        value?: T;
+        title?: T;
+        id?: T;
+      };
   id?: T;
   blockName?: T;
 }
