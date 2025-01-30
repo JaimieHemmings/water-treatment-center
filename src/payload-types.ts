@@ -813,10 +813,10 @@ export interface TextWithImageBlock {
  * via the `definition` "StatsBlock".
  */
 export interface StatsBlock {
-  titleStart?: string | null;
-  titleHighlight?: string | null;
-  titleEnd?: string | null;
-  description?: string | null;
+  titleStart: string;
+  titleHighlight: string;
+  titleEnd: string;
+  description: string;
   stats?:
     | {
         value?: string | null;
