@@ -60,13 +60,13 @@ export default {
           DEFAULT: '#4BB3F8',
         },
         jet: {
-          DEFAULT: '#333333',
+          DEFAULT: '#121212',
         },
         antiflashwhite: {
           DEFAULT: '#F4F7F9',
         },
         selectiveyellow: {
-          DEFAULT: '#fdce08',
+          DEFAULT: '#007a77',
         },
         accent: {
           DEFAULT: 'hsl(var(--accent))',

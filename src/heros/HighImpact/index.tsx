@@ -63,7 +63,7 @@ export const HighImpactHero: React.FC<HeroProps> = ({ slides }) => {
             )}
             <div className="container h-full flex flex-col justify-center items-center relative z-30">
               <h1 className="text-4xl md:text-[72px] text-center md:leading-[80px] text-white">
-                {slide.titleStart} <span className="text-selectiveyellow">{slide.titleHighlight}</span> {slide.titleEnd}
+                {slide.titleStart} <span className="text-argentinian">{slide.titleHighlight}</span> {slide.titleEnd}
               </h1>
               <p className="my-5 pt-5 text-lg text-center md:mx-auto md:max-w-[60%] text-white">
                 {slide.paragraph}

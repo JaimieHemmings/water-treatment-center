@@ -123,7 +123,7 @@ export const TextWithImageBlock: React.FC<TextWithImageBlockProps> = ({
               <RichText 
                 data={content}
                 enableGutter={false}
-                className="prose md:prose-lg text-jet max-w-none [&_strong]:font-bold"
+                className="prose md:prose-lg text-white max-w-none [&_strong]:text-white"
               />
             </div>
           )}

@@ -8,7 +8,7 @@ interface SectionTitleProps {
 const SectionTitle: React.FC<SectionTitleProps> = ({ title, subtitle }) => {
   return (
     <div className="container">
-      <h2 className="text-selectiveyellow font-semibold pb-5">{title}</h2>
+      <h2 className="text-argentinian font-semibold pb-5">{title}</h2>
       <p className="text-4xl md:text-5xl font-semibold text-white">{subtitle}</p>
     </div>
   )
