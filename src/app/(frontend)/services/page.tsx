@@ -54,7 +54,7 @@ export default async function ServicesPage() {
         {services.map((service, index) => (
           <div 
             key={service.id} 
-            className={`flex flex-col ${index % 2 === 1 ? 'md:flex-row-reverse' : 'md:flex-row'} gap-6`}
+            className={`flex flex-col ${index % 2 === 1 ? 'md:flex-row-reverse' : 'md:flex-row'} gap-6 py-5`}
           >
             <div className="basis-1/2">
               <Image

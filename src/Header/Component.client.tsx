@@ -17,7 +17,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = () => {
 
   const navItems = [
     { href: "/about", label: "About", subLabel: "Who We Are" },
-    { href: "/services", label: "Services", subLabel: "What We Do" },
+    { href: "/services", label: "Services", subLabel: "& Maintenance" },
     { href: "/products", label: "Products", subLabel: "Water Purification" },
     { href: "/news", label: "News", subLabel: "Latest Work" },
     { href: "/contact", label: "Contact", subLabel: "Get In Touch", isSpecial: true }
