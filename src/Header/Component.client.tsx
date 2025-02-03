@@ -49,13 +49,13 @@ export const HeaderClient: React.FC<HeaderClientProps> = () => {
                 flex flex-col 
                 justify-center 
                 border-t-4 
-                border-t-jet 
-                hover:border-t-selectiveyellow 
+                border-t-jet
+                hover:border-t-argentinian 
                 transition-all 
                 hover:bg-[#141414] 
                 text-sm 
                 md:flex-1
-                ${isSpecial ? 'bg-selectiveyellow text-jet hover:text-white' : ''}
+                ${isSpecial ? 'bg-argentinian border-t-argentinian text-white hover:text-white' : ''}
               `}
             >
               {label}

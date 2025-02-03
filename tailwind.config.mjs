@@ -54,10 +54,10 @@ export default {
       },
       colors: {
         azul: {
-          DEFAULT: '#0A6EBD',
+          DEFAULT: '#4A90E2',
         },
         argentinian: {
-          DEFAULT: '#4BB3F8',
+          DEFAULT: '#1E90FF',
         },
         jet: {
           DEFAULT: '#121212',

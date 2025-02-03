@@ -83,7 +83,7 @@ export const TextWithImageBlock: React.FC<TextWithImageBlockProps> = ({
   return (
     <section 
       ref={containerRef} 
-      className="w-full py-20 bg-selectiveyellow text-jet relative overflow-hidden"
+      className="w-full py-20 bg-azul text-jet relative overflow-hidden"
     >
       <Image
         src="/dots.svg"
