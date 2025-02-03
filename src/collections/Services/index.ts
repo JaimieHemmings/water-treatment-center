@@ -25,13 +25,7 @@ export const Services: CollectionConfig = {
     },
     {
       name: 'description',
-      type: 'textarea',
-      required: true,
-    },
-    {
-      name: 'category',
-      type: 'relationship',
-      relationTo: 'service-categories',
+      type: 'richText',
       required: true,
     },
     {
@@ -39,6 +33,21 @@ export const Services: CollectionConfig = {
       type: 'upload',
       relationTo: 'media',
       required: true,
-    },
+    },{
+      name: 'features',
+      type: 'array',
+      maxRows: 6,
+      required: false,
+      labels: {
+        singular: 'Feature',
+        plural: 'Features',
+      },
+      fields: [
+        {
+          name: 'description',
+          type: 'text',
+        },
+      ]
+    }
   ],
 } 

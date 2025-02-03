@@ -18,7 +18,6 @@ export interface Config {
     users: User;
     products: Product;
     services: Service;
-    'service-categories': ServiceCategory;
     redirects: Redirect;
     forms: Form;
     'form-submissions': FormSubmission;
@@ -36,7 +35,6 @@ export interface Config {
     users: UsersSelect<false> | UsersSelect<true>;
     products: ProductsSelect<false> | ProductsSelect<true>;
     services: ServicesSelect<false> | ServicesSelect<true>;
-    'service-categories': ServiceCategoriesSelect<false> | ServiceCategoriesSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
@@ -873,23 +871,28 @@ export interface Product {
 export interface Service {
   id: number;
   title: string;
-  description: string;
-  category: number | ServiceCategory;
+  description: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
   image: number | Media;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "service-categories".
- */
-export interface ServiceCategory {
-  id: number;
-  title: string;
-  description: string;
-  image: number | Media;
-  slug?: string | null;
-  slugLock?: boolean | null;
+  features?:
+    | {
+        description?: string | null;
+        id?: string | null;
+      }[]
+    | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -1000,10 +1003,6 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'services';
         value: number | Service;
-      } | null)
-    | ({
-        relationTo: 'service-categories';
-        value: number | ServiceCategory;
       } | null)
     | ({
         relationTo: 'redirects';
@@ -1531,21 +1530,13 @@ export interface ProductsSelect<T extends boolean = true> {
 export interface ServicesSelect<T extends boolean = true> {
   title?: T;
   description?: T;
-  category?: T;
   image?: T;
-  updatedAt?: T;
-  createdAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "service-categories_select".
- */
-export interface ServiceCategoriesSelect<T extends boolean = true> {
-  title?: T;
-  description?: T;
-  image?: T;
-  slug?: T;
-  slugLock?: T;
+  features?:
+    | T
+    | {
+        description?: T;
+        id?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
 }
