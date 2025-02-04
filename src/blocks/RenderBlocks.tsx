@@ -18,6 +18,7 @@ import { ContactBlock } from '@/blocks/ContactBlock/Component'
 import { AllBlogPosts } from '@/blocks/AllBlogPosts/Component'
 import { TextWithImageBlock } from '@/blocks/TextWithImageBlock/Component'
 import { StatsBlock } from '@/blocks/StatsBlock/Component'
+import { BlockRow } from '@/blocks/BlockRow/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -35,6 +36,7 @@ const blockComponents = {
   allBlogPosts: AllBlogPosts,
   textWithImageBlock: TextWithImageBlock,
   statsBlock: StatsBlock,
+  blockRow: BlockRow,
 }
 
 export const RenderBlocks: React.FC<{

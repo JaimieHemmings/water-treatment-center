@@ -118,6 +118,7 @@ export interface Page {
     | AllBlogPosts
     | TextWithImageBlock
     | StatsBlock
+    | BlockRow
   )[];
   meta?: {
     title?: string | null;
@@ -832,6 +833,22 @@ export interface StatsBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "BlockRow".
+ */
+export interface BlockRow {
+  items: {
+    text: string;
+    link: string;
+    linkLabel: string;
+    icon: 'water' | 'filter' | 'test' | 'plant';
+    id?: string | null;
+  }[];
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'blockRow';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "products".
  */
 export interface Product {
@@ -1102,6 +1119,7 @@ export interface PagesSelect<T extends boolean = true> {
         allBlogPosts?: T | AllBlogPostsSelect<T>;
         textWithImageBlock?: T | TextWithImageBlockSelect<T>;
         statsBlock?: T | StatsBlockSelect<T>;
+        blockRow?: T | BlockRowSelect<T>;
       };
   meta?:
     | T
@@ -1321,6 +1339,23 @@ export interface StatsBlockSelect<T extends boolean = true> {
     | {
         value?: T;
         title?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "BlockRow_select".
+ */
+export interface BlockRowSelect<T extends boolean = true> {
+  items?:
+    | T
+    | {
+        text?: T;
+        link?: T;
+        linkLabel?: T;
+        icon?: T;
         id?: T;
       };
   id?: T;
