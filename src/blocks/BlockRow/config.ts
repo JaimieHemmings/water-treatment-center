@@ -57,7 +57,7 @@ export const BlockRow: Block = {
     },
   ],
   labels: {
-    plural: 'Blog Rows',
-    singular: 'Blog Row',
+    plural: 'Block Rows',
+    singular: 'Block Row',
   },
 }
