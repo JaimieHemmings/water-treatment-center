@@ -9,7 +9,9 @@ import { CMSLink } from '@/components/Link';
 interface BlockRowProps {
   items: Array<{
     text: string;
-    link: string;
+    link: {
+      slug: string;
+    };
     linkLabel: string;
     icon: 'water' | 'filter' | 'test' | 'plant';
   }>;
@@ -42,7 +44,8 @@ export const BlockRow: React.FC<BlockRowProps> = ({ items }) => {
           >
             <Icon className="mx-auto text-8xl pb-5" />
             <h2 className="text-2xl pb-5">{item.text}</h2>
-            <CMSLink url={item.link} appearance="link"
+            <CMSLink url={item.link.slug}
+              appearance="link"
               className="inline-flex
                         items-center
                         justify-center

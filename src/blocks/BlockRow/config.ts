@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import type { Block } from 'payload'
 
 export const BlockRow: Block = {
@@ -22,7 +23,8 @@ export const BlockRow: Block = {
         },
         {
           name: 'link',
-          type: 'text',
+          type: 'relationship',
+          relationTo: 'pages',
           required: true,
         },
         {

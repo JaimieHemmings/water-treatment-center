@@ -838,7 +838,7 @@ export interface StatsBlock {
 export interface BlockRow {
   items: {
     text: string;
-    link: string;
+    link: number | Page;
     linkLabel: string;
     icon: 'water' | 'filter' | 'test' | 'plant';
     id?: string | null;
