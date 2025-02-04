@@ -30,7 +30,7 @@ export default async function PostsPage() {
   const { docs, totalPages, page } = response
 
   return (
-    <div className="pb-24 bg-jet">
+    <div className="pb-24 bg-darkblue">
       <PageClient />
       <div className="relative w-full azul-overlay dots-overlay py-20 overflow-hidden">
         <Image

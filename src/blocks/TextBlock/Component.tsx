@@ -56,7 +56,7 @@ export const TextBlock: React.FC<TextBlockProps> = ({ content, title }) => {
   }, []);
 
   return (
-    <section ref={containerRef} className="w-full bg-jet py-[5rem] bg-gradient-to-br from-argentinian to-azul">
+    <section ref={containerRef} className="w-full bg-darkblue py-[5rem] bg-gradient-to-br from-argentinian to-azul">
       <div className="container pb-5">
         <h2 className="block text-selectiveyellow font-semibold pb-5 animate-text-af29">
           {title}

@@ -66,7 +66,7 @@ export const StatsBlock = React.memo(({
   return (
     <section
       ref={containerRef}
-      className="py-20 bg-jet"
+      className="py-20 bg-darkblue text-white"
       aria-labelledby="stats-title"
     >
       <div className="container grid grid-cols-1 md:grid-cols-2 gap-12 items-start">

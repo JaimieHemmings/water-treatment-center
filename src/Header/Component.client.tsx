@@ -54,7 +54,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = () => {
                 transition-all
                 text-sm 
                 md:flex-1
-                ${isSpecial ? 'bg-teal border-t-argentinian text-white hover:text-white' : ''}
+                ${isSpecial ? 'bg-azul border-t-argentinian text-white hover:text-white' : ''}
               `}
             >
               {label}
@@ -101,7 +101,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = () => {
                 transition-all 
                 hover:bg-[#141414] 
                 text-sm 
-                ${isSpecial ? 'bg-selectiveyellow text-jet hover:text-white' : ''}
+                ${isSpecial ? 'bg-azul text-jet hover:text-white' : ''}
               `}
             >
               {label}

@@ -39,13 +39,13 @@ export default async function Post({ params: paramsPromise }: Args) {
   const post = await queryPostBySlug({ slug })
   if (!post) return <PayloadRedirects url={url} />
   return (
-    <article className="pt-16 pb-16 bg-jet relative z-0">
+    <article className="pt-16 pb-16 bg-darkblue relative z-0">
       <PageClient />
       {/* Allows redirects for valid pages too */}
       <PayloadRedirects disableNotFound url={url} />
       {draft && <LivePreviewListener />}
       <PostHero post={post} />
-      <div className="flex flex-col items-center gap-4 pt-8 bg-jet">
+      <div className="flex flex-col items-center gap-4 pt-8 bg-darkblue">
         <div className="container">
           <RichText className="max-w-[48rem] mx-auto" data={post.content} enableGutter={false} />
         </div>
