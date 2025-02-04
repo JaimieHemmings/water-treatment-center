@@ -17,7 +17,7 @@ interface BlockRowProps {
 
 export const BlockRow: React.FC<BlockRowProps> = ({ items }) => {
  return (
-  <section className="bg-darkblue py-[5rem] relative z-20">
+  <section className="bg-darkblue pt-[5rem] relative z-20">
     <div className="container flex flex-col md:flex-row justify-around gap-10 -mt-[10rem]">
       {items.map((item, index) => {
         const Icon = {
@@ -28,7 +28,17 @@ export const BlockRow: React.FC<BlockRowProps> = ({ items }) => {
         }[item.icon];
 
         return (
-          <div key={index} className="bg-azul p-10 text-center flex flex-col md:basis-1/3 justify-between">
+          <div key={index} className="
+            bg-gradient-to-br
+            from-azul/100
+            to-teal/100
+            p-10
+            text-center
+            flex
+            flex-col
+            md:basis-1/3
+            justify-between"
+          >
             <Icon className="mx-auto text-8xl pb-5" />
             <h2 className="text-2xl pb-5">{item.text}</h2>
             <CMSLink url={item.link} appearance="link"
