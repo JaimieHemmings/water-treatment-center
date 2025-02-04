@@ -37,7 +37,8 @@ export const BlockRow: React.FC<BlockRowProps> = ({ items }) => {
             flex
             flex-col
             md:basis-1/3
-            justify-between"
+            justify-between
+            text-white"
           >
             <Icon className="mx-auto text-8xl pb-5" />
             <h2 className="text-2xl pb-5">{item.text}</h2>
