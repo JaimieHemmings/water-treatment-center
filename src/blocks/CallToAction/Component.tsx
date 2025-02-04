@@ -65,7 +65,7 @@ export const CallToActionBlock: React.FC<CTABlockProps> = ({ links, richText }) 
       >
         <source src="/water-drop.mp4" type="video/mp4" />
       </video>
-      <div className="w-full h-full absolute z-1 bg-gradient-to-br from-argentinian to-azul opacity-70 top-0 left-0" />
+      <div className="w-full h-full absolute z-1 bg-gradient-to-br from-teal to-azul opacity-70 top-0 left-0" />
       <Bounded>
         <div className="p-4" ref={containerRef}>
           <h2 className="text-white font-semibold pb-5">

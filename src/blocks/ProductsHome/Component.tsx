@@ -64,7 +64,7 @@ const ProductsHome: React.FC = () => {
   }
 
   return (
-    <section className="bg-jet py-5 md:py-[5rem] products text-white">
+    <section className="bg-darkblue py-5 md:py-[5rem] products text-white">
       <div className="container flex flex-col md:flex-row justify-between mx-auto gap-4">
         <div className="basis-3/4">
           <SectionTitle title="Our Products" subtitle="Best Water Purification Systems" />

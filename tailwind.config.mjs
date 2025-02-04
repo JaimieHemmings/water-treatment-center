@@ -56,8 +56,8 @@ export default {
         azul: {
           DEFAULT: '#4A90E2',
         },
-        argentinian: {
-          DEFAULT: '#1E90FF',
+        teal: {
+          DEFAULT: '#00928f',
         },
         jet: {
           DEFAULT: '#121212',
@@ -66,7 +66,10 @@ export default {
           DEFAULT: '#F4F7F9',
         },
         selectiveyellow: {
-          DEFAULT: '#007a77',
+          DEFAULT: '#fdce08',
+        },
+        darkblue:{
+          DEFAULT: '#0c1f2d',
         },
         accent: {
           DEFAULT: 'hsl(var(--accent))',

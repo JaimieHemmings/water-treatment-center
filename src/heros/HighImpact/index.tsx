@@ -38,7 +38,7 @@ export const HighImpactHero: React.FC<HeroProps> = ({ slides }) => {
 
   return (
   <div className="w-full relative">
-    <div className="embla overflow-hidden h-[80vh] md:h-[70vh]" ref={emblaRef}>    
+    <div className="embla overflow-hidden h-[90svh] md:h-[90svh]" ref={emblaRef}>    
       <div className="embla__container flex h-full">
         {slides.map((slide, index) => (
           <div className="embla__slide azul-overlay dots-overlay" key={index}>

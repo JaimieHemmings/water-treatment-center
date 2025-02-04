@@ -53,7 +53,7 @@ export const BlogFeed: React.FC = () => {
   }
 
   return (
-    <div className="w-full bg-jet py-[5rem] relative">
+    <div className="w-full bg-darkblue py-[5rem] relative">
       <Image
         src="/dots.svg"
         alt="Decorative dots"
