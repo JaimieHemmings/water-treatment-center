@@ -32,7 +32,7 @@ const AccordionItem = ({ item }: AccordionItemProps) => {
         onClick={() => setIsOpen(!isOpen)}
         aria-expanded={isOpen}
       >
-        <h3 className="text-lg md:text-xl">{item.question}</h3>
+        <h3 className="text-lg md:text-xl text-white">{item.question}</h3>
         <span 
           className="transform transition-transform duration-300 ease-in-out"
           style={{ transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)' }}
