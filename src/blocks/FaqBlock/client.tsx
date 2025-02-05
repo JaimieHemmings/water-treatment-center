@@ -11,44 +11,13 @@ type AccordionItemProps = {
   item: Question;
 };
 
-const FAQBlockClient = () => {
-  const questions: Question[] = [
-    {
-      id: 1,
-      question: 'Question One',
-      answer: 'Suspendisse ipsum elit, hendrerit id eleifend at, condimentum et mauris. Curabitur et libero vel arcu dignissim pulvinar ut ac leo. In sit amet orci et erat accumsan interdum.',
-    },
-    {
-      id: 2,
-      question: 'Fix problems & request removals',
-      answer: 'Suspendisse ipsum elit, hendrerit id eleifend at, condimentum et mauris. Curabitur et libero vel arcu dignissim pulvinar ut ac leo. In sit amet orci et erat accumsan interdum.',
-    },
-    {
-      id: 3,
-      question: 'Question 3',
-      answer: 'Suspendisse ipsum elit, hendrerit id eleifend at, condimentum et mauris. Curabitur et libero vel arcu dignissim pulvinar ut ac leo. In sit amet orci et erat accumsan interdum.',
-    },
-    {
-      id: 4,
-      question: 'Question 4',
-      answer: 'Suspendisse ipsum elit, hendrerit id eleifend at, condimentum et mauris. Curabitur et libero vel arcu dignissim pulvinar ut ac leo. In sit amet orci et erat accumsan interdum.',
-    },
-  ];
-
+const FAQBlockClient = ({ questions }) => {
   return (
-    <div className="flex flex-col md:flex-row gap-4">
-      <div className="flex flex-col gap-4 basis-2/3">
-        {questions.map((item) => (
-          <AccordionItem key={item.id} item={item} />
-        ))}
-      </div>
-      <div className="basis-1/3 md:px-5">
-        <h2 className="text-white text-2xl md:text-4xl font-semibold pb-5">Featured Guide</h2>
-        <p className="text-white">
-          Choosing the correct filters for purpose of use is important. We have a guide to help you choose the right filter for your needs.
-        </p>
-      </div>
-    </div>
+    <>
+      {questions.map((item) => (
+        <AccordionItem key={item.id} item={item} />
+      ))}
+    </>
   );
 };
 

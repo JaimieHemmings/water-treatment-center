@@ -853,6 +853,18 @@ export interface ImageList {
  * via the `definition` "FaqBlock".
  */
 export interface FaqBlock {
+  title: string;
+  questions?:
+    | {
+        question: string;
+        answer: string;
+        id?: string | null;
+      }[]
+    | null;
+  sideTitle: string;
+  sideContent: string;
+  linkLabel: string;
+  linkURL: number | Page;
   id?: string | null;
   blockName?: string | null;
   blockType: 'faqblock';
@@ -1377,6 +1389,18 @@ export interface ImageListSelect<T extends boolean = true> {
  * via the `definition` "FaqBlock_select".
  */
 export interface FaqBlockSelect<T extends boolean = true> {
+  title?: T;
+  questions?:
+    | T
+    | {
+        question?: T;
+        answer?: T;
+        id?: T;
+      };
+  sideTitle?: T;
+  sideContent?: T;
+  linkLabel?: T;
+  linkURL?: T;
   id?: T;
   blockName?: T;
 }
