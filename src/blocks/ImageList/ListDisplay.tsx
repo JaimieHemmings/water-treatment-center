@@ -23,7 +23,7 @@ const SectionTitle: React.FC<SectionTitleProps> = ({
   image,
   className,
   overlayOpacity = { initial: 0.8, final: 0.5 },
-  height = "h-[33svh]"
+  height = "min-h-[33svh]"
 }) => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
@@ -100,9 +100,9 @@ const SectionTitle: React.FC<SectionTitleProps> = ({
         ref={textRef}
         className="container relative z-20 opacity-0"
       >
-        <h3 className="text-white text-2xl md:text-4xl font-semibold pb-5 border-b border-selectiveyellow mb-5">
+        <h2 className="text-white text-2xl md:text-4xl font-semibold pb-5 border-b border-selectiveyellow mb-5">
           {image.title}
-        </h3>
+        </h2>
         <p className="text-white text-lg md:text-xl">
           {image.description}
         </p>
