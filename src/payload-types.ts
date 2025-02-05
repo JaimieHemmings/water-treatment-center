@@ -119,6 +119,7 @@ export interface Page {
     | StatsBlock
     | BlockRow
     | ImageList
+    | FaqBlock
   )[];
   meta?: {
     title?: string | null;
@@ -849,6 +850,15 @@ export interface ImageList {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FaqBlock".
+ */
+export interface FaqBlock {
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'faqblock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "products".
  */
 export interface Product {
@@ -1120,6 +1130,7 @@ export interface PagesSelect<T extends boolean = true> {
         statsBlock?: T | StatsBlockSelect<T>;
         blockRow?: T | BlockRowSelect<T>;
         imageList?: T | ImageListSelect<T>;
+        faqblock?: T | FaqBlockSelect<T>;
       };
   meta?:
     | T
@@ -1358,6 +1369,14 @@ export interface ImageListSelect<T extends boolean = true> {
         description?: T;
         id?: T;
       };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FaqBlock_select".
+ */
+export interface FaqBlockSelect<T extends boolean = true> {
   id?: T;
   blockName?: T;
 }
