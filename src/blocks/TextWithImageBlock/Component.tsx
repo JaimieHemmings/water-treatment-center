@@ -117,7 +117,7 @@ export const TextWithImageBlock: React.FC<TextWithImageBlockProps> = ({
         priority={false}
       />
 
-      <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-center gap-10">
+      <div className="container mx-auto px-4 flex flex-col lg:flex-row items-center justify-center gap-10">
         <div ref={imageRef} className="basis-1/2">
           <Image
             onLoad={() => setImageLoaded(true)}
