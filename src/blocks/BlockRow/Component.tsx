@@ -24,10 +24,13 @@ export const BlockRow: React.FC<BlockRowProps> = ({ shiftUp, items }) => {
     <div className={`container flex flex-col md:flex-row justify-around gap-10 ${shiftUp ? '-mt-40' : ''}`}>
       {items.map((item, index) => {
         const Icon = {
-          water: FaHandHoldingWater,
-          filter: FaWater,
-          test: FaGlassWaterDroplet,
-          plant: IoWaterSharp,
+          gallon: GiWaterGallon,
+          bottle: GiWaterBottle,
+          glass: LuGlassWater,
+          droplet: FaGlassWaterDroplet,
+          sharp: IoWaterSharp,
+          hand: FaHandHoldingWater,
+          water: FaWater,
         }[item.icon];
 
         return (

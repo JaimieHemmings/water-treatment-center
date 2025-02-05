@@ -25,8 +25,8 @@ export const TextBlock: React.FC<TextBlockProps> = ({ content, title }) => {
     const animation = gsap.timeline({
       scrollTrigger: {
         trigger: container,
-        start: "top 90%",
-        end: "top 60%",
+        start: "top 80%",
+        end: "top 50%",
         scrub: 1,
       }
     });

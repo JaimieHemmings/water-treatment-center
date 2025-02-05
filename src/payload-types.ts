@@ -823,7 +823,7 @@ export interface BlockRow {
     text: string;
     link: number | Page;
     linkLabel: string;
-    icon: 'water' | 'filter' | 'test' | 'plant';
+    icon: 'gallon' | 'glass' | 'droplet' | 'sharp' | 'bottle' | 'hand' | 'water';
     id?: string | null;
   }[];
   id?: string | null;

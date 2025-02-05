@@ -43,21 +43,33 @@ export const BlockRow: Block = {
           required: true,
           options: [
             {
-              label: 'Water Drop',
+              label: 'Water Gallon',
+              value: 'gallon',
+            },
+            {
+              label: 'Water Glass',
+              value: 'glass',
+            },
+            {
+              label: 'Water Droplet',
+              value: 'droplet',
+            },
+            {
+              label: 'Water Sharp',
+              value: 'sharp',
+            },
+            {
+              label: 'Water Bottle',
+              value: 'bottle',
+            },
+            {
+              label: 'Hand holding water',
+              value: 'hand',
+            },
+            {
+              label: 'Water',
               value: 'water',
-            },
-            {
-              label: 'Filter',
-              value: 'filter',
-            },
-            {
-              label: 'Test Tube',
-              value: 'test',
-            },
-            {
-              label: 'Treatment Plant',
-              value: 'plant',
-            },
+            }
           ],
         },
       ],

@@ -68,7 +68,7 @@ export const CallToActionBlock: React.FC<CTABlockProps> = ({ links, richText }) 
       <div className="w-full h-full absolute z-1 bg-gradient-to-br from-teal to-azul opacity-70 top-0 left-0" />
       <Bounded>
         <div className="p-4" ref={containerRef}>
-          <h2 className="text-white font-semibold pb-5">
+          <h2 className="text-selectiveyellow font-semibold pb-5">
             Get In Touch
           </h2>
           {richText && (
