@@ -49,7 +49,7 @@ export default async function ServicesPage() {
   const services = response.docs
 
   return (
-    <div className="bg-jet pt-20">
+    <div className="bg-darkblue pt-20">
       <div className="container mx-auto px-4 flex flex-col gap-10">
         {services.map((service, index) => (
           <div 
@@ -60,7 +60,7 @@ export default async function ServicesPage() {
               <Image
                 src={service.image.url}
                 alt={service.image.alt || service.title}
-                className="w-full h-auto rounded-t-lg z-10 object-cover"
+                className="w-full h-auto rounded-xl z-10 object-cover"
                 height={service.image.height || 300}
                 width={service.image.width || 400}
               />
@@ -102,7 +102,7 @@ export default async function ServicesPage() {
         >
           <source src="/water-drop.mp4" type="video/mp4" />
         </video>
-        <div className="w-full h-full absolute z-1 bg-gradient-to-br from-argentinian to-azul opacity-70 top-0 left-0" />
+        <div className="w-full h-full absolute z-1 bg-gradient-to-br from-teal to-azul opacity-70 top-0 left-0" />
         <Bounded>
           <div className="p-4">
             <h2 className="text-selectiveyellow font-semibold pb-5">

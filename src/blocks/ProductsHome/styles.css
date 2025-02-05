@@ -2,8 +2,7 @@
   .embla {
     width: 100%;
     margin: auto;
-    --slide-height: 19rem;
-    --slide-size: 20%;
+    --slide-size: 30%;
   }
   
   .embla__viewport {
@@ -20,7 +19,8 @@
     transform: translate3d(0, 0, 0);
     flex: 0 0 var(--slide-size);
     min-width: 0;
-    padding: 10px;
+    padding: 15rem 1rem 1rem;
+    margin-left: 15px;
   }
 
   @media screen and (max-width: 1024px) {

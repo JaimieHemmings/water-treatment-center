@@ -1,6 +1,5 @@
 'use client';
 import React, { useState, useEffect } from 'react'
-import Image from 'next/image'
 import Link from 'next/link'
 import './styles.css'
 import Autoplay from 'embla-carousel-autoplay'
@@ -74,21 +73,17 @@ export const ProductsHome: React.FC = () => {
         </div>
       </div>
 
-      <div className="embla py-5">
+      <div className="embla py-5 pt-[2rem]">
         <div className="embla__viewport mx-auto" ref={emblaRef}>
           <div className="embla__container">
             {products.docs.map((product) => (
-              <div className="embla__slide" key={product.id}>
-                {product.featuredImage && (
-                  <Image
-                    src={product.featuredImage.url}
-                    alt={product.name}
-                    width={340}
-                    height={340}
-                    className="w-full md:max-w-full h-auto rounded-xl"
-                  />
-                )}
-                <div className="flex flex-col justify-start py-5 gap-3">
+              <div
+                className="embla__slide bg-cover bg-center bg-no-repeat relative flex flex-col justify-end"
+                key={product.id}
+                style={{ backgroundImage: `url(${product.featuredImage?.url})` }}
+              >
+                <div className='absolute inset-0 bg-darkblue opacity-50 border-10 border-darkblue z-10'></div>
+                <div className="flex flex-col justify-end py-5 gap-3 relative z-20">
                   <h3 className="text-2xl font-semibold">{product.name}</h3>
                   <p className="">{product.excerpt}</p>
                 </div>
