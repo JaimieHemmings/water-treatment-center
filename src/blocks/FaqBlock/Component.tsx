@@ -2,6 +2,7 @@ import React from "react";
 import SectionTitle from "@/components/SectionTitle";
 import FAQBlockClient from "./client";
 import Link from "next/link";
+import Image from "next/image";
 
 interface FaqBlockProps {
   title: string;
@@ -24,7 +25,21 @@ export const FaqBlock: React.FC<FaqBlockProps> = ({
   linkURL,
 }) => {
   return (
-    <section className="py-[5rem] bg-darkblue text-white">
+    <section className="py-[5rem] bg-darkblue text-white relative">
+      <Image
+        src="/dots.svg"
+        alt="Decorative dots"
+        className="absolute bottom-4 right-0 z-10 scale-x-[-1] w-48 h-72 md:w-48 md:h-72"
+        height={300}
+        width={200}
+      />
+      <Image
+        src="/dots.svg"
+        alt="Decorative dots"
+        className="absolute top-4 left-0 z-10 w-48 h-72 md:w-48 md:h-72"
+        height={300}
+        width={200}
+      />
       <SectionTitle title={title} />
       <div className="container">
         <div className="flex flex-col md:flex-row gap-4">
