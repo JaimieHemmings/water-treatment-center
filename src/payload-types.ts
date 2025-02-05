@@ -835,8 +835,6 @@ export interface BlockRow {
  * via the `definition` "ImageList".
  */
 export interface ImageList {
-  title: string;
-  description?: string | null;
   images?:
     | {
         image: number | Media;
@@ -1352,8 +1350,6 @@ export interface BlockRowSelect<T extends boolean = true> {
  * via the `definition` "ImageList_select".
  */
 export interface ImageListSelect<T extends boolean = true> {
-  title?: T;
-  description?: T;
   images?:
     | T
     | {

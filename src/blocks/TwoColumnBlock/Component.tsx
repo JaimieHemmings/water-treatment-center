@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import RichText from "@/components/RichText";
 import SectionTitle from "@/components/SectionTitle";
+import Image from "next/image";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -58,7 +59,21 @@ export const TwoColumnBlock: React.FC<TwoColumnBlockProps> = ({ contentleft, con
   }, []);
 
   return (
-    <section className="w-full bg-darkblue py-5 md:py-[5rem] text-white" ref={containerRef}>
+    <section className="w-full bg-darkblue py-5 md:py-[5rem] text-white relative" ref={containerRef}>
+      <Image
+        src="/dots.svg"
+        alt="Decorative dots"
+        className="absolute bottom-4 right-0 z-10 scale-x-[-1] w-48 h-72 md:w-48 md:h-72"
+        height={300}
+        width={200}
+      />
+      <Image
+        src="/dots.svg"
+        alt="Decorative dots"
+        className="absolute top-4 left-0 z-10 w-48 h-72 md:w-48 md:h-72"
+        height={300}
+        width={200}
+      />
       <SectionTitle title={title} subtitle={mainContent} />
       <div className="container pb-5 flex flex-col md:flex-row justify-between md:border-b-8 border-selectiveyellow">
         <div className="md:basis-1/3 pt-5">

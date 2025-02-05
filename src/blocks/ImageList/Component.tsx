@@ -1,5 +1,4 @@
 import React from "react";
-import SectionTitle from "@/components/SectionTitle";
 import ListDisplay from "@/blocks/ImageList/ListDisplay";
 
 interface Image {
@@ -12,21 +11,16 @@ interface Image {
 }
 
 interface ImageListProps {
-  title: string;
-  description: string;
   images: Image[];
 }
 
 export const ImageList: React.FC<ImageListProps> = ({
-  title,
-  description,
   images,
 }) => {
 
   return (
-    <section className="py-[5rem] bg-darkblue text-white">
-      <SectionTitle title={title} subtitle={description} />
-      <div className="flex flex-col justify-start gap-0 mt-[5rem] border-t border-selectiveyellow">
+    <section className="bg-darkblue text-white">
+      <div className="flex flex-col justify-start gap-0 border-t border-selectiveyellow">
         {images.map((image) => (
           <ListDisplay key={image.id} image={image} />
         ))}

@@ -5,17 +5,6 @@ export const ImageList: Block = {
   interfaceName: 'ImageList',
   fields: [
     {
-      name: 'title',
-      label: 'Title',
-      type: 'text',
-      required: true,
-    },
-    {
-      name: 'description',
-      label: 'Description',
-      type: 'textarea',
-    },
-    {
       name: 'images',
       label: 'Images',
       type: 'array',
