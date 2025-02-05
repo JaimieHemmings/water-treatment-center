@@ -47,7 +47,7 @@ export default async function Post({ params: paramsPromise }: Args) {
       <PostHero post={post} />
       <div className="flex flex-col items-center gap-4 pt-8 bg-darkblue">
         <div className="container">
-          <RichText className="max-w-[48rem] mx-auto" data={post.content} enableGutter={false} />
+          <RichText className="max-w-[48rem] mx-auto text-white" data={post.content} enableGutter={false} />
         </div>
       </div>
     </article>

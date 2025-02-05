@@ -59,9 +59,8 @@ export const TwoColumnBlock: React.FC<TwoColumnBlockProps> = ({ contentleft, con
 
   return (
     <section className="w-full bg-darkblue py-5 md:py-[5rem] text-white" ref={containerRef}>
-      
       <SectionTitle title={title} subtitle={mainContent} />
-      <div className="container pb-5 flex flex-col md:flex-row justify-between md:border-b-8 border-azul">
+      <div className="container pb-5 flex flex-col md:flex-row justify-between md:border-b-8 border-selectiveyellow">
         <div className="md:basis-1/3 pt-5">
           <p className="max-w-none md:prose-md prose mb-5 text-2xl md:text-md text-white font-light pt-3 animate-text-90b0">
             {contentleft}

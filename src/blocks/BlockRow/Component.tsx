@@ -55,12 +55,11 @@ export const BlockRow: React.FC<BlockRowProps> = ({ items }) => {
                         disabled:pointer-events-none
                         disabled:opacity-50
                         h-11 px-8 mt-3
-                        bg-white 
-                        text-azul
                         border-2
-                        border-selectiveyellow
-                        hover:bg-darkblue
-                        hover:text-white
+                        text-white
+                        border-white
+                        hover:bg-white
+                        hover:text-azul
                         text-lg
                         relative
                         z-30

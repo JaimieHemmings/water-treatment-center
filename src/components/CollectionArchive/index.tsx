@@ -72,7 +72,7 @@ export const CollectionArchive: React.FC<CollectionArchiveProps> = ({ posts }) =
                 <h3 className="text-2xl md:text-4xl font-semibold text-selectiveyellow">
                   {post.title}
                 </h3>
-                <p className="py-5">
+                <p className="py-5 text-white">
                   {post.meta?.description || 'No excerpt available'}
                 </p>
                 <Link
