@@ -4,8 +4,14 @@ import gsap from "gsap";
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import RichText from "@/components/RichText";
 import Image from "next/image";
+import { ThreeColBlock } from "@/blocks/ThreeCol/Component";
 
 gsap.registerPlugin(ScrollTrigger);
+
+interface Column {
+  title: string;
+  content: string;
+}
 
 interface TextWithImageBlockProps {
   title: string;
@@ -14,12 +20,21 @@ interface TextWithImageBlockProps {
     url: string;
     alt: string;
   };
+  blocks?: {
+    blockType: 'threeColBlock';
+    columns: Column[];
+  }[];
+  additionalSettings?: {
+    ShowThreeColBlock: boolean;
+  };
 }
 
 export const TextWithImageBlock: React.FC<TextWithImageBlockProps> = ({ 
   content, 
   title, 
-  image 
+  image,
+  blocks,
+  additionalSettings
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLDivElement>(null);
@@ -127,8 +142,22 @@ export const TextWithImageBlock: React.FC<TextWithImageBlockProps> = ({
               />
             </div>
           )}
+            <div className="animate-threecol-6578">
+            {additionalSettings?.ShowThreeColBlock && blocks?.map((block, index) => {
+              if (block.blockType === 'threeColBlock') {
+                return (
+                  <ThreeColBlock
+                    key={index}
+                    columns={block.columns}
+                  />
+                );
+              }
+              return null;
+            })}
+            </div>
         </div>
       </div>
+      
     </section>
   );
 };

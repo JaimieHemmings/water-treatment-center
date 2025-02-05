@@ -790,9 +790,29 @@ export interface TextWithImageBlock {
   } | null;
   title?: string | null;
   image: number | Media;
+  blocks?: ThreeColBlock[] | null;
+  additionalSettings?: {
+    ShowThreeColBlock?: boolean | null;
+  };
   id?: string | null;
   blockName?: string | null;
   blockType: 'textWithImageBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ThreeColBlock".
+ */
+export interface ThreeColBlock {
+  columns?:
+    | {
+        title: string;
+        content: string;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'threeColBlock';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1328,6 +1348,31 @@ export interface TextWithImageBlockSelect<T extends boolean = true> {
   content?: T;
   title?: T;
   image?: T;
+  blocks?:
+    | T
+    | {
+        threeColBlock?: T | ThreeColBlockSelect<T>;
+      };
+  additionalSettings?:
+    | T
+    | {
+        ShowThreeColBlock?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ThreeColBlock_select".
+ */
+export interface ThreeColBlockSelect<T extends boolean = true> {
+  columns?:
+    | T
+    | {
+        title?: T;
+        content?: T;
+        id?: T;
+      };
   id?: T;
   blockName?: T;
 }

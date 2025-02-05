@@ -1,4 +1,5 @@
 import type { Block } from 'payload'
+import { ThreeColBlock } from '@/blocks/ThreeCol/config';
 
 import {
   lexicalEditor,
@@ -31,6 +32,27 @@ export const TextWithImageBlock: Block = {
       relationTo: 'media',
       required: true,
     },
+    {
+      name: 'blocks',
+      type: 'blocks',
+      blocks: [
+        ThreeColBlock
+      ],
+      required: false,
+      maxRows: 1,
+    },
+    {
+      name: 'additionalSettings',
+      type: 'group',
+      fields: [
+        {
+          name: 'ShowThreeColBlock',
+          type: 'checkbox',
+          defaultValue: false,
+          label: 'Show Three Column Block',
+        }
+      ]
+    }
   ],
   labels: {
     plural: 'Text with image Blocks',
