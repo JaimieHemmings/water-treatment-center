@@ -1,4 +1,3 @@
-import { cn } from 'src/utilities/cn'
 import React, { Fragment } from 'react'
 
 import type { Page } from '@/payload-types'
@@ -10,7 +9,6 @@ import { FormBlock } from '@/blocks/Form/Component'
 import { MediaBlock } from '@/blocks/MediaBlock/Component'
 import { TextBlock } from '@/blocks/TextBlock/Component'
 import { TwoColumnBlock } from '@/blocks/TwoColumnBlock/Component'
-import TeamCarousel from '@/blocks/TeamCarousel/Component'
 import ProductsHome from '@/blocks/ProductsHome/Component'
 import { ServicesBlock } from '@/blocks/Services/Component'
 import { BlogFeed } from '@/blocks/BlogFeed/Component'
@@ -19,6 +17,7 @@ import { AllBlogPosts } from '@/blocks/AllBlogPosts/Component'
 import { TextWithImageBlock } from '@/blocks/TextWithImageBlock/Component'
 import { StatsBlock } from '@/blocks/StatsBlock/Component'
 import { BlockRow } from '@/blocks/BlockRow/Component'
+import { ImageListBlock } from '@/blocks/ImageListBlock/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -28,7 +27,6 @@ const blockComponents = {
   mediaBlock: MediaBlock,
   textBlock: TextBlock,
   twoColumn: TwoColumnBlock,
-  teamCarousel: TeamCarousel,
   productsHome: ProductsHome,
   servicesBlock: ServicesBlock,
   blogFeed: BlogFeed,
@@ -37,6 +35,7 @@ const blockComponents = {
   textWithImageBlock: TextWithImageBlock,
   statsBlock: StatsBlock,
   blockRow: BlockRow,
+  imageListBlock: ImageListBlock,
 }
 
 export const RenderBlocks: React.FC<{

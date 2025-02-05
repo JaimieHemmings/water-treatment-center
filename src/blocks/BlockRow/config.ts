@@ -1,10 +1,14 @@
-import Link from 'next/link'
 import type { Block } from 'payload'
 
 export const BlockRow: Block = {
   slug: 'blockRow',
   interfaceName: 'BlockRow',
   fields: [
+    {
+      name: 'shiftUp',
+      type: 'checkbox',
+      defaultValue: false,
+    },
     {
       name: 'items',
       type: 'array',

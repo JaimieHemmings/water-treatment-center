@@ -110,7 +110,6 @@ export interface Page {
     | FormBlock
     | TextBlock
     | TwoColumn
-    | TeamCarousel
     | ProductsHome
     | ServicesBlock
     | BlogFeed
@@ -119,6 +118,7 @@ export interface Page {
     | TextWithImageBlock
     | StatsBlock
     | BlockRow
+    | ImageListBlock
   )[];
   meta?: {
     title?: string | null;
@@ -708,24 +708,6 @@ export interface TwoColumn {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "TeamCarousel".
- */
-export interface TeamCarousel {
-  slides?:
-    | {
-        image: number | Media;
-        name: string;
-        title: string;
-        quote: string;
-        id?: string | null;
-      }[]
-    | null;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'teamCarousel';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "ProductsHome".
  */
 export interface ProductsHome {
@@ -836,6 +818,7 @@ export interface StatsBlock {
  * via the `definition` "BlockRow".
  */
 export interface BlockRow {
+  shiftUp?: boolean | null;
   items: {
     text: string;
     link: number | Page;
@@ -846,6 +829,15 @@ export interface BlockRow {
   id?: string | null;
   blockName?: string | null;
   blockType: 'blockRow';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ImageListBlock".
+ */
+export interface ImageListBlock {
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'image-list';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1111,7 +1103,6 @@ export interface PagesSelect<T extends boolean = true> {
         formBlock?: T | FormBlockSelect<T>;
         textBlock?: T | TextBlockSelect<T>;
         twoColumn?: T | TwoColumnSelect<T>;
-        teamCarousel?: T | TeamCarouselSelect<T>;
         productsHome?: T | ProductsHomeSelect<T>;
         servicesBlock?: T | ServicesBlockSelect<T>;
         blogFeed?: T | BlogFeedSelect<T>;
@@ -1120,6 +1111,7 @@ export interface PagesSelect<T extends boolean = true> {
         textWithImageBlock?: T | TextWithImageBlockSelect<T>;
         statsBlock?: T | StatsBlockSelect<T>;
         blockRow?: T | BlockRowSelect<T>;
+        'image-list'?: T | ImageListBlockSelect<T>;
       };
   meta?:
     | T
@@ -1243,23 +1235,6 @@ export interface TwoColumnSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "TeamCarousel_select".
- */
-export interface TeamCarouselSelect<T extends boolean = true> {
-  slides?:
-    | T
-    | {
-        image?: T;
-        name?: T;
-        title?: T;
-        quote?: T;
-        id?: T;
-      };
-  id?: T;
-  blockName?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "ProductsHome_select".
  */
 export interface ProductsHomeSelect<T extends boolean = true> {
@@ -1349,6 +1324,7 @@ export interface StatsBlockSelect<T extends boolean = true> {
  * via the `definition` "BlockRow_select".
  */
 export interface BlockRowSelect<T extends boolean = true> {
+  shiftUp?: T;
   items?:
     | T
     | {
@@ -1358,6 +1334,14 @@ export interface BlockRowSelect<T extends boolean = true> {
         icon?: T;
         id?: T;
       };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ImageListBlock_select".
+ */
+export interface ImageListBlockSelect<T extends boolean = true> {
   id?: T;
   blockName?: T;
 }

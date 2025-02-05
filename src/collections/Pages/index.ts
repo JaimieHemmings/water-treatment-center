@@ -7,7 +7,6 @@ import { CallToAction } from '../../blocks/CallToAction/config'
 import { Content } from '../../blocks/Content/config'
 import { FormBlock } from '../../blocks/Form/config'
 import { MediaBlock } from '../../blocks/MediaBlock/config'
-import { TeamCarousel } from '../../blocks/TeamCarousel/config'
 import { TextBlock } from '@/blocks/TextBlock/config'
 import { TwoColumnBlock } from '@/blocks/TwoColumnBlock/config'
 import { BlogFeed } from '@/blocks/BlogFeed/config'
@@ -23,6 +22,7 @@ import { revalidateDelete, revalidatePage } from './hooks/revalidatePage'
 import { TextWithImageBlock } from '@/blocks/TextWithImageBlock/config'
 import { StatsBlock } from '@/blocks/StatsBlock/config'
 import { BlockRow } from '@/blocks/BlockRow/config'
+import { ImageListBlock } from '@/blocks/ImageListBlock/config'
 
 import {
   MetaDescriptionField,
@@ -86,7 +86,7 @@ export const Pages: CollectionConfig<'pages'> = {
             {
               name: 'layout',
               type: 'blocks',
-              blocks: [CallToAction, Content, MediaBlock, Archive, FormBlock, TextBlock, TwoColumnBlock, TeamCarousel, ProductsHome, ServicesBlock, BlogFeed, ContactBlock, AllBlogPosts, TextWithImageBlock, StatsBlock, BlockRow],
+              blocks: [CallToAction, Content, MediaBlock, Archive, FormBlock, TextBlock, TwoColumnBlock, ProductsHome, ServicesBlock, BlogFeed, ContactBlock, AllBlogPosts, TextWithImageBlock, StatsBlock, BlockRow, ImageListBlock],
               required: true,
               admin: {
                 initCollapsed: true,

@@ -7,6 +7,7 @@ import { GiWaterBottle, GiWaterGallon } from "react-icons/gi";
 import { CMSLink } from '@/components/Link';
 
 interface BlockRowProps {
+  shiftUp: boolean;
   items: Array<{
     text: string;
     link: {
@@ -17,10 +18,10 @@ interface BlockRowProps {
   }>;
 }
 
-export const BlockRow: React.FC<BlockRowProps> = ({ items }) => {
+export const BlockRow: React.FC<BlockRowProps> = ({ shiftUp, items }) => {
  return (
   <section className="bg-darkblue pt-[5rem] relative z-20">
-    <div className="container flex flex-col md:flex-row justify-around gap-10 -mt-[10rem]">
+    <div className={`container flex flex-col md:flex-row justify-around gap-10 ${shiftUp ? '-mt-40' : ''}`}>
       {items.map((item, index) => {
         const Icon = {
           water: FaHandHoldingWater,
