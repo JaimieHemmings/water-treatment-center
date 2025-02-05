@@ -118,7 +118,7 @@ export interface Page {
     | TextWithImageBlock
     | StatsBlock
     | BlockRow
-    | ImageListBlock
+    | ImageList
   )[];
   meta?: {
     title?: string | null;
@@ -832,12 +832,22 @@ export interface BlockRow {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "ImageListBlock".
+ * via the `definition` "ImageList".
  */
-export interface ImageListBlock {
+export interface ImageList {
+  title: string;
+  description?: string | null;
+  images?:
+    | {
+        image: number | Media;
+        title: string;
+        description: string;
+        id?: string | null;
+      }[]
+    | null;
   id?: string | null;
   blockName?: string | null;
-  blockType: 'image-list';
+  blockType: 'imageList';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1111,7 +1121,7 @@ export interface PagesSelect<T extends boolean = true> {
         textWithImageBlock?: T | TextWithImageBlockSelect<T>;
         statsBlock?: T | StatsBlockSelect<T>;
         blockRow?: T | BlockRowSelect<T>;
-        'image-list'?: T | ImageListBlockSelect<T>;
+        imageList?: T | ImageListSelect<T>;
       };
   meta?:
     | T
@@ -1339,9 +1349,19 @@ export interface BlockRowSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "ImageListBlock_select".
+ * via the `definition` "ImageList_select".
  */
-export interface ImageListBlockSelect<T extends boolean = true> {
+export interface ImageListSelect<T extends boolean = true> {
+  title?: T;
+  description?: T;
+  images?:
+    | T
+    | {
+        image?: T;
+        title?: T;
+        description?: T;
+        id?: T;
+      };
   id?: T;
   blockName?: T;
 }
@@ -1909,17 +1929,6 @@ export interface BannerBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'banner';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "CodeBlock".
- */
-export interface CodeBlock {
-  language?: ('typescript' | 'javascript' | 'css') | null;
-  code: string;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'code';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

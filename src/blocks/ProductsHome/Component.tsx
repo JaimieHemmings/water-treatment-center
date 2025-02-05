@@ -20,7 +20,7 @@ interface ProductsResponse {
   docs: Product[];
 }
 
-const ProductsHome: React.FC = () => {
+export const ProductsHome: React.FC = () => {
   const [products, setProducts] = useState<ProductsResponse | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);

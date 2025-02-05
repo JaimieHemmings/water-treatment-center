@@ -8,8 +8,9 @@ import { ContentBlock } from '@/blocks/Content/Component'
 import { FormBlock } from '@/blocks/Form/Component'
 import { MediaBlock } from '@/blocks/MediaBlock/Component'
 import { TextBlock } from '@/blocks/TextBlock/Component'
+import { ImageList } from '@/blocks/ImageList/Component'
 import { TwoColumnBlock } from '@/blocks/TwoColumnBlock/Component'
-import ProductsHome from '@/blocks/ProductsHome/Component'
+import { ProductsHome } from '@/blocks/ProductsHome/Component'
 import { ServicesBlock } from '@/blocks/Services/Component'
 import { BlogFeed } from '@/blocks/BlogFeed/Component'
 import { ContactBlock } from '@/blocks/ContactBlock/Component'
@@ -35,7 +36,7 @@ const blockComponents = {
   textWithImageBlock: TextWithImageBlock,
   statsBlock: StatsBlock,
   blockRow: BlockRow,
-  imageListBlock: ImageListBlock,
+  imageList: ImageList,
 }
 
 export const RenderBlocks: React.FC<{

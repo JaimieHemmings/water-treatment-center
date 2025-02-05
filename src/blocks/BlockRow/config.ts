@@ -1,6 +1,7 @@
 import type { Block } from 'payload'
 
 export const BlockRow: Block = {
+  imageURL: '/block-row.jpg',
   slug: 'blockRow',
   interfaceName: 'BlockRow',
   fields: [

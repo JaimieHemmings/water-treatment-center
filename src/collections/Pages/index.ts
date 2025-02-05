@@ -22,7 +22,7 @@ import { revalidateDelete, revalidatePage } from './hooks/revalidatePage'
 import { TextWithImageBlock } from '@/blocks/TextWithImageBlock/config'
 import { StatsBlock } from '@/blocks/StatsBlock/config'
 import { BlockRow } from '@/blocks/BlockRow/config'
-import { ImageListBlock } from '@/blocks/ImageListBlock/config'
+import { ImageList } from '@/blocks/ImageList/config'
 
 import {
   MetaDescriptionField,
@@ -86,7 +86,7 @@ export const Pages: CollectionConfig<'pages'> = {
             {
               name: 'layout',
               type: 'blocks',
-              blocks: [CallToAction, Content, MediaBlock, Archive, FormBlock, TextBlock, TwoColumnBlock, ProductsHome, ServicesBlock, BlogFeed, ContactBlock, AllBlogPosts, TextWithImageBlock, StatsBlock, BlockRow, ImageListBlock],
+              blocks: [CallToAction, Content, MediaBlock, Archive, FormBlock, TextBlock, TwoColumnBlock, ProductsHome, ServicesBlock, BlogFeed, ContactBlock, AllBlogPosts, TextWithImageBlock, StatsBlock, BlockRow, ImageList],
               required: true,
               admin: {
                 initCollapsed: true,

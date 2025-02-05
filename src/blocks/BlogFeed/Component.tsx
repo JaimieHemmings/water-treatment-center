@@ -32,7 +32,6 @@ export const BlogFeed: React.FC = () => {
           throw new Error('Network response was not ok');
         }
         const data = await response.json();
-        console.log('Fetched posts:', data.docs);
         setPosts(data.docs);
         setLoading(false);
       } catch (err) {
