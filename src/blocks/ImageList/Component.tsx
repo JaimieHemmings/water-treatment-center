@@ -25,9 +25,7 @@ export const ImageList: React.FC<ImageListProps> = ({
 
   return (
     <section className="py-[5rem] bg-darkblue text-white">
-      <div className="container">
-        <SectionTitle title={title} subtitle={description} />
-      </div>
+      <SectionTitle title={title} subtitle={description} />
       <div className="flex flex-col justify-start gap-0 mt-[5rem] border-t border-selectiveyellow">
         {images.map((image) => (
           <ListDisplay key={image.id} image={image} />
