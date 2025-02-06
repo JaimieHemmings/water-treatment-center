@@ -21,12 +21,20 @@ export const HeaderClient: React.FC<HeaderClientProps> = () => {
     { href: "/products", label: "Products", subLabel: "Water Purification" },
     { href: "/news", label: "News", subLabel: "Latest Work" },
     { href: "/contact", label: "Contact", subLabel: "Get In Touch", isSpecial: true }
-  ]
+  ];
+
+  const handleNavClick = () => {
+    if (isNavVisible) {
+      toggleNavVisibility();
+    }
+  };
 
   return (
     <header id="navbar" className="w-full z-50 sticky top-0 left-0 bg-darkblue border-azul border-b-2 text-white">
       <nav className="relative flex flex-row justify-between container">
-        <Link href="/" className="z-50 text-xs font-semibold px-3 py-2">
+        <Link
+        onClick={handleNavClick}
+        href="/" className="z-50 text-xs font-semibold px-3 py-2">
           <Image 
             src="/logo.webp" 
             alt="The Water Treatment Centre" 
@@ -40,7 +48,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = () => {
         {/* Desktop Navigation */}
         <div className="hidden md:flex flex-row">
           {navItems.map(({ href, label, subLabel, isSpecial }) => (
-            <Link 
+            <Link
               key={href}
               href={href} 
               className={`
@@ -74,7 +82,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = () => {
             left-0 
             w-full 
             h-screen 
-            bg-jet 
+            bg-darkblue 
             flex 
             flex-col 
             justify-center 
@@ -87,6 +95,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = () => {
         >
           {navItems.map(({ href, label, subLabel, isSpecial }) => (
             <Link 
+              onClick={handleNavClick}
               key={href}
               href={href} 
               className={`
@@ -96,12 +105,11 @@ export const HeaderClient: React.FC<HeaderClientProps> = () => {
                 flex flex-col 
                 justify-center 
                 border-t-4 
-                border-t-jet 
+                border-t-selectiveyellow 
                 hover:border-t-selectiveyellow 
-                transition-all 
-                hover:bg-[#141414] 
+                transition-all
                 text-sm 
-                ${isSpecial ? 'bg-azul text-jet hover:text-white' : ''}
+                ${isSpecial ? 'bg-azul text-white hover:text-white' : ''}
               `}
             >
               {label}
