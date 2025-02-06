@@ -1,9 +1,6 @@
 import type { Block } from 'payload'
 import { ThreeColBlock } from '@/blocks/ThreeCol/config';
-
-import {
-  lexicalEditor,
-} from '@payloadcms/richtext-lexical'
+import { lexicalEditor } from '@payloadcms/richtext-lexical';
 
 export const TextWithImageBlock: Block = {
   slug: 'textWithImageBlock',
@@ -33,15 +30,6 @@ export const TextWithImageBlock: Block = {
       required: true,
     },
     {
-      name: 'blocks',
-      type: 'blocks',
-      blocks: [
-        ThreeColBlock
-      ],
-      required: false,
-      maxRows: 1,
-    },
-    {
       name: 'additionalSettings',
       type: 'group',
       fields: [
@@ -52,7 +40,21 @@ export const TextWithImageBlock: Block = {
           label: 'Show Three Column Block',
         }
       ]
-    }
+    },
+    {
+      name: 'blocks',
+      type: 'blocks',
+      blocks: [
+        ThreeColBlock
+      ],
+      required: false,
+      maxRows: 1,
+      admin: {
+        condition: (_, siblingData) => {
+          return siblingData?.additionalSettings?.ShowThreeColBlock === true;
+        }
+      }
+    },
   ],
   labels: {
     plural: 'Text with image Blocks',

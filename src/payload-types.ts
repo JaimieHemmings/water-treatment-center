@@ -790,10 +790,10 @@ export interface TextWithImageBlock {
   } | null;
   title?: string | null;
   image: number | Media;
-  blocks?: ThreeColBlock[] | null;
   additionalSettings?: {
     ShowThreeColBlock?: boolean | null;
   };
+  blocks?: ThreeColBlock[] | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'textWithImageBlock';
@@ -1348,15 +1348,15 @@ export interface TextWithImageBlockSelect<T extends boolean = true> {
   content?: T;
   title?: T;
   image?: T;
-  blocks?:
-    | T
-    | {
-        threeColBlock?: T | ThreeColBlockSelect<T>;
-      };
   additionalSettings?:
     | T
     | {
         ShowThreeColBlock?: T;
+      };
+  blocks?:
+    | T
+    | {
+        threeColBlock?: T | ThreeColBlockSelect<T>;
       };
   id?: T;
   blockName?: T;
