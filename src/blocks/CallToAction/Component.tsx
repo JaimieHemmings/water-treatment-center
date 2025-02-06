@@ -1,59 +1,11 @@
-'use client';
-import React, { useEffect, useRef } from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import React from 'react';
 import type { CallToActionBlock as CTABlockProps } from '@/payload-types';
 import RichText from '@/components/RichText';
 import { CMSLink } from '@/components/Link';
 import Bounded from '@/utilities/Bounded';
-
-if (typeof window !== 'undefined') {
-  gsap.registerPlugin(ScrollTrigger);
-}
+import AnimateIn from '@/components/Animations/AnimateIn';
 
 export const CallToActionBlock: React.FC<CTABlockProps> = ({ links, richText }) => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const textRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const container = containerRef.current;
-    if(!container) return;
-
-    const animatedElements = container.querySelectorAll(".animate-text-9090");
-
-    const animation = gsap.timeline({
-      scrollTrigger: {
-        trigger: container,
-        start: "top 90%",
-        end: "top 60%",
-        scrub: 1,
-      }
-    })
-
-    animation.fromTo(
-      animatedElements,
-      { 
-        opacity: 0,
-        y: 50
-      },
-      { 
-        opacity: 1,
-        y: 0,
-      }
-    )
-
-    return () => {
-      animation.kill();
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-    };
-  }, []);
-
-  useEffect(() => {
-    window.onload = () => {
-      ScrollTrigger.refresh();
-    };
-  }, []);
-
   return (
     <section className="w-full bg-jet py-20 relative overflow-hidden">
       <video
@@ -67,12 +19,27 @@ export const CallToActionBlock: React.FC<CTABlockProps> = ({ links, richText }) 
       </video>
       <div className="w-full h-full absolute z-1 bg-gradient-to-br from-teal to-azul opacity-70 top-0 left-0" />
       <Bounded>
-        <div className="p-4" ref={containerRef}>
-          <h2 className="text-selectiveyellow font-semibold pb-5">
-            Get In Touch
-          </h2>
+        <div className="p-4">
+          <AnimateIn
+            animation={{
+              y: 60,
+              opacity: 0,
+              duration: 1,
+              ease: 'power2.out',}}
+          >
+            <h2 className="text-selectiveyellow font-semibold pb-5">
+              Get In Touch
+            </h2>
+          </AnimateIn>
+          <AnimateIn
+            animation={{
+              y: 60,
+              opacity: 0,
+              duration: 1,
+              ease: 'power2.out',}}
+          >
           {richText && (
-            <div ref={textRef}>
+            <div>
               <RichText
                 className="text-2xl md:text-5xl font-semibold text-white animate-text-9090"
                 data={richText}
@@ -80,13 +47,21 @@ export const CallToActionBlock: React.FC<CTABlockProps> = ({ links, richText }) 
               />
             </div>
           )}
+          </AnimateIn>
           <div className="flex justify-end space-x-4">
             {(links || []).map((linkItem, i) => (
+            <AnimateIn
+              key={`cta-link-${i}`}
+              animation={{
+                opacity: 0,
+                duration: 1,
+                ease: 'power2.out',}}
+            >
               <CMSLink
-                key={`cta-link-${i}`}
                 size="lg"
                 {...linkItem.link}
               />
+            </AnimateIn>
             ))}
           </div>
         </div>
