@@ -1,5 +1,5 @@
 import React from "react";
-import ListDisplay from "@/blocks/ImageList/ListDisplay";
+import { AnimateIn } from "@/components/Animations/AnimateIn";
 
 interface Image {
   id: string;
@@ -33,12 +33,21 @@ export const ImageList: React.FC<ImageListProps> = ({
             <div
               className="container relative z-20"
             >
-            <h2 className="text-white text-2xl md:text-4xl font-semibold pb-5 border-b border-selectiveyellow mb-5">
-              {image.title}
-            </h2>
-            <p className="text-white text-lg md:text-xl">
-              {image.description}
-            </p>
+              <AnimateIn 
+                animation={{
+                  y: 60,
+                  opacity: 0,
+                  duration: 1,
+                  ease: "power2.out",
+                }}
+              >
+                <h2 className="text-white text-2xl md:text-4xl font-semibold pb-5 border-b border-selectiveyellow mb-5">
+                  {image.title}
+                </h2>
+                <p className="text-white text-lg md:text-xl">
+                  {image.description}
+                </p>
+              </AnimateIn>
           </div>
         </div>
         ))}

@@ -5,6 +5,7 @@ import { IoWaterSharp } from "react-icons/io5";
 import { LuGlassWater } from "react-icons/lu";
 import { GiWaterBottle, GiWaterGallon } from "react-icons/gi";
 import { CMSLink } from '@/components/Link';
+import { AnimateIn } from '@/components/Animations/AnimateIn';
 
 interface BlockRowProps {
   shiftUp: boolean;
@@ -46,6 +47,14 @@ export const BlockRow: React.FC<BlockRowProps> = ({ shiftUp, items }) => {
             justify-between
             text-white"
           >
+            <AnimateIn
+              animation={{
+                y: 40,
+                opacity: 0,
+                duration: 0.8,
+                ease: "power2.out",
+              }}
+            >
             <Icon className="mx-auto text-8xl pb-5" />
             <h2 className="text-2xl pb-5">{item.text}</h2>
             <CMSLink url={item.link.slug}
@@ -72,6 +81,7 @@ export const BlockRow: React.FC<BlockRowProps> = ({ shiftUp, items }) => {
               >
               {item.linkLabel}
             </CMSLink>
+            </AnimateIn>
           </div>
         );
       })}

@@ -45,7 +45,7 @@
     "redirects.js",
     "next.config.js",
     "next-sitemap.config.cjs"
-  ],
+, "src/blocks/TextWithImageBlock/Component.oldtsx"  ],
   "exclude": [
     "node_modules"
   ]
