@@ -104,7 +104,7 @@ export const ContactBlock: React.FC<ContactBlockProps> = ({
         </div>
         <div className="basis-1/2 py-5 md:py-0">
           {
-            blocks.map((block: any, index: number) => {
+            blocks.map((block, index) => {
               if (block.blockType === 'formBlock') {
                 return (
                   <FormBlock
