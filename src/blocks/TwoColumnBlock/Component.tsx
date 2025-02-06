@@ -1,6 +1,4 @@
-'use client';
-
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import RichText from "@/components/RichText";
@@ -17,49 +15,9 @@ interface TwoColumnBlockProps {
 }
 
 export const TwoColumnBlock: React.FC<TwoColumnBlockProps> = ({ contentleft, contentright, title, mainContent }) => {
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const container = containerRef.current;
-    if(!container) return;
-
-    const animatedElements = container.querySelectorAll(".animate-text-90b0");
-
-    const animation = gsap.timeline({
-      scrollTrigger: {
-        trigger: container,
-        start: "top 80%",
-        end: "top 50%",
-        scrub: 1,
-      }
-    })
-
-    animation.fromTo(
-      animatedElements,
-      { 
-        opacity: 0,
-        y: 50
-      },
-      { 
-        opacity: 1,
-        y: 0,
-      }
-    )
-
-    return () => {
-      animation.kill();
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-    };
-  }, []);
-
-  useEffect(() => {
-    window.onload = () => {
-      ScrollTrigger.refresh();
-    };
-  }, []);
 
   return (
-    <section className="w-full bg-darkblue py-5 md:py-[5rem] text-white relative" ref={containerRef}>
+    <section className="w-full bg-darkblue py-5 md:py-[5rem] text-white relative">
       <Image
         src="/dots.svg"
         alt="Decorative dots"
