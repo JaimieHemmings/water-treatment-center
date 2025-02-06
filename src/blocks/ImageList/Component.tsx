@@ -24,14 +24,14 @@ export const ImageList: React.FC<ImageListProps> = ({
         {images.map((image, index) => (
           <div
             key={index}
-            className="border-b border-selectiveyellow text-black bg-center bg-cover bg-no-repeat relative flex flex-col justify-center min-h-[33svh]"
+            className="border-b border-selectiveyellow text-black bg-center bg-cover bg-no-repeat relative flex flex-col justify-center min-h-[40svh] md:min-h-[33svh]"
             style={{ backgroundImage: `url(${image.image.url})` }}
           >
             <div
               className="bg-darkblue/80 absolute inset-0 z-10"
             />
             <div
-              className="container relative z-20"
+              className="container relative z-20 py-5"
             >
               <AnimateIn 
                 animation={{
