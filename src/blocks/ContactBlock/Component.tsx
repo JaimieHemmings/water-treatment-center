@@ -1,81 +1,121 @@
 import React from "react";
+import { FormBlock } from "@/blocks/Form/Component";
 
-export const ContactBlock: any = () => {
+interface ContactBlockProps {
+  title: string;
+  subtitleStart: string;
+  subtitleHighlight: string;
+  subtitleEnd: string;
+  blocks: any;
+  phoneNumbers: {
+    phoneNumber: string;
+  }[];
+  emailAddresses: {
+    emailAddress: string;
+  }[];
+  showRoomAddresses: {
+    showRoomAddress: string;
+    showRoomOpeningHours: string;
+  }[];
+  warehouseAddresses: {
+    warehouseAddress: string;
+  }[];
+}
+
+export const ContactBlock: React.FC<ContactBlockProps> = ({
+  blocks,
+  title,
+  subtitleStart,
+  subtitleHighlight,
+  subtitleEnd,
+  phoneNumbers,
+  emailAddresses,
+  showRoomAddresses,
+  warehouseAddresses,
+}) => {
   return (
     <section className="w-full py-5 md:py-[10rem] bg-darkblue text-white">
       <div className="container pb-5">
         <h2 className="block text-selectiveyellow font-semibold pb-5">
-          Contact Us
+          {title}
         </h2>
-        <p className="text-5xl font-semibold">We look forward to <span className="text-selectiveyellow">learning</span> how we can help you.</p>
+        <p className="text-5xl font-semibold">
+          {subtitleStart}{' '}
+          <span className="text-selectiveyellow">
+            {subtitleHighlight}
+          </span>
+          {' '}{subtitleEnd}
+        </p>
       </div>
       <div className="container flex flex-col md:flex-row py-5">
         <div className="basis-1/2 flex flex-col gap-4">
-          <h3 className="text-selectiveyellow">
-            Showrooms
-          </h3>
-          <address>
-          13B Axis Business Park, Tullamore, Co Offaly, R35 XK13
-          </address>
-          <p>Open 9am – 6pm Monday to Friday</p>
-
+        <h3 className="text-selectiveyellow">Showrooms</h3>
+          { showRoomAddresses && (
+            showRoomAddresses.map((showRoomAddress, index) => {
+              return (
+                <div key={index}>
+                  <address className="text-white">
+                    {showRoomAddress.showRoomAddress}
+                  </address>
+                  <p className="text-white">
+                    {showRoomAddress.showRoomOpeningHours}
+                  </p>
+                </div>
+              );
+            })
+          )}
           <h3 className="text-selectiveyellow">
             Warehouse
           </h3>
-          <address>
-          Harbour Rd, Kilbeggan,  Co Westmeath
-          </address>
-
+          { warehouseAddresses && (
+            warehouseAddresses.map((warehouseAddress, index) => {
+              return (
+                <address key={index}>
+                  {warehouseAddress.warehouseAddress}
+                </address>
+              );
+            })
+          )}
           <h3 className="text-selectiveyellow">
             Contact
           </h3>
-          <p>
-            <a className="hover:opacity-50 transition-all" href="tel:0861715686">086 1715686</a>
-          </p>
-          <p>
-            <a className="hover:opacity-50 transition-all" href="tel:0579333942">057 9333942</a>
-          </p>
-          <p>
-            <a href="mailto:info@thewatertreatmentcentre.ie" className="hover:opacity-50 transition-all">
-              info@thewatertreatmentcentre.ie
-            </a>
-          </p>
+          { phoneNumbers && (
+            phoneNumbers.map((phoneNumber, index) => {
+              return (
+                <p key={index}>
+                  <a className="hover:opacity-50 transition-all" href={`tel:${phoneNumber.phoneNumber}`}>
+                    {phoneNumber.phoneNumber}
+                  </a>
+                </p>
+              );
+            })
+          )}
+          { emailAddresses && (
+            emailAddresses.map((emailAddress, index) => {
+              return (
+                <p key={index}>
+                  <a className="hover:opacity-50 transition-all" href={`mailto:${emailAddress.emailAddress}`}>
+                    {emailAddress.emailAddress}
+                  </a>
+                </p>
+              );
+            })
+          )}
         </div>
         <div className="basis-1/2 py-5 md:py-0">
-
-          <form className="flex flex-col gap-4">
-            <input
-              type="text"
-              id="name"
-              name="name"
-              placeholder="Name"
-              className="mt-1 block w-full p-5 rounded-md shadow-sm focus:outline-1 focus:ring-azul focus:border-azul text-lg bg-[#2d2d2d] text-white"
-            />
-
-            <input
-              type="email"
-              placeholder="your@email.com"
-              id="email"
-              name="email"
-              className="mt-1 block w-full p-5 rounded-md shadow-sm focus:outline-1 focus:ring-azul focus:border-azul text-lg bg-[#2d2d2d] text-white"
-            />
-
-            <textarea
-              id="message"
-              name="message"
-              placeholder="Message"
-              rows={4}
-              className="mt-1 block w-full p-5 rounded-md shadow-sm focus:outline-1 focus:ring-azul focus:border-azul text-lg bg-[#2d2d2d] text-white"
-            ></textarea>
-
-            <button
-              type="submit"
-              className="inline-flex items-center justify-center whitespace-nowrap font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 py-3 mt-3 border bg-selectiveyellow text-jet hover:bg-jet hover:text-selectiveyellow text-xl hover:border-selectiveyellow"
-            >
-              Submit
-            </button>
-          </form>
-
+          {
+            blocks.map((block: any, index: number) => {
+              if (block.blockType === 'formBlock') {
+                return (
+                  <FormBlock
+                    enableIntro={block.enableIntro}
+                    key={index}
+                    form={block.form}
+                  />
+                );
+              }
+            })
+          }
         </div>
       </div>
     </section>

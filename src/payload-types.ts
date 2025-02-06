@@ -755,6 +755,36 @@ export interface BlogFeed {
  * via the `definition` "ContactBlock".
  */
 export interface ContactBlock {
+  title: string;
+  subtitleStart: string;
+  subtitleHighlight: string;
+  subtitleEnd: string;
+  showRoomAddresses?:
+    | {
+        showRoomAddress: string;
+        showRoomOpeningHours: string;
+        id?: string | null;
+      }[]
+    | null;
+  warehouseAddresses?:
+    | {
+        warehouseAddress: string;
+        id?: string | null;
+      }[]
+    | null;
+  phoneNumbers?:
+    | {
+        phoneNumber: string;
+        id?: string | null;
+      }[]
+    | null;
+  emailAddresses?:
+    | {
+        emailAddress: string;
+        id?: string | null;
+      }[]
+    | null;
+  blocks: FormBlock[];
   id?: string | null;
   blockName?: string | null;
   blockType: 'contactBlock';
@@ -1329,6 +1359,40 @@ export interface BlogFeedSelect<T extends boolean = true> {
  * via the `definition` "ContactBlock_select".
  */
 export interface ContactBlockSelect<T extends boolean = true> {
+  title?: T;
+  subtitleStart?: T;
+  subtitleHighlight?: T;
+  subtitleEnd?: T;
+  showRoomAddresses?:
+    | T
+    | {
+        showRoomAddress?: T;
+        showRoomOpeningHours?: T;
+        id?: T;
+      };
+  warehouseAddresses?:
+    | T
+    | {
+        warehouseAddress?: T;
+        id?: T;
+      };
+  phoneNumbers?:
+    | T
+    | {
+        phoneNumber?: T;
+        id?: T;
+      };
+  emailAddresses?:
+    | T
+    | {
+        emailAddress?: T;
+        id?: T;
+      };
+  blocks?:
+    | T
+    | {
+        formBlock?: T | FormBlockSelect<T>;
+      };
   id?: T;
   blockName?: T;
 }
