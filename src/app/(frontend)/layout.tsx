@@ -9,6 +9,7 @@ import { Footer } from '@/Footer/Component'
 import { Header } from '@/Header/Component'
 import { Providers } from '@/providers'
 import { InitTheme } from '@/providers/Theme/InitTheme'
+import { ScrollTriggerProvider } from '@/components/ScrollTriggerProvider'
 import { mergeOpenGraph } from '@/utilities/mergeOpenGraph'
 
 import { Analytics } from "@vercel/analytics/react"
@@ -30,10 +31,12 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       </head>
       <body>
         <Providers>
-          <Header />
-          {children}
-          <Analytics />
-          <Footer />
+          <ScrollTriggerProvider>
+            <Header />
+            {children}
+            <Analytics />
+            <Footer />
+          </ScrollTriggerProvider>
         </Providers>
       </body>
     </html>
