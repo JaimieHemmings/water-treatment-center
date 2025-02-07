@@ -24,6 +24,7 @@ import { StatsBlock } from '@/blocks/StatsBlock/config'
 import { BlockRow } from '@/blocks/BlockRow/config'
 import { ImageList } from '@/blocks/ImageList/config'
 import { FaqBlock } from '@/blocks/FaqBlock/config'
+import { ColorPickerBlock } from '@/blocks/ColorPicker/config'
 
 import {
   MetaDescriptionField,
@@ -87,7 +88,7 @@ export const Pages: CollectionConfig<'pages'> = {
             {
               name: 'layout',
               type: 'blocks',
-              blocks: [CallToAction, Content, MediaBlock, Archive, FormBlock, TextBlock, TwoColumnBlock, ProductsHome, ServicesBlock, BlogFeed, ContactBlock, AllBlogPosts, TextWithImageBlock, StatsBlock, BlockRow, ImageList, FaqBlock],
+              blocks: [CallToAction, Content, MediaBlock, Archive, FormBlock, TextBlock, TwoColumnBlock, ProductsHome, ServicesBlock, BlogFeed, ContactBlock, AllBlogPosts, TextWithImageBlock, StatsBlock, BlockRow, ImageList, FaqBlock, ColorPickerBlock],
               required: true,
               admin: {
                 initCollapsed: true,

@@ -15,6 +15,7 @@ import { Analytics } from "@vercel/analytics/react"
 
 import './globals.css'
 import { getServerSideURL } from '@/utilities/getURL'
+import { ThemeProvider } from '@/components/ThemeProvider'
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
 
@@ -30,6 +31,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       </head>
       <body>
         <Providers>
+          <ThemeProvider />
           <Header />
           {children}
           <Analytics />
