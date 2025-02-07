@@ -4,9 +4,8 @@ import React, { useEffect } from "react";
 import useEmblaCarousel from 'embla-carousel-react'
 import Autoplay from 'embla-carousel-autoplay'
 import './styles.css'
-
-import Link from 'next/link'
 import Image from "next/image";
+import CustomLink from "@/components/CustomLink";
 
 interface Slide {
   titleStart: string;
@@ -69,7 +68,7 @@ export const HighImpactHero: React.FC<HeroProps> = ({ slides }) => {
                 <p className="my-5 pt-5 text-lg text-white">
                   {slide.paragraph}
                 </p>
-                <Link href="/contact" className="inline-flex items-center justify-center whitespace-nowrap font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-11 px-8 mt-3 bg-jet border border-selectiveyellow text-selectiveyellow hover:bg-selectiveyellow hover:text-jet text-lg relative z-30">Get A Quote</Link>
+                <CustomLink type="dark" label="Get A Quote" link="/contact" />
               </div>
             </div>
           </div>

@@ -1,10 +1,10 @@
 import React from 'react';
 import Image from 'next/image';
 import SectionTitle from "@/components/SectionTitle";
-import Link from 'next/link';
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
 import { AnimateIn } from '@/components/Animations/AnimateIn'
+import { CustomLink } from '@/components/CustomLink'
 
 export const dynamic = 'force-static'
 export const revalidate = 600
@@ -64,9 +64,8 @@ export default async function BlogFeed() {
                 </p>
                 <h3 className="text-2xl text-selectiveyellow pt-1 pb-5">{post.title}</h3>
                 <p className="text-white">{post.meta.description}</p>
-                <Link href={`/news/${post.slug}`} className="inline-flex items-center justify-center whitespace-nowrap font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-11 px-8 mt-3 border bg-selectiveyellow text-jet border-jet hover:bg-jet hover:text-selectiveyellow text-lg hover:border-selectiveyellow">
-                  Read More
-                </Link>
+
+                <CustomLink type="light" label="Read More" link={`/news/${post.slug}`} />
               </AnimateIn>
             </div>
             <div className="basis-2/3">

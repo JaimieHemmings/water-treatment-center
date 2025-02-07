@@ -4,8 +4,8 @@ import { FaGlassWaterDroplet } from "react-icons/fa6";
 import { IoWaterSharp } from "react-icons/io5";
 import { LuGlassWater } from "react-icons/lu";
 import { GiWaterBottle, GiWaterGallon } from "react-icons/gi";
-import { CMSLink } from '@/components/Link';
 import { AnimateIn } from '@/components/Animations/AnimateIn';
+import CustomLink from '@/components/CustomLink';
 
 interface BlockRowProps {
   shiftUp: boolean;
@@ -22,7 +22,7 @@ interface BlockRowProps {
 export const BlockRow: React.FC<BlockRowProps> = ({ shiftUp, items }) => {
  return (
   <section className="bg-darkblue pt-[5rem] relative z-20">
-    <div className={`container flex flex-col md:flex-row justify-around gap-10 ${shiftUp ? '-mt-40' : ''}`}>
+    <div className={`container flex flex-col md:flex-row justify-between gap-10 ${shiftUp ? '-mt-40' : ''}`}>
       {items.map((item, index) => {
         const Icon = {
           gallon: GiWaterGallon,
@@ -57,30 +57,7 @@ export const BlockRow: React.FC<BlockRowProps> = ({ shiftUp, items }) => {
             >
             <Icon className="mx-auto text-8xl pb-5" />
             <h2 className="text-2xl pb-5">{item.text}</h2>
-            <CMSLink url={item.link.slug}
-              appearance="link"
-              className="inline-flex
-                        items-center
-                        justify-center
-                        whitespace-nowrap
-                        font-medium
-                        transition-colors
-                        disabled:pointer-events-none
-                        disabled:opacity-50
-                        h-11 px-8 mt-3
-                        border-2
-                        text-white
-                        border-white
-                        hover:bg-white
-                        hover:text-azul
-                        text-lg
-                        relative
-                        z-30
-                        no-underline
-                        hover:no-underline"
-              >
-              {item.linkLabel}
-            </CMSLink>
+            <CustomLink type="white" label={item.linkLabel} link={item.link.slug} />
             </AnimateIn>
           </div>
         );

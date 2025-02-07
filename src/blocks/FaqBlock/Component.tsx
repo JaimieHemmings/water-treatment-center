@@ -1,8 +1,8 @@
 import React from "react";
 import SectionTitle from "@/components/SectionTitle";
 import FAQBlockClient from "./client";
-import Link from "next/link";
 import Image from "next/image";
+import { CustomLink } from "@/components/CustomLink";
 
 interface FaqBlockProps {
   title: string;
@@ -50,12 +50,10 @@ export const FaqBlock: React.FC<FaqBlockProps> = ({
             <h2 className="text-white text-2xl md:text-4xl font-semibold pb-5">
               {sideTitle}
             </h2>
-            <p className="text-white">
+            <p className="text-white pb-5">
               {sideContent}
             </p>
-            <Link href={linkURL}>
-                {linkLabel}
-            </Link>
+            <CustomLink type="light" label={linkLabel} link={linkURL} />
           </div>
         </div>
       </div>
