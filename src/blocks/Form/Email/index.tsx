@@ -20,9 +20,9 @@ export const Email: React.FC<
 > = ({ name, defaultValue, errors, label, register, required: requiredFromProps, width }) => {
   return (
     <Width width={width}>
-      <Label htmlFor={name}>{label}</Label>
       <Input
-        defaultValue={defaultValue}
+        className="text-white bg-jet border-2 border-darkblue py-5 text-lg"
+        placeholder={label}
         id={name}
         type="text"
         {...register(name, { pattern: /^\S[^\s@]*@\S+$/, required: requiredFromProps })}
