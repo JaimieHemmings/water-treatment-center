@@ -28,9 +28,6 @@ export default async function BlogFeed() {
   })
 
   const { docs } = response
-
-  console.log(docs)
-
   return (
     <div className="w-full bg-darkblue py-[5rem] relative">
       <Image
