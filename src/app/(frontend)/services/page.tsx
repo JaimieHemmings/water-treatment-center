@@ -5,7 +5,7 @@ import React from 'react'
 import Image from 'next/image'
 import RichText from '@/components/RichText'
 import Bounded from '@/utilities/Bounded'
-import Link from 'next/link'
+import CustomLink from '@/components/CustomLink'
 
 export const dynamic = 'force-static'
 export const revalidate = 600
@@ -49,7 +49,22 @@ export default async function ServicesPage() {
   const services = response.docs
 
   return (
-    <div className="bg-darkblue pt-20">
+    <div className="bg-darkblue">
+      <div className="relative w-full azul-overlay dots-overlay py-20 overflow-hidden mb-[5rem]">
+        <Image
+          src="/news-banner.jpg"
+          alt="Hero image"
+          width={1920}
+          height={1080}
+          className="absolute inset-0 w-full h-full object-cover"
+          priority
+        />
+      <div className="container mx-auto h-full flex flex-col justify-center items-center relative z-10">
+        <h1 className="text-4xl md:text-[72px] text-center md:leading-[80px] text-white">
+          Services <span className="text-selectiveyellow">&amp;</span> Maintanence
+        </h1>
+      </div>
+    </div>
       <div className="container mx-auto px-4 flex flex-col gap-10">
         {services.map((service, index) => (
           <div 
@@ -112,9 +127,10 @@ export default async function ServicesPage() {
               Book your service today!
             </p>
             <div className="flex justify-end space-x-4">
-              <Link href="/contact">
-                Contact Us
-              </Link>
+              <CustomLink
+                link="/contact"
+                type="dark"
+                label="Contact Us" />
             </div>
           </div>
         </Bounded>
