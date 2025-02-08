@@ -68,7 +68,7 @@ export const HighImpactHero: React.FC<HeroProps> = ({ slides }) => {
                 <p className="my-5 pt-5 text-lg text-white">
                   {slide.paragraph}
                 </p>
-                <CustomLink type="dark" label="Get A Quote" link="/contact" />
+                <CustomLink type="white" label="Get A Quote" link="/contact" />
               </div>
             </div>
           </div>
