@@ -37,6 +37,7 @@ export const Products: CollectionConfig = {
       name: 'featuredImage',
       type: 'upload',
       relationTo: 'media',
+      required: true,
     },
     {
       name: 'images',
@@ -85,7 +86,7 @@ export const Products: CollectionConfig = {
     {
       name: 'category',
       type: 'relationship',
-      relationTo: 'categories',
+      relationTo: 'product-categories',
       required: true,
     },
     {
