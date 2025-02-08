@@ -1,116 +1,61 @@
-import type { Metadata } from 'next'
+import CustomLink from '@/components/CustomLink'
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
 import React, { cache } from 'react'
-import { generateMeta } from '@/utilities/generateMeta'
+import type { Post } from '@/payload-types'
 import PageClient from './page.client'
 import Image from 'next/image'
-
-export async function generateStaticParams() {
-  const payload = await getPayload({ config: configPromise })
-  const categories = await payload.find({
-    collection: 'product-categories',
-    draft: false,
-    limit: 1000,
-    overrideAccess: false,
-    pagination: false,
-    select: {
-      slug: true,
-    },
-  })
-  const params = categories.docs.map(({ slug }) => {
-    return { slug }
-  })
-  return params
-}
-
 type Args = {
   params: Promise<{
     slug?: string
   }>
 }
-
-export default async function CategoryPage({ params: { slug } }: { params: { slug: string } }) {
-  const { category, products } = await queryCategoryAndProducts({ slug })
-
-  if (!category) {
-    return null // Or your 404 component
-  }
-
+export default async function Post({ params: paramsPromise }: Args) {
+  const { slug = '' } = await paramsPromise
+  const products = await queryPostBySlug({ slug })
   return (
     <article className="pt-16 pb-16 bg-darkblue relative z-0">
       <PageClient />
       <div className="flex flex-col items-center gap-4 pt-8 bg-darkblue">
         <div className="container">
-          <h1 className="text-3xl font-bold mb-6">{category.title}</h1>
-          {category.description && (
-            <div className="mb-8">
-              
-              <p>{category.description}</p>
-            </div>
-          )}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {products.map((product) => (
-              <div key={product.id} className="border p-4 rounded">
-                {product.featuredImage && (
-                  <Image
-                  // @ts-ignore
-                    src={product.featuredImage.url}
-                  // @ts-ignore
-                    alt={product.featuredImage.alt || ''}
-                    width={500}
-                    height={500}
-                  />
-                )}
-                <h2 className="text-xl font-semibold">{product.name}</h2>
-                {product.description && (
-                  <p className="mt-2">{product.description}</p>
-                )}
+          {products.map((product: any, index: any) => (
+            <div key={index} className={`flex flex-col gap-10 justify-between ${index % 2 === 0 ? 'md:flex-row-reverse' : 'md:flex-row'}`}>
+              <div className="basis-1/2">
+                <Image
+                  className='inset-0 w-full h-full object-cover rounded-lg'
+                  src={product.featuredImage.url}
+                  alt={product.featuredImage.alt || 'No alt text available'}
+                  width={500}
+                  height={500}
+                />
               </div>
-            ))}
-          </div>
+              <div className="basis-1/2">
+                <h3 className="text-2xl md:text-4xl font-semibold text-selectiveyellow">
+                  {product.name}
+                </h3>
+                <p className="text-white">
+                  {product.description}
+                </p>
+                <CustomLink label="Read More" link={`/products`} type="white" />
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </article>
   )
 }
 
-export async function generateMetadata({ params: paramsPromise }: Args): Promise<Metadata> {
-  const { slug = '' } = await paramsPromise
-  const { category } = await queryCategoryAndProducts({ slug })
-  return generateMeta({ doc: category })
-}
-
-const queryCategoryAndProducts = cache(async ({ slug }: { slug: string }) => {
+const queryPostBySlug = cache(async ({ slug }: { slug: string }) => {
   const payload = await getPayload({ config: configPromise })
-  
-  // First, get the category
-  const categoryResult = await payload.find({
-    collection: 'product-categories',
-    limit: 1,
-    pagination: false,
-    where: {
-      slug: {
-        equals: slug,
-      },
-    },
-  })
-  
-  const category = categoryResult.docs[0] || null
 
-  // Then, get all products in this category
-  const productsResult = await payload.find({
+  const result = await payload.find({
     collection: 'products',
-    pagination: false,
     where: {
-      category: {
-        equals: category?.id,
+      'category.slug': {
+        equals: slug
       },
     },
   })
-
-  return {
-    category,
-    products: productsResult.docs || [],
-  }
+  return result.docs || []
 })
