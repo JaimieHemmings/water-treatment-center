@@ -20,7 +20,6 @@ import { TextWithImageBlock } from '@/blocks/TextWithImageBlock/Component'
 import { StatsBlock } from '@/blocks/StatsBlock/Component'
 import { BlockRow } from '@/blocks/BlockRow/Component'
 import { FaqBlock } from '@/blocks/FaqBlock/Component'
-import { ColorPickerBlock } from '@/blocks/ColorPicker/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -40,7 +39,6 @@ const blockComponents = {
   blockRow: BlockRow,
   imageList: ImageList,
   faqblock: FaqBlock,
-  colorPicker: ColorPickerBlock,
 }
 
 export const RenderBlocks: React.FC<{

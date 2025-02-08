@@ -122,7 +122,6 @@ export interface Page {
     | BlockRow
     | ImageList
     | FaqBlock
-    | ColorPicker
   )[];
   meta?: {
     title?: string | null;
@@ -924,15 +923,6 @@ export interface FaqBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "ColorPicker".
- */
-export interface ColorPicker {
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'colorPicker';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "products".
  */
 export interface Product {
@@ -1224,7 +1214,6 @@ export interface PagesSelect<T extends boolean = true> {
         blockRow?: T | BlockRowSelect<T>;
         imageList?: T | ImageListSelect<T>;
         faqblock?: T | FaqBlockSelect<T>;
-        colorPicker?: T | ColorPickerSelect<T>;
       };
   meta?:
     | T
@@ -1542,14 +1531,6 @@ export interface FaqBlockSelect<T extends boolean = true> {
   sideContent?: T;
   linkLabel?: T;
   linkURL?: T;
-  id?: T;
-  blockName?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "ColorPicker_select".
- */
-export interface ColorPickerSelect<T extends boolean = true> {
   id?: T;
   blockName?: T;
 }

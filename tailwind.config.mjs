@@ -66,7 +66,7 @@ export default {
           DEFAULT: '#F4F7F9',
         },
         selectiveyellow: {
-          DEFAULT: 'var(--selectiveyellow)',
+          DEFAULT: '#00928f',
         },
         darkblue:{
           DEFAULT: '#0c1f2d',
