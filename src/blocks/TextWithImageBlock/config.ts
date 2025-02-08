@@ -30,6 +30,12 @@ export const TextWithImageBlock: Block = {
       required: true,
     },
     {
+      name: 'cropImage',
+      type: 'checkbox',
+      label: 'Crop Image',
+      defaultValue: true,
+    },
+    {
       name: 'additionalSettings',
       type: 'group',
       fields: [

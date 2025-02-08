@@ -16,6 +16,7 @@ interface TextWithImageBlockProps {
     url: string;
     alt: string;
   };
+  cropImage?: boolean;
   blocks?: {
     blockType: 'threeColBlock';
     columns: Column[];
@@ -30,7 +31,8 @@ export const TextWithImageBlock: React.FC<TextWithImageBlockProps> = ({
   title, 
   image,
   blocks,
-  additionalSettings
+  additionalSettings,
+  cropImage
 }) => {
   return (
     <section 
@@ -69,7 +71,7 @@ export const TextWithImageBlock: React.FC<TextWithImageBlockProps> = ({
               alt={image.alt} 
               width={1080} 
               height={1080} 
-              className="rounded-full transform-gpu animate-img-6578" 
+              className={`${cropImage ? 'rounded-full' : ''} transform-gpu animate-img-657`}
               priority
             />
           </AnimateIn>
