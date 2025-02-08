@@ -937,7 +937,7 @@ export interface ColorPicker {
  */
 export interface Product {
   id: number;
-  name: string;
+  title: string;
   description: string;
   excerpt: string;
   featuredImage: number | Media;
@@ -961,7 +961,8 @@ export interface Product {
     description?: string | null;
     keywords?: string | null;
   };
-  slug: string;
+  slug?: string | null;
+  slugLock?: boolean | null;
   createdAt: string;
   updatedAt: string;
 }
@@ -1717,7 +1718,7 @@ export interface UsersSelect<T extends boolean = true> {
  * via the `definition` "products_select".
  */
 export interface ProductsSelect<T extends boolean = true> {
-  name?: T;
+  title?: T;
   description?: T;
   excerpt?: T;
   featuredImage?: T;
@@ -1746,6 +1747,7 @@ export interface ProductsSelect<T extends boolean = true> {
         keywords?: T;
       };
   slug?: T;
+  slugLock?: T;
   createdAt?: T;
   updatedAt?: T;
 }

@@ -2,6 +2,7 @@ import type { CollectionConfig } from 'payload'
 
 import { authenticated } from '../../access/authenticated'
 import { anyone } from '../../access/anyone'
+import { slugField } from '@/fields/slug'
 
 export const Products: CollectionConfig = {
   slug: 'products',
@@ -12,13 +13,16 @@ export const Products: CollectionConfig = {
     read: anyone,
     update: authenticated,
   },
+  defaultPopulate: {
+    slug: true,
+  },
   admin: {
-    defaultColumns: ['name', 'status', 'category'],
-    useAsTitle: 'name',
+    defaultColumns: ['title', 'status', 'category'],
+    useAsTitle: 'title',
   },
   fields: [
     {
-      name: 'name',
+      name: 'title',
       type: 'text',
       required: true,
       unique: true,
@@ -129,15 +133,7 @@ export const Products: CollectionConfig = {
         }
       ]
     },
-    {
-      name: 'slug',
-      type: 'text',
-      required: true,
-      unique: true,
-      admin: {
-        position: 'sidebar',
-      }
-    },
+    ...slugField(),
     {
       name: 'createdAt',
       type: 'date',
