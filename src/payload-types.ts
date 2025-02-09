@@ -122,6 +122,7 @@ export interface Page {
     | BlockRow
     | ImageList
     | FaqBlock
+    | VideoBlock
   )[];
   meta?: {
     title?: string | null;
@@ -822,6 +823,7 @@ export interface TextWithImageBlock {
   } | null;
   title?: string | null;
   image: number | Media;
+  cropImage?: boolean | null;
   additionalSettings?: {
     ShowThreeColBlock?: boolean | null;
   };
@@ -920,6 +922,34 @@ export interface FaqBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'faqblock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "VideoBlock".
+ */
+export interface VideoBlock {
+  title?: string | null;
+  subtitle?: string | null;
+  contentleft?: string | null;
+  contentright?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  video: number | Media;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'videoBlock';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1214,6 +1244,7 @@ export interface PagesSelect<T extends boolean = true> {
         blockRow?: T | BlockRowSelect<T>;
         imageList?: T | ImageListSelect<T>;
         faqblock?: T | FaqBlockSelect<T>;
+        videoBlock?: T | VideoBlockSelect<T>;
       };
   meta?:
     | T
@@ -1433,6 +1464,7 @@ export interface TextWithImageBlockSelect<T extends boolean = true> {
   content?: T;
   title?: T;
   image?: T;
+  cropImage?: T;
   additionalSettings?:
     | T
     | {
@@ -1531,6 +1563,19 @@ export interface FaqBlockSelect<T extends boolean = true> {
   sideContent?: T;
   linkLabel?: T;
   linkURL?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "VideoBlock_select".
+ */
+export interface VideoBlockSelect<T extends boolean = true> {
+  title?: T;
+  subtitle?: T;
+  contentleft?: T;
+  contentright?: T;
+  video?: T;
   id?: T;
   blockName?: T;
 }

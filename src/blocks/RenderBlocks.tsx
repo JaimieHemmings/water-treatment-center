@@ -20,6 +20,7 @@ import { TextWithImageBlock } from '@/blocks/TextWithImageBlock/Component'
 import { StatsBlock } from '@/blocks/StatsBlock/Component'
 import { BlockRow } from '@/blocks/BlockRow/Component'
 import { FaqBlock } from '@/blocks/FaqBlock/Component'
+import VideoBlock from '@/blocks/VideoBlock/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -39,6 +40,7 @@ const blockComponents = {
   blockRow: BlockRow,
   imageList: ImageList,
   faqblock: FaqBlock,
+  videoBlock: VideoBlock,
 }
 
 export const RenderBlocks: React.FC<{

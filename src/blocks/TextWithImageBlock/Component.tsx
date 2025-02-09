@@ -71,7 +71,7 @@ export const TextWithImageBlock: React.FC<TextWithImageBlockProps> = ({
               alt={image.alt} 
               width={1080} 
               height={1080} 
-              className={`${cropImage ? 'rounded-full' : ''} transform-gpu animate-img-657`}
+              className={`${cropImage ? 'roun[ded-full' : ''} transform-gpu animate-img-657`}
               priority
             />
           </AnimateIn>
