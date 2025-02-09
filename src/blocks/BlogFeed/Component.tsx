@@ -59,7 +59,7 @@ export default async function BlogFeed() {
                 <p className="text-sm text-gray-400">
                   {new Date(post.publishedAt).toLocaleDateString('en-GB')}
                 </p>
-                <h3 className="text-2xl text-selectiveyellow pt-1 pb-5">{post.title}</h3>
+                <h3 className="text-2xl text-white py-2">{post.title}</h3>
                 <p className="text-white">{post.meta.description}</p>
 
                 <CustomLink type="light" label="Read More" link={`/news/${post.slug}`} />

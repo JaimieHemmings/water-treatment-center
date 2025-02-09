@@ -27,7 +27,7 @@ export const CallToActionBlock: React.FC<CTABlockProps> = ({ links, richText }) 
               duration: 1,
               ease: 'power2.out',}}
           >
-            <h2 className="text-selectiveyellow font-semibold pb-5">
+            <h2 className="bg-selectiveyellow text-white inline-block px-5 py-2 rounded-xl font-semibold mb-2">
               Get In Touch
             </h2>
           </AnimateIn>
