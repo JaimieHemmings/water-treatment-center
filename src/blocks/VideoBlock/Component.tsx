@@ -1,6 +1,6 @@
 import SectionTitle from '@/components/SectionTitle'
 import React from 'react'
-
+import Image from 'next/image'
 import AnimateIn from '@/components/Animations/AnimateIn'
 import RichText from '@/components/RichText'
 
@@ -22,6 +22,20 @@ const VideoBlock: React.FC<VideoBlockProps> = ({
 }) => {
   return (
     <div className="relative overflow-hidden py-[5rem]">
+      <Image
+        src="/dots.svg"
+        alt="Decorative dots"
+        className="absolute bottom-4 right-0 z-10 scale-x-[-1] w-48 h-72 md:w-48 md:h-72"
+        height={300}
+        width={200}
+      />
+      <Image
+        src="/dots.svg"
+        alt="Decorative dots"
+        className="absolute top-4 left-0 z-10 w-48 h-72 md:w-48 md:h-72"
+        height={300}
+        width={200}
+      />
       <div className="absolute inset-0 top-0 left-0 -z-10">
         <div className="fixed inset-0 w-full h-full">
           <video
