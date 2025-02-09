@@ -13,6 +13,8 @@ interface TextWithImageBlockProps {
   title: string;
   content: any;
   image: {
+    originalWidth: number;
+    originalHeight: number;
     url: string;
     alt: string;
   };
@@ -67,11 +69,12 @@ export const TextWithImageBlock: React.FC<TextWithImageBlockProps> = ({
             }}
           >
             <Image
-              src={image.url} 
-              alt={image.alt} 
-              width={1080} 
-              height={1080} 
-              className={`${cropImage ? 'roun[ded-full' : ''} transform-gpu animate-img-657`}
+              src={image.url}
+              alt={image.alt}
+              width={image?.originalWidth || 650}
+              height={image?.originalHeight || 650}
+              sizes="(max-width: 768px) 100vw, 50vw"
+              className={`${cropImage ? 'rounded-full' : ''} transform-gpu animate-img-657`}
               priority
             />
           </AnimateIn>
