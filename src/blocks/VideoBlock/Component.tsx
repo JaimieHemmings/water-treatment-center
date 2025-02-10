@@ -21,7 +21,7 @@ const VideoBlock: React.FC<VideoBlockProps> = ({
   video
 }) => {
   return (
-    <div className="relative overflow-hidden py-[5rem]">
+    <div className="relative overflow-hidden py-[5rem] w-screen">
       <Image
         src="/dots.svg"
         alt="Decorative dots"
