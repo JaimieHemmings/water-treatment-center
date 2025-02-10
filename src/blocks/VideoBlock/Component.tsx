@@ -68,7 +68,7 @@ const VideoBlock: React.FC<VideoBlockProps> = ({
                     ease: "power2.out",
                   }}
                 >
-                    <p className="max-w-none md:prose-md prose mb-5 text-2xl md:text-md text-white font-light pt-3 animate-text-90b0">
+                    <p className="max-w-none md:prose-md prose mb-5 text-2xl md:text-md text-white font-light pt-3">
                       {contentleft}
                     </p>
                   </AnimateIn>
@@ -82,7 +82,7 @@ const VideoBlock: React.FC<VideoBlockProps> = ({
                       ease: "power2.out",
                     }}
                   >
-                    {contentright && <RichText data={contentright} enableGutter={false} className="max-w-none prose md:prose-md mb-5 text-md md:xl mr-0 animate-text-90b0 [&_strong]:font-bold" />}
+                    {contentright && <RichText data={contentright} enableGutter={false} className="max-w-none prose md:prose-md mb-5 text-md md:xl mr-0 text-white [&_strong]:font-bold" />}
                   </AnimateIn>
                 </div>
       </div>
