@@ -65,7 +65,7 @@ export default async function PostsPage() {
                 </p>
                 <CustomLink
                   link={`/products/${doc.slug}`}
-                  type="white"
+                  theme="white"
                   label="Read More"
                 />
               </div>
