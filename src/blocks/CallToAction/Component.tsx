@@ -1,11 +1,18 @@
 import React from 'react';
-import type { CallToActionBlock as CTABlockProps } from '@/payload-types';
 import RichText from '@/components/RichText';
-import { CMSLink } from '@/components/Link';
+import CustomLink from '@/components/CustomLink';
 import Bounded from '@/utilities/Bounded';
 import AnimateIn from '@/components/Animations/AnimateIn';
 
-export const CallToActionBlock: React.FC<CTABlockProps> = ({ links, richText }) => {
+interface CallToActionBlockProps {
+  link: {
+    slug: string;
+  };
+  linkLabel: string;
+  richText: any;
+}
+
+export const CallToActionBlock: React.FC<CallToActionBlockProps> = ({ link, linkLabel, richText }) => {
   return (
     <section className="w-full bg-jet py-20 relative overflow-hidden">
       <video
@@ -49,20 +56,14 @@ export const CallToActionBlock: React.FC<CTABlockProps> = ({ links, richText }) 
           )}
           </AnimateIn>
           <div className="flex justify-end space-x-4">
-            {(links || []).map((linkItem, i) => (
             <AnimateIn
-              key={`cta-link-${i}`}
               animation={{
                 opacity: 0,
                 duration: 1,
                 ease: 'power2.out',}}
             >
-              <CMSLink
-                size="lg"
-                {...linkItem.link}
-              />
+              <CustomLink theme="light" label={linkLabel} link={link.slug} />
             </AnimateIn>
-            ))}
           </div>
         </div>
       </Bounded>

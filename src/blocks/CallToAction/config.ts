@@ -28,12 +28,17 @@ export const CallToAction: Block = {
       }),
       label: false,
     },
-    linkGroup({
-      appearances: ['default', 'outline'],
-      overrides: {
-        maxRows: 2,
-      },
-    }),
+    {
+      name: 'link',
+      type: 'relationship',
+      relationTo: 'pages',
+      required: true,
+    },
+    {
+      name: 'linkLabel',
+      type: 'text',
+      required: true,
+    },
   ],
   labels: {
     plural: 'Calls to Action',
