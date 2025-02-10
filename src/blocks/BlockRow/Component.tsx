@@ -57,7 +57,7 @@ export const BlockRow: React.FC<BlockRowProps> = ({ shiftUp, items }) => {
             >
             <Icon className="mx-auto text-8xl pb-5" />
             <h2 className="text-2xl pb-5">{item.text}</h2>
-            <CustomLink type="white" label={item.linkLabel} link={item.link.slug} />
+            <CustomLink theme="white" label={item.linkLabel} link={item.link.slug} />
             </AnimateIn>
           </div>
         );

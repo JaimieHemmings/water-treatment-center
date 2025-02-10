@@ -62,7 +62,7 @@ export default async function BlogFeed() {
                 <h3 className="text-2xl text-white py-2">{post.title}</h3>
                 <p className="text-white">{post.meta.description}</p>
 
-                <CustomLink type="light" label="Read More" link={`/news/${post.slug}`} />
+                <CustomLink theme="light" label="Read More" link={`/news/${post.slug}`} />
               </AnimateIn>
             </div>
             <div className="basis-2/3">
