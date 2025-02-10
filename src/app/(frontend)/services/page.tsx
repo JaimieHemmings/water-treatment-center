@@ -129,7 +129,7 @@ export default async function ServicesPage() {
             <div className="flex justify-end space-x-4">
               <CustomLink
                 link="/contact"
-                type="dark"
+                theme="dark"
                 label="Contact Us" />
             </div>
           </div>
