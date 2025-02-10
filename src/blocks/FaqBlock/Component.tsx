@@ -53,7 +53,7 @@ export const FaqBlock: React.FC<FaqBlockProps> = ({
             <p className="text-white pb-5">
               {sideContent}
             </p>
-            <CustomLink type="light" label={linkLabel} link={linkURL} />
+            <CustomLink theme="light" label={linkLabel} link={linkURL} />
           </div>
         </div>
       </div>
