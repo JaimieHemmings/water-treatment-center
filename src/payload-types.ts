@@ -123,7 +123,6 @@ export interface Page {
     | ImageList
     | FaqBlock
     | VideoBlock
-    | ServicesListBlock
   )[];
   meta?: {
     title?: string | null;
@@ -703,22 +702,6 @@ export interface ProductsHome {
  * via the `definition` "ServicesBlock".
  */
 export interface ServicesBlock {
-  title?: string | null;
-  subtitle?: string | null;
-  rows?:
-    | {
-        title?: string | null;
-        description?: string | null;
-        image?: (number | null) | Media;
-        features?:
-          | {
-              description?: string | null;
-              id?: string | null;
-            }[]
-          | null;
-        id?: string | null;
-      }[]
-    | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'servicesBlock';
@@ -929,15 +912,6 @@ export interface VideoBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'videoBlock';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "ServicesListBlock".
- */
-export interface ServicesListBlock {
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'servicesListBlock';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1233,7 +1207,6 @@ export interface PagesSelect<T extends boolean = true> {
         imageList?: T | ImageListSelect<T>;
         faqblock?: T | FaqBlockSelect<T>;
         videoBlock?: T | VideoBlockSelect<T>;
-        servicesListBlock?: T | ServicesListBlockSelect<T>;
       };
   meta?:
     | T
@@ -1355,22 +1328,6 @@ export interface ProductsHomeSelect<T extends boolean = true> {
  * via the `definition` "ServicesBlock_select".
  */
 export interface ServicesBlockSelect<T extends boolean = true> {
-  title?: T;
-  subtitle?: T;
-  rows?:
-    | T
-    | {
-        title?: T;
-        description?: T;
-        image?: T;
-        features?:
-          | T
-          | {
-              description?: T;
-              id?: T;
-            };
-        id?: T;
-      };
   id?: T;
   blockName?: T;
 }
@@ -1552,14 +1509,6 @@ export interface VideoBlockSelect<T extends boolean = true> {
   contentleft?: T;
   contentright?: T;
   video?: T;
-  id?: T;
-  blockName?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "ServicesListBlock_select".
- */
-export interface ServicesListBlockSelect<T extends boolean = true> {
   id?: T;
   blockName?: T;
 }

@@ -12,7 +12,7 @@ import { TextBlock } from '@/blocks/TextBlock/Component'
 import { ImageList } from '@/blocks/ImageList/Component'
 import { TwoColumnBlock } from '@/blocks/TwoColumnBlock/Component'
 import { ProductsHome } from '@/blocks/ProductsHome/Component'
-import { ServicesBlock } from '@/blocks/Services/Component'
+import ServicesBlock from '@/blocks/Services/Component'
 import BlogFeed from '@/blocks/BlogFeed/Component'
 import { ContactBlock } from '@/blocks/ContactBlock/Component'
 import { AllBlogPosts } from '@/blocks/AllBlogPosts/Component'
@@ -21,7 +21,6 @@ import { StatsBlock } from '@/blocks/StatsBlock/Component'
 import { BlockRow } from '@/blocks/BlockRow/Component'
 import { FaqBlock } from '@/blocks/FaqBlock/Component'
 import VideoBlock from '@/blocks/VideoBlock/Component'
-import ServicesListBlock from '@/blocks/ServiceList/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -42,7 +41,6 @@ const blockComponents = {
   imageList: ImageList,
   faqblock: FaqBlock,
   videoBlock: VideoBlock,
-  servicesList: ServicesListBlock,
 }
 
 export const RenderBlocks: React.FC<{

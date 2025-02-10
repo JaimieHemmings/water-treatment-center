@@ -25,7 +25,6 @@ import { BlockRow } from '@/blocks/BlockRow/config'
 import { ImageList } from '@/blocks/ImageList/config'
 import { FaqBlock } from '@/blocks/FaqBlock/config'
 import { VideoBlock } from '@/blocks/VideoBlock/config'
-import { ServicesListBlock } from '@/blocks/ServiceList/config'
 
 import {
   MetaDescriptionField,
@@ -89,7 +88,7 @@ export const Pages: CollectionConfig<'pages'> = {
             {
               name: 'layout',
               type: 'blocks',
-              blocks: [CallToAction, Content, MediaBlock, Archive, FormBlock, TextBlock, TwoColumnBlock, ProductsHome, ServicesBlock, BlogFeed, ContactBlock, AllBlogPosts, TextWithImageBlock, StatsBlock, BlockRow, ImageList, FaqBlock, VideoBlock, ServicesListBlock],
+              blocks: [CallToAction, Content, MediaBlock, Archive, FormBlock, TextBlock, TwoColumnBlock, ProductsHome, ServicesBlock, BlogFeed, ContactBlock, AllBlogPosts, TextWithImageBlock, StatsBlock, BlockRow, ImageList, FaqBlock, VideoBlock],
               required: true,
               admin: {
                 initCollapsed: true,
