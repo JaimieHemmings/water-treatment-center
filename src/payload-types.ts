@@ -123,6 +123,7 @@ export interface Page {
     | ImageList
     | FaqBlock
     | VideoBlock
+    | ServicesListBlock
   )[];
   meta?: {
     title?: string | null;
@@ -931,6 +932,15 @@ export interface VideoBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ServicesListBlock".
+ */
+export interface ServicesListBlock {
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'servicesListBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "products".
  */
 export interface Product {
@@ -1223,6 +1233,7 @@ export interface PagesSelect<T extends boolean = true> {
         imageList?: T | ImageListSelect<T>;
         faqblock?: T | FaqBlockSelect<T>;
         videoBlock?: T | VideoBlockSelect<T>;
+        servicesListBlock?: T | ServicesListBlockSelect<T>;
       };
   meta?:
     | T
@@ -1541,6 +1552,14 @@ export interface VideoBlockSelect<T extends boolean = true> {
   contentleft?: T;
   contentright?: T;
   video?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ServicesListBlock_select".
+ */
+export interface ServicesListBlockSelect<T extends boolean = true> {
   id?: T;
   blockName?: T;
 }
