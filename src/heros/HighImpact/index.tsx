@@ -57,6 +57,8 @@ export const HighImpactHero: React.FC<HeroProps> = ({ slides }) => {
               alt={slide.image.alt}
               width={1920}
               height={1080}
+              priority
+              loading="eager"
               className="absolute inset-0 w-full h-full object-cover min-w-full min-h-full z-0"
             />
             )}

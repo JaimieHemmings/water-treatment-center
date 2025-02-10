@@ -34,7 +34,7 @@ export const CallToActionBlock: React.FC<CallToActionBlockProps> = ({ link, link
               duration: 1,
               ease: 'power2.out',}}
           >
-            <h2 className="bg-selectiveyellow text-white inline-block px-5 py-2 rounded-xl font-semibold mb-2">
+            <h2 className="bg-selectiveyellow text-white inline-block px-5 py-2 rounded-xl font-semibold mb-5">
               Get In Touch
             </h2>
           </AnimateIn>
