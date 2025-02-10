@@ -20,7 +20,7 @@ export const TextBlock: React.FC<TextBlockProps> = ({ content, title }) => {
             ease: "power2.out",
           }}
         >
-          <h2 className="bg-selectiveyellow text-white font-semibold px-5 py-2 inline-block rounded-xl mb-2">
+          <h2 className="bg-selectiveyellow text-white font-semibold px-5 py-2 inline-block rounded-xl mb-5">
             {title}
           </h2>
         </AnimateIn>
