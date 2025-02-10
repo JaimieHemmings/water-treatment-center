@@ -120,7 +120,7 @@ export default async function ServicesPage() {
         <div className="w-full h-full absolute z-1 bg-gradient-to-br from-teal to-azul opacity-70 top-0 left-0" />
         <Bounded>
           <div className="p-4">
-            <h2 className="text-selectiveyellow font-semibold pb-5">
+            <h2 className="bg-selectiveyellow text-white inline-block px-5 py-2 rounded-xl font-semibold mb-5">
               Get In Touch
             </h2>
             <p className="text-2xl md:text-4xl font-semibold text-white">
