@@ -28,6 +28,29 @@ export default async function PostsPage() {
   const { docs } = response
   return (
     <div className="bg-darkblue">
+      <div className="relative w-full min-h-[600px] azul-overlay dots-overlay py-20">
+        <Image
+          src="/glass-of-water.webp"
+          alt="background Image"
+          width={1920}
+          height={1080}
+          className="absolute inset-0 w-full h-full object-cover"
+          priority
+        />
+        <div className="container mx-auto h-full flex flex-col justify-center items-center relative z-10">
+          <h1 className="text-4xl md:text-[72px] text-center md:leading-[80px] text-white">
+            A Filter{' '}
+            <span className="text-selectiveyellow">
+              For Every
+            </span>
+            {' '}Application
+          </h1>
+          <p className="my-5 pt-5 text-lg text-center md:mx-auto md:max-w-[60%] text-white">
+          Pure, clean water shouldn&apos;t be a luxury - it&apos;s essential for your family&apos;s health and well-being. Our wide range of water filtration products are designed to meet the needs of every home and business, no matter the size or application.
+          </p>
+        </div>
+        <div className="absolute pointer-events-none left-0 bottom-0 w-full h-1/2 bg-gradient-to-t from-darkblue to-transparent" />
+      </div>
       <PageClient />
       {docs.length > 0 && (
         <div className="container mx-auto py-20 flex flex-col justify-between gap-10">
@@ -133,6 +156,6 @@ export default async function PostsPage() {
 
 export function generateMetadata(): Metadata {
   return {
-    title: 'News - Latest News and Updates',
+    title: 'Products - Latest News and Updates',
   }
 }

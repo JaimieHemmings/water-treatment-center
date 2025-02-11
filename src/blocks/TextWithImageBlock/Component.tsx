@@ -75,7 +75,6 @@ export const TextWithImageBlock: React.FC<TextWithImageBlockProps> = ({
               height={image?.originalHeight || 650}
               sizes="(max-width: 768px) 100vw, 50vw"
               className={`${cropImage ? 'rounded-full' : ''} transform-gpu animate-img-657`}
-              priority
               loading="lazy"
             />
           </AnimateIn>
