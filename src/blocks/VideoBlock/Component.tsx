@@ -10,7 +10,8 @@ interface VideoBlockProps {
   contentleft: any
   contentright: any
   video: {
-    url: string  }
+    url: string
+  }
 }
 
 const VideoBlock: React.FC<VideoBlockProps> = ({
@@ -18,7 +19,7 @@ const VideoBlock: React.FC<VideoBlockProps> = ({
   subtitle,
   contentleft,
   contentright,
-  video
+  video,
 }) => {
   return (
     <div className="relative overflow-hidden py-[5rem] w-screen">

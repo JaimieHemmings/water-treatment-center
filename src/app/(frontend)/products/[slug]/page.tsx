@@ -4,6 +4,7 @@ import { getPayload } from 'payload'
 import React, { cache } from 'react'
 import PageClient from './page.client'
 import Image from 'next/image'
+import RichText from '@/components/RichText'
 type Args = {
   params: Promise<{
     slug?: string
@@ -41,6 +42,7 @@ export default async function Post({ params: paramsPromise }: Args) {
         <div className="absolute pointer-events-none left-0 bottom-0 w-full h-1/2 bg-gradient-to-t from-darkblue to-transparent" />
       </div>
       <div className="flex flex-col items-center gap-4 pt-8 bg-darkblue">
+        <RichText className="max-w-none mx-auto text-white" data={category.content} enableGutter={false} />
         <div className="container">
           {products.map((product: any, index: any) => (
             <div key={index} className={`flex flex-col gap-10 justify-between ${index % 2 === 0 ? 'md:flex-row-reverse' : 'md:flex-row'}`}>

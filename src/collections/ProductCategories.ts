@@ -22,6 +22,9 @@ import {
   PreviewField,
 } from '@payloadcms/plugin-seo/fields'
 import { slugField } from '@/fields/slug'
+import { VideoBlock } from '@/blocks/VideoBlock/config'
+import { TwoColumnBlock } from '@/blocks/TwoColumnBlock/config'
+import { TextWithImageBlock } from '@/blocks/TextWithImageBlock/config'
 
 export const ProductCategories: CollectionConfig = {
   slug: 'product-categories',
@@ -75,7 +78,13 @@ export const ProductCategories: CollectionConfig = {
                   return [
                     ...rootFeatures,
                     HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
-                    BlocksFeature({ blocks: [Banner, MediaBlock] }),
+                    BlocksFeature({ blocks: [
+                      Banner,
+                      MediaBlock,
+                      VideoBlock,
+                      TwoColumnBlock,
+                      TextWithImageBlock
+                    ] }),
                     FixedToolbarFeature(),
                     InlineToolbarFeature(),
                     HorizontalRuleFeature(),

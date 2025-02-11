@@ -24,6 +24,10 @@ import { BannerBlock } from '@/blocks/Banner/Component'
 import { CallToActionBlock } from '@/blocks/CallToAction/Component'
 import { cn } from '@/utilities/cn'
 
+import VideoBlock from '@/blocks/VideoBlock/Component'
+import { TextWithImageBlock } from '@/blocks/TextWithImageBlock/Component'
+import { TwoColumnBlock } from '@/blocks/TwoColumnBlock/Component'
+
 type NodeTypes =
   | DefaultNodeTypes
   | SerializedBlockNode<typeof CTABlockProps | MediaBlockProps | BannerBlockProps | CodeBlockProps>
@@ -41,6 +45,9 @@ const jsxConverters: JSXConvertersFunction<NodeTypes> = ({ defaultConverters }) 
   ...defaultConverters,
   ...LinkJSXConverter({ internalDocToHref }),
   blocks: {
+    twoColumn: ({ node }) => <TwoColumnBlock {...node.fields} />,
+    textWithImageBlock: ({ node }) => <TextWithImageBlock {...node.fields} />,
+    videoBlock: ({ node }) => <VideoBlock {...node.fields} />,
     banner: ({ node }) => <BannerBlock className="col-start-2 mb-4" {...node.fields} />,
     mediaBlock: ({ node }) => (
       <MediaBlock
