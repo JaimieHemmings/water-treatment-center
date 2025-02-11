@@ -2,7 +2,6 @@ import CustomLink from '@/components/CustomLink'
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
 import React, { cache } from 'react'
-import type { Post } from '@/payload-types'
 import PageClient from './page.client'
 import Image from 'next/image'
 type Args = {
@@ -21,6 +20,7 @@ export default async function Post({ params: paramsPromise }: Args) {
       <div className="relative w-full min-h-[600px] azul-overlay dots-overlay py-20">
         {category.heroImage && (
           <Image
+          // @ts-ignore
             src={category.heroImage.url}
             alt="background Image"
             width={1920}
