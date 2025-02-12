@@ -59,6 +59,7 @@ export default async function PostsPage() {
 
 export function generateMetadata(): Metadata {
   return {
-    title: 'News - Latest News and Updates',
+    title: 'News - Latest News and Updates | The water Treatment Centre',
+    description: 'Stay up to date with the latest news and updates from The Water Treatment Centre',
   }
 }

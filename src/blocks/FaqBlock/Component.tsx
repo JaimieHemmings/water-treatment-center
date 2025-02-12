@@ -3,6 +3,7 @@ import SectionTitle from "@/components/SectionTitle";
 import FAQBlockClient from "./client";
 import Image from "next/image";
 import { CustomLink } from "@/components/CustomLink";
+import { link } from "fs";
 
 interface FaqBlockProps {
   title: string;
@@ -13,7 +14,9 @@ interface FaqBlockProps {
   sideTitle: string;
   sideContent: string;
   linkLabel: string;
-  linkURL: string;
+  linkURL: {
+    slug: string;    
+  };
 }
 
 export const FaqBlock: React.FC<FaqBlockProps> = ({
@@ -24,6 +27,7 @@ export const FaqBlock: React.FC<FaqBlockProps> = ({
   linkLabel,
   linkURL,
 }) => {
+  console.log(linkURL);
   return (
     <section className="py-[5rem] bg-darkblue text-white relative">
       <Image
@@ -53,7 +57,7 @@ export const FaqBlock: React.FC<FaqBlockProps> = ({
             <p className="text-white pb-5">
               {sideContent}
             </p>
-            <CustomLink theme="light" label={linkLabel} link={linkURL} />
+            <CustomLink theme="light" label={linkLabel} link={linkURL.slug} />
           </div>
         </div>
       </div>
