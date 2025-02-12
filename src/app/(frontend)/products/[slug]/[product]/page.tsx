@@ -66,7 +66,7 @@ export default async function Product({ params }: Props) {
                       <Image
                         src={productData.productImage.url}
                         alt={productData.productImage.alt || 'No alt text available'}
-                        className="absolute inset-0 w-full h-full object-cover"
+                        className="inset-0 w-full object-cover"
                         width={productData.productImage.width}
                         height={productData.productImage.height}
                         priority
