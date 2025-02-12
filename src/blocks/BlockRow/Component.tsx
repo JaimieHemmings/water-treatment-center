@@ -6,6 +6,7 @@ import { LuGlassWater } from "react-icons/lu";
 import { GiWaterBottle, GiWaterGallon } from "react-icons/gi";
 import { AnimateIn } from '@/components/Animations/AnimateIn';
 import CustomLink from '@/components/CustomLink';
+import Image from 'next/image';
 
 interface BlockRowProps {
   shiftUp: boolean;
@@ -45,8 +46,23 @@ export const BlockRow: React.FC<BlockRowProps> = ({ shiftUp, items }) => {
             flex-col
             md:basis-1/3
             justify-between
-            text-white"
+            text-white
+            relative"
           >
+            <Image
+              src="/dots.svg"
+              alt="Decorative dots"
+              className="absolute bottom-4 right-0 z-10 scale-x-[-1] w-20 h-29"
+              height={150}
+              width={100}
+            />
+            <Image
+              src="/dots.svg"
+              alt="Decorative dots"
+              className="absolute top-4 left-0 z-10 w-20 h-29"
+              height={150}
+              width={100}
+            />
             <AnimateIn
               animation={{
                 y: 40,
