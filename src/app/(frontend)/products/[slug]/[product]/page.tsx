@@ -43,7 +43,7 @@ export default async function Product({ params }: Props) {
         <div className="absolute pointer-events-none left-0 bottom-0 w-full h-1/2 bg-gradient-to-t from-darkblue to-transparent" />
       </div>
       <PageClient />
-      <div className="flex flex-col items-center gap-4 pt-8 bg-darkblue py-[5rem]">
+      <div className="flex flex-col items-center gap-4 py-[5rem]">
         <div className="container">
           <div className="px-[2rem]">
             <AnimateIn animation={{
