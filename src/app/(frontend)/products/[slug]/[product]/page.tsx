@@ -4,6 +4,7 @@ import React, { cache } from 'react'
 import PageClient from './page.client'
 import Image from 'next/image'
 import RichText from '@/components/RichText'
+import { generateMeta } from '@/utilities/generateMeta'
 
 type Props = {
   params: Promise<{
@@ -62,3 +63,9 @@ const queryProductBySlug = cache(async ({ slug }: { slug: string }) => {
   })
   return result.docs
 })
+
+export const generateMetadata = async ({ params }: Props) => {
+  const { product = '' } = await params
+  const [productData]: any[] = await queryProductBySlug({ slug: product })
+  return generateMeta({ doc: productData })
+}

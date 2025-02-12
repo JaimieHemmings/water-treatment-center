@@ -4,6 +4,7 @@ import { getPayload } from 'payload'
 import React, { cache } from 'react'
 import PageClient from './page.client'
 import Image from 'next/image'
+import { generateMeta } from '@/utilities/generateMeta'
 import RichText from '@/components/RichText'
 type Args = {
   params: Promise<{
@@ -98,3 +99,9 @@ const queryPostBySlug = cache(async ({ slug }: { slug: string }) => {
   })
   return result.docs || []
 })
+
+export const generateMetadata = async ({ params: paramsPromise }: Args) => {
+  const { slug = '' } = await paramsPromise
+  const [category] = await queryCategoryBySlug({ slug })
+  return generateMeta({ doc: category })
+}
