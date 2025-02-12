@@ -1,8 +1,31 @@
 import type { CollectionConfig } from 'payload'
 
+import {
+  BlocksFeature,
+  FixedToolbarFeature,
+  HeadingFeature,
+  HorizontalRuleFeature,
+  InlineToolbarFeature,
+  lexicalEditor,
+} from '@payloadcms/richtext-lexical'
+
 import { authenticated } from '../../access/authenticated'
 import { anyone } from '../../access/anyone'
 import { slugField } from '@/fields/slug'
+
+import { Banner } from '@/blocks/Banner/config'
+import { MediaBlock } from '@/blocks/MediaBlock/config'
+
+import {
+  MetaDescriptionField,
+  MetaImageField,
+  MetaTitleField,
+  OverviewField,
+  PreviewField,
+} from '@payloadcms/plugin-seo/fields'
+import { VideoBlock } from '@/blocks/VideoBlock/config'
+import { TwoColumnBlock } from '@/blocks/TwoColumnBlock/config'
+import { TextWithImageBlock } from '@/blocks/TextWithImageBlock/config'
 
 export const Products: CollectionConfig = {
   slug: 'products',
@@ -29,109 +52,98 @@ export const Products: CollectionConfig = {
     },
     {
       name: 'description',
-      type: 'text',
-      required: true,
-    },
-    {
-      name: 'excerpt',
       type: 'textarea',
       required: true,
     },
     {
-      name: 'featuredImage',
-      type: 'upload',
-      relationTo: 'media',
-      required: true,
-    },
-    {
-      name: 'images',
-      type: 'array',
-      required: true,
-      minRows: 1,
-      maxRows: 8,
-      labels: {
-        singular: 'Image',
-        plural: 'Images',
-      },
-      fields: [
+      type: 'tabs',
+      tabs: [
         {
-          name: 'image',
-          type: 'upload',
-          relationTo: 'media',
-          required: true,
+          name: 'heroImage',
+          label: 'Hero Image',
+          fields: [
+            {
+              name: 'heroImage',
+              label: 'Hero Image',
+              type: 'upload',
+              relationTo: 'media',
+              required: true,
+            },
+            {
+              name: 'excerpt',
+              type: 'text',
+              required: true,
+            },
+          ],
         },
         {
-          name: 'altText',
-          type: 'text',
-          required: true,
-        }
-      ]
-    },
-    {
-      name: 'status',
-      type: 'select',
-      required: true,
-      defaultValue: 'draft',
-      options: [
-        {
-          label: 'Draft',
-          value: 'draft',
+          fields: [
+            {
+              name: 'content',
+              type: 'richText',
+              editor: lexicalEditor({
+                features: ({ rootFeatures }) => {
+                  return [
+                    ...rootFeatures,
+                    HeadingFeature({ enabledHeadingSizes: ['h2', 'h3', 'h4'] }),
+                    BlocksFeature({ blocks: [
+                      Banner,
+                      MediaBlock,
+                      VideoBlock,
+                      TwoColumnBlock,
+                      TextWithImageBlock
+                    ] }),
+                    FixedToolbarFeature(),
+                    InlineToolbarFeature(),
+                    HorizontalRuleFeature(),
+                  ]
+                },
+              }),
+              label: false,
+              required: true,
+            },
+            {
+              name: 'category',
+              type: 'relationship',
+              relationTo: 'product-categories',
+              required: true,
+            },
+            {
+              name: 'sku',
+              type: 'text',
+              unique: true,
+            },
+          ],
+          label: 'Content',
         },
         {
-          label: 'Published',
-          value: 'published',
+          name: 'meta',
+          label: 'SEO',
+          fields: [
+            OverviewField({
+              titlePath: 'meta.title',
+              descriptionPath: 'meta.description',
+              imagePath: 'meta.image',
+            }),
+            MetaTitleField({
+              hasGenerateFn: true,
+            }),
+            MetaImageField({
+              relationTo: 'media',
+            }),
+
+            MetaDescriptionField({}),
+            PreviewField({
+              // if the `generateUrl` function is configured
+              hasGenerateFn: true,
+
+              // field paths to match the target field for data
+              titlePath: 'meta.title',
+              descriptionPath: 'meta.description',
+            }),
+          ],
         },
-        {
-          label: 'Archived',
-          value: 'archived',
-        }
-      ]
-    },
-    {
-      name: 'category',
-      type: 'relationship',
-      relationTo: 'product-categories',
-      required: true,
-    },
-    {
-      name: 'sku',
-      type: 'text',
-      required: true,
-      unique: true,
-    },
-    {
-      name: 'specifications',
-      type: 'array',
-      fields: [
-        {
-          name: 'name',
-          type: 'text',
-          required: true,
-        },
-        {
-          name: 'value',
-          type: 'text',
-          required: true,
-        }
-      ]
-    },
-    {
-      name: 'seo',
-      type: 'group',
-      fields: [
-        {
-          name: 'title',
-          type: 'text',
-        },
-        {
-          name: 'description',
-          type: 'textarea',
-        },
-        {
-          name: 'keywords',
-          type: 'text',
-        }
-      ]
+      ],
     },
     ...slugField(),
     {

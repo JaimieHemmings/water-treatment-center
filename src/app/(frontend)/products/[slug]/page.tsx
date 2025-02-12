@@ -49,8 +49,8 @@ export default async function Post({ params: paramsPromise }: Args) {
               <div className="basis-1/2">
                 <Image
                   className='inset-0 w-full h-full object-cover rounded-lg'
-                  src={product.featuredImage.url}
-                  alt={product.featuredImage.alt || 'No alt text available'}
+                  src={product.heroImage.heroImage.url}
+                  alt={product.heroImage.heroImage.alt || 'No alt text available'}
                   width={500}
                   height={500}
                 />

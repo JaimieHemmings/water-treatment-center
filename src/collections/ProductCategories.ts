@@ -67,8 +67,10 @@ export const ProductCategories: CollectionConfig = {
           fields: [
             {
               name: 'heroImage',
+              label: 'Hero Image',
               type: 'upload',
               relationTo: 'media',
+              required: true,
             },
             {
               name: 'content',
@@ -77,7 +79,7 @@ export const ProductCategories: CollectionConfig = {
                 features: ({ rootFeatures }) => {
                   return [
                     ...rootFeatures,
-                    HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
+                    HeadingFeature({ enabledHeadingSizes: ['h2', 'h3', 'h4'] }),
                     BlocksFeature({ blocks: [
                       Banner,
                       MediaBlock,

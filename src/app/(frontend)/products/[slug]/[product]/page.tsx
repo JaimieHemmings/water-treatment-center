@@ -3,6 +3,7 @@ import { getPayload } from 'payload'
 import React, { cache } from 'react'
 import PageClient from './page.client'
 import Image from 'next/image'
+import RichText from '@/components/RichText'
 
 type Props = {
   params: Promise<{
@@ -18,8 +19,8 @@ export default async function Product({ params }: Props) {
     <article className="bg-darkblue relative z-0">
       <div className="relative w-full min-h-[600px] azul-overlay dots-overlay py-20">
         <Image
-          src={productData.featuredImage.url}
-          alt={productData.featuredImage.alt || 'No alt text available'}
+          src={productData.heroImage.heroImage.url}
+          alt={productData.heroImage.heroImage.alt || 'No alt text available'}
           width={1920}
           height={1080}
           className="absolute inset-0 w-full h-full object-cover"
@@ -37,27 +38,11 @@ export default async function Product({ params }: Props) {
       </div>
       <PageClient />
       <div className="flex flex-col items-center gap-4 pt-8 bg-darkblue">
-        <div className="container">
-            <div className={`flex flex-col gap-10 justify-between`}>
-              <div className="basis-1/2">
-                <Image
-                  className='inset-0 w-full h-full object-cover rounded-lg'
-                  src={productData.featuredImage.url}
-                  alt={productData.featuredImage.alt || 'No alt text available'}
-                  width={500}
-                  height={500}
-                />
-              </div>
-              <div className="basis-1/2">
-                <h3 className="text-2xl md:text-4xl font-semibold text-selectiveyellow">
-                  {productData.title}
-                </h3>
-                <p className="text-white">
-                  {productData.description}
-                </p>
-              </div>
-            </div>
-        </div>
+        <RichText
+          className="text-white"
+          data={productData.content}
+          enableGutter={false}
+        />
       </div>
     </article>
   )

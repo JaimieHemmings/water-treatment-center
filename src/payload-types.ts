@@ -921,27 +921,34 @@ export interface Product {
   id: number;
   title: string;
   description: string;
-  excerpt: string;
-  featuredImage: number | Media;
-  images: {
-    image: number | Media;
-    altText: string;
-    id?: string | null;
-  }[];
-  status: 'draft' | 'published' | 'archived';
+  heroImage: {
+    heroImage: number | Media;
+    excerpt: string;
+  };
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
   category: number | ProductCategory;
-  sku: string;
-  specifications?:
-    | {
-        name: string;
-        value: string;
-        id?: string | null;
-      }[]
-    | null;
-  seo?: {
+  sku?: string | null;
+  meta?: {
     title?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (number | null) | Media;
     description?: string | null;
-    keywords?: string | null;
   };
   slug?: string | null;
   slugLock?: boolean | null;
@@ -956,7 +963,7 @@ export interface ProductCategory {
   id: number;
   title: string;
   excerpt: string;
-  heroImage?: (number | null) | Media;
+  heroImage: number | Media;
   content: {
     root: {
       type: string;
@@ -1703,31 +1710,21 @@ export interface UsersSelect<T extends boolean = true> {
 export interface ProductsSelect<T extends boolean = true> {
   title?: T;
   description?: T;
-  excerpt?: T;
-  featuredImage?: T;
-  images?:
+  heroImage?:
     | T
     | {
-        image?: T;
-        altText?: T;
-        id?: T;
+        heroImage?: T;
+        excerpt?: T;
       };
-  status?: T;
+  content?: T;
   category?: T;
   sku?: T;
-  specifications?:
-    | T
-    | {
-        name?: T;
-        value?: T;
-        id?: T;
-      };
-  seo?:
+  meta?:
     | T
     | {
         title?: T;
+        image?: T;
         description?: T;
-        keywords?: T;
       };
   slug?: T;
   slugLock?: T;
