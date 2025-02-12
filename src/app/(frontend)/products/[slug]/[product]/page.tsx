@@ -6,6 +6,8 @@ import Image from 'next/image'
 import RichText from '@/components/RichText'
 import { generateMeta } from '@/utilities/generateMeta'
 import AnimateIn from '@/components/Animations/AnimateIn'
+import Bounded from '@/utilities/Bounded'
+import CustomLink from '@/components/CustomLink'
 
 type Props = {
   params: Promise<{
@@ -18,6 +20,7 @@ export default async function Product({ params }: Props) {
   const { product = '' } = await params
   const [productData]: any[] = await queryProductBySlug({ slug: product })
   return (
+    <>
     <article className="bg-darkblue relative z-0">
       <div className="relative w-full min-h-[600px] azul-overlay dots-overlay py-20">
         <Image
@@ -124,6 +127,57 @@ export default async function Product({ params }: Props) {
         </div>
       </div>
     </article>
+    <section className="w-full bg-jet py-20 relative overflow-hidden">
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover min-w-full min-h-full"
+      >
+        <source src="/water-drop.mp4" type="video/mp4" />
+      </video>
+      <div className="w-full h-full absolute z-1 bg-gradient-to-br from-teal to-azul opacity-70 top-0 left-0" />
+      <Bounded>
+        <div className="p-4">
+          <AnimateIn
+            animation={{
+              y: 60,
+              opacity: 0,
+              duration: 1,
+              ease: 'power2.out',}}
+          >
+            <h2 className="bg-selectiveyellow text-white inline-block px-5 py-2 rounded-xl font-semibold mb-5">
+              Get In Touch
+            </h2>
+          </AnimateIn>
+          <AnimateIn
+            animation={{
+              y: 60,
+              opacity: 0,
+              duration: 1,
+              ease: 'power2.out',}}
+          >
+            <div>
+              <p className="text-2xl md:text-5xl font-semibold text-white">
+              Get in touch to find out more about our products and services.
+              </p>
+            </div>
+          </AnimateIn>
+          <div className="flex justify-end space-x-4">
+            <AnimateIn
+              animation={{
+                opacity: 0,
+                duration: 1,
+                ease: 'power2.out',}}
+            >
+              <CustomLink theme="light" label="Get In Touch" link="/contact" />
+            </AnimateIn>
+          </div>
+        </div>
+      </Bounded>
+    </section>
+    </>
   )
 }
 
