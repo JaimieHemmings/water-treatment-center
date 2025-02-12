@@ -54,8 +54,8 @@ export default async function Post({ params: paramsPromise }: Args) {
                 >
                   <Image
                     className='rounded-lg'
-                    src={product.heroImage.heroImage.url}
-                    alt={product.heroImage.heroImage.alt || 'No alt text available'}
+                    src={product.productImage.url}
+                    alt={product.productImage.alt || 'No alt text available'}
                     width={500}
                     height={500}
                   />
