@@ -65,7 +65,7 @@ export default async function Post({ params: paramsPromise }: Args) {
                 <CustomLink
                   theme="white"
                   label="Read More"
-                  link={`/products/${product.category.slug}/${product.slug}`}
+                  link={`/products/${category.slug}/${product.slug}`}
                 />
               </div>
             </div>
