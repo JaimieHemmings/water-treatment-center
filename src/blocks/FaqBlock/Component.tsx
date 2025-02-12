@@ -3,7 +3,6 @@ import SectionTitle from "@/components/SectionTitle";
 import FAQBlockClient from "./client";
 import Image from "next/image";
 import { CustomLink } from "@/components/CustomLink";
-import { link } from "fs";
 
 interface FaqBlockProps {
   title: string;

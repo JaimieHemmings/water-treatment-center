@@ -67,7 +67,7 @@ export const TwoColumnBlock: React.FC<TwoColumnBlockProps> = ({ contentleft, con
               ease: "power2.out",
             }}
           >
-            {contentright && <RichText data={contentright} enableGutter={false} className="max-w-none prose md:prose-md mb-5 text-md md:xl mr-0 animate-text-90b0 [&_strong]:font-bold" />}
+            {contentright && <RichText data={contentright} enableGutter={false} className="max-w-none prose md:prose-md mb-5 text-md md:xl mr-0 animate-text-90b0 [&_strong]:font-bold [&_strong]:text-white" />}
           </AnimateIn>
         </div>
       </div>
