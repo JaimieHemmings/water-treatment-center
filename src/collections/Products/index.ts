@@ -1,20 +1,7 @@
 import type { CollectionConfig } from 'payload'
-
-import {
-  BlocksFeature,
-  FixedToolbarFeature,
-  HeadingFeature,
-  HorizontalRuleFeature,
-  InlineToolbarFeature,
-  lexicalEditor,
-} from '@payloadcms/richtext-lexical'
-
 import { authenticated } from '../../access/authenticated'
 import { anyone } from '../../access/anyone'
 import { slugField } from '@/fields/slug'
-
-import { Banner } from '@/blocks/Banner/config'
-import { MediaBlock } from '@/blocks/MediaBlock/config'
 
 import {
   MetaDescriptionField,
@@ -23,9 +10,6 @@ import {
   OverviewField,
   PreviewField,
 } from '@payloadcms/plugin-seo/fields'
-import { VideoBlock } from '@/blocks/VideoBlock/config'
-import { TwoColumnBlock } from '@/blocks/TwoColumnBlock/config'
-import { TextWithImageBlock } from '@/blocks/TextWithImageBlock/config'
 
 export const Products: CollectionConfig = {
   slug: 'products',
@@ -51,8 +35,9 @@ export const Products: CollectionConfig = {
       unique: true,
     },
     {
-      name: 'description',
+      name: 'excerpt',
       type: 'textarea',
+      label: 'Excerpt',
       required: true,
     },
     {
@@ -79,34 +64,63 @@ export const Products: CollectionConfig = {
         {
           fields: [
             {
-              name: 'content',
+              name: 'productImage',
+              label: 'Product Image',
+              type: 'upload',
+              relationTo: 'media',
+            },
+            {              
+              name: 'intro',
               type: 'richText',
-              editor: lexicalEditor({
-                features: ({ rootFeatures }) => {
-                  return [
-                    ...rootFeatures,
-                    HeadingFeature({ enabledHeadingSizes: ['h2', 'h3', 'h4'] }),
-                    BlocksFeature({ blocks: [
-                      Banner,
-                      MediaBlock,
-                      VideoBlock,
-                      TwoColumnBlock,
-                      TextWithImageBlock
-                    ] }),
-                    FixedToolbarFeature(),
-                    InlineToolbarFeature(),
-                    HorizontalRuleFeature(),
-                  ]
-                },
-              }),
-              label: false,
               required: true,
+              label: 'Intro Text', 
+            },
+            {
+              name: 'mainBody',
+              type: 'richText',
+              required: true,
+              label: 'Main Body',
+            },
+            {
+              name: 'description',
+              type: 'richText',
+              required: true,
+              label: 'Description',
+            },
+            {
+              name: 'technicalSpecs',
+              type: 'array',
+              label: 'Technical Specs',
+              fields: [
+                {
+                  name: 'title',
+                  type: 'text',
+                  required: true,
+                },
+                {
+                  name: 'value',
+                  type: 'text',
+                  required: true,
+                },
+              ],
+            },
+            {
+              name: 'warranties',
+              type: 'textarea',
+              label: 'Warranties',
+              required: false,
             },
             {
               name: 'category',
               type: 'relationship',
               relationTo: 'product-categories',
               required: true,
+            },
+            {
+              name: 'serviceText',
+              type: 'textarea',
+              label: 'Service Information',
+              required: false,              
             },
             {
               name: 'sku',

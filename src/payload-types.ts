@@ -920,12 +920,13 @@ export interface VideoBlock {
 export interface Product {
   id: number;
   title: string;
-  description: string;
+  excerpt: string;
   heroImage: {
     heroImage: number | Media;
     excerpt: string;
   };
-  content: {
+  productImage?: (number | null) | Media;
+  intro: {
     root: {
       type: string;
       children: {
@@ -940,7 +941,46 @@ export interface Product {
     };
     [k: string]: unknown;
   };
+  mainBody: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  description: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  technicalSpecs?:
+    | {
+        title: string;
+        value: string;
+        id?: string | null;
+      }[]
+    | null;
+  warranties?: string | null;
   category: number | ProductCategory;
+  serviceText?: string | null;
   sku?: string | null;
   meta?: {
     title?: string | null;
@@ -1709,15 +1749,27 @@ export interface UsersSelect<T extends boolean = true> {
  */
 export interface ProductsSelect<T extends boolean = true> {
   title?: T;
-  description?: T;
+  excerpt?: T;
   heroImage?:
     | T
     | {
         heroImage?: T;
         excerpt?: T;
       };
-  content?: T;
+  productImage?: T;
+  intro?: T;
+  mainBody?: T;
+  description?: T;
+  technicalSpecs?:
+    | T
+    | {
+        title?: T;
+        value?: T;
+        id?: T;
+      };
+  warranties?: T;
   category?: T;
+  serviceText?: T;
   sku?: T;
   meta?:
     | T

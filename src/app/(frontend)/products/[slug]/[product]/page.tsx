@@ -32,18 +32,56 @@ export default async function Product({ params }: Props) {
             {productData.title}
           </h1>
           <p className="my-5 pt-5 text-lg text-center md:mx-auto md:max-w-[60%] text-white">
-          {productData.description}
+           {productData.excerpt}
           </p>
         </div>
+        <div className="absolute pointer-events-none left-0 bottom-0 w-full h-full bg-jet opacity-30" />
         <div className="absolute pointer-events-none left-0 bottom-0 w-full h-1/2 bg-gradient-to-t from-darkblue to-transparent" />
       </div>
       <PageClient />
       <div className="flex flex-col items-center gap-4 pt-8 bg-darkblue">
-        <RichText
-          className="text-white"
-          data={productData.content}
-          enableGutter={false}
+        <div className="container">
+        <h2 className="text-2xl font-semibold text-white">
+          {productData.title}
+        </h2>
+        {productData.productImage && (
+          <Image
+            src={productData.productImage.url}
+            alt={productData.productImage.alt || 'No alt text available'}
+            width={productData.productImage.width}
+            height={productData.productImage.height}
+          />
+        )}
+        <RichText 
+          data={productData.intro} 
+          className="prose prose-lg prose-invert max-w-none"
         />
+        <RichText 
+          data={productData.mainBody} 
+          className="prose prose-lg prose-invert max-w-none"
+        />
+        <RichText 
+          data={productData.description} 
+          className="prose prose-lg prose-invert max-w-none"
+        />
+        {productData.technicalSpecs && (
+          <ul className="list-none list-inside text-white mt-4">
+            {productData.technicalSpecs.map((technicalSpec: any, index: number) => (
+              <li key={index} className="text-base border-b border-selectiveyellow py-2">
+                <span className="font-semibold">
+                  {technicalSpec.title} - {technicalSpec.value}
+                </span>
+              </li>
+            ))}
+          </ul>
+        )}
+        <p>
+          {productData.warranties}
+        </p>
+        <p>
+          {productData.serviceText}
+        </p>
+        </div>
       </div>
     </article>
   )

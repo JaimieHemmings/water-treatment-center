@@ -26,7 +26,6 @@ export const FaqBlock: React.FC<FaqBlockProps> = ({
   linkLabel,
   linkURL,
 }) => {
-  console.log(linkURL);
   return (
     <section className="py-[5rem] bg-darkblue text-white relative">
       <Image
