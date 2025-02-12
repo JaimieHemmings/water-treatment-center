@@ -51,7 +51,7 @@ export default async function Product({ params }: Props) {
               opacity: 0,
               duration: 0.8,
             }}>
-              <h2 className="text-2xl md:text-4xl font-semibold text-white pb-5 border-b-2 border-selectiveyellow">
+              <h2 className="text-2xl md:text-4xl font-semibold text-white pb-5 border-b-2 border-selectiveyellow mb-5">
                 {productData.title}
               </h2>
             </AnimateIn>
