@@ -54,7 +54,7 @@ export default async function Product({ params }: Props) {
               />
             </div>
             <div className="md:basis-1/2">
-              <h2 className="text-2xl font-semibold text-white">
+              <h2 className="text-2xl md:text-4xl font-semibold text-white pb-5">
                 {productData.title}
               </h2>
               {productData.productImage && (
