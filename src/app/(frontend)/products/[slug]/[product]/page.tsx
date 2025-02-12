@@ -47,21 +47,23 @@ export default async function Product({ params }: Props) {
         <div className="container">
           <div className="px-[2rem]">
             <AnimateIn animation={{
-              y: -50,
+              y: 50,
               opacity: 0,
+              duration: 0.8,
             }}>
-              <h2 className="text-2xl md:text-4xl font-semibold text-white pb-5">
+              <h2 className="text-2xl md:text-4xl font-semibold text-white pb-5 border-b-2 border-selectiveyellow">
                 {productData.title}
               </h2>
             </AnimateIn>
           </div> 
-          <div className="flex flex-col md:flex-row gap-4 px-[2rem]">
+          <div className="flex flex-col md:flex-row gap-4 px-[1rem]">
             <div className="md:basis-1/2">
                 <AnimateIn
                   animation={{
-                    y: -50,
+                    y: 50,
                     opacity: 0,
                     rotate: -5,
+                    duration: 0.8,
                   }}>
                     {productData.productImage && (
                       <Image
@@ -76,20 +78,38 @@ export default async function Product({ params }: Props) {
                   </AnimateIn>
             </div>
             <div className="md:basis-1/2 flex flex-col gap-4">
-              <RichText 
-                data={productData.intro} 
-                className="prose prose-lg prose-invert max-w-none"
-              />
-              <RichText 
-                data={productData.mainBody} 
-                className="prose prose-lg prose-invert max-w-none"
-              />
+              <AnimateIn animation={{
+                y: 50,
+                opacity: 0,
+                duration: 0.8,
+              }}>
+                <RichText 
+                  data={productData.intro} 
+                  className="prose prose-lg prose-invert max-w-none p-0"
+                />
+              </AnimateIn>
+              <AnimateIn animation={{
+                y: 50,
+                opacity: 0,
+                duration: 0.8,
+              }}>
+                <RichText 
+                  data={productData.mainBody} 
+                  className="prose prose-lg prose-invert max-w-none p-0"
+                />
+              </AnimateIn>
             </div>
           </div>
-          <RichText 
-            data={productData.description} 
-            className="prose prose-lg prose-invert max-w-none py-5"
-          />
+          <AnimateIn animation={{
+            y: 50,
+            opacity: 0,
+            duration: 0.8,
+          }}>
+            <RichText 
+              data={productData.description} 
+              className="prose prose-lg prose-invert max-w-none py-5"
+            />
+          </AnimateIn>
           <div className="flex md:flex-row flex-col gap-4">
             <div className="basis-1/2 py-5 px-5">
               <h2 className="text-2xl font-semibold text-white pb-5">
