@@ -5,6 +5,7 @@ import PageClient from './page.client'
 import Image from 'next/image'
 import RichText from '@/components/RichText'
 import { generateMeta } from '@/utilities/generateMeta'
+import AnimateIn from '@/components/Animations/AnimateIn'
 
 type Props = {
   params: Promise<{
@@ -41,8 +42,33 @@ export default async function Product({ params }: Props) {
       <PageClient />
       <div className="flex flex-col items-center gap-4 pt-8 bg-darkblue pb-[5rem]">
         <div className="container">
-
-          <div className="flex flex-col md:flex-row-reverse gap-4">
+          <div className="flex flex-col gap-4">
+            <div className="md:basis-1/2">
+            <AnimateIn
+              animation={{
+                y: -50,
+                opacity: 0,
+              }}>
+                <h2 className="text-2xl md:text-4xl font-semibold text-white pb-5">
+                  {productData.title}
+                </h2>
+              </AnimateIn>
+            <AnimateIn
+              animation={{
+                y: -50,
+                opacity: 0,
+                rotate: -5,
+              }}>
+                {productData.productImage && (
+                  <Image
+                    src={productData.productImage.url}
+                    alt={productData.productImage.alt || 'No alt text available'}
+                    width={productData.productImage.width}
+                    height={productData.productImage.height}
+                  />
+                )}
+              </AnimateIn>
+            </div>
             <div className="md:basis-1/2 flex flex-col gap-4">
               <RichText 
                 data={productData.intro} 
@@ -52,19 +78,6 @@ export default async function Product({ params }: Props) {
                 data={productData.mainBody} 
                 className="prose prose-lg prose-invert max-w-none"
               />
-            </div>
-            <div className="md:basis-1/2">
-              <h2 className="text-2xl md:text-4xl font-semibold text-white pb-5">
-                {productData.title}
-              </h2>
-              {productData.productImage && (
-                <Image
-                  src={productData.productImage.url}
-                  alt={productData.productImage.alt || 'No alt text available'}
-                  width={productData.productImage.width}
-                  height={productData.productImage.height}
-                />
-              )}
             </div>
           </div>
           <RichText 
