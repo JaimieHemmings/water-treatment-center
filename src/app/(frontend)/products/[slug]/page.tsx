@@ -1,4 +1,4 @@
-import CustomLink from '@/components/CustomLink'
+import Link from 'next/link'
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
 import React, { cache } from 'react'
@@ -44,32 +44,27 @@ export default async function Post({ params: paramsPromise }: Args) {
       <div className="flex flex-col items-center gap-4 pt-8 bg-darkblue">
         <RichText className="text-white" data={category.content} enableGutter={false} />
         <div className="container">
-          {products.map((product: any, index: any) => (
-            <div key={index} className={`flex flex-col gap-10 justify-between ${index % 2 === 0 ? 'md:flex-row-reverse' : 'md:flex-row'}`}>
-              <div className="basis-1/2">
-                <Image
-                  className='inset-0 w-full h-full object-cover rounded-lg'
-                  src={product.heroImage.heroImage.url}
-                  alt={product.heroImage.heroImage.alt || 'No alt text available'}
-                  width={500}
-                  height={500}
-                />
+          <div className="flex flex-wrap gap-4">
+            {products.map((product: any, index: any) => (
+              <div key={index} className="w-full sm:w-[calc(50%-8px)] lg:w-[calc(20%-16px)]">
+                <Link
+                  className="flex flex-col gap-4"
+                  href={`/products/${category.slug}/${product.slug}`}
+                >
+                  <Image
+                    className='rounded-lg'
+                    src={product.heroImage.heroImage.url}
+                    alt={product.heroImage.heroImage.alt || 'No alt text available'}
+                    width={500}
+                    height={500}
+                  />
+                  <h3 className="text-2xl font-semibold text-white">
+                    {product.title}
+                  </h3>
+                </Link>
               </div>
-              <div className="basis-1/2">
-                <h3 className="text-2xl md:text-4xl font-semibold text-selectiveyellow">
-                  {product.title}
-                </h3>
-                <p className="text-white">
-                  {product.description}
-                </p>
-                <CustomLink
-                  theme="white"
-                  label="Read More"
-                  link={`/products/${category.slug}/${product.slug}`}
-                />
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </article>
