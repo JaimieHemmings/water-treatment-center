@@ -131,6 +131,7 @@ export const Products: CollectionConfig = {
               name: 'brochure',
               type: 'upload',
               relationTo: 'media',
+              label: 'brochure',
               required: false,
             }
           ],

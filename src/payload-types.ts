@@ -1009,6 +1009,7 @@ export interface Product {
   category: number | ProductCategory;
   serviceText?: string | null;
   sku?: string | null;
+  brochure?: (number | null) | Media;
   meta?: {
     title?: string | null;
     /**
@@ -1810,6 +1811,7 @@ export interface ProductsSelect<T extends boolean = true> {
   category?: T;
   serviceText?: T;
   sku?: T;
+  brochure?: T;
   meta?:
     | T
     | {

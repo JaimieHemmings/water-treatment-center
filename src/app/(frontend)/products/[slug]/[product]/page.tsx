@@ -8,6 +8,7 @@ import { generateMeta } from '@/utilities/generateMeta'
 import AnimateIn from '@/components/Animations/AnimateIn'
 import Bounded from '@/utilities/Bounded'
 import CustomLink from '@/components/CustomLink'
+import Link from 'next/link'
 
 type Props = {
   params: Promise<{
@@ -76,6 +77,13 @@ export default async function Product({ params }: Props) {
                       />
                     )}
                   </AnimateIn>
+                  <div className="py-5">
+                    {productData.brochure && (
+                      <Link href={productData.brochure.url} target='_blank' className="ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 underline-offset-4 inline-flex items-center justify-center whitespace-nowrap font-medium transition-colors disabled:pointer-events-none disabled:opacity-50 h-11 px-8 mt-3 border-2 text-lg relative z-30 no-underline hover:no-underline      text-white border-white hover:bg-white hover:text-selectiveyellow">
+                        Download the Brochure
+                      </Link>
+                    )}
+                  </div>
             </div>
             <div className="md:basis-1/2 flex flex-col gap-4">
               <AnimateIn animation={{
