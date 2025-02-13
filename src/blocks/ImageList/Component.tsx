@@ -47,7 +47,7 @@ export const ImageList: React.FC<ImageListProps> = ({ images }) => {
             <div className="absolute inset-0 z-[1] bg-darkblue/80" />
            
             {/* Content */}
-            <div className="relative z-[2] p-8 h-full flex flex-col justify-center">
+            <div className="relative z-[2] p-8 h-full flex flex-col justify-center container">
               <AnimateIn
                 animation={{
                   y: 60,
