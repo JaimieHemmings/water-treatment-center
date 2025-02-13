@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
+import CustomLink from '../CustomLink';
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
@@ -69,18 +70,17 @@ export const CollectionArchive: React.FC<CollectionArchiveProps> = ({ posts }) =
               data-post={index}
             >
               <div className="basis-1/3" data-content>
-                <h3 className="text-2xl md:text-4xl font-semibold text-selectiveyellow">
+                <h3 className="text-2xl md:text-4xl font-semibold text-white">
                   {post.title}
                 </h3>
                 <p className="py-5 text-white">
                   {post.meta?.description || 'No excerpt available'}
                 </p>
-                <Link
-                  href={`/news/${post.slug}`}
-                  className="block text-center items-center justify-center whitespace-nowrap font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 py-3 mt-3 border bg-selectiveyellow text-jet hover:bg-jet hover:text-selectiveyellow"
-                >
-                  Read More
-                </Link>
+                <CustomLink
+                  link={`/news/${post.slug}`}
+                  label="Read more"
+                  theme="light"
+                />
               </div>
               {post.heroImage && (
                 <div className="basis-2/3" data-image>

@@ -10,6 +10,9 @@ import { PostHero } from '@/heros/PostHero'
 import { generateMeta } from '@/utilities/generateMeta'
 import PageClient from './page.client'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
+import Bounded from '@/utilities/Bounded'
+import CustomLink from '@/components/CustomLink'
+import AnimateIn from '@/components/Animations/AnimateIn'
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
   const posts = await payload.find({
@@ -39,7 +42,7 @@ export default async function Post({ params: paramsPromise }: Args) {
   const post = await queryPostBySlug({ slug })
   if (!post) return <PayloadRedirects url={url} />
   return (
-    <article className="pt-16 pb-16 bg-darkblue relative z-0">
+    <article className="pt-16 bg-darkblue relative z-0">
       <PageClient />
       {/* Allows redirects for valid pages too */}
       <PayloadRedirects disableNotFound url={url} />
@@ -47,9 +50,57 @@ export default async function Post({ params: paramsPromise }: Args) {
       <PostHero post={post} />
       <div className="flex flex-col items-center gap-4 pt-8 bg-darkblue">
         <div className="container">
-          <RichText className="max-w-[48rem] mx-auto text-white" data={post.content} enableGutter={false} />
+          <RichText className="max-w-none text-white" data={post.content} enableGutter={false} />
         </div>
       </div>
+    <section className="w-full bg-jet py-20 relative overflow-hidden">
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover min-w-full min-h-full"
+      >
+        <source src="/water-drop.mp4" type="video/mp4" />
+      </video>
+      <div className="w-full h-full absolute z-1 bg-gradient-to-br from-teal to-azul opacity-70 top-0 left-0" />
+      <Bounded>
+        <div className="p-4">
+          <AnimateIn
+            animation={{
+              y: 60,
+              opacity: 0,
+              duration: 1,
+              ease: 'power2.out',}}
+          >
+            <h2 className="bg-selectiveyellow text-white inline-block px-5 py-2 rounded-xl font-semibold mb-5">
+              Get In Touch
+            </h2>
+          </AnimateIn>
+          <AnimateIn
+            animation={{
+              y: 60,
+              opacity: 0,
+              duration: 1,
+              ease: 'power2.out',}}
+          >
+          <p className="text-2xl md:text-4xl font-semibold text-white">
+            Get in touch to imporve the water quality in your home!
+          </p>
+          </AnimateIn>
+          <div className="flex justify-end space-x-4">
+            <AnimateIn
+              animation={{
+                opacity: 0,
+                duration: 1,
+                ease: 'power2.out',}}
+            >
+              <CustomLink theme="light" label="Contact Us" link="/contact" />
+            </AnimateIn>
+          </div>
+        </div>
+      </Bounded>
+    </section>
     </article>
   )
 }
