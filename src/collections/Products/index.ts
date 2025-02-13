@@ -127,6 +127,12 @@ export const Products: CollectionConfig = {
               type: 'text',
               unique: true,
             },
+            {
+              name: 'brochure',
+              type: 'upload',
+              relationTo: 'media',
+              required: false,
+            }
           ],
           label: 'Content',
         },
