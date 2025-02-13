@@ -19,6 +19,7 @@ export interface Config {
     products: Product;
     services: Service;
     'product-categories': ProductCategory;
+    'test-submissions': TestSubmission;
     redirects: Redirect;
     forms: Form;
     'form-submissions': FormSubmission;
@@ -37,6 +38,7 @@ export interface Config {
     products: ProductsSelect<false> | ProductsSelect<true>;
     services: ServicesSelect<false> | ServicesSelect<true>;
     'product-categories': ProductCategoriesSelect<false> | ProductCategoriesSelect<true>;
+    'test-submissions': TestSubmissionsSelect<false> | TestSubmissionsSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
@@ -1095,6 +1097,19 @@ export interface Service {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "test-submissions".
+ */
+export interface TestSubmission {
+  id: number;
+  uuid?: string | null;
+  name: string;
+  email: string;
+  image: number | Media;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1204,6 +1219,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'product-categories';
         value: number | ProductCategory;
+      } | null)
+    | ({
+        relationTo: 'test-submissions';
+        value: number | TestSubmission;
       } | null)
     | ({
         relationTo: 'redirects';
@@ -1862,6 +1881,18 @@ export interface ProductCategoriesSelect<T extends boolean = true> {
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "test-submissions_select".
+ */
+export interface TestSubmissionsSelect<T extends boolean = true> {
+  uuid?: T;
+  name?: T;
+  email?: T;
+  image?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
