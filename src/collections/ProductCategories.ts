@@ -42,6 +42,7 @@ export const ProductCategories: CollectionConfig = {
       description: true,
     },
     heroImage: true,
+    slug: true,
   },
   admin: {
     defaultColumns: ['title', 'updatedAt'],
