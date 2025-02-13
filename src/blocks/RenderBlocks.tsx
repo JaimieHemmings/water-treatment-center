@@ -21,6 +21,7 @@ import { StatsBlock } from '@/blocks/StatsBlock/Component'
 import { BlockRow } from '@/blocks/BlockRow/Component'
 import { FaqBlock } from '@/blocks/FaqBlock/Component'
 import VideoBlock from '@/blocks/VideoBlock/Component'
+import YoutubeBlock from '@/blocks/YoutubeBlock/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -41,6 +42,7 @@ const blockComponents = {
   imageList: ImageList,
   faqblock: FaqBlock,
   videoBlock: VideoBlock,
+  youtubeBlock: YoutubeBlock,
 }
 
 export const RenderBlocks: React.FC<{

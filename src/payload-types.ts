@@ -123,6 +123,7 @@ export interface Page {
     | ImageList
     | FaqBlock
     | VideoBlock
+    | YoutubeBlock
   )[];
   meta?: {
     title?: string | null;
@@ -915,6 +916,32 @@ export interface VideoBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "YoutubeBlock".
+ */
+export interface YoutubeBlock {
+  content?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  title?: string | null;
+  youtubeEmbed?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'youtubeBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "products".
  */
 export interface Product {
@@ -1278,6 +1305,7 @@ export interface PagesSelect<T extends boolean = true> {
         imageList?: T | ImageListSelect<T>;
         faqblock?: T | FaqBlockSelect<T>;
         videoBlock?: T | VideoBlockSelect<T>;
+        youtubeBlock?: T | YoutubeBlockSelect<T>;
       };
   meta?:
     | T
@@ -1580,6 +1608,17 @@ export interface VideoBlockSelect<T extends boolean = true> {
   contentleft?: T;
   contentright?: T;
   video?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "YoutubeBlock_select".
+ */
+export interface YoutubeBlockSelect<T extends boolean = true> {
+  content?: T;
+  title?: T;
+  youtubeEmbed?: T;
   id?: T;
   blockName?: T;
 }
