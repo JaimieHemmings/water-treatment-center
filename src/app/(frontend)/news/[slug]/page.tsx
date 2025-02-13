@@ -53,7 +53,7 @@ export default async function Post({ params: paramsPromise }: Args) {
           <RichText className="max-w-none text-white" data={post.content} enableGutter={false} />
         </div>
       </div>
-    <section className="w-full bg-jet py-20 relative overflow-hidden">
+    <section className="w-full bg-jet py-20 mt-[5rem] relative overflow-hidden">
       <video
         autoPlay
         loop
