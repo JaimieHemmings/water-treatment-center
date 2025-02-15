@@ -16,6 +16,14 @@ export const Header: GlobalConfig = {
         link({
           appearances: false,
         }),
+        {
+          name: 'description',
+          type: 'text',
+          required: false,
+          admin: {
+            description: 'Optional description text for this navigation item',
+          },
+        },
       ],
       maxRows: 6,
       admin: {

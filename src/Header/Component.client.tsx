@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import React from 'react'
-import { MdPhone, MdEmail, MdLocationOn, MdWarehouse } from "react-icons/md";
+import { MdPhone, MdEmail } from "react-icons/md";
 
 import type { Header } from '@/payload-types'
 

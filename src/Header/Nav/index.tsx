@@ -44,8 +44,8 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
             <CMSLink 
               key={i} 
               {...link} 
-              appearance="link" 
-              className={`${linkClasses} w-full md:w-auto bg-darkblue hover:bg-teal align-middle`} 
+              appearance="link"
+              className={`${linkClasses} w-full md:w-auto bg-darkblue hover:bg-teal align-middle`}
             />
           )
         })}
