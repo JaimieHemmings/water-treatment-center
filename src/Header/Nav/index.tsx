@@ -6,7 +6,7 @@ export const HeaderNav: React.FC<{ data: any }> = ({ data }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const navItems = data?.navItems || []
 
-  const linkClasses = "font-semibold no-underline hover:no-underline hover:bg-azul px-5 py-2 text-white text-sm flex flex-col justify-center max-md:py-8 text-center"
+  const linkClasses = "font-semibold no-underline hover:no-underline hover:bg-azul px-5 py-2 text-white text-sm flex flex-col justify-center text-center"
   const mobileMenuClasses = `max-md:absolute max-md:top-full right-0 h-auto md:h-full w-full justify-centre md:flex-row flex bg-darkblue md:relative md:w-auto md:bg-transparent max-md:pt-5
     ${isMenuOpen ? 'flex flex-col' : 'hidden md:flex md:flex-row'}`
 
