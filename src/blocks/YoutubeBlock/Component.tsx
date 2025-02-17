@@ -12,9 +12,9 @@ const YoutubeBlock: React.FC<YoutubeBlockProps> = ({ title, youtubeEmbed, conten
   return (
     <section className="w-full py-8 sm:py-12 md:py-16 lg:py-20 bg-darkblue text-jet relative overflow-hidden">
       <div className="container">
-        <div className="flex flex-col md:flex-row-reverse items-start lg:items-center justify-between gap-6 lg:gap-12">
+        <div className="flex flex-col lg:flex-row-reverse items-start lg:items-center justify-between gap-6 lg:gap-12">
           {/* Video Container */}
-          <div className="w-full lg:w-1/2">
+          <div className="lg:basis-1/2">
             <div className="relative w-full rounded-lg overflow-hidden">
               <div 
                 className="youtube-container"
@@ -26,7 +26,7 @@ const YoutubeBlock: React.FC<YoutubeBlockProps> = ({ title, youtubeEmbed, conten
           </div>
 
           {/* Content Container */}
-          <div className="w-full lg:w-1/2 flex flex-col">
+          <div className="lg:basis-1/2 flex flex-col">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4 lg:mb-6">
               {title}
             </h2>
