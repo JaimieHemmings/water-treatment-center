@@ -50,7 +50,7 @@ export const HeaderNav: React.FC<{ data: any }> = ({ data }) => {
                 {link.title}
               </span>
               {description && (
-                <span className="text-md mt-1 font-thin">
+                <span className="text-md font-thin">
                   {description}
                 </span>
               )}
@@ -65,7 +65,7 @@ export const HeaderNav: React.FC<{ data: any }> = ({ data }) => {
           <span className="font-normal text-xl">
             Contact Us
           </span>
-          <span className="text-md mt-1 font-thin">
+          <span className="text-md font-thin">
             Get in touch
           </span>
         </Link>
