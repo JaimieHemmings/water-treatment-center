@@ -7,6 +7,7 @@ import {
 export const YoutubeBlock: Block = {
   slug: 'youtubeBlock',
   interfaceName: 'YoutubeBlock',
+  imageURL: '/block-images/youtube-block.jpg',
   fields: [
     {
       name: 'content',

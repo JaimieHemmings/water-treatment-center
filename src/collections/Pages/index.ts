@@ -2,11 +2,9 @@ import type { CollectionConfig } from 'payload'
 
 import { authenticated } from '../../access/authenticated'
 import { authenticatedOrPublished } from '../../access/authenticatedOrPublished'
-import { Archive } from '../../blocks/ArchiveBlock/config'
 import { CallToAction } from '../../blocks/CallToAction/config'
 import { Content } from '../../blocks/Content/config'
 import { FormBlock } from '../../blocks/Form/config'
-import { MediaBlock } from '../../blocks/MediaBlock/config'
 import { TextBlock } from '@/blocks/TextBlock/config'
 import { TwoColumnBlock } from '@/blocks/TwoColumnBlock/config'
 import { BlogFeed } from '@/blocks/BlogFeed/config'
@@ -15,7 +13,6 @@ import { ProductsHome } from '@/blocks/ProductsHome/config'
 import { ContactBlock } from '@/blocks/ContactBlock/config'
 import { hero } from '@/heros/config'
 import { slugField } from '@/fields/slug'
-import { AllBlogPosts } from '@/blocks/AllBlogPosts/config'
 import { populatePublishedAt } from '../../hooks/populatePublishedAt'
 import { generatePreviewPath } from '../../utilities/generatePreviewPath'
 import { revalidateDelete, revalidatePage } from './hooks/revalidatePage'
@@ -89,7 +86,7 @@ export const Pages: CollectionConfig<'pages'> = {
             {
               name: 'layout',
               type: 'blocks',
-              blocks: [CallToAction, Content, MediaBlock, Archive, FormBlock, TextBlock, TwoColumnBlock, ProductsHome, ServicesBlock, BlogFeed, ContactBlock, AllBlogPosts, TextWithImageBlock, StatsBlock, BlockRow, ImageList, FaqBlock, VideoBlock, YoutubeBlock],
+              blocks: [CallToAction, Content, FormBlock, TextBlock, TwoColumnBlock, ProductsHome, ServicesBlock, BlogFeed, ContactBlock, TextWithImageBlock, StatsBlock, BlockRow, ImageList, FaqBlock, VideoBlock, YoutubeBlock],
               required: true,
               admin: {
                 initCollapsed: true,

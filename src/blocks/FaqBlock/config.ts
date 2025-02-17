@@ -3,6 +3,7 @@ import type { Block } from 'payload'
 export const FaqBlock: Block = {
   slug: 'faqblock',
   interfaceName: 'FaqBlock',
+  imageURL: '/block-images/faq-block.jpg',
   fields: [
     {
       name: 'title',

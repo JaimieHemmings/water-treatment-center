@@ -4,6 +4,7 @@ import { FormBlock } from '@/blocks/Form/config'
 export const ContactBlock: Block = {
   slug: 'contactBlock',
   interfaceName: 'ContactBlock',
+  imageURL: '/block-images/contact-block.jpg',
   fields: [
     {
       name: 'title',

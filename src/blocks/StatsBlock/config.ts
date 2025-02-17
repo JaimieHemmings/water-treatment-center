@@ -3,6 +3,7 @@ import type { Block } from 'payload'
 export const StatsBlock: Block = {
   slug: 'statsBlock',
   interfaceName: 'StatsBlock',
+  imageURL: '/block-images/stats-block.jpg',
   fields: [
     {
       name: 'titleStart',

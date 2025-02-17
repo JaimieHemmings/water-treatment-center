@@ -2,12 +2,9 @@
 import React, { Fragment } from 'react'
 
 import type { Page } from '@/payload-types'
-
-import { ArchiveBlock } from '@/blocks/ArchiveBlock/Component'
 import { CallToActionBlock } from '@/blocks/CallToAction/Component'
 import { ContentBlock } from '@/blocks/Content/Component'
 import { FormBlock } from '@/blocks/Form/Component'
-import { MediaBlock } from '@/blocks/MediaBlock/Component'
 import { TextBlock } from '@/blocks/TextBlock/Component'
 import { ImageList } from '@/blocks/ImageList/Component'
 import { TwoColumnBlock } from '@/blocks/TwoColumnBlock/Component'
@@ -15,7 +12,6 @@ import { ProductsHome } from '@/blocks/ProductsHome/Component'
 import ServicesBlock from '@/blocks/Services/Component'
 import BlogFeed from '@/blocks/BlogFeed/Component'
 import { ContactBlock } from '@/blocks/ContactBlock/Component'
-import { AllBlogPosts } from '@/blocks/AllBlogPosts/Component'
 import { TextWithImageBlock } from '@/blocks/TextWithImageBlock/Component'
 import { StatsBlock } from '@/blocks/StatsBlock/Component'
 import { BlockRow } from '@/blocks/BlockRow/Component'
@@ -24,18 +20,15 @@ import VideoBlock from '@/blocks/VideoBlock/Component'
 import YoutubeBlock from '@/blocks/YoutubeBlock/Component'
 
 const blockComponents = {
-  archive: ArchiveBlock,
   content: ContentBlock,
   cta: CallToActionBlock,
   formBlock: FormBlock,
-  mediaBlock: MediaBlock,
   textBlock: TextBlock,
   twoColumn: TwoColumnBlock,
   productsHome: ProductsHome,
   servicesBlock: ServicesBlock,
   blogFeed: BlogFeed,
   contactBlock: ContactBlock,
-  allBlogPosts: AllBlogPosts,
   textWithImageBlock: TextWithImageBlock,
   statsBlock: StatsBlock,
   blockRow: BlockRow,
