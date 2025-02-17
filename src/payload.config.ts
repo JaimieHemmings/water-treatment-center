@@ -28,6 +28,10 @@ const dirname = path.dirname(filename)
 
 export default buildConfig({
   admin: {
+    meta: {
+      description: 'A fully-featured CMS for Node.js apps',
+      titleImage: '/logo.png',
+    },
     components: {
       beforeLogin: ['@/components/BeforeLogin'],
     },
