@@ -46,7 +46,7 @@ export default async function ServicesBlock() {
               }}
             >
               <h3 className="text-2xl md:text-4xl text-white py-2">{service.title}</h3>
-              <RichText data={service.description} enableGutter={false} className="max-w-none prose md:prose-md mb-5 text-md md:xl mr-0 [&_strong]:font-bold" />
+              <RichText data={service.description} enableGutter={false} className="max-w-none prose md:prose-md mb-5 text-md md:xl mr-0 [&_strong]:font-bold text-white" />
               {service.features && (
                 <ul className="list-none list-inside text-white mt-4">
                   {service.features.map((feature) => (
@@ -61,26 +61,26 @@ export default async function ServicesBlock() {
             </AnimateIn>
             </div>
             <div className="basis-1/2 relative h-[500px]"> {/* Added fixed height and relative positioning */}
-  <AnimateIn
-    animation={{
-      x: index % 2 === 1 ? -60 : 60,
-      duration: 0.6,
-      delay: 0.1 * index,
-    }}
-    className="h-full" // Added full height to animation container
-  >
-    {service.image && (
-      <Image 
-        fill // Changed to fill property
-        src={service.image.url} 
-        alt={service.image.alt} 
-        className="absolute inset-0 object-cover rounded-xl"
-        sizes="(max-width: 768px) 100vw, 50vw"
-        priority={index === 0}
-      />
-    )}
-  </AnimateIn>
-</div>
+            <AnimateIn
+              animation={{
+                x: index % 2 === 1 ? -60 : 60,
+                duration: 0.6,
+                delay: 0.1 * index,
+              }}
+              className="h-full" // Added full height to animation container
+            >
+              {service.image && (
+                <Image 
+                  fill // Changed to fill property
+                  src={service.image.url} 
+                  alt={service.image.alt} 
+                  className="absolute inset-0 object-cover rounded-xl"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  priority={index === 0}
+                />
+              )}
+            </AnimateIn>
+          </div>
           </div>
         ))}
       </div>
