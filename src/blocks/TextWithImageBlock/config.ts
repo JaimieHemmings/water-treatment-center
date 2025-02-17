@@ -5,6 +5,7 @@ import { lexicalEditor } from '@payloadcms/richtext-lexical';
 export const TextWithImageBlock: Block = {
   slug: 'textWithImageBlock',
   interfaceName: 'TextWithImageBlock',
+  imageURL: '/block-images/text-with-image-block.jpg',
   fields: [
     {
       name: 'content',
