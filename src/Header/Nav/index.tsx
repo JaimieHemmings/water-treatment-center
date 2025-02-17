@@ -44,6 +44,7 @@ export const HeaderNav: React.FC<{ data: any }> = ({ data }) => {
               key={i} 
               href={`/${link.slug}`}
               className={linkClasses}
+              onClick={() => setIsMenuOpen(false)}
               >
               <span className="font-normal text-xl">
                 {link.title}
@@ -58,6 +59,7 @@ export const HeaderNav: React.FC<{ data: any }> = ({ data }) => {
         })}
         <Link 
           href="/contact" 
+          onClick={() => setIsMenuOpen(false)}
           className={`${linkClasses} bg-azul hover:bg-teal w-full md:w-auto`}
         >
           <span className="font-normal text-xl">
