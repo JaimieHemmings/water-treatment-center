@@ -102,6 +102,8 @@ export interface Page {
           titleHighlight: string;
           titleEnd: string;
           paragraph: string;
+          link?: (number | null) | Page;
+          linkLabel?: string | null;
           id?: string | null;
         }[]
       | null;
@@ -1245,6 +1247,8 @@ export interface PagesSelect<T extends boolean = true> {
               titleHighlight?: T;
               titleEnd?: T;
               paragraph?: T;
+              link?: T;
+              linkLabel?: T;
               id?: T;
             };
       };

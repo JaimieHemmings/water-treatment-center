@@ -16,14 +16,14 @@ export const Logo = (props: Props) => {
   return (
     /* eslint-disable @next/next/no-img-element */
     <img
-      alt="Payload Logo"
-      width={250}
-      height={34}
+      alt="The Water Treatment Centre"
+      width={300}
+      height={80}
       loading={loading}
       fetchPriority={priority}
       decoding="async"
-      className={clsx('max-w-[154px] w-full h-auto', className)}
-      src="/logo.webp"
+      className={clsx('max-w-[250px] w-full h-auto', className)}
+      src="/logo.png"
     />
   )
 }

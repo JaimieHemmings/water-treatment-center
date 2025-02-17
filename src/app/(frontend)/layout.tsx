@@ -1,8 +1,4 @@
 import type { Metadata } from 'next'
-
-import { cn } from 'src/utilities/cn'
-import { GeistMono } from 'geist/font/mono'
-import { GeistSans } from 'geist/font/sans'
 import React from 'react'
 
 import { Footer } from '@/Footer/Component'
@@ -19,7 +15,7 @@ import { getServerSideURL } from '@/utilities/getURL'
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
 
   return (
-    <html className={cn(GeistSans.variable, GeistMono.variable)} lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
       <head>
         <InitTheme />
         <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />

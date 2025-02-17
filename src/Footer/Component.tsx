@@ -11,7 +11,7 @@ export async function Footer() {
         <div>
           <Link className="flex items-center" href="/">
           <Image 
-              src="/logo.webp" 
+              src="/logo.png" 
               alt="The Water Treatment Centre" 
               width={2560}
               height={663}

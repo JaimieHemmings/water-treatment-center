@@ -18,6 +18,10 @@ interface Slide {
   image? : {
     alt: string;
     url: string;
+  },
+  linkLabel?: string;
+  link?: {
+    slug?: string;
   }
 }
 
@@ -70,7 +74,11 @@ export const HighImpactHero: React.FC<HeroProps> = ({ slides }) => {
                 <p className="my-5 pt-3 text-lg text-white">
                   {slide.paragraph}
                 </p>
-                <CustomLink theme="white" label="Get A Quote" link="/contact" />
+                <CustomLink
+                  theme="white"
+                  label={slide.linkLabel || "Get A Quote"}
+                  link={slide.link?.slug || "/contact"}
+                />
               </div>
             </div>
           </div>

@@ -7,7 +7,7 @@ export const HeaderNav: React.FC<{ data: any }> = ({ data }) => {
   const navItems = data?.navItems || []
 
   const linkClasses = "font-semibold no-underline hover:no-underline hover:bg-azul px-5 py-2 text-white text-sm flex flex-col justify-center max-md:py-8 text-center"
-  const mobileMenuClasses = `max-md:absolute max-md:top-full right-0 h-full w-full justify-centre md:flex-row flex bg-darkblue md:relative md:w-auto md:bg-transparent max-md:pt-5
+  const mobileMenuClasses = `max-md:absolute max-md:top-full right-0 h-auto md:h-full w-full justify-centre md:flex-row flex bg-darkblue md:relative md:w-auto md:bg-transparent max-md:pt-5
     ${isMenuOpen ? 'flex flex-col' : 'hidden md:flex md:flex-row'}`
 
   return (
@@ -36,7 +36,7 @@ export const HeaderNav: React.FC<{ data: any }> = ({ data }) => {
       </button>
 
       {/* Navigation Items */}
-      <div className={mobileMenuClasses}>
+      <div className={`${mobileMenuClasses} bg-darkblue`}>
         {navItems.map((item: any, i: number) => {
           const { link, description } = item
           return (
@@ -45,9 +45,13 @@ export const HeaderNav: React.FC<{ data: any }> = ({ data }) => {
               href={link.slug}
               className={linkClasses}
               >
-              <span className="font-medium">{link.title}</span>
+              <span className="font-normal text-xl">
+                {link.title}
+              </span>
               {description && (
-                <span className="text-xs text-gray-300 mt-1">{description}</span>
+                <span className="text-md mt-1 font-thin">
+                  {description}
+                </span>
               )}
             </Link>
           )
@@ -56,7 +60,12 @@ export const HeaderNav: React.FC<{ data: any }> = ({ data }) => {
           href="/contact" 
           className={`${linkClasses} bg-azul hover:bg-teal w-full md:w-auto`}
         >
-          Contact Us
+          <span className="font-normal text-xl">
+            Contact Us
+          </span>
+          <span className="text-md mt-1 font-thin">
+            Get in touch
+          </span>
         </Link>
       </div>
     </nav>

@@ -75,6 +75,16 @@ export const hero: Field = {
           label: 'Paragraph',
           required: true,
         },
+        {
+          name: 'link',
+          type: 'relationship',
+          relationTo: 'pages',
+        },
+        {
+          name: 'linkLabel',
+          type: 'text',
+          label: 'Link Label',
+        },
       ],
     },
   ],
