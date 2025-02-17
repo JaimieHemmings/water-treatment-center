@@ -42,7 +42,7 @@ export const HeaderNav: React.FC<{ data: any }> = ({ data }) => {
           return (
             <Link 
               key={i} 
-              href={link.slug}
+              href={`/${link.slug}`}
               className={linkClasses}
               >
               <span className="font-normal text-xl">
