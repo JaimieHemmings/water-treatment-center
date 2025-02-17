@@ -57,7 +57,7 @@ export const TextWithImageBlock: React.FC<TextWithImageBlockProps> = ({
         priority={false}
       />
 
-      <div className="container mx-auto px-4 flex flex-col lg:flex-row items-center justify-center gap-10">
+      <div className="container mx-auto px-4 flex flex-col lg:flex-row items-center justify-center gap-10 relative z-20">
         <div className="basis-1/2">
           <AnimateIn
             animation={{

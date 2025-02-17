@@ -2124,24 +2124,8 @@ export interface Header {
   id: number;
   navItems?:
     | {
-        link: {
-          type?: ('reference' | 'custom') | null;
-          newTab?: boolean | null;
-          reference?:
-            | ({
-                relationTo: 'pages';
-                value: number | Page;
-              } | null)
-            | ({
-                relationTo: 'posts';
-                value: number | Post;
-              } | null);
-          url?: string | null;
-          label: string;
-        };
-        /**
-         * Optional description text for this navigation item
-         */
+        link: number | Page;
+        label?: string | null;
         description?: string | null;
         id?: string | null;
       }[]
@@ -2186,15 +2170,8 @@ export interface HeaderSelect<T extends boolean = true> {
   navItems?:
     | T
     | {
-        link?:
-          | T
-          | {
-              type?: T;
-              newTab?: T;
-              reference?: T;
-              url?: T;
-              label?: T;
-            };
+        link?: T;
+        label?: T;
         description?: T;
         id?: T;
       };

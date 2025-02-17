@@ -13,9 +13,23 @@ export const Header: GlobalConfig = {
       name: 'navItems',
       type: 'array',
       fields: [
-        link({
-          appearances: false,
-        }),
+        {
+          name: 'link',
+          type: 'relationship',
+          relationTo: 'pages',
+          hasMany: false,
+          required: true,
+        },
+        {
+          name: 'label',
+          label: 'Label',
+          type: 'text',
+        },
+        {
+          name: 'description',
+          label: 'Description',
+          type: 'text',
+        }
       ],
       maxRows: 6,
       admin: {

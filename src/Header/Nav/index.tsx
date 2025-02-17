@@ -1,14 +1,12 @@
 'use client';
 import React, { useState } from 'react'
-import type { Header as HeaderType } from '@/payload-types'
-import { CMSLink } from '@/components/Link'
 import Link from 'next/link'
 
-export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
+export const HeaderNav: React.FC<{ data: any }> = ({ data }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const navItems = data?.navItems || []
 
-  const linkClasses = "font-semibold no-underline hover:no-underline hover:bg-azul px-5 py-2 text-white text-sm flex items-center max-md:py-8"
+  const linkClasses = "font-semibold no-underline hover:no-underline hover:bg-azul px-5 py-2 text-white text-sm flex flex-col justify-center max-md:py-8 text-center"
   const mobileMenuClasses = `max-md:absolute max-md:top-full right-0 h-full w-full justify-centre md:flex-row flex bg-darkblue md:relative md:w-auto md:bg-transparent max-md:pt-5
     ${isMenuOpen ? 'flex flex-col' : 'hidden md:flex md:flex-row'}`
 
@@ -39,14 +37,19 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
 
       {/* Navigation Items */}
       <div className={mobileMenuClasses}>
-        {navItems.map(({ link }, i) => {
+        {navItems.map((item: any, i: number) => {
+          const { link, description } = item
           return (
-            <CMSLink 
+            <Link 
               key={i} 
-              {...link} 
-              appearance="link"
-              className={`${linkClasses} w-full md:w-auto bg-darkblue hover:bg-teal align-middle`}
-            />
+              href={link.slug}
+              className={linkClasses}
+              >
+              <span className="font-medium">{link.title}</span>
+              {description && (
+                <span className="text-xs text-gray-300 mt-1">{description}</span>
+              )}
+            </Link>
           )
         })}
         <Link 
