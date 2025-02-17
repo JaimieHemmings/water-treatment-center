@@ -1,5 +1,6 @@
-import React from 'react'
+import React from 'react';
 import RichText from "@/components/RichText";
+import './youtube.css';
 
 interface YoutubeBlockProps {
   title: string;
@@ -9,23 +10,52 @@ interface YoutubeBlockProps {
 
 const YoutubeBlock: React.FC<YoutubeBlockProps> = ({ title, youtubeEmbed, content }) => {
   return (
-    <div className="w-full py-20 bg-darkblue text-jet relative overflow-hidden">
-      <div className="container flex flex-col md:flex-row items-center justify-center gap-10">
-        <div className="md:basis-1/2">
-          <div 
-            className="w-full h-full"
-            dangerouslySetInnerHTML={{ 
-              __html: youtubeEmbed 
-            }} 
-          />
-        </div>
-        <div className="md:basis-1/2">
-          <h2 className="text-2xl md:text-4xl font-bold text-white mb-4">{title}</h2>
-           {content && <RichText data={content} enableGutter={false} className="max-w-none prose md:prose-md mb-5 text-md md:xl mr-0 [&_strong]:font-bold [&_strong]:text-white text-white" />}
+    <section className="w-full py-8 sm:py-12 md:py-16 lg:py-20 bg-darkblue text-jet relative overflow-hidden">
+      <div className="container">
+        <div className="flex flex-col md:flex-row-reverse items-start lg:items-center justify-between gap-6 lg:gap-12">
+          {/* Video Container */}
+          <div className="w-full lg:w-1/2">
+            <div className="relative w-full rounded-lg overflow-hidden">
+              <div 
+                className="youtube-container"
+                dangerouslySetInnerHTML={{
+                  __html: youtubeEmbed
+                }}
+              />
+            </div>
+          </div>
+
+          {/* Content Container */}
+          <div className="w-full lg:w-1/2 flex flex-col">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4 lg:mb-6">
+              {title}
+            </h2>
+            {content && (
+              <RichText 
+                data={content}
+                enableGutter={false}
+                className="
+                  prose prose-sm sm:prose-base lg:prose-lg
+                  max-w-none mb-5
+                  text-white
+                  [&_strong]:font-bold 
+                  [&_strong]:text-white
+                  [&_p]:mb-4
+                  [&_a]:text-white 
+                  [&_a]:underline
+                  [&_a:hover]:opacity-80
+                  [&_ul]:list-disc 
+                  [&_ul]:pl-5
+                  [&_ol]:list-decimal 
+                  [&_ol]:pl-5
+                "
+              />
+            )}
+          </div>
         </div>
       </div>
-    </div>
-  )
-}
+    </section>
+  );
+};
 
-export default YoutubeBlock
+export default YoutubeBlock;
