@@ -6,13 +6,12 @@ import React from 'react'
 import type { Post } from '@/payload-types'
 import Image from 'next/image'
 
-export type CardPostData = Pick<Post, 'slug' | 'categories' | 'meta' | 'title' | 'heroImage'>
+export type CardPostData = Pick<Post, 'slug' | 'meta' | 'title' | 'heroImage'>
 
 interface CardProps {
   className?: string;
   doc?: {
     slug?: string;
-    categories?: any[];
     meta?: {
       description?: string;
       image?: any;
@@ -30,12 +29,10 @@ interface CardProps {
 
 const Card: React.FC<CardProps> = (props) => {
   const { card } = useClickableCard({});
-  const { className, doc, relationTo, showCategories, title: titleFromProps, heroImage } = props;
+  const { className, doc, title: titleFromProps, heroImage } = props;
 
-  const { slug, categories, meta, title } = doc || {};
+  const { meta, title } = doc || {};
   const { description, image: metaImage } = meta || {};
-
-  const hasCategories = categories && Array.isArray(categories) && categories.length > 0;
   const titleToUse = titleFromProps || title;
   const sanitizedDescription = description?.replace(/\s/g, ' ');
 
@@ -56,15 +53,6 @@ const Card: React.FC<CardProps> = (props) => {
       <div className="p-4">
         <h2 className="text-xl font-semibold">{titleToUse}</h2>
         {sanitizedDescription && <p className="text-sm text-gray-600">{sanitizedDescription}</p>}
-        {hasCategories && showCategories && (
-          <div className="mt-2">
-            {categories.map((category, index) => (
-              <span key={index} className="text-xs text-gray-500">
-                {category.name}
-              </span>
-            ))}
-          </div>
-        )}
       </div>
     </article>
   );
