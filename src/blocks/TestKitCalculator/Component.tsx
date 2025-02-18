@@ -62,10 +62,11 @@ const TestKitCalculator = () => {
   return (
     <section className="py-[5rem]">
       <div className="container max-w-4xl mx-auto text-white">
-        <h2 className="text-3xl font-bold mb-8">
+        <h2 className="text-4xl md: text-2xl font-bold mb-8">
           Water Test Kit Calculator
         </h2>
         
+        {!results && (
         <form onSubmit={handleSubmit} className="space-y-8">
           {/* Personal Information */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -137,28 +138,29 @@ const TestKitCalculator = () => {
             Calculate Results
           </button>
         </form>
+        )}
 
         {results && (
           <div className="mt-8 space-y-4">
-            <h3 className="text-2xl font-bold mb-4">Analysis Results</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {Object.entries(results).map(([key, result]: [string, any]) => (
+            <h3 className="text-white text-xl md:text-2xl font-bold mb-4">
+              Analysis Results
+            </h3>
+            <p className="text-white">The following results are outside of the recommended limits:</p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {Object.entries(results).map(([key, result]: [string, any]) => (
+              result.status === 'above' && (
                 <div
                   key={key}
-                  className={`p-4 rounded ${
-                    result.status === 'above' 
-                      ? 'bg-red-500/20' 
-                      : 'bg-green-500/20'
-                  }`}
+                  className="p-4 rounded bg-red-500/20"
                 >
-                  <h4 className="font-semibold capitalize">
+                  <h4 className="font-semibold capitalize pb-3">
                     {key.replace(/([A-Z])/g, ' $1').trim()}
                   </h4>
-                  <p>Value: {result.value} {result.unit}</p>
-                  <p>Limit: {result.limit} {result.unit}</p>
-                  <p className="capitalize">Status: {result.status} limit</p>
+                  <p>Your Result: {result.value} {result.unit}</p>
+                  <p>Recommended Limit: {result.limit} {result.unit}</p>
                 </div>
-              ))}
+              )
+            ))}
             </div>
           </div>
         )}
