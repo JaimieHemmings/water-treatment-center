@@ -128,6 +128,7 @@ export interface Page {
     | VideoBlock
     | YoutubeBlock
     | TestKitForm
+    | TestKitCalculator
   )[];
   meta?: {
     title?: string | null;
@@ -904,6 +905,15 @@ export interface TestKitForm {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TestKitCalculator".
+ */
+export interface TestKitCalculator {
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'testKitCalculator';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "products".
  */
 export interface Product {
@@ -1305,6 +1315,7 @@ export interface PagesSelect<T extends boolean = true> {
         videoBlock?: T | VideoBlockSelect<T>;
         youtubeBlock?: T | YoutubeBlockSelect<T>;
         testKitForm?: T | TestKitFormSelect<T>;
+        testKitCalculator?: T | TestKitCalculatorSelect<T>;
       };
   meta?:
     | T
@@ -1597,6 +1608,14 @@ export interface YoutubeBlockSelect<T extends boolean = true> {
  * via the `definition` "TestKitForm_select".
  */
 export interface TestKitFormSelect<T extends boolean = true> {
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TestKitCalculator_select".
+ */
+export interface TestKitCalculatorSelect<T extends boolean = true> {
   id?: T;
   blockName?: T;
 }
