@@ -6,15 +6,15 @@ interface WaterParameters {
 }
 
 const WATER_PARAMETERS: WaterParameters = {
-  aluminium: { value: 0, limit: 200, unit: 'μg/l' },
+  aluminium: { value: 0, limit: 200, unit: 'ug/l' },
   ammonium: { value: 0, limit: 0.5, unit: 'mg/l' },
   coliformsTotal: { value: 0, limit: 0, unit: 'cfu/100ml' },
   colourApparent: { value: 0, limit: 20, unit: 'mg/l Pt/Co' },
-  conductivity: { value: 0, limit: 2500, unit: 'μS/cm' },
+  conductivity: { value: 0, limit: 2500, unit: 'uS/cm' },
   eColi: { value: 0, limit: 0, unit: 'cfu/100ml' },
-  hardnessTotal: { value: 0, limit: 200, unit: 'mg/l' },
-  iron: { value: 0, limit: 200, unit: 'μg/l' },
-  manganese: { value: 0, limit: 50, unit: 'μg/l' },
+  hardnessTotal: { value: 0, limit: 150, unit: 'mg/l' },
+  iron: { value: 0, limit: 200, unit: 'ug/l' },
+  manganese: { value: 0, limit: 50, unit: 'ug/l' },
   nitrite: { value: 0, limit: 0.5, unit: 'mg/l' },
   pH: { value: 0, limit: 9.5, unit: 'pH' },
   tbc22c: { value: 0, limit: 100, unit: 'cfu/ml' },
@@ -62,7 +62,9 @@ const TestKitCalculator = () => {
   return (
     <section className="py-[5rem]">
       <div className="container max-w-4xl mx-auto text-white">
-        <h2 className="text-3xl font-bold mb-8">Water Test Kit Calculator</h2>
+        <h2 className="text-3xl font-bold mb-8">
+          Water Test Kit Calculator
+        </h2>
         
         <form onSubmit={handleSubmit} className="space-y-8">
           {/* Personal Information */}
@@ -92,6 +94,17 @@ const TestKitCalculator = () => {
               <input
                 type="tel"
                 name="phone"
+                required
+                className="w-full px-4 py-2 rounded bg-white/10 border border-white/20"
+                onChange={handleChange}
+              />
+            </div>
+            <div>
+              {/* Image Upload */}
+              <label className="block mb-2">Upload Image</label>
+              <input
+                type="file"
+                accept="image/*"
                 required
                 className="w-full px-4 py-2 rounded bg-white/10 border border-white/20"
                 onChange={handleChange}
