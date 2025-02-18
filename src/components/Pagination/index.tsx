@@ -35,22 +35,23 @@ export const Pagination: React.FC<{
               className="text-white hover:text-white hover:bg-teal"
               disabled={!hasPrevPage}
               onClick={() => {
-                router.push(`/posts/page/${page - 1}`)
+                router.push(`/news/page/${page - 1}`)
               }}
             />
           </PaginationItem>
 
           {hasExtraPrevPages && (
             <PaginationItem>
-              <PaginationEllipsis />
+              <PaginationEllipsis className="text-white" />
             </PaginationItem>
           )}
 
           {hasPrevPage && (
             <PaginationItem>
               <PaginationLink
+              className="text-white bg-azul border-none hover:bg-teal hover:text-white"
                 onClick={() => {
-                  router.push(`/posts/page/${page - 1}`)
+                  router.push(`/news/page/${page - 1}`)
                 }}
               >
                 {page - 1}
@@ -63,7 +64,7 @@ export const Pagination: React.FC<{
               isActive
               className="text-white bg-azul border-none hover:bg-teal hover:text-white"
               onClick={() => {
-                router.push(`/posts/page/${page}`)
+                router.push(`/news/page/${page}`)
               }}
             >
               {page}
@@ -75,7 +76,7 @@ export const Pagination: React.FC<{
               <PaginationLink
                 className="text-white hover:text-white hover:bg-teal"
                 onClick={() => {
-                  router.push(`/posts/page/${page + 1}`)
+                  router.push(`/news/page/${page + 1}`)
                 }}
               >
                 {page + 1}
@@ -94,7 +95,7 @@ export const Pagination: React.FC<{
               disabled={!hasNextPage}
               className="text-white hover:text-white hover:bg-teal"
               onClick={() => {
-                router.push(`/posts/page/${page + 1}`)
+                router.push(`/news/page/${page + 1}`)
               }}
             />
           </PaginationItem>
