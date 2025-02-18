@@ -23,7 +23,7 @@ export const CallToActionBlock: React.FC<CallToActionBlockProps> = ({ link, link
     <div className="bg-darkblue">
     <div className={`w-full py-[5rem] relative overflow-hidden ${lightbgToggle ? 'bg-antiflashwhite' : ''}`}
       style={{
-        clipPath: 'polygon(0 4%, 100% 0, 100% 96%, 0 100%)',
+        clipPath: 'polygon(0 4%, 100% 0, 100% 100%, 0 100%)',
         paddingTop: 'calc(5rem + 4vw)',
         paddingBottom: 'calc(5rem + 4vw)',
       }}>
@@ -71,17 +71,19 @@ export const CallToActionBlock: React.FC<CallToActionBlockProps> = ({ link, link
         `} />
       <Bounded>
         <div className="p-4 relative z-20">
+          {!lightbgToggle && (
           <AnimateIn
             animation={{
               y: 60,
               opacity: 0,
               duration: 1,
               ease: 'power2.out',}}
-          >
+              >
             <h2 className="bg-selectiveyellow text-white inline-block px-5 py-2 rounded-xl font-semibold mb-5">
               Get In Touch
             </h2>
           </AnimateIn>
+          )}
           <AnimateIn
             animation={{
               y: 60,
@@ -102,8 +104,19 @@ export const CallToActionBlock: React.FC<CallToActionBlockProps> = ({ link, link
             <div className="container flex flex-col md:flex-row justify-between ">
               <div className="basis-1/2"></div>
               <div className="basis-1/2 md:pl-5">
+              <AnimateIn
+                animation={{
+                  y: 60,
+                  opacity: 0,
+                  duration: 1,
+                  ease: 'power2.out',}}
+              >
+                <h2 className="bg-selectiveyellow text-white inline-block px-5 py-2 rounded-xl font-semibold mb-5">
+                  Get In Touch
+                </h2>
+              </AnimateIn>
                 <RichText
-                className={`text-2xl md:text-5xl font-semibold mb-5 ${lightbgToggle ? 'text-darkblue' : 'text-white'}`}
+                className={`text-xl md:text-2xl font-semibold mb-5 ${lightbgToggle ? 'text-darkblue' : 'text-white'}`}
                 data={richText}
                 enableGutter={false}
                 />
