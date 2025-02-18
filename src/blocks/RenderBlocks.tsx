@@ -18,6 +18,7 @@ import { BlockRow } from '@/blocks/BlockRow/Component'
 import { FaqBlock } from '@/blocks/FaqBlock/Component'
 import VideoBlock from '@/blocks/VideoBlock/Component'
 import YoutubeBlock from '@/blocks/YoutubeBlock/Component'
+import TestKitForm from '@/blocks/TestKitForm/Component'
 
 const blockComponents = {
   content: ContentBlock,
@@ -36,6 +37,7 @@ const blockComponents = {
   faqblock: FaqBlock,
   videoBlock: VideoBlock,
   youtubeBlock: YoutubeBlock,
+  testKitForm: TestKitForm,
 }
 
 export const RenderBlocks: React.FC<{

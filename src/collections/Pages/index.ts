@@ -23,6 +23,7 @@ import { ImageList } from '@/blocks/ImageList/config'
 import { FaqBlock } from '@/blocks/FaqBlock/config'
 import { VideoBlock } from '@/blocks/VideoBlock/config'
 import { YoutubeBlock } from '@/blocks/YoutubeBlock/config'
+import { TestKitForm } from '@/blocks/TestKitForm/config'
 
 import {
   MetaDescriptionField,
@@ -86,7 +87,7 @@ export const Pages: CollectionConfig<'pages'> = {
             {
               name: 'layout',
               type: 'blocks',
-              blocks: [CallToAction, Content, FormBlock, TextBlock, TwoColumnBlock, ProductsHome, ServicesBlock, BlogFeed, ContactBlock, TextWithImageBlock, StatsBlock, BlockRow, ImageList, FaqBlock, VideoBlock, YoutubeBlock],
+              blocks: [CallToAction, Content, FormBlock, TextBlock, TwoColumnBlock, ProductsHome, ServicesBlock, BlogFeed, ContactBlock, TextWithImageBlock, StatsBlock, BlockRow, ImageList, FaqBlock, VideoBlock, YoutubeBlock, TestKitForm],
               required: true,
               admin: {
                 initCollapsed: true,

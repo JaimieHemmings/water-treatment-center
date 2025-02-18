@@ -20,6 +20,7 @@ export interface Config {
     services: Service;
     'product-categories': ProductCategory;
     'test-submissions': TestSubmission;
+    'test-kit-requests': TestKitRequest;
     redirects: Redirect;
     forms: Form;
     'form-submissions': FormSubmission;
@@ -39,6 +40,7 @@ export interface Config {
     services: ServicesSelect<false> | ServicesSelect<true>;
     'product-categories': ProductCategoriesSelect<false> | ProductCategoriesSelect<true>;
     'test-submissions': TestSubmissionsSelect<false> | TestSubmissionsSelect<true>;
+    'test-kit-requests': TestKitRequestsSelect<false> | TestKitRequestsSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
@@ -125,6 +127,7 @@ export interface Page {
     | FaqBlock
     | VideoBlock
     | YoutubeBlock
+    | TestKitForm
   )[];
   meta?: {
     title?: string | null;
@@ -892,6 +895,15 @@ export interface YoutubeBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TestKitForm".
+ */
+export interface TestKitForm {
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'testKitForm';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "products".
  */
 export interface Product {
@@ -1058,6 +1070,20 @@ export interface TestSubmission {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "test-kit-requests".
+ */
+export interface TestKitRequest {
+  id: number;
+  name: string;
+  email: string;
+  telephone: string;
+  address: string;
+  message: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1173,6 +1199,10 @@ export interface PayloadLockedDocument {
         value: number | TestSubmission;
       } | null)
     | ({
+        relationTo: 'test-kit-requests';
+        value: number | TestKitRequest;
+      } | null)
+    | ({
         relationTo: 'redirects';
         value: number | Redirect;
       } | null)
@@ -1273,6 +1303,7 @@ export interface PagesSelect<T extends boolean = true> {
         faqblock?: T | FaqBlockSelect<T>;
         videoBlock?: T | VideoBlockSelect<T>;
         youtubeBlock?: T | YoutubeBlockSelect<T>;
+        testKitForm?: T | TestKitFormSelect<T>;
       };
   meta?:
     | T
@@ -1562,6 +1593,14 @@ export interface YoutubeBlockSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TestKitForm_select".
+ */
+export interface TestKitFormSelect<T extends boolean = true> {
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "posts_select".
  */
 export interface PostsSelect<T extends boolean = true> {
@@ -1809,6 +1848,19 @@ export interface TestSubmissionsSelect<T extends boolean = true> {
   name?: T;
   email?: T;
   image?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "test-kit-requests_select".
+ */
+export interface TestKitRequestsSelect<T extends boolean = true> {
+  name?: T;
+  email?: T;
+  telephone?: T;
+  address?: T;
+  message?: T;
   updatedAt?: T;
   createdAt?: T;
 }
