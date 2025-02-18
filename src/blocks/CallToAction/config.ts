@@ -14,6 +14,7 @@ export const CallToAction: Block = {
   fields: [
     {
       name: 'lightbgToggle',
+      label: 'Light Background',
       type: 'checkbox',
       defaultValue: false,
     },
