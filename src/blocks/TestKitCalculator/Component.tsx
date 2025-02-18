@@ -135,8 +135,6 @@ const TestKitCalculator = () => {
                   className={`p-4 rounded ${
                     result.status === 'above' 
                       ? 'bg-red-500/20' 
-                      : result.status === 'below' 
-                      ? 'bg-yellow-500/20' 
                       : 'bg-green-500/20'
                   }`}
                 >
