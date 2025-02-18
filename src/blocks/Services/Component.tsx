@@ -36,7 +36,7 @@ export default async function ServicesBlock() {
       />
       <div className="container pt-[5rem] flex flex-col justify-normal gap-10 relative z-10">
         {docs.map((service, index) => (
-          <div key={index} className={`flex flex-col gap-4 ${index % 2 === 1 ? 'md:flex-row-reverse' : 'md:flex-row'}`}>
+          <div key={index} className={`flex flex-col gap-10 py-[2rem] ${index % 2 === 1 ? 'md:flex-row-reverse' : 'md:flex-row'}`}>
             <div className="basis-1/2">
             <AnimateIn
               animation={{
@@ -60,7 +60,7 @@ export default async function ServicesBlock() {
               )}
             </AnimateIn>
             </div>
-            <div className="basis-1/2 relative h-[500px]"> {/* Added fixed height and relative positioning */}
+            <div className="basis-1/2 relative min-h-[500px]"> {/* Added fixed height and relative positioning */}
             <AnimateIn
               animation={{
                 x: index % 2 === 1 ? -60 : 60,

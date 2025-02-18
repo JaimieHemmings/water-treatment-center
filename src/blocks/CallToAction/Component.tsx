@@ -20,7 +20,6 @@ interface CallToActionBlockProps {
 
 export const CallToActionBlock: React.FC<CallToActionBlockProps> = ({ link, linkLabel, richText, lightbgToggle, backgroundImage }) => {
   return (
-    <div className="bg-darkblue">
     <div className={`w-full py-[5rem] relative overflow-hidden ${lightbgToggle ? 'bg-antiflashwhite' : ''}`}
       style={{
         clipPath: 'polygon(0 4%, 100% 0, 100% 100%, 0 100%)',
@@ -39,6 +38,7 @@ export const CallToActionBlock: React.FC<CallToActionBlockProps> = ({ link, link
             />
             {/* White overlay */}
             <div className="absolute inset-0 bg-antiflashwhite/60 rounded-xl" />
+            <div className='absolute inset-0 bg-gradient-to-l from-antiflashwhite to-transparent' />
           </div>
         )}
     <Image
@@ -116,7 +116,7 @@ export const CallToActionBlock: React.FC<CallToActionBlockProps> = ({ link, link
                 </h2>
               </AnimateIn>
                 <RichText
-                className={`text-xl md:text-2xl font-semibold mb-5 ${lightbgToggle ? 'text-darkblue' : 'text-white'}`}
+                className={`text-xl md:text-2xl font-semibold mb-5 [&_strong]: ${lightbgToggle ? 'text-darkblue' : 'text-white'}`}
                 data={richText}
                 enableGutter={false}
                 />
@@ -137,7 +137,6 @@ export const CallToActionBlock: React.FC<CallToActionBlockProps> = ({ link, link
           </div>
         </div>
       </Bounded>
-    </div>
     </div>
   );
 };
