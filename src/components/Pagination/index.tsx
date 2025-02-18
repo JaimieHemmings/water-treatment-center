@@ -32,6 +32,7 @@ export const Pagination: React.FC<{
         <PaginationContent>
           <PaginationItem>
             <PaginationPrevious
+              className="text-white hover:text-white hover:bg-teal"
               disabled={!hasPrevPage}
               onClick={() => {
                 router.push(`/posts/page/${page - 1}`)
@@ -60,6 +61,7 @@ export const Pagination: React.FC<{
           <PaginationItem>
             <PaginationLink
               isActive
+              className="text-white bg-azul border-none hover:bg-teal hover:text-white"
               onClick={() => {
                 router.push(`/posts/page/${page}`)
               }}
@@ -71,6 +73,7 @@ export const Pagination: React.FC<{
           {hasNextPage && (
             <PaginationItem>
               <PaginationLink
+                className="text-white hover:text-white hover:bg-teal"
                 onClick={() => {
                   router.push(`/posts/page/${page + 1}`)
                 }}
@@ -82,13 +85,14 @@ export const Pagination: React.FC<{
 
           {hasExtraNextPages && (
             <PaginationItem>
-              <PaginationEllipsis />
+              <PaginationEllipsis className="text-white" />
             </PaginationItem>
           )}
 
           <PaginationItem>
             <PaginationNext
               disabled={!hasNextPage}
+              className="text-white hover:text-white hover:bg-teal"
               onClick={() => {
                 router.push(`/posts/page/${page + 1}`)
               }}
