@@ -13,6 +13,22 @@ export const CallToAction: Block = {
   imageURL: '/block-images/cta-block.jpg',
   fields: [
     {
+      name: 'lightbgToggle',
+      type: 'checkbox',
+      defaultValue: false,
+    },
+    {
+      name: 'backgroundImage',
+      type: 'upload',
+      relationTo: 'media',
+      required: false,
+      admin: {
+        condition: (data, siblingData) => {
+          return siblingData?.lightbgToggle === true
+        },
+      },
+    },
+    {
       name: 'richText',
       type: 'richText',
       editor: lexicalEditor({

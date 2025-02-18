@@ -12,7 +12,7 @@ const Bounded = React.forwardRef<HTMLDivElement, BoundedProps>(
     return (
       <Comp
         ref={ref}
-        className={clsx("relative z-1 container", className)}
+        className={clsx("relative z-20 container", className)}
         {...restProps}
       >
         {children}

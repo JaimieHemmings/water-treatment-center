@@ -238,6 +238,8 @@ export interface Media {
  * via the `definition` "CallToActionBlock".
  */
 export interface CallToActionBlock {
+  lightbgToggle?: boolean | null;
+  backgroundImage?: (number | null) | Media;
   richText?: {
     root: {
       type: string;
@@ -1291,6 +1293,8 @@ export interface PagesSelect<T extends boolean = true> {
  * via the `definition` "CallToActionBlock_select".
  */
 export interface CallToActionBlockSelect<T extends boolean = true> {
+  lightbgToggle?: T;
+  backgroundImage?: T;
   richText?: T;
   link?: T;
   linkLabel?: T;
