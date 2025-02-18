@@ -16,7 +16,7 @@ export default async function PostsPage() {
   const response:any = await payload.find({
     collection: 'posts',
     depth: 1,
-    limit: 12,
+    limit: 3,
     overrideAccess: false,
     select: {
       title: true,
