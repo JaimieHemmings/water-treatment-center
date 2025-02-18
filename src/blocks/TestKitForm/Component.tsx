@@ -20,7 +20,7 @@ const TestKitForm = () => {
     setError('')
 
     try {
-      const response = await fetch('/api/test-submissions', {
+      const response = await fetch('/api/test-kit-requests', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

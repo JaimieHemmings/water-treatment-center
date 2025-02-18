@@ -13,7 +13,7 @@ const TestKitRequests: CollectionConfig = {
   },
   admin: {
     useAsTitle: 'name',
-    defaultColumns: ['name', 'email', 'createdAt'],
+    defaultColumns: ['name', 'email', 'createdAt', 'sent'],
   },
   fields: [
     {
@@ -39,7 +39,10 @@ const TestKitRequests: CollectionConfig = {
     {
       name: 'message',
       type: 'textarea',
-      required: true,
+    },
+    {
+      name: 'sent',
+      type: 'checkbox',
     },
   ],
   timestamps: true,

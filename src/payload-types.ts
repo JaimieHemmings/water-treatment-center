@@ -1078,7 +1078,8 @@ export interface TestKitRequest {
   email: string;
   telephone: string;
   address: string;
-  message: string;
+  message?: string | null;
+  sent?: boolean | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -1861,6 +1862,7 @@ export interface TestKitRequestsSelect<T extends boolean = true> {
   telephone?: T;
   address?: T;
   message?: T;
+  sent?: T;
   updatedAt?: T;
   createdAt?: T;
 }
