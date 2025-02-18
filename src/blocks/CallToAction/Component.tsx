@@ -20,6 +20,7 @@ interface CallToActionBlockProps {
 
 export const CallToActionBlock: React.FC<CallToActionBlockProps> = ({ link, linkLabel, richText, lightbgToggle, backgroundImage }) => {
   return (
+    <div className="bg-darkblue">
     <div className={`w-full py-[5rem] relative overflow-hidden ${lightbgToggle ? 'bg-antiflashwhite' : ''}`}
       style={{
         clipPath: 'polygon(0 4%, 100% 0, 100% 96%, 0 100%)',
@@ -123,6 +124,7 @@ export const CallToActionBlock: React.FC<CallToActionBlockProps> = ({ link, link
           </div>
         </div>
       </Bounded>
+    </div>
     </div>
   );
 };
