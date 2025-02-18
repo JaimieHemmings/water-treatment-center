@@ -63,7 +63,9 @@ const TestKitForm = () => {
   return (
     <section className="py-[5rem]">
       <div className="container max-w-2xl mx-auto">
-        <h2 className="text-2xl md:text-4xl text-white mb-8">Free Test Kit</h2>
+        <h2 className="text-2xl md:text-4xl text-white mb-8">
+          Free Test Kit
+        </h2>
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
             <label htmlFor="name" className="block text-white mb-2">
