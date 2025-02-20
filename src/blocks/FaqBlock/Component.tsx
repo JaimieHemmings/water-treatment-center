@@ -56,7 +56,6 @@ export const FaqBlock: React.FC<FaqBlockProps> = ({
                 className="inline-flex items-center justify-center whitespace-nowrap font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-11 px-8 mt-3 bg-white border border-selectiveyellow text-selectiveyellow hover:bg-selectiveyellow hover:text-white text-lg"
               >
                 <span className="flex items-center gap-2">
-                  <FaGoogle className="text-xl" />
                   {linkLabel}
                 </span>
               </Link>
