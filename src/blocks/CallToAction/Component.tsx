@@ -77,6 +77,9 @@ export const CallToActionBlock: React.FC<CallToActionBlockProps> = ({ link, link
           >
           {richText && !lightbgToggle && (
             <div>
+              <h2 className="text-white text-2xl md:text-4xl font-semibold mb-5 border-b-2 border-teal pb-2 inline-block">
+                {title || 'Get in touch!'}
+              </h2>
               <RichText
               className={`text-2xl md:text-4xl font-semibold mb-5 ${lightbgToggle ? 'text-darkblue' : 'text-white'}`}
               data={richText}
