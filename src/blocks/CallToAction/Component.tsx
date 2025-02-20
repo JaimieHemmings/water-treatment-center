@@ -88,7 +88,7 @@ export const CallToActionBlock: React.FC<CallToActionBlockProps> = ({ link, link
               <div className="basis-1/2"></div>
               <div className="basis-1/2 md:pl-5">
                 <RichText
-                className={`text-xl md:text-2xl font-semibold mb-5 [&_strong]: ${lightbgToggle ? 'text-darkblue' : 'text-white'}`}
+                className={`text-xl md:text-2xl font-semibold mb-5 [&_strong]: ${lightbgToggle ? 'text-gray-700' : 'text-white'}`}
                 data={richText}
                 enableGutter={false}
                 />

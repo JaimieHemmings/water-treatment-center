@@ -895,6 +895,16 @@ export interface TestKitCalculator {
  * via the `definition` "ReviewBlock".
  */
 export interface ReviewBlock {
+  title: string;
+  subtitle?: string | null;
+  youtubeEmbed?: string | null;
+  reviews?:
+    | {
+        review: string;
+        reviewer: string;
+        id?: string | null;
+      }[]
+    | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'reviewBlock';
@@ -1633,6 +1643,16 @@ export interface TestKitCalculatorSelect<T extends boolean = true> {
  * via the `definition` "ReviewBlock_select".
  */
 export interface ReviewBlockSelect<T extends boolean = true> {
+  title?: T;
+  subtitle?: T;
+  youtubeEmbed?: T;
+  reviews?:
+    | T
+    | {
+        review?: T;
+        reviewer?: T;
+        id?: T;
+      };
   id?: T;
   blockName?: T;
 }
