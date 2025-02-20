@@ -32,9 +32,9 @@ const AccordionItem = ({ item }: AccordionItemProps) => {
         onClick={() => setIsOpen(!isOpen)}
         aria-expanded={isOpen}
       >
-        <h3 className="text-lg md:text-xl text-white max-w-[95%]">{item.question}</h3>
+        <h3 className="text-lg md:text-xl text-slate-700 max-w-[95%]">{item.question}</h3>
         <span 
-          className="transform transition-transform duration-300 ease-in-out"
+          className="transform transition-transform duration-300 ease-in-out text-slate-700"
           style={{ transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)' }}
         >
           ↓
@@ -49,7 +49,7 @@ const AccordionItem = ({ item }: AccordionItemProps) => {
           overflow: 'hidden'
         }}
       >
-        <div className="p-4 max-w-[95%] text-white">
+        <div className="p-4 max-w-[95%] text-slate-700">
           {item.answer}
         </div>
       </div>
