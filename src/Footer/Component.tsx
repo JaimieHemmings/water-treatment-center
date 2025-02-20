@@ -38,7 +38,7 @@ export async function Footer() {
           </div>
           <div className="flex flex-col gap-4">
             <h2 className="text-2xl text-selectiveyellow">Useful Links</h2>
-            <Link className="hover:text-selectiveyellow transition-colors duration-200" href="/payment plans">Payment Plans</Link>
+            <Link className="hover:text-selectiveyellow transition-colors duration-200" href="/payment-plans">Payment Plans</Link>
             <Link className="hover:text-selectiveyellow transition-colors duration-200" href="/">Home Water Test</Link>
             <Link className="hover:text-selectiveyellow transition-colors duration-200" href="/well-test-calculator">Well Water Test</Link>
             <Link className="hover:text-selectiveyellow transition-colors duration-200" href="/free-test-kit">Free Test Kit</Link>
