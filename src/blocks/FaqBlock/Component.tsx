@@ -2,7 +2,8 @@ import React from "react";
 import SectionTitle from "@/components/SectionTitle";
 import FAQBlockClient from "./client";
 import Image from "next/image";
-import { CustomLink } from "@/components/CustomLink";
+import { FaGoogle } from "react-icons/fa";
+import Link from "next/link";
 
 interface FaqBlockProps {
   title: string;
@@ -50,7 +51,15 @@ export const FaqBlock: React.FC<FaqBlockProps> = ({
               <p className="text-slate-700 pb-5">
                 {sideContent}
               </p>
-              <CustomLink theme="light" label={linkLabel} link={linkURL.slug} />
+              <Link
+                href={linkURL.slug}
+                className="inline-flex items-center justify-center whitespace-nowrap font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-11 px-8 mt-3 bg-white border border-selectiveyellow text-selectiveyellow hover:bg-selectiveyellow hover:text-white text-lg"
+              >
+                <span className="flex items-center gap-2">
+                  <FaGoogle className="text-xl" />
+                  {linkLabel}
+                </span>
+              </Link>
             </div>
           </div>
         </div>
