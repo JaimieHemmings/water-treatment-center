@@ -18,8 +18,8 @@ const ReviewBlock: React.FC<ReviewBlockProps> = ({title, subtitle, reviews, yout
   return (
     <div className="py-[5rem]">
       <SectionTitle title={title} subtitle={subtitle} />
-      <div className="container flex flex-col md:flex-row-reverse gap-10 py-5 pt-[3rem]">
-        <div className="md:basis-1/2 relative">
+      <div className="container flex flex-col lg:flex-row-reverse gap-10 py-5 pt-[3rem]">
+        <div className="lg:basis-1/2 relative">
           <Image 
             src="/logo-image.png" 
             width={150} 
@@ -30,7 +30,7 @@ const ReviewBlock: React.FC<ReviewBlockProps> = ({title, subtitle, reviews, yout
           <ReviewCarousel reviews={reviews} />
           <CustomLink theme="white" label="Read More Reviews" link="https://www.google.com/search?client=firefox-b-d&q=thewatertreatment+centre+ireland#lrd=0x485daf9cb276c2eb:0x6d324757580b9ad2,1,,,," />
         </div>
-        <div className="md:basis-1/2">
+        <div className="lg:basis-1/2">
           <div className="relative w-full rounded-lg overflow-hidden">
             <div 
               className="youtube-container"
