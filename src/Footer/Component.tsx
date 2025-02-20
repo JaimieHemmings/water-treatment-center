@@ -28,19 +28,20 @@ export async function Footer() {
           </ul>
         </div>
         <div className="flex flex-row gap-5">
-          <div className="flex flex-col gap-5">
+          <div className="flex flex-col gap-4">
             <h2 className="text-2xl text-selectiveyellow">Quick Links</h2>
-            <Link className="hover:text-selectiveyellow transition-colors duration-200" href="/">About</Link>
-            <Link className="hover:text-selectiveyellow transition-colors duration-200" href="/">News</Link>
-            <Link className="hover:text-selectiveyellow transition-colors duration-200" href="/">FAQ&apos;s</Link>
-            <Link className="hover:text-selectiveyellow transition-colors duration-200" href="/">News</Link>
+            <Link className="hover:text-selectiveyellow transition-colors duration-200" href="/">Home</Link>
+            <Link className="hover:text-selectiveyellow transition-colors duration-200" href="/about">About</Link>
+            <Link className="hover:text-selectiveyellow transition-colors duration-200" href="/services">Services</Link>
+            <Link className="hover:text-selectiveyellow transition-colors duration-200" href="/news">News</Link>
+            <Link className="hover:text-selectiveyellow transition-colors duration-200" href="/contact">Contact</Link>
           </div>
-          <div className="flex flex-col gap-5">
-            <h2 className="text-2xl text-selectiveyellow">Company</h2>
-            <Link className="hover:text-selectiveyellow transition-colors duration-200" href="/">About</Link>
-            <Link className="hover:text-selectiveyellow transition-colors duration-200" href="/">Services</Link>
-            <Link className="hover:text-selectiveyellow transition-colors duration-200" href="/">Our People</Link>
-            <Link className="hover:text-selectiveyellow transition-colors duration-200" href="/">Contact</Link>
+          <div className="flex flex-col gap-4">
+            <h2 className="text-2xl text-selectiveyellow">Useful Links</h2>
+            <Link className="hover:text-selectiveyellow transition-colors duration-200" href="/payment plans">Payment Plans</Link>
+            <Link className="hover:text-selectiveyellow transition-colors duration-200" href="/">Home Water Test</Link>
+            <Link className="hover:text-selectiveyellow transition-colors duration-200" href="/well-test-calculator">Well Water Test</Link>
+            <Link className="hover:text-selectiveyellow transition-colors duration-200" href="/free-test-kit">Free Test Kit</Link>
           </div>
           
         </div>

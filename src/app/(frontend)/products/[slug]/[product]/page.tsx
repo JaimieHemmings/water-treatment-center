@@ -6,9 +6,9 @@ import Image from 'next/image'
 import RichText from '@/components/RichText'
 import { generateMeta } from '@/utilities/generateMeta'
 import AnimateIn from '@/components/Animations/AnimateIn'
-import Bounded from '@/utilities/Bounded'
-import CustomLink from '@/components/CustomLink'
 import Link from 'next/link'
+import ProductHero from './ProductHero'
+import ProductCTA from './ProductCTA'
 
 type Props = {
   params: Promise<{
@@ -23,26 +23,7 @@ export default async function Product({ params }: Props) {
   return (
     <>
     <article className="bg-darkblue relative z-0">
-      <div className="relative w-full min-h-[600px] azul-overlay dots-overlay py-20">
-        <Image
-          src={productData.heroImage.heroImage.url}
-          alt={productData.heroImage.heroImage.alt || 'No alt text available'}
-          width={1920}
-          height={1080}
-          className="absolute inset-0 w-full h-full object-cover"
-          priority
-        />
-        <div className="container mx-auto h-full flex flex-col justify-center items-center relative z-10">
-          <h1 className="text-4xl md:text-[72px] text-center md:leading-[80px] text-white">
-            {productData.title}
-          </h1>
-          <p className="my-5 pt-5 text-lg text-center md:mx-auto md:max-w-[60%] text-white">
-            {productData.excerpt}
-          </p>
-        </div>
-        <div className="absolute pointer-events-none left-0 bottom-0 w-full h-full bg-jet opacity-30" />
-        <div className="absolute pointer-events-none left-0 bottom-0 w-full h-1/2 bg-gradient-to-t from-darkblue to-transparent" />
-      </div>
+      <ProductHero productData={productData} />
       <PageClient />
       <div className="flex flex-col items-center gap-4 py-[5rem]">
         <div className="container">
@@ -57,8 +38,11 @@ export default async function Product({ params }: Props) {
               </h2>
             </AnimateIn>
           </div> 
-          <div className="flex flex-col md:flex-row gap-4 px-[1rem]">
+        </div>
+        <div className="container">
+          <div className="flex flex-col md:flex-row gap-4">
             <div className="md:basis-1/2">
+              <div className="md:sticky top-[100px] pt-5">
                 <AnimateIn
                   animation={{
                     y: 50,
@@ -84,17 +68,18 @@ export default async function Product({ params }: Props) {
                       </Link>
                     )}
                   </div>
+              </div>
             </div>
-            <div className="md:basis-1/2 flex flex-col gap-4">
+            <div className="basis-1/2 text-white">
               <AnimateIn animation={{
-                y: 50,
-                opacity: 0,
-                duration: 0.8,
-              }}>
-                <RichText 
-                  data={productData.intro} 
-                  className="prose prose-lg prose-invert max-w-none p-0"
-                />
+                  y: 50,
+                  opacity: 0,
+                  duration: 0.8,
+                }}>
+                  <RichText 
+                    data={productData.intro} 
+                    className="prose prose-lg prose-invert max-w-none p-0"
+                  />
               </AnimateIn>
               <AnimateIn animation={{
                 y: 50,
@@ -106,20 +91,16 @@ export default async function Product({ params }: Props) {
                   className="prose prose-lg prose-invert max-w-none p-0"
                 />
               </AnimateIn>
-            </div>
-          </div>
-          <AnimateIn animation={{
-            y: 50,
-            opacity: 0,
-            duration: 0.8,
-          }}>
-            <RichText 
-              data={productData.description} 
-              className="prose prose-lg prose-invert max-w-none py-5"
-            />
-          </AnimateIn>
-          <div className="flex md:flex-row flex-col gap-4">
-            <div className="basis-1/2 py-5 px-5">
+              <AnimateIn animation={{
+                y: 50,
+                opacity: 0,
+                duration: 0.8,
+              }}>
+                <RichText 
+                  data={productData.description} 
+                  className="prose prose-lg prose-invert max-w-none py-5"
+                />
+              </AnimateIn>
               <h2 className="text-2xl font-semibold text-white pb-5">
                 Technical Specifications
               </h2>
@@ -137,75 +118,24 @@ export default async function Product({ params }: Props) {
                   ))}
                 </ul>
               )}
-            </div>
-            <div className="basis-1/2 px-5 prose prose-lg prose-invert max-w-none py-5 text-white">  
-              <h2 className="text-2xl font-semibold text-white">
+              <h2 className="text-2xl font-semibold text-white py-5">
                 Warranty Information
               </h2>  
               <p>
                 {productData.warranties}
               </p>
-              <h2 className="text-2xl font-semibold text-white">
+              <h2 className="text-2xl font-semibold text-white py-5">
                 Service Information
               </h2> 
               <p>
                 {productData.serviceText}
               </p>
-            </div>
           </div>
         </div>
       </div>
+      </div>
     </article>
-    <section className="w-full bg-jet py-20 relative overflow-hidden">
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="absolute inset-0 w-full h-full object-cover min-w-full min-h-full"
-      >
-        <source src="/water-drop.mp4" type="video/mp4" />
-      </video>
-      <div className="w-full h-full absolute z-1 bg-gradient-to-br from-teal to-azul opacity-70 top-0 left-0" />
-      <Bounded>
-        <div className="p-4">
-          <AnimateIn
-            animation={{
-              y: 60,
-              opacity: 0,
-              duration: 1,
-              ease: 'power2.out',}}
-          >
-            <h2 className="bg-selectiveyellow text-white inline-block px-5 py-2 rounded-xl font-semibold mb-5">
-              Get In Touch
-            </h2>
-          </AnimateIn>
-          <AnimateIn
-            animation={{
-              y: 60,
-              opacity: 0,
-              duration: 1,
-              ease: 'power2.out',}}
-          >
-            <div>
-              <p className="text-2xl md:text-5xl font-semibold text-white">
-              Get in touch to find out more about our products and services.
-              </p>
-            </div>
-          </AnimateIn>
-          <div className="flex justify-end space-x-4">
-            <AnimateIn
-              animation={{
-                opacity: 0,
-                duration: 1,
-                ease: 'power2.out',}}
-            >
-              <CustomLink theme="light" label="Get In Touch" link="/contact" />
-            </AnimateIn>
-          </div>
-        </div>
-      </Bounded>
-    </section>
+    <ProductCTA />
     </>
   )
 }
