@@ -20,7 +20,7 @@ const ReviewCarousel: React.FC<ReviewCarouselProps> = ({ reviews }) => {
     loop: true,
     align: 'center',
     skipSnaps: false,
-  }, [Autoplay({ delay: 50000 })]);
+  }, [Autoplay({ delay: 5000 })]);
 
   return (
     <div className="embla">
