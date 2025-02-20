@@ -20,7 +20,7 @@ const ReviewCarousel: React.FC<ReviewCarouselProps> = ({ reviews }) => {
     loop: true,
     align: 'center',
     skipSnaps: false,
-  }, [Autoplay({ delay: 5000 })]);
+  }, [Autoplay({ delay: 50000 })]);
 
   return (
     <div className="embla">
@@ -28,10 +28,10 @@ const ReviewCarousel: React.FC<ReviewCarouselProps> = ({ reviews }) => {
         <div className="embla__container">
           {reviews?.map((review, index) => (
             <div 
-              key={index} 
-              className="prose embla__slide"
+            key={index} 
+            className="prose embla__slide"
             >
-              <p className="text-antiflashwhite prose md:prose-xl max-w-none">
+              <p className="text-antiflashwhite prose md:prose-xl max-w-none review">
                 {review.review}
               </p>
               <p className="text-2xl mt-5 text-teal font-semibold">
