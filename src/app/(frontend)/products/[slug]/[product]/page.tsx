@@ -41,7 +41,7 @@ export default async function Product({ params }: Props) {
         </div>
         <div className="container">
           <div className="flex flex-col md:flex-row gap-4">
-            <div className="md:basis-1/2">
+            <div className="md:basis-1/3">
               <div className="md:sticky top-[100px] pt-5">
                 <AnimateIn
                   animation={{
@@ -70,35 +70,23 @@ export default async function Product({ params }: Props) {
                   </div>
               </div>
             </div>
-            <div className="basis-1/2 text-white">
-              <AnimateIn animation={{
-                  y: 50,
-                  opacity: 0,
-                  duration: 0.8,
-                }}>
-                  <RichText 
-                    data={productData.intro} 
-                    className="prose prose-lg prose-invert max-w-none p-0"
-                  />
-              </AnimateIn>
-              <AnimateIn animation={{
-                y: 50,
-                opacity: 0,
-                duration: 0.8,
-              }}>
+            <div className="basis-2/3 text-white">
+              <AnimateIn animation={{y: 50,opacity: 0,duration: 0.8,}}>
                 <RichText 
-                  data={productData.mainBody} 
+                  data={productData.intro} 
                   className="prose prose-lg prose-invert max-w-none p-0"
                 />
               </AnimateIn>
-              <AnimateIn animation={{
-                y: 50,
-                opacity: 0,
-                duration: 0.8,
-              }}>
+              <AnimateIn animation={{y: 50,opacity: 0,duration: 0.8,}}>
+                <RichText 
+                  data={productData.mainBody} 
+                  className="prose prose-lg prose-invert max-w-none p-0 py-5"
+                />
+              </AnimateIn>
+              <AnimateIn animation={{y: 50,opacity: 0,duration: 0.8,}}>
                 <RichText 
                   data={productData.description} 
-                  className="prose prose-lg prose-invert max-w-none py-5"
+                  className="prose prose-lg prose-invert max-w-none p-0"
                 />
               </AnimateIn>
               <h2 className="text-2xl font-semibold text-white pb-5">
