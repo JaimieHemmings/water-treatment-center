@@ -243,6 +243,7 @@ export interface Media {
  * via the `definition` "CallToActionBlock".
  */
 export interface CallToActionBlock {
+  title?: string | null;
   lightbgToggle?: boolean | null;
   backgroundImage?: (number | null) | Media;
   richText?: {
@@ -1355,6 +1356,7 @@ export interface PagesSelect<T extends boolean = true> {
  * via the `definition` "CallToActionBlock_select".
  */
 export interface CallToActionBlockSelect<T extends boolean = true> {
+  title?: T;
   lightbgToggle?: T;
   backgroundImage?: T;
   richText?: T;

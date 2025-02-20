@@ -56,7 +56,7 @@ export const ImageList: React.FC<ImageListProps> = ({ images }) => {
                   ease: "power2.out",
                 }}
               >
-                <h2 className="text-white text-2xl md:text-4xl font-semibold pb-5 border-b border-selectiveyellow mb-5">
+                <h2 className="text-white text-2xl md:text-4xl font-semibold pb-5 border-b border-selectiveyellow mb-5 inline-block">
                   {image.title}
                 </h2>
                 <p className="text-white text-lg md:text-xl">

@@ -6,6 +6,7 @@ import AnimateIn from '@/components/Animations/AnimateIn';
 import Image from 'next/image';
 
 interface CallToActionBlockProps {
+  title?: string,
   link: {
     slug: string;
   };
@@ -18,7 +19,7 @@ interface CallToActionBlockProps {
   };
 }
 
-export const CallToActionBlock: React.FC<CallToActionBlockProps> = ({ link, linkLabel, richText, lightbgToggle, backgroundImage }) => {
+export const CallToActionBlock: React.FC<CallToActionBlockProps> = ({ link, linkLabel, richText, lightbgToggle, backgroundImage, title }) => {
   return (
     <div className="bg-darkblue">
       <div className={`w-full py-[5rem] relative overflow-hidden ${lightbgToggle ? 'bg-antiflashwhite' : ''}`}>
@@ -87,8 +88,13 @@ export const CallToActionBlock: React.FC<CallToActionBlockProps> = ({ link, link
             <div className="container flex flex-col md:flex-row justify-between ">
               <div className="basis-1/2"></div>
               <div className="basis-1/2 md:pl-5">
+              {title && (
+                <h2 className="text-gray-700 text-2xl md:text-4xl font-semibold mb-5 border-b-2 border-teal pb-2 inline-block">
+                  {title || 'Get in touch!'}
+                </h2>
+              )}
                 <RichText
-                className={`text-xl md:text-2xl font-semibold mb-5 [&_strong]: ${lightbgToggle ? 'text-gray-700' : 'text-white'}`}
+                className={`prose md:prose-xl font-semibold mb-5 [&_strong]: ${lightbgToggle ? 'text-gray-700' : 'text-white'}`}
                 data={richText}
                 enableGutter={false}
                 />

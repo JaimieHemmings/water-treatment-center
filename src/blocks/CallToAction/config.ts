@@ -13,6 +13,12 @@ export const CallToAction: Block = {
   imageURL: '/block-images/cta-block.jpg',
   fields: [
     {
+      name: 'title',
+      label: 'Title',
+      type: 'text',
+      required: false,
+    },
+    {
       name: 'lightbgToggle',
       label: 'Light Background',
       type: 'checkbox',
