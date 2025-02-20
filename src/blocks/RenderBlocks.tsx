@@ -20,6 +20,7 @@ import VideoBlock from '@/blocks/VideoBlock/Component'
 import YoutubeBlock from '@/blocks/YoutubeBlock/Component'
 import TestKitForm from '@/blocks/TestKitForm/Component'
 import TestKitCalculator from '@/blocks/TestKitCalculator/Component'
+import ReviewBlock from '@/blocks/ReviewBlock/Component'
 
 const blockComponents = {
   content: ContentBlock,
@@ -40,6 +41,7 @@ const blockComponents = {
   youtubeBlock: YoutubeBlock,
   testKitForm: TestKitForm,
   testKitCalculator: TestKitCalculator,
+  reviewBlock: ReviewBlock,
 }
 
 export const RenderBlocks: React.FC<{

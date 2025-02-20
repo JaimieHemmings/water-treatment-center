@@ -21,12 +21,7 @@ interface CallToActionBlockProps {
 export const CallToActionBlock: React.FC<CallToActionBlockProps> = ({ link, linkLabel, richText, lightbgToggle, backgroundImage }) => {
   return (
     <div className="bg-darkblue">
-      <div className={`w-full py-[5rem] relative overflow-hidden ${lightbgToggle ? 'bg-antiflashwhite' : ''}`}
-      style={lightbgToggle ? {
-        clipPath: 'polygon(0 4%, 100% 0, 100% 100%, 0 100%)',
-        paddingTop: 'calc(5rem + 4vw)',
-        paddingBottom: 'calc(5rem + 4vw)',
-      } : undefined}>
+      <div className={`w-full py-[5rem] relative overflow-hidden ${lightbgToggle ? 'bg-antiflashwhite' : ''}`}>
         {backgroundImage && (
           <div className="absolute left-0 top-0 h-full w-full md:w-1/2">
             <Image
@@ -48,7 +43,7 @@ export const CallToActionBlock: React.FC<CallToActionBlockProps> = ({ link, link
       className="absolute bottom-4 right-0 z-10 scale-x-[-1] w-48 h-72 md:w-48 md:h-72 max-md:hidden"
       height={300}
       width={200}
-      style={{ filter: 'brightness(0)' }}
+      style={lightbgToggle ? { filter: 'brightness(0)' } : undefined}
     />
       {!lightbgToggle && (
         <video
@@ -72,19 +67,6 @@ export const CallToActionBlock: React.FC<CallToActionBlockProps> = ({ link, link
         `} />
       <Bounded>
         <div className="p-4 relative z-20">
-          {!lightbgToggle && (
-          <AnimateIn
-            animation={{
-              y: 60,
-              opacity: 0,
-              duration: 1,
-              ease: 'power2.out',}}
-              >
-            <h2 className="bg-selectiveyellow text-white inline-block px-5 py-2 rounded-xl font-semibold mb-5">
-              Get In Touch
-            </h2>
-          </AnimateIn>
-          )}
           <AnimateIn
             animation={{
               y: 60,
@@ -95,7 +77,7 @@ export const CallToActionBlock: React.FC<CallToActionBlockProps> = ({ link, link
           {richText && !lightbgToggle && (
             <div>
               <RichText
-              className={`text-2xl md:text-5xl font-semibold mb-5 ${lightbgToggle ? 'text-darkblue' : 'text-white'}`}
+              className={`text-2xl md:text-4xl font-semibold mb-5 ${lightbgToggle ? 'text-darkblue' : 'text-white'}`}
               data={richText}
               enableGutter={false}
               />
@@ -105,17 +87,6 @@ export const CallToActionBlock: React.FC<CallToActionBlockProps> = ({ link, link
             <div className="container flex flex-col md:flex-row justify-between ">
               <div className="basis-1/2"></div>
               <div className="basis-1/2 md:pl-5">
-              <AnimateIn
-                animation={{
-                  y: 60,
-                  opacity: 0,
-                  duration: 1,
-                  ease: 'power2.out',}}
-              >
-                <h2 className="bg-selectiveyellow text-white inline-block px-5 py-2 rounded-xl font-semibold mb-5">
-                  Get In Touch
-                </h2>
-              </AnimateIn>
                 <RichText
                 className={`text-xl md:text-2xl font-semibold mb-5 [&_strong]: ${lightbgToggle ? 'text-darkblue' : 'text-white'}`}
                 data={richText}
