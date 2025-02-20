@@ -129,6 +129,7 @@ export interface Page {
     | YoutubeBlock
     | TestKitForm
     | TestKitCalculator
+    | ReviewBlock
   )[];
   meta?: {
     title?: string | null;
@@ -891,6 +892,15 @@ export interface TestKitCalculator {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ReviewBlock".
+ */
+export interface ReviewBlock {
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'reviewBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "categories".
  */
 export interface Category {
@@ -1314,6 +1324,7 @@ export interface PagesSelect<T extends boolean = true> {
         youtubeBlock?: T | YoutubeBlockSelect<T>;
         testKitForm?: T | TestKitFormSelect<T>;
         testKitCalculator?: T | TestKitCalculatorSelect<T>;
+        reviewBlock?: T | ReviewBlockSelect<T>;
       };
   meta?:
     | T
@@ -1614,6 +1625,14 @@ export interface TestKitFormSelect<T extends boolean = true> {
  * via the `definition` "TestKitCalculator_select".
  */
 export interface TestKitCalculatorSelect<T extends boolean = true> {
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ReviewBlock_select".
+ */
+export interface ReviewBlockSelect<T extends boolean = true> {
   id?: T;
   blockName?: T;
 }
