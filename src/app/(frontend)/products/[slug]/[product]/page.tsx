@@ -89,35 +89,39 @@ export default async function Product({ params }: Props) {
                   className="prose prose-lg prose-invert max-w-none p-0"
                 />
               </AnimateIn>
-              <h2 className="text-2xl font-semibold text-white pb-5">
-                Technical Specifications
-              </h2>
-              {productData.technicalSpecs && (
-                <ul className="list-none list-inside text-white mt-4">
-                  {productData.technicalSpecs.map((technicalSpec: any, index: number) => (
-                    <li key={index} className="text-base border-b border-selectiveyellow py-2 flex flex-row justify-between">
-                      <span className="font-semibold">
-                        {technicalSpec.title}
-                      </span>
-                      <span>
-                        {technicalSpec.value}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              )}
-              <h2 className="text-2xl font-semibold text-white py-5">
-                Warranty Information
-              </h2>  
-              <p>
-                {productData.warranties}
-              </p>
-              <h2 className="text-2xl font-semibold text-white py-5">
-                Service Information
-              </h2> 
-              <p>
-                {productData.serviceText}
-              </p>
+          </div>
+        </div>
+      </div>
+      <div className="container text-white">
+        <div className="flex flex-col md:flex-row gap-4 py-5">
+          <div className="md:basis-2/3">
+            <h2 className="text-2xl font-semibold text-white py-5">
+              Technical Specifications
+            </h2>
+            {productData.technicalSpecs && (
+              <ul className="list-none list-inside text-white mt-4">
+                {productData.technicalSpecs.map((technicalSpec: any, index: number) => (
+                  <li key={index} className="text-base border-b border-selectiveyellow py-2 flex flex-row justify-between">
+                    <span className="font-semibold">
+                      {technicalSpec.title}
+                    </span>
+                    <span>
+                      {technicalSpec.value}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+          <div className="md:basis-1/3">
+            <h2 className="text-2xl font-semibold text-white py-5">
+              Warranty Information
+            </h2>  
+            <p>{productData.warranties}</p>
+            <h2 className="text-2xl font-semibold text-white py-5">
+              Service Information
+            </h2> 
+            <p>{productData.serviceText}</p>
           </div>
         </div>
       </div>
