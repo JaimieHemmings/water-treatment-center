@@ -19,20 +19,6 @@ export const TwoColumnBlock: React.FC<TwoColumnBlockProps> = ({ contentleft, con
 
   return (
     <section className="w-full bg-darkblue py-5 md:py-[5rem] text-white relative">
-      <Image
-        src="/dots.svg"
-        alt="Decorative dots"
-        className="absolute bottom-4 right-0 z-10 scale-x-[-1] w-48 h-72 md:w-48 md:h-72"
-        height={300}
-        width={200}
-      />
-      <Image
-        src="/dots.svg"
-        alt="Decorative dots"
-        className="absolute top-4 left-0 z-10 w-48 h-72 md:w-48 md:h-72"
-        height={300}
-        width={200}
-      />
       <AnimateIn
         animation={{
           y: 60,
