@@ -19,7 +19,7 @@ const ProductNav = () => {
             <a 
               href="#features"
               onClick={(e) => scrollToSection(e, 'features')}
-              className="font-semibold text-lg hover:border-b-2 hover:border-azul"
+              className="font-semibold text-lg text-jet hover:text-azul hover:border-b-2 hover:border-azul transition-colors"
             >
               Features
             </a>
@@ -28,7 +28,7 @@ const ProductNav = () => {
             <a 
               href="#details"
               onClick={(e) => scrollToSection(e, 'details')}
-              className="font-semibold text-lg hover:border-b-2 hover:border-azul"
+              className="font-semibold text-lg text-jet hover:text-azul hover:border-b-2 hover:border-azul transition-colors"
             >
               Details
             </a>
@@ -37,7 +37,7 @@ const ProductNav = () => {
             <a 
               href="#services"
               onClick={(e) => scrollToSection(e, 'services')}
-              className="font-semibold text-lg hover:border-b-2 hover:border-azul"
+              className="font-semibold text-lg text-jet hover:text-azul hover:border-b-2 hover:border-azul transition-colors"
             >
               Services
             </a>

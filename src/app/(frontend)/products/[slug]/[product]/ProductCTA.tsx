@@ -5,7 +5,6 @@ import CustomLink from '@/components/CustomLink'
 
 const ProductCTA = () => {
   return (
-    
     <section className="w-full bg-jet py-20 relative overflow-hidden">
       <video
         autoPlay
@@ -38,7 +37,7 @@ const ProductCTA = () => {
               ease: 'power2.out',}}
           >
             <div>
-              <p className="text-2xl md:text-5xl font-semibold text-white">
+              <p className="text-2xl md:text-4xl font-semibold text-white">
               Get in touch to find out more about our products and services.
               </p>
             </div>
