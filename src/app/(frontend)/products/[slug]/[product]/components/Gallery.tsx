@@ -21,7 +21,7 @@ const Gallery = ({ productData }: { productData: ProductData }) => {
     ...(productData.gallery || [])
   ];
 
-  const [selectedImage, setSelectedImage] = useState<GalleryImage>(thumbnailImages[0].image);
+  const [selectedImage, setSelectedImage] = useState<GalleryImage>(thumbnailImages[0]);
 
   const handleImageClick = (image: GalleryImage) => {
     setSelectedImage(image);
