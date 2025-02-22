@@ -13,13 +13,13 @@ const ProductNav = () => {
   }, [])
   return (
     <div className="w-full bg-antiflashwhite p-3 text-jet shadow-[0px_4px_6px_0px_rgba(74,_144,_226,_0.4)]">
-      <div className="container flex flex-row gap-4 justify-between align-middle items-center">
+      <div className="container flex flex-col md:flex-row gap-4 justify-between align-middle items-center">
         <ul className="flex flex-row gap-4 text-azul">
           <li>
             <a 
               href="#features"
               onClick={(e) => scrollToSection(e, 'features')}
-              className="font-semibold text-lg text-jet hover:text-azul hover:border-b-2 hover:border-azul transition-colors"
+              className="text-lg text-jet hover:text-azul hover:border-b-2 hover:border-azul transition-colors"
             >
               Features
             </a>
@@ -28,7 +28,7 @@ const ProductNav = () => {
             <a 
               href="#details"
               onClick={(e) => scrollToSection(e, 'details')}
-              className="font-semibold text-lg text-jet hover:text-azul hover:border-b-2 hover:border-azul transition-colors"
+              className="text-lg text-jet hover:text-azul hover:border-b-2 hover:border-azul transition-colors"
             >
               Details
             </a>
@@ -37,7 +37,7 @@ const ProductNav = () => {
             <a 
               href="#services"
               onClick={(e) => scrollToSection(e, 'services')}
-              className="font-semibold text-lg text-jet hover:text-azul hover:border-b-2 hover:border-azul transition-colors"
+              className="text-lg text-jet hover:text-azul hover:border-b-2 hover:border-azul transition-colors"
             >
               Services
             </a>

@@ -3,11 +3,12 @@ import { getPayload } from 'payload'
 import React, { cache } from 'react'
 import PageClient from './page.client'
 import { generateMeta } from '@/utilities/generateMeta'
-import ProductCTA from './ProductCTA'
+import ProductCTA from './components/ProductCTA'
 import Header from './components/Header';
 import ProductNav from './components/ProductNav'
 import ProductFeatures from './components/ProductFeatures'
 import ProductDetails from './components/ProductDetails'
+import ServiceDetails from './components/ServiceDetails'
 
 type Props = {
   params: Promise<{
@@ -27,6 +28,7 @@ export default async function Product({ params }: Props) {
       <ProductFeatures productData={productData} />
       <ProductCTA />
       <ProductDetails productData={productData} />
+      <ServiceDetails productData={productData} />
     </article>
   )
 }
