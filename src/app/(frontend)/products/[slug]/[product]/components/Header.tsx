@@ -5,64 +5,20 @@ import { FaEuroSign } from "react-icons/fa";
 import { GiAutoRepair } from "react-icons/gi";
 import { GrMoney } from "react-icons/gr";
 import AnimateIn from '@/components/Animations/AnimateIn'
-import Image from 'next/image'
+import Gallery from './Gallery';
 
 const Header = ({ productData }) => {
   return (
     <div className="container flex flex-col md:flex-row gap-8 py-5">
           <div className="md:basis-1/2 flex flex-col">
-            {productData.productImage && (
-              <AnimateIn
-                animation={{
-                  y: 50,
-                  opacity: 0,
-                  rotate: -5,
-                  duration: 0.8,
-                }}>
-                  <Image
-                    src={productData.productImage.url}
-                    alt={productData.productImage.alt || 'No alt text available'}
-                    className="inset-0 w-full object-cover"
-                    width={productData.productImage.width}
-                    height={productData.productImage.height}
-                    priority
-                  />
-              </AnimateIn>
-            )}
-            <div className="flex flex-row gap-4 mt-4 justify-between">
-              <Image
-                src={productData.productImage.url}
-                alt={productData.productImage.alt || 'No alt text available'}
-                className="inset-0 w-full object-cover"
-                width={productData.productImage.width}
-                height={productData.productImage.height}
-                priority
-              />
-              <Image
-                src={productData.productImage.url}
-                alt={productData.productImage.alt || 'No alt text available'}
-                className="inset-0 w-full object-cover"
-                width={productData.productImage.width}
-                height={productData.productImage.height}
-                priority
-              />
-              <Image
-                src={productData.productImage.url}
-                alt={productData.productImage.alt || 'No alt text available'}
-                className="inset-0 w-full object-cover"
-                width={productData.productImage.width}
-                height={productData.productImage.height}
-                priority
-              />
-              <Image
-                src={productData.productImage.url}
-                alt={productData.productImage.alt || 'No alt text available'}
-                className="inset-0 w-full object-cover"
-                width={productData.productImage.width}
-                height={productData.productImage.height}
-                priority
-              />
-            </div>
+            <AnimateIn
+              animation={{
+                y: 50,
+                opacity: 0,
+                duration: 0.8,
+              }}>
+              <Gallery productData={productData} />
+            </AnimateIn>
           </div>
           <div className="md:basis-1/2 md:p-5">
             <AnimateIn animation={{
