@@ -1,12 +1,14 @@
 'use client';
-import React, { useState } from 'react'
-import Image from 'next/image'
+import React, { useState } from 'react';
+import Image from 'next/image';
 
 interface GalleryImage {
-  url: string;
-  alt: string;
-  width: number;
-  height: number;
+  image: {
+    url: string;
+    alt: string;
+    width: number;
+    height: number;
+  }
 }
 
 interface ProductData {
@@ -14,53 +16,48 @@ interface ProductData {
   gallery?: GalleryImage[];
 }
 
-const Gallery = ({ productData } : {productData: ProductData}) => {
-
+const Gallery = ({ productData }: { productData: ProductData }) => {
   const thumbnailImages = [
-    productData.productImage,
     ...(productData.gallery || [])
-  ]
+  ];
 
-  const [selectedImage, setSelectedImage] = useState<GalleryImage>(thumbnailImages[0])
+  const [selectedImage, setSelectedImage] = useState<GalleryImage>(thumbnailImages[0].image);
 
-  const handleImageClick = (image) => {
-    setSelectedImage(image)
-  }
-  
+  const handleImageClick = (image: GalleryImage) => {
+    setSelectedImage(image);
+  };
+
   return (
     <div className="space-y-4">
-      <div className="aspect-w-16 aspect-h-9 relative rounded-xl overflow-hidden">
+      <div className="relative aspect-square w-full overflow-hidden rounded-xl">
         <Image
-          src={selectedImage.url}
-          alt={selectedImage.alt || 'No alt text available'}
+          src={selectedImage.image.url}
+          alt={selectedImage.image.alt || 'No alt text available'}
           className="object-cover rounded-xl transition-all duration-300"
-          width={selectedImage.width}
-          height={selectedImage.height}
+          fill
           priority
         />
       </div>
-      
-      <div className="grid grid-cols-4 gap-4">
+
+      <div className="grid grid-cols-4 gap-2">
         {thumbnailImages.map((image, index) => (
           <button
             key={index}
             onClick={() => handleImageClick(image)}
-            className={`relative aspect-w-1 aspect-h-1 rounded-lg overflow-hidden 
-              ${selectedImage.url === image.url ? 'ring-2 ring-selectiveyellow' : 'hover:opacity-75'}`}
+            className={`relative aspect-square w-full overflow-hidden rounded-lg transition-all duration-300
+              ${selectedImage.image.url === image.image.url ? 'ring-2 ring-blue-500' : 'hover:opacity-75'}`}
           >
             <Image
-              src={image.url}
-              alt={image.alt || 'No alt text available'}
-              className="object-cover transition-all duration-300"
-              width={image.width}
-              height={image.height}
-              priority={false}
+              src={image.image.url}
+              alt={image.image.alt || 'No alt text available'}
+              className="object-cover"
+              fill
             />
           </button>
         ))}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Gallery
+export default Gallery;

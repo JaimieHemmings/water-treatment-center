@@ -10,7 +10,7 @@ import Gallery from './Gallery';
 const Header = ({ productData }) => {
   return (
     <div className="container flex flex-col md:flex-row gap-8 py-5">
-          <div className="md:basis-1/2 flex flex-col">
+          <div className="md:basis-1/2 flex flex-col pb-20">
             <AnimateIn
               animation={{
                 y: 50,
