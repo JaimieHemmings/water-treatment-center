@@ -14,6 +14,7 @@ import { FaEuroSign } from "react-icons/fa";
 import CustomLink from '@/components/CustomLink'
 import { GiAutoRepair } from "react-icons/gi";
 import { GrMoney } from "react-icons/gr";
+import { CiCircleCheck } from "react-icons/ci";
 
 type Props = {
   params: Promise<{
@@ -30,8 +31,8 @@ export default async function Product({ params }: Props) {
     <article className="bg-darkblue relative z-0">
       <PageClient />
       <div className="flex flex-col items-center gap-4 py-[5rem]">
-        <div className="container flex flex-col md:flex-row gap-4 py-5">
-          <div className="md:basis-2/3">
+        <div className="container flex flex-col md:flex-row gap-8 py-5">
+          <div className="md:basis-1/2">
             {productData.productImage && (
               <AnimateIn
                 animation={{
@@ -51,7 +52,7 @@ export default async function Product({ params }: Props) {
               </AnimateIn>
             )}
           </div>
-          <div className="md:basis-1/3">
+          <div className="md:basis-1/2">
             <AnimateIn animation={{
                 y: 50,
                 opacity: 0,
@@ -96,6 +97,13 @@ export default async function Product({ params }: Props) {
                   Installation &amp; maintenance services available
                 </li>
               </ul>
+              <div className="py-5">
+                {productData.brochure && (
+                  <Link href={productData.brochure.url} target='_blank' className="ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 underline-offset-4 inline-flex items-center justify-center whitespace-nowrap font-medium transition-colors disabled:pointer-events-none disabled:opacity-50 h-11 px-8 mt-3 border-2 text-lg relative z-30 no-underline hover:no-underline      text-white border-white hover:bg-white hover:text-selectiveyellow">
+                    Download the Brochure
+                  </Link>
+                )}
+              </div>
           </div>
         </div>
         <div className="w-full bg-antiflashwhite p-3 text-jet shadow-[0px_4px_6px_0px_rgba(74,_144,_226,_0.4)]">
@@ -120,6 +128,54 @@ export default async function Product({ params }: Props) {
             <CustomLink label="Contact Us For A Quote" link="/products" theme="light" className='m-0' />
           </div>
         </div>
+        <section className="container py-[5rem] text-white" id="features">
+          <div className="flex-col align-middle items-center text-center">
+            <h2 className="text-xl md:text-2xl mb-5 pb-2 border-b-2 border-azul inline-block text-center">FEATURES</h2>
+            <p className="text-2xl md:text-4xl text-center">Enjoy glass after glass of safe, highly purified water</p>
+          </div>
+          <div className="w-full flex flex-col md:flex-row gap-4 py-[5rem]">
+            <div className="basis-1/2">
+              {productData.productImage && (
+                <AnimateIn
+                  animation={{
+                    y: 50,
+                    opacity: 0,
+                    rotate: -5,
+                    duration: 0.8,
+                  }}>
+                      <Image
+                        src={productData.productImage.url}
+                        alt={productData.productImage.alt || 'No alt text available'}
+                        className="inset-0 w-full object-cover"
+                        width={productData.productImage.width}
+                        height={productData.productImage.height}
+                        priority
+                      />
+                </AnimateIn>
+              )}
+            </div>
+            <div className="basis-1/2">
+              <h3 className="text-2xl md:text-4xl pb-5">Where safety meets innovation</h3>
+              <ul className="py-5 flex flex-col gap-8">
+                <li className="relative pl-[15px]">
+                  <CiCircleCheck className="absolute top-[-5px] left-0 p-0 m-0 text-4xl text-azul"/>
+                  <h4 className="text-xl md:text-2xl pl-[30px] pb-3">Unrivalled Performance</h4>
+                  <p>Built from robust stainless steel, the C8 countertop cooler boasts durability and easy maintenance, built to thrive in demanding environments.</p>
+                </li>
+                <li className="relative pl-[15px]">
+                  <CiCircleCheck className="absolute top-[-5px] left-0 p-0 m-0 text-4xl text-azul"/>
+                  <h4 className="text-xl md:text-2xl pl-[30px] pb-3">Outstanding purification</h4>
+                  <p>Powered by the patented Firewall® purification technology, it offers exceptional protection against bacteria, viruses, and cysts.</p>
+                </li>
+                <li className="relative pl-[15px]">
+                  <CiCircleCheck className="absolute top-[-5px] left-0 p-0 m-0 text-4xl text-azul"/>
+                  <h4 className="text-xl md:text-2xl pl-[30px] pb-3">Continuous protection</h4>
+                  <p>Infused with BioCote® technology, key surfaces of the C8 ensure a constant defense against microbial growth.</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
         
         
 
@@ -150,13 +206,6 @@ export default async function Product({ params }: Props) {
                       />
                     )}
                   </AnimateIn>
-                  <div className="py-5">
-                    {productData.brochure && (
-                      <Link href={productData.brochure.url} target='_blank' className="ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 underline-offset-4 inline-flex items-center justify-center whitespace-nowrap font-medium transition-colors disabled:pointer-events-none disabled:opacity-50 h-11 px-8 mt-3 border-2 text-lg relative z-30 no-underline hover:no-underline      text-white border-white hover:bg-white hover:text-selectiveyellow">
-                        Download the Brochure
-                      </Link>
-                    )}
-                  </div>
               </div>
             </div>
             <div className="basis-2/3 text-white">
