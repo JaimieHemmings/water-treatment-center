@@ -6,12 +6,11 @@ import { GiAutoRepair } from "react-icons/gi";
 import { GrMoney } from "react-icons/gr";
 import AnimateIn from '@/components/Animations/AnimateIn'
 import Image from 'next/image'
-import Link from 'next/link'
 
 const Header = ({ productData }) => {
   return (
     <div className="container flex flex-col md:flex-row gap-8 py-5">
-          <div className="md:basis-1/2">
+          <div className="md:basis-1/2 flex flex-col">
             {productData.productImage && (
               <AnimateIn
                 animation={{
@@ -30,6 +29,40 @@ const Header = ({ productData }) => {
                   />
               </AnimateIn>
             )}
+            <div className="flex flex-row gap-4 mt-4 justify-between">
+              <Image
+                src={productData.productImage.url}
+                alt={productData.productImage.alt || 'No alt text available'}
+                className="inset-0 w-full object-cover"
+                width={productData.productImage.width}
+                height={productData.productImage.height}
+                priority
+              />
+              <Image
+                src={productData.productImage.url}
+                alt={productData.productImage.alt || 'No alt text available'}
+                className="inset-0 w-full object-cover"
+                width={productData.productImage.width}
+                height={productData.productImage.height}
+                priority
+              />
+              <Image
+                src={productData.productImage.url}
+                alt={productData.productImage.alt || 'No alt text available'}
+                className="inset-0 w-full object-cover"
+                width={productData.productImage.width}
+                height={productData.productImage.height}
+                priority
+              />
+              <Image
+                src={productData.productImage.url}
+                alt={productData.productImage.alt || 'No alt text available'}
+                className="inset-0 w-full object-cover"
+                width={productData.productImage.width}
+                height={productData.productImage.height}
+                priority
+              />
+            </div>
           </div>
           <div className="md:basis-1/2 md:p-5">
             <AnimateIn animation={{
