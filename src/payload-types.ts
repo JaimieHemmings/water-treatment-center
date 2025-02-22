@@ -939,11 +939,13 @@ export interface Product {
   id: number;
   title: string;
   excerpt: string;
-  heroImage: {
-    heroImage: number | Media;
-    excerpt: string;
-  };
   productImage?: (number | null) | Media;
+  gallery?:
+    | {
+        image?: (number | null) | Media;
+        id?: string | null;
+      }[]
+    | null;
   intro: {
     root: {
       type: string;
@@ -1823,13 +1825,13 @@ export interface UsersSelect<T extends boolean = true> {
 export interface ProductsSelect<T extends boolean = true> {
   title?: T;
   excerpt?: T;
-  heroImage?:
+  productImage?: T;
+  gallery?:
     | T
     | {
-        heroImage?: T;
-        excerpt?: T;
+        image?: T;
+        id?: T;
       };
-  productImage?: T;
   intro?: T;
   mainBody?: T;
   description?: T;

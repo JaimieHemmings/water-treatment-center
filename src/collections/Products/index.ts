@@ -44,30 +44,26 @@ export const Products: CollectionConfig = {
       type: 'tabs',
       tabs: [
         {
-          name: 'heroImage',
-          label: 'Hero Image',
-          fields: [
-            {
-              name: 'heroImage',
-              label: 'Hero Image',
-              type: 'upload',
-              relationTo: 'media',
-              required: true,
-            },
-            {
-              name: 'excerpt',
-              type: 'text',
-              required: true,
-            },
-          ],
-        },
-        {
           fields: [
             {
               name: 'productImage',
               label: 'Product Image',
               type: 'upload',
               relationTo: 'media',
+            },
+            {
+              name: 'gallery',
+              label: 'Gallery',
+              type: 'array',
+              minRows: 1,
+              maxRows: 4,
+              fields: [
+                {
+                  name: 'image',
+                  type: 'upload',
+                  relationTo: 'media',
+                },
+              ],
             },
             {              
               name: 'intro',

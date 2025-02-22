@@ -3,13 +3,15 @@ import React, { useState } from 'react'
 import Image from 'next/image'
 
 const Gallery = ({ productData }) => {
-  const [selectedImage, setSelectedImage] = useState(productData.productImage)
+  const [selectedImage, setSelectedImage] = useState(productData)
 
   const handleImageClick = (image) => {
     setSelectedImage(image)
   }
 
   const thumbnailImages = Array(4).fill(productData.productImage)
+
+  console.log('productData', productData)
 
   return (
     <div className="space-y-4">
