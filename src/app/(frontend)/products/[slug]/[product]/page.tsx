@@ -183,10 +183,10 @@ export default async function Product({ params }: Props) {
             <p className="text-lg md:text-xl">Harnessing Firewall® patented UVC technology, the C8 guarantees water purity, with up to 99.99% virus removal.</p>
           </div>
         </section>
-        <section>
-          <div className="container flex flex-col md:flex-row">
+        <section className="py-[5rem]">
+          <div className="container flex flex-col md:flex-row text-white">
             <div className="md:basis-1/2">
-              <h2>Smart dispensing for zero spills, fresh water anytime, and tailored hydration</h2>
+              <h2 className="text-2xl md:text-4xl">Smart dispensing for zero spills, fresh water anytime, and tailored hydration</h2>
               <ul className="py-5 flex flex-col gap-8">
                 <li className="relative pl-[15px]">
                   <CiCircleCheck className="absolute top-[-5px] left-0 p-0 m-0 text-4xl text-azul"/>
