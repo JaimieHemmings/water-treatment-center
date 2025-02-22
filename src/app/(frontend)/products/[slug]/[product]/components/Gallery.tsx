@@ -2,17 +2,31 @@
 import React, { useState } from 'react'
 import Image from 'next/image'
 
-const Gallery = ({ productData }) => {
-  const [selectedImage, setSelectedImage] = useState(productData)
+interface GalleryImage {
+  url: string;
+  alt: string;
+  width: number;
+  height: number;
+}
+
+interface ProductData {
+  productImage: GalleryImage;
+  gallery?: GalleryImage[];
+}
+
+const Gallery = ({ productData } : {productData: ProductData}) => {
+
+  const thumbnailImages = [
+    productData.productImage,
+    ...(productData.gallery || [])
+  ]
+
+  const [selectedImage, setSelectedImage] = useState<GalleryImage>(thumbnailImages[0])
 
   const handleImageClick = (image) => {
     setSelectedImage(image)
   }
-
-  const thumbnailImages = Array(4).fill(productData.productImage)
-
-  console.log('productData', productData)
-
+  
   return (
     <div className="space-y-4">
       <div className="aspect-w-16 aspect-h-9 relative rounded-xl overflow-hidden">
