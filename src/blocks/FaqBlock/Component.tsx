@@ -2,7 +2,6 @@ import React from "react";
 import SectionTitle from "@/components/SectionTitle";
 import FAQBlockClient from "./client";
 import Image from "next/image";
-import { FaGoogle } from "react-icons/fa";
 import Link from "next/link";
 
 interface FaqBlockProps {
