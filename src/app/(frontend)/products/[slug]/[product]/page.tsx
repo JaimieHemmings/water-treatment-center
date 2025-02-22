@@ -176,6 +176,58 @@ export default async function Product({ params }: Props) {
             </div>
           </div>
         </section>
+        <section className="bg-jet text-white py-[3rem] text-center w-full relative overflow-hidden">
+          <Image src="/dots.svg" alt="Dots" width={100} height={100} className="absolute bottom-0 right-0 scale-x-[-1]" />
+          <div className="container">
+            <h2 className="text-xl md:text-2xl pb-5">Exceptional virus elimination</h2>
+            <p className="text-lg md:text-xl">Harnessing Firewall® patented UVC technology, the C8 guarantees water purity, with up to 99.99% virus removal.</p>
+          </div>
+        </section>
+        <section>
+          <div className="container flex flex-col md:flex-row">
+            <div className="md:basis-1/2">
+              <h2>Smart dispensing for zero spills, fresh water anytime, and tailored hydration</h2>
+              <ul className="py-5 flex flex-col gap-8">
+                <li className="relative pl-[15px]">
+                  <CiCircleCheck className="absolute top-[-5px] left-0 p-0 m-0 text-4xl text-azul"/>
+                  <h3 className="text-xl md:text-2xl pl-[30px] pb-3">Advanced dispensing</h3>
+                  <p>Designed to prevent leaks and spills, the C8 includes a comprehensive leak prevention system and drip tray overflow alarm.</p>
+                </li>
+                <li className="relative pl-[15px]">
+                  <CiCircleCheck className="absolute top-[-5px] left-0 p-0 m-0 text-4xl text-azul"/>
+                  <h3 className="text-xl md:text-2xl pl-[30px] pb-3">On-demand freshness</h3>
+                  <p>Utilising your existing water supply, the C8 delivers an endless supply of freshly filtered water throughout the day.</p>
+                </li>
+                <li className="relative pl-[15px]">
+                  <CiCircleCheck className="absolute top-[-5px] left-0 p-0 m-0 text-4xl text-azul"/>
+                  <h3 className="text-xl md:text-2xl pl-[30px] pb-3">Customised hydration</h3>
+                  <p>With a versatile selection of five water options, the C8 countertop caters to the unique preferences of your workforce and guests.</p>
+                </li>
+              </ul>
+            </div>
+            <div className="basis-1/2">
+              {productData.productImage && (
+                <AnimateIn
+                  animation={{
+                    y: 50,
+                    opacity: 0,
+                    rotate: -5,
+                    duration: 0.8,
+                  }}>
+                      <Image
+                        src={productData.productImage.url}
+                        alt={productData.productImage.alt || 'No alt text available'}
+                        className="inset-0 w-full object-cover"
+                        width={productData.productImage.width}
+                        height={productData.productImage.height}
+                        priority
+                      />
+                </AnimateIn>
+              )}
+            </div>
+          </div>
+
+        </section>
         
         
 
