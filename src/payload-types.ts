@@ -970,52 +970,16 @@ export interface Product {
         | null;
       featuresListTwoImage?: (number | null) | Media;
     };
-    details: {
-      intro: {
-        root: {
-          type: string;
-          children: {
-            type: string;
-            version: number;
-            [k: string]: unknown;
-          }[];
-          direction: ('ltr' | 'rtl') | null;
-          format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-          indent: number;
-          version: number;
-        };
-        [k: string]: unknown;
-      };
-      mainBody: {
-        root: {
-          type: string;
-          children: {
-            type: string;
-            version: number;
-            [k: string]: unknown;
-          }[];
-          direction: ('ltr' | 'rtl') | null;
-          format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-          indent: number;
-          version: number;
-        };
-        [k: string]: unknown;
-      };
-      description: {
-        root: {
-          type: string;
-          children: {
-            type: string;
-            version: number;
-            [k: string]: unknown;
-          }[];
-          direction: ('ltr' | 'rtl') | null;
-          format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-          indent: number;
-          version: number;
-        };
-        [k: string]: unknown;
-      };
+    details?: {
+      detailsTitle?: string | null;
+      detailsImage?: (number | null) | Media;
+      details?:
+        | {
+            title?: string | null;
+            description?: string | null;
+            id?: string | null;
+          }[]
+        | null;
     };
     media?: {
       gallery?:
@@ -1903,9 +1867,15 @@ export interface ProductsSelect<T extends boolean = true> {
         details?:
           | T
           | {
-              intro?: T;
-              mainBody?: T;
-              description?: T;
+              detailsTitle?: T;
+              detailsImage?: T;
+              details?:
+                | T
+                | {
+                    title?: T;
+                    description?: T;
+                    id?: T;
+                  };
             };
         media?:
           | T

@@ -12,7 +12,7 @@ const ProductNav = () => {
     }
   }, [])
   return (
-    <div className="w-full bg-antiflashwhite p-3 text-jet shadow-[0px_4px_6px_0px_rgba(74,_144,_226,_0.4)]">
+    <div className="w-full bg-antiflashwhite p-3 text-jet shadow-[0px_4px_6px_0px_rgba(74,_144,_226,_0.4)] sticky top-[74px] left-0 z-30 hidden-sm">
       <div className="container flex flex-col md:flex-row gap-4 justify-between align-middle items-center">
         <ul className="flex flex-row gap-4 text-azul">
           <li>
@@ -43,7 +43,7 @@ const ProductNav = () => {
             </a>
           </li>
         </ul>
-        <CustomLink label="Contact Us For A Quote" link="/products" theme="light" className='m-0' />
+        <CustomLink label="Get A Quote" link="/products" theme="light" className='m-0' />
       </div>
     </div>
   )

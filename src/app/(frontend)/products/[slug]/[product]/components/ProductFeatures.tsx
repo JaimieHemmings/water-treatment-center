@@ -53,7 +53,7 @@ const ProductFeatures: React.FC<ProductFeaturesProps> = ({ productData }) => {
     <>
       <section className="container py-20 text-white" id="features">
         <div className="text-center">
-          <h2 className="text-xl md:text-2xl mb-5 pb-2 border-b-2 border-azul inline-block">
+        <h2 className="border-b-2 border-azul text-white inline-block px-2 py-1 mb-5 text-sm">
             FEATURES
           </h2>
           <AnimateIn
@@ -107,6 +107,7 @@ const ProductFeatures: React.FC<ProductFeaturesProps> = ({ productData }) => {
               {productData.content.features.featuresListOne.map((feature, index) => (
                 <>
                 <AnimateIn
+                  key={index}
                   animation={{
                     y: 50,
                     opacity: 0,
@@ -114,7 +115,6 @@ const ProductFeatures: React.FC<ProductFeaturesProps> = ({ productData }) => {
                   }}
                 >
                   <FeatureItem
-                    key={index}
                     title={feature.title}
                     description={feature.description}
                   />

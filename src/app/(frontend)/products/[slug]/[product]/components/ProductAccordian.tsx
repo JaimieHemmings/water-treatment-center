@@ -1,20 +1,23 @@
 'use client';
 import React, { useState, useRef } from 'react';
 
-const questions = [
-  {
-    id: 1,
-    question: 'Dimensions',
-    answer: '510mm x 510mm x 510mm'
-  },
-  {
-    id: 2,
-    question: 'Water Options',
-    answer: 'Cold, Ambient & Sparkling Cold, Sparkling, Ambient, Hot & Extra Hot'
-  },
-]
+interface AccordionItemContent {
+  id: string
+  title: string
+  description: string
+}
 
-const AccordionItem = ({ item }) => {
+interface AccordionItemProps {
+  item: AccordionItemContent
+}
+
+interface ProductAccordianProps {
+  details: {
+    details: AccordionItemContent[]
+  }
+}
+
+const AccordionItem: React.FC<AccordionItemProps> = ({ item }) => {
   const [isOpen, setIsOpen] = useState(false);
   const contentRef = useRef<HTMLDivElement | null>(null);
 
@@ -25,7 +28,7 @@ const AccordionItem = ({ item }) => {
         onClick={() => setIsOpen(!isOpen)}
         aria-expanded={isOpen}
       >
-        <h3 className="text-lg md:text-xl text-slate-700 max-w-[95%]">{item.question}</h3>
+        <h3 className="text-lg md:text-xl text-slate-700 max-w-[95%]">{item.title}</h3>
         <span 
           className="transform transition-transform duration-300 ease-in-out text-slate-700"
           style={{ transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)' }}
@@ -43,18 +46,19 @@ const AccordionItem = ({ item }) => {
         }}
       >
         <div className="p-4 max-w-[95%] text-slate-700">
-          {item.answer}
+          {item.description}
         </div>
       </div>
     </div>
   );
 };
 
-const ProductAccordian = ({ productData }) => {
+const ProductAccordian: React.FC<ProductAccordianProps> = ({ details }) => {
+  console.log(details)
   return (
     <div className="flex flex-col gap-2 py-20">
-      {questions.map((item) => (
-        <AccordionItem key={item.id} item={item} />
+      {details.details?.map((item, index) => (
+        <AccordionItem key={item.id || index} item={item} />
       ))}
     </div>
   );

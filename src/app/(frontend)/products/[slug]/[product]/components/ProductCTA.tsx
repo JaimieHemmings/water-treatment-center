@@ -25,7 +25,7 @@ const ProductCTA = () => {
               duration: 1,
               ease: 'power2.out',}}
           >
-            <h2 className="bg-selectiveyellow text-white inline-block px-5 py-2 rounded-xl font-semibold mb-5">
+            <h2 className="border-b-2 border-selectiveyellow text-white inline-block px-2 py-1 mb-5 text-sm">
               Get In Touch
             </h2>
           </AnimateIn>

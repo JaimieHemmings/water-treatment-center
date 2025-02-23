@@ -10,7 +10,7 @@ const ServiceDetails = ({ productData }) => {
         <div className="md:basis-1/2">
         </div>
         <div className="md:basis-1/2">
-          <h2 className="text-xl md:text-2xl text-white border-b-2 border-azul pb-2 mb-5 inline-block">
+          <h2 className="border-b-2 border-azul text-white inline-block px-2 py-1 mb-5 text-sm">
             Installation &amp; Maintenance Service
           </h2>
           <h3 className="text-white text-2xl md:text-4xl">

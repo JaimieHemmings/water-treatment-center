@@ -142,23 +142,31 @@ export const Products: CollectionConfig = {
                   label: 'Details',
                   fields: [
                     {
-                      name: 'intro',
-                      type: 'richText',
-                      required: true,
-                      label: 'Intro Text',
+                      name: 'detailsTitle',
+                      type: 'text',
                     },
                     {
-                      name: 'mainBody',
-                      type: 'richText',
-                      required: true,
-                      label: 'Main Body',
-                    },
+                      name: 'detailsImage',
+                      type: 'upload',
+                      relationTo: 'media',
+                    },         
                     {
-                      name: 'description',
-                      type: 'richText',
-                      required: true,
-                      label: 'Description',
-                    },
+                      name: 'details',
+                      type: 'array',
+                      label: 'Details',
+                      minRows: 1,
+                      maxRows: 6,
+                      fields: [
+                        {
+                          name: 'title',
+                          type: 'text',
+                        },
+                        {
+                          name: 'description',
+                          type: 'text',
+                        },
+                      ],
+                    },     
                   ],
                 },
                 {
