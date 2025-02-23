@@ -20,7 +20,7 @@ const Header = ({ productData }) => {
               <Gallery productData={productData} />
             </AnimateIn>
           </div>
-          <div className="md:basis-1/2 md:p-5">
+          <div className="md:basis-1/2 p-5">
             <AnimateIn animation={{
                 y: 50,
                 opacity: 0,

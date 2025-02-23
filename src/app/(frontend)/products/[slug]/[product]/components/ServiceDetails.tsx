@@ -8,7 +8,7 @@ const ServiceDetails = ({ productData }) => {
   return (
     <section className="w-full bg-darkblue py-[5rem]" id="services">
       <div className="container flex flex-col md:flex-row gap-4">
-        <div className="md:basis-1/2 relative md:p-5">
+        <div className="md:basis-1/2 relative md:p-5 min-h-[400px]">
           <Image
             src="/glass-of-water.webp"
             alt="Glass of water"
