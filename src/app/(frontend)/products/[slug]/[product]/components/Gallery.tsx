@@ -12,13 +12,17 @@ interface GalleryImage {
 }
 
 interface ProductData {
-  productImage: GalleryImage;
-  gallery?: GalleryImage[];
+  content: {
+    media: {
+      productImage: GalleryImage;
+      gallery?: GalleryImage[];
+    }
+  }
 }
 
 const Gallery = ({ productData }: { productData: ProductData }) => {
   const thumbnailImages = [
-    ...(productData.gallery || [])
+    ...(productData.content.media.gallery || [])
   ];
 
   const [selectedImage, setSelectedImage] = useState<GalleryImage>(thumbnailImages[0]);

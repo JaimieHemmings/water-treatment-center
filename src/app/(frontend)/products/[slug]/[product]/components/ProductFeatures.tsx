@@ -11,21 +11,6 @@ const FeatureItem = ({ title, description }) => (
   </li>
 );
 
-const features = [
-  {
-    title: "Unrivalled Performance",
-    description: "Built from robust stainless steel, the C8 countertop cooler boasts durability and easy maintenance, built to thrive in demanding environments."
-  },
-  {
-    title: "Outstanding purification",
-    description: "Powered by the patented Firewall® purification technology, it offers exceptional protection against bacteria, viruses, and cysts."
-  },
-  {
-    title: "Continuous protection",
-    description: "Infused with BioCote® technology, key surfaces of the C8 ensure a constant defense against microbial growth."
-  }
-];
-
 const ProductFeatures = ({ productData }) => {
   return (
     <>
@@ -35,13 +20,13 @@ const ProductFeatures = ({ productData }) => {
             FEATURES
           </h2>
           <p className="text-2xl md:text-4xl">
-            Enjoy glass after glass of safe, highly purified water
+            {productData.content.features.featuresTitle}
           </p>
         </div>
 
         <div className="w-full flex flex-col md:flex-row gap-4 py-20">
           <div className="basis-1/2">
-            {productData?.productImage && (
+            {productData.content.features.featuresListOneImage && (
               <AnimateIn
                 animation={{
                   y: 50,
@@ -51,11 +36,11 @@ const ProductFeatures = ({ productData }) => {
                 }}
               >
                 <Image
-                  src={productData.productImage.url}
-                  alt={productData.productImage.alt || 'Product image'}
-                  className="w-full object-cover"
-                  width={productData.productImage.width}
-                  height={productData.productImage.height}
+                  src={productData.content.features.featuresListOneImage.url}
+                  alt={productData.content.features.featuresListOneImage.alt || 'Product image'}
+                  className="w-full object-cover inset-0 h-full"
+                  width={productData.content.features.featuresListOneImage.width}
+                  height={productData.content.features.featuresListOneImage.height}
                   priority
                 />
               </AnimateIn>
@@ -64,10 +49,10 @@ const ProductFeatures = ({ productData }) => {
 
           <div className="basis-1/2 md:p-5">
             <h3 className="text-2xl md:text-4xl pb-5">
-              Where safety meets innovation
+            {productData.content.features.featuresSubtitle}
             </h3>
             <ul className="py-5 flex flex-col gap-8">
-              {features.map((feature, index) => (
+              {productData.content.features.featuresListOne.map((feature, index) => (
                 <FeatureItem
                   key={index}
                   title={feature.title}

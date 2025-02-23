@@ -10,7 +10,7 @@ import Gallery from './Gallery';
 const Header = ({ productData }) => {
   return (
     <div className="container flex flex-col md:flex-row gap-8 py-5">
-          <div className="md:basis-1/2 flex flex-col pb-20">
+          <div className="md:basis-1/2 flex flex-col md:pb-20">
             <AnimateIn
               animation={{
                 y: 50,
@@ -31,26 +31,20 @@ const Header = ({ productData }) => {
                 </h2>
               </AnimateIn>
               <p className="prose md:prose-md text-white">
-              High performance countertop dispenser for demanding, hygiene-focused environments.
+              {productData.content.header.excerpt}
               </p>
               <ul className='list-none list-inside text-white mt-4 flex flex-col gap-4 px-0 pb-5'>
-                <li className="text-white relative pl-[20px]">
-                  <IoIosCheckmark className="absolute top-[-5px] left-[-15px] p-0 m-0 text-4xl text-azul"/>
-                  Outstanding Firewall® UVC purification system
-                </li>
-                <li className="text-white relative pl-[20px]">
-                  <IoIosCheckmark className="absolute top-[-5px] left-[-15px] p-0 m-0 text-4xl text-azul"/>
-                  Compact and durable stainless steel build
-                </li>
-                <li className="text-white relative pl-[20px]">
-                  <IoIosCheckmark className="absolute top-[-5px] left-[-15px] p-0 m-0 text-4xl text-azul"/>
-                  Touch-free dispenser offering five water options
-                </li>
+                {productData.content.header.mainFeatures.map((feature, index) => (
+                  <li key={index} className="text-white relative pl-[20px]">
+                    <IoIosCheckmark className="absolute top-[-5px] left-[-15px] p-0 m-0 text-4xl text-azul"/>
+                    {feature.description}
+                  </li>
+                ))}
               </ul>
               <ul className="py-5 flex flex-col gap-4">
                 <li className="text-white relative pl-[20px]">
                   <FaPeopleRoof className="absolute top-[-2px] left-[-12px] p-0 m-0 text-2xl text-azul"/>
-                  Suitable for households up to <strong>10 people</strong>
+                  Suitable for households up to <strong>{productData.numberOfUsers} people</strong>
                 </li>
                 <li className="text-white relative pl-[20px]">
                   <FaEuroSign className="absolute top-[-2px] left-[-12px] p-0 m-0 text-2xl text-azul"/>

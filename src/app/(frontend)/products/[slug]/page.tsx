@@ -54,8 +54,8 @@ export default async function Post({ params: paramsPromise }: Args) {
                 >
                   <Image
                     className='rounded-lg'
-                    src={product.productImage.url}
-                    alt={product.productImage.alt || 'No alt text available'}
+                    src={product.content.header.productImage.url}
+                    alt={product.content.header.productImage.alt || 'No alt text available'}
                     width={500}
                     height={500}
                   />
@@ -92,7 +92,7 @@ const queryPostBySlug = cache(async ({ slug }: { slug: string }) => {
   const result = await payload.find({
     collection: 'products',
     where: {
-      'category.slug': {
+      'content.specs.category.slug': {
         equals: slug
       },
     },

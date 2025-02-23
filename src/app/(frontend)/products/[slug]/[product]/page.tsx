@@ -21,7 +21,7 @@ export default async function Product({ params }: Props) {
   const { product = '' } = await params
   const [productData]: any[] = await queryProductBySlug({ slug: product })
   return (
-    <article className="bg-darkblue relative z-0 pt-20">
+    <article className="bg-darkblue relative z-0 md:pt-10">
       <PageClient />
       <Header productData={productData} />
       <ProductNav />

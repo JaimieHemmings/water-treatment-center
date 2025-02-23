@@ -938,71 +938,100 @@ export interface Category {
 export interface Product {
   id: number;
   title: string;
-  excerpt: string;
-  productImage?: (number | null) | Media;
-  gallery?:
-    | {
-        image?: (number | null) | Media;
-        id?: string | null;
-      }[]
-    | null;
-  intro: {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
+  content: {
+    header: {
+      productImage?: (number | null) | Media;
+      excerpt: string;
+      mainFeatures?:
+        | {
+            description: string;
+            id?: string | null;
+          }[]
+        | null;
     };
-    [k: string]: unknown;
-  };
-  mainBody: {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
+    features?: {
+      featuresTitle?: string | null;
+      featuresSubtitle?: string | null;
+      featuresListOne?:
+        | {
+            title: string;
+            description: string;
+            id?: string | null;
+          }[]
+        | null;
+      featuresListOneImage?: (number | null) | Media;
     };
-    [k: string]: unknown;
-  };
-  description: {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
+    details: {
+      intro: {
+        root: {
+          type: string;
+          children: {
+            type: string;
+            version: number;
+            [k: string]: unknown;
+          }[];
+          direction: ('ltr' | 'rtl') | null;
+          format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+          indent: number;
+          version: number;
+        };
         [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
+      };
+      mainBody: {
+        root: {
+          type: string;
+          children: {
+            type: string;
+            version: number;
+            [k: string]: unknown;
+          }[];
+          direction: ('ltr' | 'rtl') | null;
+          format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+          indent: number;
+          version: number;
+        };
+        [k: string]: unknown;
+      };
+      description: {
+        root: {
+          type: string;
+          children: {
+            type: string;
+            version: number;
+            [k: string]: unknown;
+          }[];
+          direction: ('ltr' | 'rtl') | null;
+          format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+          indent: number;
+          version: number;
+        };
+        [k: string]: unknown;
+      };
     };
-    [k: string]: unknown;
+    media?: {
+      gallery?:
+        | {
+            image?: (number | null) | Media;
+            id?: string | null;
+          }[]
+        | null;
+      brochure?: (number | null) | Media;
+    };
+    specs: {
+      technicalSpecs?:
+        | {
+            title: string;
+            value: string;
+            id?: string | null;
+          }[]
+        | null;
+      numberOfUsers?: number | null;
+      warranties?: string | null;
+      serviceText?: string | null;
+      sku?: string | null;
+      category: number | ProductCategory;
+    };
   };
-  technicalSpecs?:
-    | {
-        title: string;
-        value: string;
-        id?: string | null;
-      }[]
-    | null;
-  warranties?: string | null;
-  category: number | ProductCategory;
-  serviceText?: string | null;
-  sku?: string | null;
-  brochure?: (number | null) | Media;
   meta?: {
     title?: string | null;
     /**
@@ -1824,29 +1853,70 @@ export interface UsersSelect<T extends boolean = true> {
  */
 export interface ProductsSelect<T extends boolean = true> {
   title?: T;
-  excerpt?: T;
-  productImage?: T;
-  gallery?:
+  content?:
     | T
     | {
-        image?: T;
-        id?: T;
+        header?:
+          | T
+          | {
+              productImage?: T;
+              excerpt?: T;
+              mainFeatures?:
+                | T
+                | {
+                    description?: T;
+                    id?: T;
+                  };
+            };
+        features?:
+          | T
+          | {
+              featuresTitle?: T;
+              featuresSubtitle?: T;
+              featuresListOne?:
+                | T
+                | {
+                    title?: T;
+                    description?: T;
+                    id?: T;
+                  };
+              featuresListOneImage?: T;
+            };
+        details?:
+          | T
+          | {
+              intro?: T;
+              mainBody?: T;
+              description?: T;
+            };
+        media?:
+          | T
+          | {
+              gallery?:
+                | T
+                | {
+                    image?: T;
+                    id?: T;
+                  };
+              brochure?: T;
+            };
+        specs?:
+          | T
+          | {
+              technicalSpecs?:
+                | T
+                | {
+                    title?: T;
+                    value?: T;
+                    id?: T;
+                  };
+              numberOfUsers?: T;
+              warranties?: T;
+              serviceText?: T;
+              sku?: T;
+              category?: T;
+            };
       };
-  intro?: T;
-  mainBody?: T;
-  description?: T;
-  technicalSpecs?:
-    | T
-    | {
-        title?: T;
-        value?: T;
-        id?: T;
-      };
-  warranties?: T;
-  category?: T;
-  serviceText?: T;
-  sku?: T;
-  brochure?: T;
   meta?:
     | T
     | {

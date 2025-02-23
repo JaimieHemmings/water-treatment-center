@@ -2,7 +2,6 @@ import type { CollectionConfig } from 'payload'
 import { authenticated } from '../../access/authenticated'
 import { anyone } from '../../access/anyone'
 import { slugField } from '@/fields/slug'
-
 import {
   MetaDescriptionField,
   MetaImageField,
@@ -35,103 +34,187 @@ export const Products: CollectionConfig = {
       unique: true,
     },
     {
-      name: 'excerpt',
-      type: 'textarea',
-      label: 'Excerpt',
-      required: true,
-    },
-    {
       type: 'tabs',
       tabs: [
         {
+          name: 'content',
+          label: 'Content',
           fields: [
             {
-              name: 'productImage',
-              label: 'Product Image',
-              type: 'upload',
-              relationTo: 'media',
-            },
-            {
-              name: 'gallery',
-              label: 'Gallery',
-              type: 'array',
-              minRows: 1,
-              maxRows: 4,
-              fields: [
+              type: 'tabs',
+              tabs: [
                 {
-                  name: 'image',
-                  type: 'upload',
-                  relationTo: 'media',
+                  name: 'header',
+                  label: 'Header',
+                  fields: [
+                    {
+                      name: 'productImage',
+                      label: 'Product Image',
+                      type: 'upload',
+                      relationTo: 'media',
+                    },
+                    {
+                      name: 'excerpt',
+                      type: 'textarea',
+                      label: 'Excerpt',
+                      required: true,
+                    },
+                    {
+                      name: 'mainFeatures',
+                      type: 'array',
+                      label: 'Main Features',
+                      minRows: 1,
+                      maxRows: 4,
+                      fields: [
+                        {
+                          name: 'description',
+                          type: 'text',
+                          required: true,
+                        },
+                      ],
+                    },
+                  ],
+                },
+                {
+                  name: 'features',
+                  label: 'Features',
+                  fields: [
+                    {
+                      name: 'featuresTitle',
+                      type: 'text',
+                    },
+                    {
+                      name: 'featuresSubtitle',
+                      type: 'text',
+                    },
+                    {
+                      name: 'featuresListOne',
+                      type: 'array',
+                      label: 'Features List One',
+                      fields: [
+                        {
+                          name: 'title',
+                          type: 'text',
+                          required: true,
+                        },
+                        {
+                          name: 'description',
+                          type: 'text',
+                          required: true,
+                        },
+                      ],
+                    },
+                    {
+                      name: 'featuresListOneImage',
+                      type: 'upload',
+                      relationTo: 'media',
+                    },
+                  ],
+                },
+                {
+                  name: 'details',
+                  label: 'Details',
+                  fields: [
+                    {
+                      name: 'intro',
+                      type: 'richText',
+                      required: true,
+                      label: 'Intro Text',
+                    },
+                    {
+                      name: 'mainBody',
+                      type: 'richText',
+                      required: true,
+                      label: 'Main Body',
+                    },
+                    {
+                      name: 'description',
+                      type: 'richText',
+                      required: true,
+                      label: 'Description',
+                    },
+                  ],
+                },
+                {
+                  name: 'media',
+                  label: 'Media',
+                  fields: [
+                    {
+                      name: 'gallery',
+                      label: 'Gallery',
+                      type: 'array',
+                      minRows: 1,
+                      maxRows: 4,
+                      fields: [
+                        {
+                          name: 'image',
+                          type: 'upload',
+                          relationTo: 'media',
+                        },
+                      ],
+                    },
+                    {
+                      name: 'brochure',
+                      type: 'upload',
+                      relationTo: 'media',
+                      label: 'Brochure',
+                      required: false,
+                    },
+                  ],
+                },
+                {
+                  name: 'specs',
+                  label: 'Technical Specs',
+                  fields: [
+                    {
+                      name: 'technicalSpecs',
+                      type: 'array',
+                      label: 'Technical Specs',
+                      fields: [
+                        {
+                          name: 'title',
+                          type: 'text',
+                          required: true,
+                        },
+                        {
+                          name: 'value',
+                          type: 'text',
+                          required: true,
+                        },
+                      ],
+                    },
+                    {
+                      name: 'numberOfUsers',
+                      type: 'number',
+                    },
+                    {
+                      name: 'warranties',
+                      type: 'textarea',
+                      label: 'Warranties',
+                      required: false,
+                    },
+                    {
+                      name: 'serviceText',
+                      type: 'textarea',
+                      label: 'Service Information',
+                      required: false,
+                    },
+                    {
+                      name: 'sku',
+                      type: 'text',
+                      unique: true,
+                    },
+                    {
+                      name: 'category',
+                      type: 'relationship',
+                      relationTo: 'product-categories',
+                      required: true,
+                    },
+                  ],
                 },
               ],
             },
-            {              
-              name: 'intro',
-              type: 'richText',
-              required: true,
-              label: 'Intro Text', 
-            },
-            {
-              name: 'mainBody',
-              type: 'richText',
-              required: true,
-              label: 'Main Body',
-            },
-            {
-              name: 'description',
-              type: 'richText',
-              required: true,
-              label: 'Description',
-            },
-            {
-              name: 'technicalSpecs',
-              type: 'array',
-              label: 'Technical Specs',
-              fields: [
-                {
-                  name: 'title',
-                  type: 'text',
-                  required: true,
-                },
-                {
-                  name: 'value',
-                  type: 'text',
-                  required: true,
-                },
-              ],
-            },
-            {
-              name: 'warranties',
-              type: 'textarea',
-              label: 'Warranties',
-              required: false,
-            },
-            {
-              name: 'category',
-              type: 'relationship',
-              relationTo: 'product-categories',
-              required: true,
-            },
-            {
-              name: 'serviceText',
-              type: 'textarea',
-              label: 'Service Information',
-              required: false,              
-            },
-            {
-              name: 'sku',
-              type: 'text',
-              unique: true,
-            },
-            {
-              name: 'brochure',
-              type: 'upload',
-              relationTo: 'media',
-              label: 'brochure',
-              required: false,
-            }
           ],
-          label: 'Content',
         },
         {
           name: 'meta',
@@ -148,13 +231,9 @@ export const Products: CollectionConfig = {
             MetaImageField({
               relationTo: 'media',
             }),
-
             MetaDescriptionField({}),
             PreviewField({
-              // if the `generateUrl` function is configured
               hasGenerateFn: true,
-
-              // field paths to match the target field for data
               titlePath: 'meta.title',
               descriptionPath: 'meta.description',
             }),
@@ -179,7 +258,7 @@ export const Products: CollectionConfig = {
         readOnly: true,
       }
     }
-  ]
-};
+  ],
+}
 
-export default Products;
+export default Products
