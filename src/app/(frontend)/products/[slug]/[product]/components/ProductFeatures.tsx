@@ -20,19 +20,29 @@ interface ProductImage {
   height: number
 }
 
+interface Card {
+  title: string
+  description: string
+  image: ProductImage
+}
+
+interface Features {
+  featuresTitle: string
+  featuresSubtitleOne: string
+  featuresSubtitleTwo: string
+  featuresListOne: Feature[]
+  featuresListOneImage: ProductImage
+  featuresListTwo: Feature[]
+  featuresListTwoImage: ProductImage
+  cardsSectionTitle: string
+  cards: Card[]
+}
+
 interface ProductData {
   title: string
   productImage: ProductImage
   content: {
-    features: {
-      featuresTitle: string
-      featuresSubtitleOne: string
-      featuresSubtitleTwo: string
-      featuresListOne: Feature[]
-      featuresListOneImage: ProductImage
-      featuresListTwo: Feature[]
-      featuresListTwoImage: ProductImage
-    }
+    features: Features
   }
 }
 
@@ -202,33 +212,29 @@ const ProductFeatures: React.FC<ProductFeaturesProps> = ({ productData }) => {
         <div className="container">
           <div className="flex flex-col">
             <h2 className="text-2xl md:text-4xl text-center pb-5">
-              Enjoy great-teasting purified water with the {productData.title}
+              {productData.content.features.cardsSectionTitle}
             </h2>
             <div className="flex flex-col md:flex-row gap-4 justify-between">
-              <div className='flex flex-col rounded-xl bg-darkblue overflow-hidden md:basis-1/3'>
-                <Image src="/glass-of-water.webp" alt="C8 CT Benefits 1" width={500} height={500} />
-                <div className="p-5">
-                  <span className="text-azul font-bold text-xl md:text-2xl">01</span>
-                  <h3 className="text-xl md:text-2xl pb-3 text-antiflashwhite">Unrivalled Performance</h3>
-                  <p className="text-antiflashwhite prose md:prose-md pb-5">The C8 interface features a vibrant full-colour LCD display with a machine status bar for an optimal user experience, enhancing the accessibility and usability of the dispenser.</p>
+            {productData.content.features.cards.map((card, index) => (
+              <div key={index} className='flex flex-col rounded-xl bg-darkblue overflow-hidden md:basis-1/3'>
+                <div className="relative w-full h-[400px]">
+                  <Image 
+                    src={card.image.url} 
+                    alt={card.image.alt} 
+                    fill 
+                    className="object-cover inset-0"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
+                </div>
+                <div className="p-5 flex flex-col justify-between">
+                  <span className="text-azul font-bold text-xl md:text-2xl">0{index + 1}</span>
+                  <h3 className="text-xl md:text-2xl pb-3 text-antiflashwhite">
+                    {card.title}
+                  </h3>
+                  <p className="text-antiflashwhite prose md:prose-md pb-5">{card.description}</p>
                 </div>
               </div>
-              <div className='flex flex-col rounded-xl bg-darkblue overflow-hidden md:basis-1/3'>
-                <Image src="/glass-of-water.webp" alt="C8 CT Benefits 1" width={500} height={500} />
-                <div className="p-5">
-                  <span className="text-azul font-bold text-xl md:text-2xl">02</span>
-                  <h3 className="text-xl md:text-2xl pb-3 text-antiflashwhite">Unrivalled hygiene</h3>
-                  <p className="text-antiflashwhite prose md:prose-md pb-5">The C8 interface features a vibrant full-colour LCD display with a machine status bar for an optimal user experience, enhancing the accessibility and usability of the dispenser.</p>
-                </div>
-              </div>
-              <div className='flex flex-col rounded-xl bg-darkblue overflow-hidden md:basis-1/3'>
-                <Image src="/glass-of-water.webp" alt="C8 CT Benefits 1" width={500} height={500} />
-                <div className="p-5">
-                  <span className="text-azul font-bold text-xl md:text-2xl">03</span>
-                  <h3 className="text-xl md:text-2xl pb-3 text-antiflashwhite">Keep your employees healthy</h3>
-                  <p className="text-antiflashwhite prose md:prose-md pb-5">The C8 interface features a vibrant full-colour LCD display with a machine status bar for an optimal user experience, enhancing the accessibility and usability of the dispenser.</p>
-                </div>
-              </div>
+            ))}
             </div>
           </div>
         </div>

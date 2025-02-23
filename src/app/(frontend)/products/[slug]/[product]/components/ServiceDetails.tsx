@@ -2,14 +2,21 @@ import React from 'react'
 import { GiAutoRepair } from "react-icons/gi";
 import { FaGear } from "react-icons/fa6";
 import { FaHeadset } from "react-icons/fa";
+import Image from 'next/image';
 
 const ServiceDetails = ({ productData }) => {
   return (
     <section className="w-full bg-darkblue py-[5rem]" id="services">
       <div className="container flex flex-col md:flex-row gap-4">
-        <div className="md:basis-1/2">
+        <div className="md:basis-1/2 relative md:p-5">
+          <Image
+            src="/glass-of-water.webp"
+            alt="Glass of water"
+            className="object-cover rounded-xl transition-all duration-300"
+            fill
+          />
         </div>
-        <div className="md:basis-1/2">
+        <div className="md:basis-1/2 md:p-5">
           <h2 className="border-b-2 border-azul text-white inline-block px-2 py-1 mb-5 text-sm">
             Installation &amp; Maintenance Service
           </h2>

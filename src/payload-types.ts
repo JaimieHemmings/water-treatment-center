@@ -969,6 +969,15 @@ export interface Product {
           }[]
         | null;
       featuresListTwoImage?: (number | null) | Media;
+      cardsSectionTitle?: string | null;
+      cards?:
+        | {
+            title?: string | null;
+            description?: string | null;
+            image?: (number | null) | Media;
+            id?: string | null;
+          }[]
+        | null;
     };
     details?: {
       detailsTitle?: string | null;
@@ -1863,6 +1872,15 @@ export interface ProductsSelect<T extends boolean = true> {
                     id?: T;
                   };
               featuresListTwoImage?: T;
+              cardsSectionTitle?: T;
+              cards?:
+                | T
+                | {
+                    title?: T;
+                    description?: T;
+                    image?: T;
+                    id?: T;
+                  };
             };
         details?:
           | T

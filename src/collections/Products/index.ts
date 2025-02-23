@@ -135,6 +135,33 @@ export const Products: CollectionConfig = {
                       type: 'upload',
                       relationTo: 'media',
                     },
+                    {
+                      name: 'cardsSectionTitle',
+                      type: 'text',
+                      label: 'Cards Section Title',
+                    },
+                    {
+                      name: 'cards',
+                      type: 'array',
+                      label: 'Cards',
+                      minRows: 0,
+                      maxRows: 3,
+                      fields: [
+                        {
+                          name: 'title',
+                          type: 'text',
+                        },
+                        {
+                          name: 'description',
+                          type: 'text',
+                        },
+                        {
+                          name: 'image',
+                          type: 'upload',
+                          relationTo: 'media',
+                        },
+                      ],
+                    },
                   ],
                 },
                 {
