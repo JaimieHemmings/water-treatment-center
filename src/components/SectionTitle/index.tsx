@@ -4,9 +4,10 @@ import { AnimateIn } from '@/components/Animations/AnimateIn'
 interface SectionTitleProps {
   title: string
   subtitle?: string
+  theme?: 'light' | 'dark'
 }
 
-const SectionTitle: React.FC<SectionTitleProps> = ({ title, subtitle }) => {
+const SectionTitle: React.FC<SectionTitleProps> = ({ title, subtitle, theme }) => {
   return (
     <div className="container">
       <AnimateIn
@@ -17,7 +18,7 @@ const SectionTitle: React.FC<SectionTitleProps> = ({ title, subtitle }) => {
           ease: "power2.out",
         }}
       >
-          <h2 className="border-b-2 border-selectiveyellow text-white inline-block px-2 py-1 mb-5 text-sm">{title}</h2>
+          <h2 className={`border-b-2 border-selectiveyellow ${theme == 'dark' ? 'text-jet' : 'text-white'} inline-block px-2 py-1 mb-5 text-sm`}>{title}</h2>
       </AnimateIn>
       <AnimateIn
         animation={{

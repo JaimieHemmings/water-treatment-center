@@ -37,7 +37,7 @@ export const FaqBlock: React.FC<FaqBlockProps> = ({
         />
       </div>
       <div className="relative z-10">
-        <SectionTitle title={title} />
+        <SectionTitle title={title} theme="dark" />
         <div className="container">
           <div className="flex flex-col md:flex-row gap-4">
             <div className="flex flex-col gap-4 basis-2/3">
