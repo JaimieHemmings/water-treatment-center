@@ -17,7 +17,7 @@ const SectionTitle: React.FC<SectionTitleProps> = ({ title, subtitle }) => {
           ease: "power2.out",
         }}
       >
-          <h2 className="bg-selectiveyellow text-white rounded-xl font-semibold px-5 py-2 inline-block mb-5">{title}</h2>
+          <h2 className="border-b-2 border-selectiveyellow text-white inline-block px-2 py-1 mb-5 text-sm">{title}</h2>
       </AnimateIn>
       <AnimateIn
         animation={{
