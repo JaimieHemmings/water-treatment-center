@@ -30,15 +30,15 @@ const ProductDetails = ({ productData }) => {
                 opacity: 0,
                 duration: 0.8,
               }}
-              className="h-full"
+              className="h-full min-h-[400px]"
             >
-                  <Image
-                    src={productData.content.details.detailsImage.url}
-                    alt={productData.content.details.detailsImage.alt || 'No alt text available'}
-                    className="inset-0 w-full object-cover h-full rounded-xl transition-all duration-300"
-                    fill
-                    loading='lazy'
-                  />
+              <Image
+                src={productData.content.details.detailsImage.url}
+                alt={productData.content.details.detailsImage.alt || 'No alt text available'}
+                className="inset-0 w-full object-cover h-full rounded-xl transition-all duration-300"
+                fill
+                loading='lazy'
+              />
             </AnimateIn>
           )}
         </div>
