@@ -84,7 +84,7 @@ export const Products: CollectionConfig = {
                       type: 'text',
                     },
                     {
-                      name: 'featuresSubtitle',
+                      name: 'featuresSubtitleOne',
                       type: 'text',
                     },
                     {
@@ -106,6 +106,32 @@ export const Products: CollectionConfig = {
                     },
                     {
                       name: 'featuresListOneImage',
+                      type: 'upload',
+                      relationTo: 'media',
+                    },
+                    {
+                      name: 'featuresSubtitleTwo',
+                      type: 'text',
+                    },
+                    {
+                      name: 'featuresListTwo',
+                      type: 'array',
+                      label: 'Features List Two',
+                      fields: [
+                        {
+                          name: 'title',
+                          type: 'text',
+                          required: true,
+                        },
+                        {
+                          name: 'description',
+                          type: 'text',
+                          required: true,
+                        },
+                      ],
+                    },
+                    {
+                      name: 'featuresListTwoImage',
                       type: 'upload',
                       relationTo: 'media',
                     },

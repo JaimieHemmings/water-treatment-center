@@ -26,9 +26,12 @@ interface ProductData {
   content: {
     features: {
       featuresTitle: string
-      featuresSubtitle: string
+      featuresSubtitleOne: string
+      featuresSubtitleTwo: string
       featuresListOne: Feature[]
       featuresListOneImage: ProductImage
+      featuresListTwo: Feature[]
+      featuresListTwoImage: ProductImage
     }
   }
 }
@@ -53,9 +56,17 @@ const ProductFeatures: React.FC<ProductFeaturesProps> = ({ productData }) => {
           <h2 className="text-xl md:text-2xl mb-5 pb-2 border-b-2 border-azul inline-block">
             FEATURES
           </h2>
-          <p className="text-2xl md:text-4xl">
-            {productData.content.features.featuresTitle}
-          </p>
+          <AnimateIn
+            animation={{
+              y: 50,
+              opacity: 0,
+              duration: 0.8,
+            }}
+          >
+            <p className="text-2xl md:text-4xl">
+              {productData.content.features.featuresTitle}
+            </p>
+          </AnimateIn>
         </div>
 
         <div className="w-full flex flex-col md:flex-row gap-4 py-20">
@@ -81,16 +92,34 @@ const ProductFeatures: React.FC<ProductFeaturesProps> = ({ productData }) => {
           </div>
 
           <div className="basis-1/2 md:p-5">
-            <h3 className="text-2xl md:text-4xl pb-5">
-            {productData.content.features.featuresSubtitle}
-            </h3>
+            <AnimateIn
+              animation={{
+                y: 50,
+                opacity: 0,
+                duration: 0.8,
+              }}
+            >
+              <h3 className="text-2xl md:text-4xl pb-5">
+                {productData.content.features.featuresSubtitleOne}
+              </h3>
+            </AnimateIn>
             <ul className="py-5 flex flex-col gap-8">
               {productData.content.features.featuresListOne.map((feature, index) => (
-                <FeatureItem
-                  key={index}
-                  title={feature.title}
-                  description={feature.description}
-                />
+                <>
+                <AnimateIn
+                  animation={{
+                    y: 50,
+                    opacity: 0,
+                    duration: 0.8,
+                  }}
+                >
+                  <FeatureItem
+                    key={index}
+                    title={feature.title}
+                    description={feature.description}
+                  />
+                </AnimateIn>
+                </>
               ))}
             </ul>
           </div>
@@ -105,9 +134,9 @@ const ProductFeatures: React.FC<ProductFeaturesProps> = ({ productData }) => {
           className="absolute bottom-0 right-0 scale-x-[-1]"
         />
         <div className="container">
-          <h2 className="text-xl md:text-2xl pb-5">
+          <h3 className="text-2xl md:text-4xl pb-5">
             Exceptional virus elimination
-          </h2>
+          </h3>
           <p className="text-lg md:text-xl">
             Harnessing Firewall® patented UVC technology, the C8 guarantees water purity, with up to 99.99% virus removal.
           </p>
@@ -116,42 +145,54 @@ const ProductFeatures: React.FC<ProductFeaturesProps> = ({ productData }) => {
       <section className="py-[5rem]">
         <div className="container flex flex-col md:flex-row text-white">
           <div className="md:basis-1/2 md:p-5">
-            <h2 className="text-2xl md:text-4xl pb-5">Smart dispensing for zero spills, fresh water anytime, and tailored hydration</h2>
+          <AnimateIn
+              animation={{
+                y: 50,
+                opacity: 0,
+                duration: 0.8,
+              }}
+            >
+              <h3 className="text-2xl md:text-4xl pb-5">
+                {productData.content.features.featuresSubtitleTwo}
+              </h3>
+            </AnimateIn>
             <ul className="py-5 flex flex-col gap-8">
-              <li className="relative pl-[15px]">
-                <CiCircleCheck className="absolute top-[-5px] left-0 p-0 m-0 text-4xl text-azul"/>
-                <h3 className="text-xl md:text-2xl pl-[30px] pb-3">Advanced dispensing</h3>
-                <p>Designed to prevent leaks and spills, the C8 includes a comprehensive leak prevention system and drip tray overflow alarm.</p>
-              </li>
-              <li className="relative pl-[15px]">
-                <CiCircleCheck className="absolute top-[-5px] left-0 p-0 m-0 text-4xl text-azul"/>
-                <h3 className="text-xl md:text-2xl pl-[30px] pb-3">On-demand freshness</h3>
-                <p>Utilising your existing water supply, the C8 delivers an endless supply of freshly filtered water throughout the day.</p>
-              </li>
-              <li className="relative pl-[15px]">
-                <CiCircleCheck className="absolute top-[-5px] left-0 p-0 m-0 text-4xl text-azul"/>
-                <h3 className="text-xl md:text-2xl pl-[30px] pb-3">Customised hydration</h3>
-                <p>With a versatile selection of five water options, the C8 countertop caters to the unique preferences of your workforce and guests.</p>
-              </li>
+              {productData.content.features.featuresListTwo.map((feature, index) => (
+                <>
+                <AnimateIn
+                  animation={{
+                    y: 50,
+                    opacity: 0,
+                    duration: 0.8,
+                  }}
+                >
+                  <FeatureItem
+                    key={index}
+                    title={feature.title}
+                    description={feature.description}
+                  />
+                </AnimateIn>
+                </>
+              ))}
             </ul>
           </div>
           <div className="basis-1/2">
-            {productData.productImage && (
+          {productData.content.features.featuresListTwoImage && (
               <AnimateIn
                 animation={{
                   y: 50,
                   opacity: 0,
                   rotate: -5,
                   duration: 0.8,
-                }}>
-                    <Image
-                      src={productData.productImage.url}
-                      alt={productData.productImage.alt || 'No alt text available'}
-                      className="inset-0 w-full object-cover"
-                      width={productData.productImage.width}
-                      height={productData.productImage.height}
-                      priority
-                    />
+                }}
+                className="h-full"
+              >
+                <Image
+                  src={productData.content.features.featuresListTwoImage.url}
+                  alt={productData.content.features.featuresListTwoImage.alt || 'Product image'}
+                  className="object-cover rounded-xl transition-all duration-300"
+                  fill
+                />
               </AnimateIn>
             )}
           </div>

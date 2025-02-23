@@ -951,7 +951,7 @@ export interface Product {
     };
     features?: {
       featuresTitle?: string | null;
-      featuresSubtitle?: string | null;
+      featuresSubtitleOne?: string | null;
       featuresListOne?:
         | {
             title: string;
@@ -960,6 +960,15 @@ export interface Product {
           }[]
         | null;
       featuresListOneImage?: (number | null) | Media;
+      featuresSubtitleTwo?: string | null;
+      featuresListTwo?:
+        | {
+            title: string;
+            description: string;
+            id?: string | null;
+          }[]
+        | null;
+      featuresListTwoImage?: (number | null) | Media;
     };
     details: {
       intro: {
@@ -1872,7 +1881,7 @@ export interface ProductsSelect<T extends boolean = true> {
           | T
           | {
               featuresTitle?: T;
-              featuresSubtitle?: T;
+              featuresSubtitleOne?: T;
               featuresListOne?:
                 | T
                 | {
@@ -1881,6 +1890,15 @@ export interface ProductsSelect<T extends boolean = true> {
                     id?: T;
                   };
               featuresListOneImage?: T;
+              featuresSubtitleTwo?: T;
+              featuresListTwo?:
+                | T
+                | {
+                    title?: T;
+                    description?: T;
+                    id?: T;
+                  };
+              featuresListTwoImage?: T;
             };
         details?:
           | T
