@@ -57,6 +57,18 @@ export const HeaderNav: React.FC<{ data: any }> = ({ data }) => {
             </Link>
           )
         })}
+        <Link
+          href={`/news`}
+          className={linkClasses}
+          onClick={() => setIsMenuOpen(false)}
+          >
+          <span className="font-normal text-xl">
+            News
+          </span>
+          <span className="text-md font-thin">
+            &amp; Updates
+          </span>
+        </Link>
         <Link 
           href="/contact" 
           onClick={() => setIsMenuOpen(false)}
