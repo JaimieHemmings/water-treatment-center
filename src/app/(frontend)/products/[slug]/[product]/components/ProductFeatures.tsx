@@ -3,7 +3,41 @@ import Image from 'next/image';
 import AnimateIn from '@/components/Animations/AnimateIn';
 import { CiCircleCheck } from "react-icons/ci";
 
-const FeatureItem = ({ title, description }) => (
+interface Feature {
+  title: string
+  description: string
+}
+
+interface FeatureItemProps {
+  title: string
+  description: string
+}
+
+interface ProductImage {
+  url: string
+  alt: string
+  width: number
+  height: number
+}
+
+interface ProductData {
+  title: string
+  productImage: ProductImage
+  content: {
+    features: {
+      featuresTitle: string
+      featuresSubtitle: string
+      featuresListOne: Feature[]
+      featuresListOneImage: ProductImage
+    }
+  }
+}
+
+interface ProductFeaturesProps {
+  productData: ProductData
+}
+
+const FeatureItem: React.FC<FeatureItemProps> = ({ title, description }) => (
   <li className="relative pl-[15px]">
     <CiCircleCheck className="absolute -top-1 left-0 text-4xl text-azul"/>
     <h4 className="text-xl md:text-2xl pl-8 pb-3">{title}</h4>
@@ -11,7 +45,7 @@ const FeatureItem = ({ title, description }) => (
   </li>
 );
 
-const ProductFeatures = ({ productData }) => {
+const ProductFeatures: React.FC<ProductFeaturesProps> = ({ productData }) => {
   return (
     <>
       <section className="container py-20 text-white" id="features">
@@ -25,7 +59,7 @@ const ProductFeatures = ({ productData }) => {
         </div>
 
         <div className="w-full flex flex-col md:flex-row gap-4 py-20">
-          <div className="basis-1/2">
+          <div className="md:basis-1/2 h-full aspect-square rounded-xl">
             {productData.content.features.featuresListOneImage && (
               <AnimateIn
                 animation={{
@@ -34,14 +68,13 @@ const ProductFeatures = ({ productData }) => {
                   rotate: -5,
                   duration: 0.8,
                 }}
+                className="h-full"
               >
                 <Image
                   src={productData.content.features.featuresListOneImage.url}
                   alt={productData.content.features.featuresListOneImage.alt || 'Product image'}
-                  className="w-full object-cover inset-0 h-full"
-                  width={productData.content.features.featuresListOneImage.width}
-                  height={productData.content.features.featuresListOneImage.height}
-                  priority
+                  className="object-cover rounded-xl transition-all duration-300"
+                  fill
                 />
               </AnimateIn>
             )}

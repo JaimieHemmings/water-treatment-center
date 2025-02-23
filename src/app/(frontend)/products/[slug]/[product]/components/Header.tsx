@@ -42,10 +42,12 @@ const Header = ({ productData }) => {
                 ))}
               </ul>
               <ul className="py-5 flex flex-col gap-4">
-                <li className="text-white relative pl-[20px]">
-                  <FaPeopleRoof className="absolute top-[-2px] left-[-12px] p-0 m-0 text-2xl text-azul"/>
-                  Suitable for households up to <strong>{productData.numberOfUsers} people</strong>
-                </li>
+                {productData.content.specs.numberOfUsers && (
+                  <li className="text-white relative pl-[20px]">
+                    <FaPeopleRoof className="absolute top-[-2px] left-[-12px] p-0 m-0 text-2xl text-azul"/>
+                    Suitable for households up to <strong>{productData.content.specs.numberOfUsers} people</strong>
+                  </li>
+                )}
                 <li className="text-white relative pl-[20px]">
                   <FaEuroSign className="absolute top-[-2px] left-[-12px] p-0 m-0 text-2xl text-azul"/>
                   Get a FREE no obligation quote
