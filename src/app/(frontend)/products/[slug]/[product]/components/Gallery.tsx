@@ -33,7 +33,7 @@ const Gallery = ({ productData }: { productData: ProductData }) => {
 
   return (
     <div className="space-y-4">
-      <div className="relative aspect-square w-full overflow-hidden rounded-xl">
+      <div className="relative aspect-square w-full overflow-hidden rounded-xl max-h-[400px]">
         <Image
           src={selectedImage.image.url}
           alt={selectedImage.image.alt || 'No alt text available'}

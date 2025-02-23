@@ -70,7 +70,7 @@ const ProductFeatures: React.FC<ProductFeaturesProps> = ({ productData }) => {
         </div>
 
         <div className="w-full flex flex-col md:flex-row gap-4 py-20">
-          <div className="md:basis-1/2 h-full aspect-square rounded-xl">
+          <div className="md:basis-1/2 h-full aspect-square rounded-xl max-h-[450px]">
             {productData.content.features.featuresListOneImage && (
               <AnimateIn
                 animation={{
