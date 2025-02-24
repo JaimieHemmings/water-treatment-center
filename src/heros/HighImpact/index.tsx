@@ -41,10 +41,10 @@ export const HighImpactHero: React.FC<HeroProps> = ({ slides }) => {
 
   return (
   <div className="w-full relative">
-    <div className="embla overflow-hidden h-[90svh] md:h-[90svh]" ref={emblaRef}>    
-      <div className="embla__container flex h-full">
+    <div className="embla embla-hero overflow-hidden h-[90svh]" ref={emblaRef}>    
+      <div className="embla__container embla__container-hero flex h-full w-full">
         {slides.map((slide, index) => (
-          <div className="embla__slide azul-overlay dots-overlay relative" key={index}>
+          <div className="embla__slide embla__slide-hero azul-overlay dots-overlay relative min-w-[100%]" key={index}>
             {slide.video && (
             <video
               autoPlay 

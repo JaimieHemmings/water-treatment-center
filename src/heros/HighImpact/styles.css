@@ -39,3 +39,21 @@
     height: 300px;
   }
 }
+.embla-hero {
+  --slide-spacing: 0;
+  --slide-size: 100%;
+  width: 100vw;
+}
+
+.embla__container-hero {
+  backface-visibility: hidden;
+  display: flex;
+  touch-action: pan-y;
+  margin-left: calc(var(--slide-spacing) * -1);
+}
+
+.embla__slide-hero {
+  flex: 0 0 var(--slide-size);
+  min-width: 0;
+  position: relative;
+}
