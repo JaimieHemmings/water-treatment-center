@@ -36,6 +36,8 @@ interface Features {
   featuresListTwoImage: ProductImage
   cardsSectionTitle: string
   cards: Card[]
+  fullWidthHighlightTitle: string
+  fullWidthHighlightDescription: string
 }
 
 interface ProductData {
@@ -52,9 +54,9 @@ interface ProductFeaturesProps {
 
 const FeatureItem: React.FC<FeatureItemProps> = ({ title, description }) => (
   <li className="relative pl-[15px]">
-    <CiCircleCheck className="absolute -top-1 left-0 text-4xl text-azul"/>
+    <CiCircleCheck className="absolute top-0 left-0 text-4xl text-azul"/>
     <h4 className="text-xl md:text-2xl pl-8 pb-3">{title}</h4>
-    <p>{description}</p>
+    <p className="pl-8">{description}</p>
   </li>
 );
 
@@ -63,7 +65,7 @@ const ProductFeatures: React.FC<ProductFeaturesProps> = ({ productData }) => {
     <>
       <section className="container py-20 text-white" id="features">
         <div className="text-center">
-        <h2 className="border-b-2 border-azul text-white inline-block px-2 py-1 mb-5 text-sm">
+          <h2 className="border-b-2 border-azul text-white inline-block px-2 py-1 mb-5 text-sm">
             FEATURES
           </h2>
           <AnimateIn
@@ -144,11 +146,11 @@ const ProductFeatures: React.FC<ProductFeaturesProps> = ({ productData }) => {
           className="absolute bottom-0 right-0 scale-x-[-1]"
         />
         <div className="container">
-          <h3 className="text-2xl md:text-4xl pb-5">
-            Exceptional virus elimination
-          </h3>
+          <h2 className="text-2xl md:text-4xl pb-5">
+            {productData.content.features.fullWidthHighlightTitle}
+          </h2>
           <p className="text-lg md:text-xl">
-            Harnessing Firewall® patented UVC technology, the C8 guarantees water purity, with up to 99.99% virus removal.
+            {productData.content.features.fullWidthHighlightDescription}
           </p>
         </div>
       </section> 
@@ -170,6 +172,7 @@ const ProductFeatures: React.FC<ProductFeaturesProps> = ({ productData }) => {
               {productData.content.features.featuresListTwo.map((feature, index) => (
                 <>
                 <AnimateIn
+                  key={index}
                   animation={{
                     y: 50,
                     opacity: 0,
@@ -177,7 +180,6 @@ const ProductFeatures: React.FC<ProductFeaturesProps> = ({ productData }) => {
                   }}
                 >
                   <FeatureItem
-                    key={index}
                     title={feature.title}
                     description={feature.description}
                   />
@@ -223,7 +225,7 @@ const ProductFeatures: React.FC<ProductFeaturesProps> = ({ productData }) => {
                     alt={card.image.alt} 
                     fill 
                     className="object-cover inset-0"
-                    sizes="(max-width: 768px) 100vw, 33vw"
+                    sizes="(max-width: 768px)"
                   />
                 </div>
                 <div className="p-5 flex flex-col justify-between">

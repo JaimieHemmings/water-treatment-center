@@ -110,6 +110,16 @@ export const Products: CollectionConfig = {
                       relationTo: 'media',
                     },
                     {
+                      name: 'fullWidthHighlightTitle',
+                      type: 'text',
+                      label: 'Full Width Highlight Title',
+                    },
+                    {
+                      name: 'fullWidthHighlightDescription',
+                      type: 'textarea',
+                      label: 'Full Width Highlight Description',
+                    },
+                    {
                       name: 'featuresSubtitleTwo',
                       type: 'text',
                     },

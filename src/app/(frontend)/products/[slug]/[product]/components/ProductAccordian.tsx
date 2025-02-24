@@ -54,7 +54,6 @@ const AccordionItem: React.FC<AccordionItemProps> = ({ item }) => {
 };
 
 const ProductAccordian: React.FC<ProductAccordianProps> = ({ details }) => {
-  console.log(details)
   return (
     <div className="flex flex-col gap-2 py-20">
       {details.details?.map((item, index) => (

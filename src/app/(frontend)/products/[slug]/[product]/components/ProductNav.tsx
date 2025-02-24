@@ -43,7 +43,7 @@ const ProductNav = () => {
             </a>
           </li>
         </ul>
-        <CustomLink label="Get A Quote" link="/products" theme="light" className='m-0' />
+        <CustomLink label="Get A Quote" link="/contact" theme="light" className='m-0' />
       </div>
     </div>
   )

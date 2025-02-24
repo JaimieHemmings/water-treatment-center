@@ -960,6 +960,8 @@ export interface Product {
           }[]
         | null;
       featuresListOneImage?: (number | null) | Media;
+      fullWidthHighlightTitle?: string | null;
+      fullWidthHighlightDescription?: string | null;
       featuresSubtitleTwo?: string | null;
       featuresListTwo?:
         | {
@@ -1863,6 +1865,8 @@ export interface ProductsSelect<T extends boolean = true> {
                     id?: T;
                   };
               featuresListOneImage?: T;
+              fullWidthHighlightTitle?: T;
+              fullWidthHighlightDescription?: T;
               featuresSubtitleTwo?: T;
               featuresListTwo?:
                 | T
