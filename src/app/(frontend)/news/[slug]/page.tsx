@@ -73,7 +73,7 @@ export default async function Post({ params: paramsPromise }: Args) {
               duration: 1,
               ease: 'power2.out',}}
           >
-            <h2 className="bg-selectiveyellow text-white inline-block px-5 py-2 rounded-xl font-semibold mb-5">
+            <h2 className="border-selectiveyellow border-b-2 pb-2 text-white inline-block font-semibold mb-5 text-sm">
               Get In Touch
             </h2>
           </AnimateIn>
@@ -84,7 +84,7 @@ export default async function Post({ params: paramsPromise }: Args) {
               duration: 1,
               ease: 'power2.out',}}
           >
-          <p className="text-2xl md:text-4xl font-semibold text-white">
+          <p className="text-2xl md:text-4xl font-semibold text-white mb-5">
             Get in touch to imporve the water quality in your home!
           </p>
           </AnimateIn>
