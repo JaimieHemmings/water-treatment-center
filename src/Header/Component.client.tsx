@@ -8,7 +8,7 @@ import { HeaderNav } from './Nav'
 export const HeaderClient: any = ({ data }) => {
   return (
     <>
-    <div className="w-full bg-white hidden-sm md:block relative z-[999]">
+    <div className="w-full bg-white hidden md:block relative z-[999]">
       <div className="container py-2 flex justify-end items-center gap-4">
         <div>
         <p className="text-sm text-jet">
