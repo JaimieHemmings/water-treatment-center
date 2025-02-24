@@ -52,6 +52,7 @@ export const Products: CollectionConfig = {
                       label: 'Product Image',
                       type: 'upload',
                       relationTo: 'media',
+                      required: true,
                     },
                     {
                       name: 'excerpt',
@@ -82,10 +83,12 @@ export const Products: CollectionConfig = {
                     {
                       name: 'featuresTitle',
                       type: 'text',
+                      required: true,
                     },
                     {
                       name: 'featuresSubtitleOne',
                       type: 'text',
+                      required: true,
                     },
                     {
                       name: 'featuresListOne',
@@ -108,20 +111,24 @@ export const Products: CollectionConfig = {
                       name: 'featuresListOneImage',
                       type: 'upload',
                       relationTo: 'media',
+                      required: true,
                     },
                     {
                       name: 'fullWidthHighlightTitle',
                       type: 'text',
                       label: 'Full Width Highlight Title',
+                      required: true,
                     },
                     {
                       name: 'fullWidthHighlightDescription',
                       type: 'textarea',
                       label: 'Full Width Highlight Description',
+                      required: true,
                     },
                     {
                       name: 'featuresSubtitleTwo',
                       type: 'text',
+                      required: true,
                     },
                     {
                       name: 'featuresListTwo',
@@ -144,31 +151,36 @@ export const Products: CollectionConfig = {
                       name: 'featuresListTwoImage',
                       type: 'upload',
                       relationTo: 'media',
+                      required: true,
                     },
                     {
                       name: 'cardsSectionTitle',
                       type: 'text',
                       label: 'Cards Section Title',
+                      required: true,
                     },
                     {
                       name: 'cards',
                       type: 'array',
                       label: 'Cards',
-                      minRows: 0,
+                      minRows: 3,
                       maxRows: 3,
                       fields: [
                         {
                           name: 'title',
                           type: 'text',
+                          required: true,
                         },
                         {
                           name: 'description',
                           type: 'text',
+                          required: true,
                         },
                         {
                           name: 'image',
                           type: 'upload',
                           relationTo: 'media',
+                          required: true,
                         },
                       ],
                     },
@@ -181,11 +193,13 @@ export const Products: CollectionConfig = {
                     {
                       name: 'detailsTitle',
                       type: 'text',
+                      required: true,
                     },
                     {
                       name: 'detailsImage',
                       type: 'upload',
                       relationTo: 'media',
+                      required: true,
                     },         
                     {
                       name: 'details',
@@ -197,10 +211,12 @@ export const Products: CollectionConfig = {
                         {
                           name: 'title',
                           type: 'text',
+                          required: true,
                         },
                         {
                           name: 'description',
                           type: 'text',
+                          required: true,
                         },
                       ],
                     },     
@@ -221,6 +237,7 @@ export const Products: CollectionConfig = {
                           name: 'image',
                           type: 'upload',
                           relationTo: 'media',
+                          required: true,
                         },
                       ],
                     },
@@ -257,18 +274,7 @@ export const Products: CollectionConfig = {
                     {
                       name: 'numberOfUsers',
                       type: 'number',
-                    },
-                    {
-                      name: 'warranties',
-                      type: 'textarea',
-                      label: 'Warranties',
-                      required: false,
-                    },
-                    {
-                      name: 'serviceText',
-                      type: 'textarea',
-                      label: 'Service Information',
-                      required: false,
+                      required: true,
                     },
                     {
                       name: 'sku',

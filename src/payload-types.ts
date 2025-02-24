@@ -940,7 +940,7 @@ export interface Product {
   title: string;
   content: {
     header: {
-      productImage?: (number | null) | Media;
+      productImage: number | Media;
       excerpt: string;
       mainFeatures?:
         | {
@@ -949,9 +949,9 @@ export interface Product {
           }[]
         | null;
     };
-    features?: {
-      featuresTitle?: string | null;
-      featuresSubtitleOne?: string | null;
+    features: {
+      featuresTitle: string;
+      featuresSubtitleOne: string;
       featuresListOne?:
         | {
             title: string;
@@ -959,10 +959,10 @@ export interface Product {
             id?: string | null;
           }[]
         | null;
-      featuresListOneImage?: (number | null) | Media;
-      fullWidthHighlightTitle?: string | null;
-      fullWidthHighlightDescription?: string | null;
-      featuresSubtitleTwo?: string | null;
+      featuresListOneImage: number | Media;
+      fullWidthHighlightTitle: string;
+      fullWidthHighlightDescription: string;
+      featuresSubtitleTwo: string;
       featuresListTwo?:
         | {
             title: string;
@@ -970,24 +970,24 @@ export interface Product {
             id?: string | null;
           }[]
         | null;
-      featuresListTwoImage?: (number | null) | Media;
-      cardsSectionTitle?: string | null;
+      featuresListTwoImage: number | Media;
+      cardsSectionTitle: string;
       cards?:
         | {
-            title?: string | null;
-            description?: string | null;
-            image?: (number | null) | Media;
+            title: string;
+            description: string;
+            image: number | Media;
             id?: string | null;
           }[]
         | null;
     };
-    details?: {
-      detailsTitle?: string | null;
-      detailsImage?: (number | null) | Media;
+    details: {
+      detailsTitle: string;
+      detailsImage: number | Media;
       details?:
         | {
-            title?: string | null;
-            description?: string | null;
+            title: string;
+            description: string;
             id?: string | null;
           }[]
         | null;
@@ -995,7 +995,7 @@ export interface Product {
     media?: {
       gallery?:
         | {
-            image?: (number | null) | Media;
+            image: number | Media;
             id?: string | null;
           }[]
         | null;
@@ -1009,9 +1009,7 @@ export interface Product {
             id?: string | null;
           }[]
         | null;
-      numberOfUsers?: number | null;
-      warranties?: string | null;
-      serviceText?: string | null;
+      numberOfUsers: number;
       sku?: string | null;
       category: number | ProductCategory;
     };
@@ -1921,8 +1919,6 @@ export interface ProductsSelect<T extends boolean = true> {
                     id?: T;
                   };
               numberOfUsers?: T;
-              warranties?: T;
-              serviceText?: T;
               sku?: T;
               category?: T;
             };

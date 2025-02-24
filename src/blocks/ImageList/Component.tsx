@@ -8,6 +8,7 @@ interface Image {
   description: string;
   image: {
     url: string;
+    alt: string;
   };
 }
 
@@ -17,55 +18,42 @@ interface ImageListProps {
 
 export const ImageList: React.FC<ImageListProps> = ({ images }) => {
   return (
-    <section 
-      className="bg-darkblue text-white relative overflow-hidden"
-    >
-      <div className="flex flex-col justify-start gap-0 border-t border-selectiveyellow">
-        {images.map((image, index) => (
-          <div
+    <section className="bg-darkblue text-jet py-[3rem] w-full">
+      <div className="container">
+        <div className="flex flex-col md:flex-row gap-4 justify-between">
+        {images.map((card, index) => (
+          <AnimateIn
             key={index}
-            className="group border-b border-selectiveyellow text-black relative flex flex-col justify-centre overflow-hidden py-[5rem]"
-          >
-            {/* Background Image Container with Parallax */}
-            <div
-              className="absolute inset-0 w-full h-[130%] -top-[15%] overflow-hidden"
+            animation={{
+              y: 60,
+              opacity: 0,
+              duration: 1,
+              ease: 'power2.out',
+              delay: index * 0.4,
+            }}
             >
-              <div className="w-full h-full will-change-transform">
-                <Image
-                  src={image.image.url}
-                  alt={image.title}
-                  className="w-full h-full object-cover scale-110 transition-all duration-700"
-                  width={1000}
-                  height={1000}
-                  priority={index === 0}
-                  quality={90}
+            <div className='flex flex-col rounded-xl overflow-hidden md:basis-1/3 bg-antiflashwhite h-full'>
+              <div className="relative w-full h-[200px]">
+                <Image 
+                  src={card.image.url} 
+                  alt={card.image.alt} 
+                  fill 
+                  className="object-cover inset-0"
+                  sizes="(max-width: 768px)"
+                  loading="lazy"
                 />
               </div>
+              <div className="p-5 flex flex-col justify-between">
+                <span className="text-azul font-bold text-xl md:text-2xl">0{index + 1}</span>
+                <h3 className="text-xl md:text-2xl pb-3 text-jet">
+                  {card.title}
+                </h3>
+                <p className="text-jet prose md:prose-md pb-5">{card.description}</p>
+              </div>
             </div>
-           
-            {/* Overlay */}
-            <div className="absolute inset-0 z-[1] bg-darkblue/80" />
-           
-            {/* Content */}
-            <div className="relative z-[2] p-8 h-full flex flex-col justify-center container">
-              <AnimateIn
-                animation={{
-                  y: 60,
-                  opacity: 0,
-                  duration: 1,
-                  ease: "power2.out",
-                }}
-              >
-                <h2 className="text-white text-2xl md:text-4xl font-semibold pb-5 border-b border-selectiveyellow mb-5 inline-block">
-                  {image.title}
-                </h2>
-                <p className="text-white text-lg md:text-xl">
-                  {image.description}
-                </p>
-              </AnimateIn>
-            </div>
-          </div>
+          </AnimateIn>
         ))}
+        </div>
       </div>
     </section>
   );
