@@ -58,7 +58,7 @@ export const HeaderNav: React.FC<{ data: any }> = ({ data }) => {
           )
         })}
         <Link
-          href={`/news`}
+          href={`/products`}
           className={linkClasses}
           onClick={() => setIsMenuOpen(false)}
           >

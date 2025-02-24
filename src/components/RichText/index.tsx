@@ -27,6 +27,7 @@ import { cn } from '@/utilities/cn'
 import VideoBlock from '@/blocks/VideoBlock/Component'
 import { TextWithImageBlock } from '@/blocks/TextWithImageBlock/Component'
 import { TwoColumnBlock } from '@/blocks/TwoColumnBlock/Component'
+import { ImageList } from '@/blocks/ImageList/Component'
 
 type NodeTypes =
   | DefaultNodeTypes
@@ -45,6 +46,7 @@ const jsxConverters: JSXConvertersFunction<NodeTypes> = ({ defaultConverters }) 
   ...defaultConverters,
   ...LinkJSXConverter({ internalDocToHref }),
   blocks: {
+    imageList: ({ node }) => <ImageList images={node.fields.images} />,
     twoColumn: ({ node }) => <TwoColumnBlock {...node.fields} />,
     textWithImageBlock: ({ node }) => <TextWithImageBlock {...node.fields} />,
     videoBlock: ({ node }) => <VideoBlock {...node.fields} />,

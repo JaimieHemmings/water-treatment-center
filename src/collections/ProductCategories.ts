@@ -25,6 +25,8 @@ import { slugField } from '@/fields/slug'
 import { VideoBlock } from '@/blocks/VideoBlock/config'
 import { TwoColumnBlock } from '@/blocks/TwoColumnBlock/config'
 import { TextWithImageBlock } from '@/blocks/TextWithImageBlock/config'
+import { ImageList } from '@/blocks/ImageList/config'
+import { CallToAction } from '@/blocks/CallToAction/config'
 
 export const ProductCategories: CollectionConfig = {
   slug: 'product-categories',
@@ -86,7 +88,9 @@ export const ProductCategories: CollectionConfig = {
                       MediaBlock,
                       VideoBlock,
                       TwoColumnBlock,
-                      TextWithImageBlock
+                      TextWithImageBlock,
+                      ImageList,
+                      CallToAction
                     ] }),
                     FixedToolbarFeature(),
                     InlineToolbarFeature(),

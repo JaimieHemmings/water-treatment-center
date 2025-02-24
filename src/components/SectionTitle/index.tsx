@@ -18,7 +18,7 @@ const SectionTitle: React.FC<SectionTitleProps> = ({ title, subtitle, theme }) =
           ease: "power2.out",
         }}
       >
-          <h2 className={`border-b-2 border-selectiveyellow ${theme == 'dark' ? 'text-jet' : 'text-white'} inline-block px-2 py-1 mb-5 text-sm`}>{title}</h2>
+          <h2 className={`border-b-2 border-selectiveyellow ${theme == 'dark' ? 'text-jet' : 'text-white'} inline-block px-2 py-1 m-0 mb-5 text-sm`}>{title}</h2>
       </AnimateIn>
       <AnimateIn
         animation={{
@@ -29,7 +29,7 @@ const SectionTitle: React.FC<SectionTitleProps> = ({ title, subtitle, theme }) =
         }}
       >
         {subtitle && (
-          <p className="text-4xl md:text-5xl font-semibold text-white">{subtitle}</p>
+          <p className="m-0 text-4xl md:text-5xl font-semibold text-white">{subtitle}</p>
         )}
       </AnimateIn>
     </div>

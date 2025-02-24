@@ -39,7 +39,7 @@ export const TwoColumnBlock: React.FC<TwoColumnBlockProps> = ({ contentleft, con
             ease: "power2.out",
           }}
         >
-            <p className="max-w-none md:prose-md prose mb-5 text-2xl md:text-md text-white font-light pt-3 animate-text-90b0">
+            <p className="max-w-none md:prose-md prose mb-5 text-2xl md:text-md text-white font-light pt-3 m-0">
               {contentleft}
             </p>
           </AnimateIn>

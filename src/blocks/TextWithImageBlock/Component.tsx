@@ -57,8 +57,8 @@ export const TextWithImageBlock: React.FC<TextWithImageBlockProps> = ({
         priority={false}
       />
 
-      <div className="container mx-auto px-4 flex flex-col lg:flex-row items-center justify-center gap-10 relative z-20">
-        <div className="basis-1/2">
+      <div className="container mx-auto px-4 flex flex-col lg:flex-row justify-between gap-10 relative z-20">
+        <div className="basis-1/2 h-full relative">
           <AnimateIn
             animation={{
               y: 60,
@@ -67,14 +67,15 @@ export const TextWithImageBlock: React.FC<TextWithImageBlockProps> = ({
               rotate: -10,
               scale: 0.8,
             }}
+            className="relative h-full w-full m-0"
           >
             <Image
               src={image.url}
               alt={image.alt}
-              width={image?.originalWidth || 650}
-              height={image?.originalHeight || 650}
-              sizes="(max-width: 768px) 100vw, 50vw"
-              className={`${cropImage ? 'rounded-full' : ''} transform-gpu animate-img-657`}
+              width={500}
+              height={500}
+              sizes="(max-width: 768px)"
+              className={`${cropImage ? 'rounded-full' : 'rounded-xl'} object-cover h-full w-full m-0 min-h-[500px]`}
               loading="lazy"
             />
           </AnimateIn>
@@ -87,7 +88,7 @@ export const TextWithImageBlock: React.FC<TextWithImageBlockProps> = ({
             duration: 0.8,
           }}
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white animate-text-6578 pb-5">
+          <h2 className="text-4xl md:text-5xl font-bold text-white m-0 pb-5">
             {title}
           </h2>
           {content && (
