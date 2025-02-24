@@ -63,6 +63,18 @@ export const HeaderNav: React.FC<{ data: any }> = ({ data }) => {
           onClick={() => setIsMenuOpen(false)}
           >
           <span className="font-normal text-xl">
+            Products
+          </span>
+          <span className="text-md font-thin">
+            View the Range
+          </span>
+        </Link>
+        <Link
+          href={`/news`}
+          className={linkClasses}
+          onClick={() => setIsMenuOpen(false)}
+          >
+          <span className="font-normal text-xl">
             News
           </span>
           <span className="text-md font-thin">
