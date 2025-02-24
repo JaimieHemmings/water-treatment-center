@@ -11,6 +11,17 @@ export const HeaderClient: any = ({ data }) => {
     <div className="w-full bg-white hidden-sm md:block relative z-[999]">
       <div className="container py-2 flex justify-end items-center gap-4">
         <div>
+        <p className="text-sm text-jet">
+            <a href="tel:0579333942" className="text-jet">
+              <MdPhone className="inline-block" />
+              <span className="hidden-sm">
+                {' '}
+                057 9333942
+              </span>
+            </a>
+          </p>
+        </div>
+        <div>
           <p className="text-sm text-jet">
             <a href="tel:0861715686" className="text-jet">
               <MdPhone className="inline-block" />

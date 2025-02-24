@@ -50,6 +50,11 @@ const LocationIcon = () => (
 const CONTACT_INFO: ContactInfo[] = [
   {
     icon: <PhoneIcon />,
+    primary: '057 9333942',
+    href: 'tel:0579333942'
+  },
+  {
+    icon: <PhoneIcon />,
     primary: '086 1715686',
     href: 'tel:0861715686'
   },
@@ -110,7 +115,7 @@ export const Footer: React.FC = () => {
               <Image src="/logo.png" alt="logo" width={300} height={100} />
             </Link>
             <p className="text-md font-normal text-white/[80%] py-5">
-            We are a 100% Irish owned company and respect is our philosophy. We respect our customer’s needs and listen to you so that we can offer a solution that suits you. We respect our customer&apos;s money by only supplying high quality systems making sure you get what you pay for. We respect our customers time by arriving when we say we will.
+            We are a 100% Irish owned company and respect is our philosophy. We respect our customer&apos;s needs and listen to you so that we can offer a solution that suits you. We respect our customer&apos;s money by only supplying high quality systems making sure you get what you pay for. We respect our customers time by arriving when we say we will.
             </p>
             <SocialLinks />
           </div>
