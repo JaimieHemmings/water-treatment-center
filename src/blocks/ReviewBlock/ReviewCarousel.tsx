@@ -23,7 +23,7 @@ const ReviewCarousel: React.FC<ReviewCarouselProps> = ({ reviews }) => {
   }, [Autoplay({ delay: 5000 })]);
 
   return (
-    <div className="embla">
+    <div className="embla select-none">
       <div className="embla__viewport" ref={emblaRef}>
         <div className="embla__container">
           {reviews?.map((review, index) => (

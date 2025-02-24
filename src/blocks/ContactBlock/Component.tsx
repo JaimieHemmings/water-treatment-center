@@ -37,7 +37,7 @@ export const ContactBlock: React.FC<ContactBlockProps> = ({
   return (
     <section className="w-full py-5 md:py-[10rem] bg-darkblue text-white">
       <div className="container pb-5">
-        <h2 className="bg-selectiveyellow text-white font-semibold px-5 py-2 inline-block rounded-xl mb-2">
+        <h2 className="border-b-2 border-selectiveyellow text-white inline-block px-2 py-1 mb-5 text-sm">
           {title}
         </h2>
         <p className="text-5xl font-semibold">
