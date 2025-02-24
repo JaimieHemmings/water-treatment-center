@@ -44,7 +44,7 @@ export const HighImpactHero: React.FC<HeroProps> = ({ slides }) => {
     <div className="embla overflow-hidden h-[90svh] md:h-[90svh]" ref={emblaRef}>    
       <div className="embla__container flex h-full">
         {slides.map((slide, index) => (
-          <div className="embla__slide azul-overlay dots-overlay" key={index}>
+          <div className="embla__slide azul-overlay dots-overlay relative" key={index}>
             {slide.video && (
             <video
               autoPlay 
@@ -80,7 +80,7 @@ export const HighImpactHero: React.FC<HeroProps> = ({ slides }) => {
                   link={slide.link?.slug || "/contact"}
                 />
               </div>
-            </div>
+            </div><div className="absolute pointer-events-none left-0 bottom-0 w-full h-1/2 bg-gradient-to-t from-darkblue to-transparent" />
           </div>
         ))}
       </div>
