@@ -74,7 +74,7 @@ export default async function BlogFeed() {
               }}
             >
               {post.heroImage && (
-                <Image width={630} height={420} src={post.heroImage.url} alt={post.heroImage.alt} className="w-full h-auto object-cover rounded-xl" />
+                <Image width={630} height={420} src={post.heroImage.url} alt={post.heroImage.alt} className="w-full h-auto max-h-[350px] object-cover rounded-xl" />
               )}
             </AnimateIn>
             </div>

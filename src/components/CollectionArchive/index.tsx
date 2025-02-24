@@ -89,7 +89,7 @@ export const CollectionArchive: React.FC<CollectionArchiveProps> = ({ posts }) =
                     alt={post.heroImage.alt || 'No alt text available'}
                     width={800}
                     height={600}
-                    className="w-full h-auto object-cover rounded-lg"
+                    className="w-full h-auto object-cover rounded-lg max-h-[350px]"
                   />
                 </div>
               )}
