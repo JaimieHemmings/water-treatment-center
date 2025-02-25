@@ -29,7 +29,7 @@ const SectionTitle: React.FC<SectionTitleProps> = ({ title, subtitle, theme }) =
         }}
       >
         {subtitle && (
-          <p className="m-0 text-4xl md:text-5xl font-semibold text-white">{subtitle}</p>
+          <p className="m-0 text-4xl md:text-4xl font-semibold text-white">{subtitle}</p>
         )}
       </AnimateIn>
     </div>

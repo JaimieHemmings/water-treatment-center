@@ -88,7 +88,7 @@ export const TextWithImageBlock: React.FC<TextWithImageBlockProps> = ({
             duration: 0.8,
           }}
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white m-0 pb-5">
+          <h2 className="text-4xl md:text-4xl font-bold text-white m-0 pb-5">
             {title}
           </h2>
           {content && (

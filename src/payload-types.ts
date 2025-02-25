@@ -130,6 +130,7 @@ export interface Page {
     | TestKitForm
     | TestKitCalculator
     | ReviewBlock
+    | ImageGrid
   )[];
   meta?: {
     title?: string | null;
@@ -912,6 +913,26 @@ export interface ReviewBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ImageGrid".
+ */
+export interface ImageGrid {
+  title: string;
+  subtitle: string;
+  gridItems?:
+    | {
+        link: number | Page;
+        backgroundImage: number | Media;
+        title: string;
+        paragraph: string;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'imageGrid';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "categories".
  */
 export interface Category {
@@ -1349,6 +1370,7 @@ export interface PagesSelect<T extends boolean = true> {
         testKitForm?: T | TestKitFormSelect<T>;
         testKitCalculator?: T | TestKitCalculatorSelect<T>;
         reviewBlock?: T | ReviewBlockSelect<T>;
+        imageGrid?: T | ImageGridSelect<T>;
       };
   meta?:
     | T
@@ -1666,6 +1688,25 @@ export interface ReviewBlockSelect<T extends boolean = true> {
     | {
         review?: T;
         reviewer?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ImageGrid_select".
+ */
+export interface ImageGridSelect<T extends boolean = true> {
+  title?: T;
+  subtitle?: T;
+  gridItems?:
+    | T
+    | {
+        link?: T;
+        backgroundImage?: T;
+        title?: T;
+        paragraph?: T;
         id?: T;
       };
   id?: T;

@@ -3,7 +3,6 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import RichText from "@/components/RichText";
 import SectionTitle from "@/components/SectionTitle";
-import Image from "next/image";
 import { AnimateIn } from "@/components/Animations/AnimateIn";
 
 gsap.registerPlugin(ScrollTrigger);

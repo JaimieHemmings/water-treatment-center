@@ -21,6 +21,7 @@ import YoutubeBlock from '@/blocks/YoutubeBlock/Component'
 import TestKitForm from '@/blocks/TestKitForm/Component'
 import TestKitCalculator from '@/blocks/TestKitCalculator/Component'
 import ReviewBlock from '@/blocks/ReviewBlock/Component'
+import ImageGrid from '@/blocks/ImageGrid/component'
 
 const blockComponents = {
   content: ContentBlock,
@@ -42,6 +43,7 @@ const blockComponents = {
   testKitForm: TestKitForm,
   testKitCalculator: TestKitCalculator,
   reviewBlock: ReviewBlock,
+  imageGrid: ImageGrid,
 }
 
 export const RenderBlocks: React.FC<{
