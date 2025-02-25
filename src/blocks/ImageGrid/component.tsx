@@ -173,7 +173,7 @@ const ImageGrid: React.FC<ImageGridProps> = ({ title, subtitle, gridItems }) => 
                       </h3>
                     </div>
                     <p
-                      className={`text-xl md:text-jet/90
+                      className={`text-xl
                         ${index % 2 === 0 ? (
                           'text-jet md:text-jet/90'
                         ) : (
