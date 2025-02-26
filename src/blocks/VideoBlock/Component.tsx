@@ -2,7 +2,7 @@ import React from 'react'
 import Image from 'next/image'
 import SectionTitle from '@/components/SectionTitle'
 import AnimateIn from '@/components/Animations/AnimateIn'
-import RichText from '@/components/RichText'
+import CustomLink from '@/components/CustomLink'
 
 interface VideoBlockProps {
   title: string
@@ -12,6 +12,10 @@ interface VideoBlockProps {
   video: {
     url: string
   }
+  link: {
+    slug: string
+  }
+  linkLabel: string
 }
 
 const ANIMATION_CONFIG = {
@@ -37,8 +41,9 @@ const VideoBlock: React.FC<VideoBlockProps> = ({
   title,
   subtitle,
   contentleft,
-  contentright,
   video,
+  link,
+  linkLabel
 }) => {
   return (
     <section className="relative overflow-hidden py-20 w-screen">
@@ -70,12 +75,22 @@ const VideoBlock: React.FC<VideoBlockProps> = ({
       </div>
 
       <div className="container flex flex-col justify-between">
-        <div className="w-full pt-5">
-          <AnimateIn animation={ANIMATION_CONFIG}>
-            <p className="prose mb-5 text-xl md:text-md text-white font-light pt-3 w-full">
-              {contentleft}
-            </p>
-          </AnimateIn>
+        <div className="w-full pt-5 flex flex-col md:flex-row">
+          <div className="w-2/3">
+            <AnimateIn animation={ANIMATION_CONFIG}>
+              <p className="prose mb-5 text-xl md:text-md text-white font-light pt-3 w-full">
+                {contentleft}
+              </p>
+            </AnimateIn>
+          </div>
+          <div className="w-1/3 flex flex-col items-end justify-end">
+          {link && (
+            <AnimateIn animation={ANIMATION_CONFIG}>
+              <CustomLink
+                theme="light" link={`/${link.slug}`} label={linkLabel} />
+            </AnimateIn>
+          )}
+          </div>
         </div>
       </div>
     </section>

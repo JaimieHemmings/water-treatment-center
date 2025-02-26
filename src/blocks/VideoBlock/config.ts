@@ -20,6 +20,17 @@ export const VideoBlock: Block = {
       type: 'text',
     },
     {
+      name: 'link',
+      label: 'Link',
+      relationTo: 'pages',
+      type: 'relationship',
+    },
+    {
+      name: 'linkLabel',
+      label: 'Link Label',
+      type: 'text',
+    },
+    {
       name: 'video',
       label: 'Video',
       type: 'upload',

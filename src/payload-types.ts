@@ -828,6 +828,8 @@ export interface VideoBlock {
   title?: string | null;
   subtitle?: string | null;
   contentleft?: string | null;
+  link?: (number | null) | Page;
+  linkLabel?: string | null;
   video: number | Media;
   id?: string | null;
   blockName?: string | null;
@@ -1629,6 +1631,8 @@ export interface VideoBlockSelect<T extends boolean = true> {
   title?: T;
   subtitle?: T;
   contentleft?: T;
+  link?: T;
+  linkLabel?: T;
   video?: T;
   id?: T;
   blockName?: T;
