@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import { FaChevronDown } from "react-icons/fa6";
 
 // Define proper types instead of using 'any'
 interface NavItem {
@@ -82,7 +83,7 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({ data, subNav }) => {
               href="/products"
               className={`${linkClasses} max-md:w-full`}
             >
-              Products
+              Products <FaChevronDown className="ml-2 max-md:hidden" />
             </Link>
           </div>
           
