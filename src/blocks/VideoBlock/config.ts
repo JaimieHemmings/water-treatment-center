@@ -20,11 +20,6 @@ export const VideoBlock: Block = {
       type: 'text',
     },
     {
-      name: 'contentright',
-      label: 'Content Right',
-      type: 'richText',
-    },
-    {
       name: 'video',
       label: 'Video',
       type: 'upload',

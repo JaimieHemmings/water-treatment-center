@@ -43,7 +43,6 @@ const VideoBlock: React.FC<VideoBlockProps> = ({
   return (
     <section className="relative overflow-hidden py-20 w-screen">
       <DecorativeDots position="top" />
-      <DecorativeDots position="bottom" />
 
       {/* Video Background */}
       <div className="absolute inset-0 -z-10">
@@ -70,24 +69,12 @@ const VideoBlock: React.FC<VideoBlockProps> = ({
         </div>
       </div>
 
-      <div className="container flex flex-col md:flex-row justify-between">
-        {/* Left Content */}
-        <div className="md:basis-1/3 pt-5">
+      <div className="container flex flex-col justify-between">
+        <div className="w-full pt-5">
           <AnimateIn animation={ANIMATION_CONFIG}>
-            <p className="prose mb-5 text-2xl md:text-md text-white font-light pt-3">
+            <p className="prose mb-5 text-xl md:text-md text-white font-light pt-3 w-full">
               {contentleft}
             </p>
-          </AnimateIn>
-        </div>
-
-        {/* Right Content */}
-        <div className="md:basis-2/3 md:p-5">
-          <AnimateIn animation={ANIMATION_CONFIG}>
-            <RichText 
-              data={contentright}
-              enableGutter={false}
-              className="prose md:prose-md mb-5 text-md md:xl mr-0 text-white [&_strong]:font-bold [&_strong]:text-white"
-            />
           </AnimateIn>
         </div>
       </div>

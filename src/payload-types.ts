@@ -828,21 +828,6 @@ export interface VideoBlock {
   title?: string | null;
   subtitle?: string | null;
   contentleft?: string | null;
-  contentright?: {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
   video: number | Media;
   id?: string | null;
   blockName?: string | null;
@@ -1644,7 +1629,6 @@ export interface VideoBlockSelect<T extends boolean = true> {
   title?: T;
   subtitle?: T;
   contentleft?: T;
-  contentright?: T;
   video?: T;
   id?: T;
   blockName?: T;
