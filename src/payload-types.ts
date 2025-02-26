@@ -2275,6 +2275,27 @@ export interface Header {
  */
 export interface Footer {
   id: number;
+  /**
+   * Main navigation links in the footer
+   */
+  siteNavigation?:
+    | {
+        link: number | Page;
+        label?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  blurb: string;
+  /**
+   * Secondary links section in the footer
+   */
+  usefulLinks?:
+    | {
+        link: number | Page;
+        label: string;
+        id?: string | null;
+      }[]
+    | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -2299,6 +2320,21 @@ export interface HeaderSelect<T extends boolean = true> {
  * via the `definition` "footer_select".
  */
 export interface FooterSelect<T extends boolean = true> {
+  siteNavigation?:
+    | T
+    | {
+        link?: T;
+        label?: T;
+        id?: T;
+      };
+  blurb?: T;
+  usefulLinks?:
+    | T
+    | {
+        link?: T;
+        label?: T;
+        id?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

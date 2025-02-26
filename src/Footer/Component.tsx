@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { FaFacebook, FaYoutube, FaPhoneAlt } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { FaLocationDot } from "react-icons/fa6";
+import { getCachedGlobal } from '@/utilities/getGlobals'
 
 
 interface SocialLink {
@@ -18,29 +19,26 @@ interface ContactInfo {
   isAddress?: boolean
 }
 
-interface FooterLink {
-  href: string
-  label: string
+interface FooterData {
+  siteNavigation: Array<{
+    link: {
+      slug: string
+    }
+    label: string
+  }>
+  usefulLinks: Array<{
+    link: {
+      slug: string
+    }
+    label: string
+  }>
+  blurb: string
 }
-
-const USEFUL_LINKS: FooterLink[] = [
-  { href: '/privacy-policy', label: 'Privacy Policy' },
-  { href: '/terms-and-conditions', label: 'Terms and Conditions' },
-  { href: '/cookie-policy', label: 'Cookie Policy' },
-  { href: '/sitemap', label: 'Sitemap' },
-]
 
 
 const SOCIAL_LINKS: SocialLink[] = [
   { icon: <FaFacebook className="text-teal text-4xl" />, href: '#', alt: 'facebook icon' },
   { icon: <FaYoutube className="text-4xl text-teal" />, href: 'https://www.youtube.com/', alt: 'youtube icon' }
-]
-
-const FOOTER_LINKS: FooterLink[] = [
-  { href: '/', label: 'Home' },
-  { href: '/news', label: 'News' },
-  { href: '/become-a-tutor', label: 'Contact' },
-  { href: '/payment-plans', label: 'Payment Plans' },
 ]
 
 const PhoneIcon = () => (
@@ -112,7 +110,15 @@ const ContactSection: React.FC<{ info: ContactInfo }> = ({ info }) => (
   </div>
 )
 
-export const Footer: React.FC = () => {
+export async function Footer() {
+  const footerData = (
+    await getCachedGlobal('footer')()
+  ) as FooterData || {
+    siteNavigation: [],
+    usefulLinks: [],
+    blurb: ''
+  }
+
   return (
     <footer className="bg-jet pt-9">
       <div className="mx-auto w-full max-w-[1166px] px-4 xl:px-0">
@@ -123,7 +129,7 @@ export const Footer: React.FC = () => {
               <Image src="/logo.png" alt="logo" width={300} height={100} />
             </Link>
             <p className="text-md font-normal text-white/[80%] py-5">
-            We are a 100% Irish owned company and respect is our philosophy. We respect our customer&apos;s needs and listen to you so that we can offer a solution that suits you. We respect our customer&apos;s money by only supplying high quality systems making sure you get what you pay for. We respect our customers time by arriving when we say we will.
+            {footerData.blurb}
             </p>
             <SocialLinks />
           </div>
@@ -140,16 +146,44 @@ export const Footer: React.FC = () => {
             <div>
               <p className="text-xl md:text-2xl font-medium leading-normal text-white inline-block pb-2 border-b-2 border-teal">Pages</p>
               <ul>
-                {FOOTER_LINKS.map((link, index) => (
+                {footerData?.siteNavigation?.map((link, index) => (
                   <li key={index} className="mt-[15px]">
                     <Link
                       className="text-white text-md font-normal hover:text-azul"
-                      href={link.href}
+                      href={`/${link.link.slug}`}
+                      title={link.label}
                     >
                       {link.label}
                     </Link>
                   </li>
                 ))}
+                <li className="mt-[15px]">
+                  <Link
+                    className="text-white text-md font-normal hover:text-azul"
+                    href="/products"
+                    title="Products"
+                  >
+                    Products
+                  </Link>
+                </li>
+                <li className="mt-[15px]">
+                  <Link
+                    className="text-white text-md font-normal hover:text-azul"
+                    href="/news"
+                    title="News"
+                  >
+                    News
+                  </Link>
+                </li>
+                <li className="mt-[15px]">
+                  <Link
+                    className="text-white text-md font-normal hover:text-azul"
+                    href="/contact"
+                    title="Contact"
+                  >
+                    Contact
+                  </Link>
+                </li>
               </ul>
             </div>
           </div>
@@ -159,16 +193,17 @@ export const Footer: React.FC = () => {
             <div>
               <p className="text-xl md:text-2xl font-medium leading-normal text-white inline-block pb-2 border-b-2 border-teal">Useful Links</p>
               <ul>
-                {USEFUL_LINKS.map((link, index) => (
-                  <li key={index} className="mt-[15px]">
-                    <Link
-                      className="text-white text-md font-normal hover:text-azul"
-                      href={link.href}
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
+              {footerData?.usefulLinks?.map((link, index) => (
+              <li key={index} className="mt-[15px]">
+                <Link
+                  className="text-white text-md font-normal hover:text-azul"
+                  href={`/${link.link.slug}`}
+                  title={link.label}
+                >
+                  {link.label}
+                </Link>
+              </li>
+            ))}
               </ul>
             </div>
           </div>
