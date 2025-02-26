@@ -29,13 +29,15 @@ export default async function BlogFeed() {
  
   return (
     <section className="py-[2rem]">
-      <SectionTitle title="News &amp; Updates" subtitle="Stay informed about water quality and solutions" />
+      <div className="sticky top-[100px]">
+        <SectionTitle title="News &amp; Updates" subtitle="Stay informed about water quality and solutions" />
+      </div>
       <ul className="relative pt-[3rem]">
         {docs.map((post: any, index) => {
           return (
             <li
               key={index}
-              className="sticky top-[75px] max-md:p-5 md:py-5"
+              className="sticky top-[200px] max-md:p-5 md:py-5"
             >
               <div className={` border-2 border-jet container p-0 bg-antiflashwhite rounded-xl overflow-hidden shadow-lg flex flex-col-reverse ${index % 2 === 0 ? ('md:flex-row') : ('md:flex-row-reverse')} md:items-center md:justify-between`}>
                 <div className="md:w-1/2 p-5">
