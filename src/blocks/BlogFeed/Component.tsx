@@ -29,15 +29,15 @@ export default async function BlogFeed() {
  
   return (
     <section className="py-[2rem]">
-      <div className="sticky top-[100px]">
+      <div className="sticky top-[100px] pb-[2rem]">
         <SectionTitle title="News &amp; Updates" subtitle="Stay informed about water quality and solutions" />
       </div>
-      <ul className="relative pt-[3rem]">
+      <ul className="relative pt-[2rem]">
         {docs.map((post: any, index) => {
           return (
             <li
               key={index}
-              className="sticky top-[250px] max-md:p-5 md:py-5"
+              className="sticky top-[250px] max-md:p-2 py-5"
             >
               <div className={` border-2 border-jet container p-0 bg-antiflashwhite rounded-xl overflow-hidden shadow-lg flex flex-col-reverse ${index % 2 === 0 ? ('md:flex-row') : ('md:flex-row-reverse')} md:items-center md:justify-between`}>
                 <div className="md:w-1/2 p-5">
@@ -51,14 +51,12 @@ export default async function BlogFeed() {
                   <CustomLink theme="light" label="Read More" link={`/news/${post.slug}`} />
                   </div>
                 </div>
-                <div className="md:w-1/2">
+                <div className="md:w-1/2 relative h-[200px] md:h-[300px]">
                   <Image 
                     src={post.heroImage.url}
                     alt={post.heroImage.alt}
-                    layout="responsive"
-                    width={post.heroImage.width}
-                    height={post.heroImage.height}
-                    className="rounded-lg max-h-[200px] md:max-h-[300px] md:w-[300px] md:h-[200px] object-cover"
+                    fill
+                    className="rounded-lg h-[200px] md:max-h-[300px] w-full object-cover"
                   />
                 </div>
               </div>
