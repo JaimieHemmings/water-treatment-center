@@ -74,8 +74,7 @@ export const TextWithImageBlock: React.FC<TextWithImageBlockProps> = ({
               alt={image.alt}
               width={500}
               height={500}
-              sizes="(max-width: 768px)"
-              className={`${cropImage ? 'rounded-full' : 'rounded-xl'} object-cover h-full w-full m-0 min-h-[500px]`}
+              className={`${cropImage ? 'rounded-full' : 'rounded-xl'} object-cover h-auto w-full m-0 max-md:min-h-[300px]`}
               loading="lazy"
             />
           </AnimateIn>
