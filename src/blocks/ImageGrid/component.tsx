@@ -5,6 +5,7 @@ import Link from 'next/link'
 import React from 'react'
 
 interface GridItem {
+  theme: 'light' | 'dark'
   link: {
     slug: string
   }
@@ -12,25 +13,8 @@ interface GridItem {
     url: string
     alt: string
   }
-  imageAlt: string
   title: string
   paragraph: string
-  widthClass: string
-  customClasses?: string
-  overlayClass: string
-  imageZIndex?: number
-  overlayZIndex?: number
-  decorativeImage?: {
-    src: string
-    width: number
-    height: number
-    alt: string
-    style?: React.CSSProperties
-    className?: string
-  }
-  titleClass: string
-  subtitleClass?: string
-  paragraphClass: string
 }
 
 interface ImageGridProps {
@@ -39,7 +23,73 @@ interface ImageGridProps {
   gridItems: GridItem[]
 }
 
+// Extract card component to reduce repetition
+const GridCard: React.FC<{
+  item: GridItem
+  index: number
+  className?: string
+}> = ({ item, index, className = "" }) => {
+  return (
+    <AnimateIn
+      animation={{
+        y: 60,
+        opacity: 0,
+        duration: 0.8,
+        delay: 0.1 * index,
+      }}
+      className={`relative ${className}`}
+    >
+      <Link 
+        href={item.link.slug} 
+        className="w-full h-full block"
+      >
+        <Image 
+          src={item.backgroundImage.url} 
+          alt={item.backgroundImage.alt} 
+          fill 
+          className="rounded-xl object-cover absolute top-0 left-0 w-full h-full z-10"
+          loading="lazy" 
+        />
+        <div 
+          className={`
+            relative z-20 inset-0 p-5 flex flex-col justify-end rounded-xl transition-all duration-300 ease-in-out h-full pt-[5rem]
+            ${item.theme === 'light' 
+              ? 'bg-antiflashwhite/90 md:bg-antiflashwhite/80 hover:bg-antiflashwhite/90'
+              : 'bg-darkblue/90 md:bg-darkblue/80 hover:bg-darkblue/90 border-2 border-antiflashwhite'
+            }`}
+        >
+          <div>
+            <h3 className={`text-sm font-base mb-2 pb-2 border-b-2 inline-block
+              ${item.theme === 'light'
+                ? 'border-azul text-jet'
+                : 'text-antiflashwhite border-antiflashwhite'
+              }`}
+            >
+              {item.title}
+            </h3>
+          </div>
+          <p
+            className={`text-xl
+              ${item.theme === 'light'
+                ? 'text-jet md:text-jet/90'
+                : 'text-antiflashwhite md:text-antiflashwhite/90'
+              }`}
+          > 
+            {item.paragraph}
+          </p>
+        </div>
+      </Link>
+    </AnimateIn>
+  );
+};
+
 const ImageGrid: React.FC<ImageGridProps> = ({ title, subtitle, gridItems }) => {
+  // Separate the grid into its sections for clarity
+  const topRow = gridItems.slice(0, 2);
+  const leftColumn = gridItems.slice(2, 4);
+  const middleColumn = gridItems.slice(4, 6);
+  const rightColumn = gridItems.slice(6, 9);
+
   return (
     <section className="py-[5rem]">
       <div className="container text-white text-center pb-5 mb-5">
@@ -51,180 +101,51 @@ const ImageGrid: React.FC<ImageGridProps> = ({ title, subtitle, gridItems }) => 
       <div className="container flex flex-col justify-between">
         {/* Top Row */}
         <div className="flex flex-col md:flex-row gap-4 mb-4">
-          {gridItems.slice(0, 2).map((item, index) => (
-            <AnimateIn
-              key={index}
-              animation={{
-                x: 0,
-                y: 60,
-                opacity: 0,
-                duration: 0.8,
-                delay: 0.1 * index,
-              }}
-              className="relative min-h-[250px] md:w-1/2"
-            >
-              <Link 
-                key={index} 
-                href={item.link.slug} 
-                className="w-full h-full"
-              >
-                <Image 
-                  src={item.backgroundImage.url} 
-                  alt={item.backgroundImage.alt} 
-                  fill 
-                  className="rounded-xl object-cover"
-                  loading="lazy" 
-                />
-                <div 
-                  className="absolute inset-0 p-5 flex flex-col justify-end rounded-xl bg-antiflashwhite/90 md:bg-antiflashwhite/80 hover:bg-antiflashwhite/90 transition-all duration-300 ease-in-out"
-                >
-                  <div>
-                    <h3 className="text-sm font-base mb-2 pb-2 border-b-2 border-azul inline-block">
-                      {item.title}
-                    </h3>
-                  </div>
-                  <p className="text-xl text-jet md:text-jet/90">{item.paragraph}</p>
-                </div>
-              </Link>
-            </AnimateIn>
+          {topRow.map((item, index) => (
+            <GridCard 
+              key={index} 
+              item={item} 
+              index={index} 
+              className="md:w-1/2" 
+            />
           ))}
         </div>
 
         {/* Bottom Row */}
         <div className="flex flex-col md:flex-row gap-4">
-          <div className="md:w-1/3 relative flex flex-col gap-4 min-h-[750px]">
-            {gridItems.slice(2, 4).map((item, index) => (
-              <AnimateIn
-                key={index}
-                animation={{
-                  y: 60,
-                  opacity: 0,
-                  duration: 0.8,
-                  delay: 0.1 * index,
-                }}
-                className={`relative w-full ${index % 2 === 0 ? 'h-1/3' : 'h-2/3'}`}
-              >
-                <Link
-                  href={item.link.slug} 
-                  className="w-full h-full block"
-                >
-                  <Image 
-                    src={item.backgroundImage.url} 
-                    alt={item.backgroundImage.alt} 
-                    fill 
-                    className="rounded-xl object-cover"
-                    loading="lazy" 
-                  />
-                  <div 
-                    className="absolute inset-0 p-5 flex flex-col justify-end rounded-xl bg-antiflashwhite/90 md:bg-antiflashwhite/80 hover:bg-antiflashwhite/90 transition-all duration-300 ease-in-out"
-                  >
-                    <div>
-                      <h3 className="text-sm font-base mb-2 pb-2 border-b-2 border-azul inline-block">
-                        {item.title}
-                      </h3>
-                    </div>
-                    <p className="text-xl text-jet md:text-jet/90">{item.paragraph}</p>
-                  </div>
-                </Link>
-              </AnimateIn>
+          {/* Left Column */}
+          <div className="md:w-1/3 relative flex flex-col gap-4 md:min-h-[750px]">
+            {leftColumn.map((item, index) => (
+              <GridCard 
+                key={index} 
+                item={item} 
+                index={index} 
+                className={`w-full ${index % 2 === 0 ? 'md:h-1/3' : 'md:h-2/3'}`} 
+              />
             ))}
           </div>
 
-          <div className="md:w-1/3 relative flex flex-col gap-4 min-h-[750px]">
-            {gridItems.slice(4, 6).map((item, index) => (
-              <AnimateIn
-                key={index}
-                animation={{
-                  y: 60,
-                  opacity: 0,
-                  duration: 0.8,
-                  delay: 0.1 * index,
-                }}
-                className="relative w-full h-1/2"
-              >
-                <Link
-                  href={item.link.slug} 
-                  className="w-full h-full block"
-                >
-                  <Image 
-                    src={item.backgroundImage.url} 
-                    alt={item.backgroundImage.alt} 
-                    fill 
-                    className="rounded-xl object-cover"
-                    loading="lazy" 
-                  />
-                  <div 
-                    className={`
-                      absolute inset-0 p-5 flex flex-col justify-end rounded-xl transition-all duration-300 ease-in-out
-                      ${index % 2 === 0 ? (
-                        'bg-antiflashwhite/90 md:bg-antiflashwhite/80 hover:bg-antiflashwhite/90'
-                      ) : (
-                        'bg-darkblue/90 md:bg-darkblue/80 hover:bg-darkblue/90 border-2 border-antiflashwhite'
-                      )}`}
-                  >
-                    <div>
-                      <h3 className={`text-sm font-base mb-2 pb-2 border-b-2 inline-block
-                        ${index % 2 === 0 ? (
-                          'border-azul text-jet'
-                        ) : (
-                          'text-antiflashwhite border-antiflashwhite'
-                        )}`}>
-                        {item.title}
-                      </h3>
-                    </div>
-                    <p
-                      className={`text-xl
-                        ${index % 2 === 0 ? (
-                          'text-jet md:text-jet/90'
-                        ) : (
-                          'text-antiflashwhite md:text-antiflashwhite/90'
-                        )}
-                      `}
-                    > 
-                      {item.paragraph}
-                    </p>
-                  </div>
-                </Link>
-              </AnimateIn>
+          {/* Middle Column */}
+          <div className="md:w-1/3 relative flex flex-col gap-4 md:min-h-[750px]">
+            {middleColumn.map((item, index) => (
+              <GridCard 
+                key={index} 
+                item={item} 
+                index={index} 
+                className="w-full md:h-1/2" 
+              />
             ))}
           </div>
 
-
+          {/* Right Column */}
           <div className="md:w-1/3 relative flex flex-col gap-4 min-h-[750px]">
-            {gridItems.slice(6, 9).map((item, index) => (
-              <AnimateIn
-                key={index}
-                animation={{
-                  y: 60,
-                  opacity: 0,
-                  duration: 0.8,
-                  delay: 0.1 * index,
-                }}
-                className={`relative w-full ${index % 2 !== 0 ? ('h-1/2') : ('h-1/4')}`}
-              >
-                <Link
-                  href={item.link.slug} 
-                  className="w-full h-full block"
-                >
-                  <Image 
-                    src={item.backgroundImage.url} 
-                    alt={item.backgroundImage.alt} 
-                    fill 
-                    className="rounded-xl object-cover"
-                    loading="lazy" 
-                  />
-                  <div 
-                    className="absolute inset-0 p-5 flex flex-col justify-end rounded-xl bg-antiflashwhite/90 md:bg-antiflashwhite/80 hover:bg-antiflashwhite/90 transition-all duration-300 ease-in-out"
-                  >
-                    <div>
-                      <h3 className="text-sm font-base mb-2 pb-2 border-b-2 border-azul inline-block">
-                        {item.title}
-                      </h3>
-                    </div>
-                    <p className="text-xl text-jet md:text-jet/90">{item.paragraph}</p>
-                  </div>
-                </Link>
-              </AnimateIn>
+            {rightColumn.map((item, index) => (
+              <GridCard 
+                key={index} 
+                item={item} 
+                index={index} 
+                className={`w-full ${index % 2 !== 0 ? 'md:h-1/2' : 'md:h-1/4'}`} 
+              />
             ))}
           </div>
         </div>

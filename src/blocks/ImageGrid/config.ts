@@ -24,6 +24,22 @@ export const ImageGrid: Block = {
       maxRows: 9,
       fields: [
         {
+          name: 'theme',
+          label: 'Theme',
+          type: 'select',
+          defaultValue: 'light',
+          options: [
+            {
+              label: 'Light',
+              value: 'light',
+            },
+            {
+              label: 'Dark',
+              value: 'dark',
+            },
+          ],
+        },
+        {
           name: 'link',
           label: 'Link',
           type: 'relationship',

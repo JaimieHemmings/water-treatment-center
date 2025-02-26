@@ -29,7 +29,7 @@ export default async function BlogFeed() {
 
   const { docs } = response
   return (
-    <div className="w-full bg-darkblue py-[5rem] relative">
+    <div className="w-full bg-darkblue py-[5rem] relative overflow-x-hidden">
       <Image
         src="/dots.svg"
         alt="Decorative dots"

@@ -920,6 +920,7 @@ export interface ImageGrid {
   subtitle: string;
   gridItems?:
     | {
+        theme?: ('light' | 'dark') | null;
         link: number | Page;
         backgroundImage: number | Media;
         title: string;
@@ -1703,6 +1704,7 @@ export interface ImageGridSelect<T extends boolean = true> {
   gridItems?:
     | T
     | {
+        theme?: T;
         link?: T;
         backgroundImage?: T;
         title?: T;
