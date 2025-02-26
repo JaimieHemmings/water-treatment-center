@@ -83,7 +83,7 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({ data, subNav }) => {
               href="/products"
               className={`${linkClasses} max-md:w-full`}
             >
-              Products <FaChevronDown className="ml-2 max-md:hidden" />
+              Products <FaChevronDown className="text-sm ml-2 max-md:hidden" />
             </Link>
           </div>
           
