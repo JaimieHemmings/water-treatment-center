@@ -25,13 +25,13 @@ export const Textarea: React.FC<
   label,
   register,
   required: requiredFromProps,
-  rows = 3,
+  rows = 5,
   width,
 }) => {
   return (
     <Width width={width}>
       <TextAreaComponent
-        className="text-white bg-jet border-2 border-darkblue py-5 text-lg"
+        className="text-white bg-jet border-2 border-darkblue py-2 text-lg"
         placeholder={defaultValue}
         id={name}
         rows={rows}

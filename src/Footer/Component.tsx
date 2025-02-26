@@ -23,6 +23,14 @@ interface FooterLink {
   label: string
 }
 
+const USEFUL_LINKS: FooterLink[] = [
+  { href: '/privacy-policy', label: 'Privacy Policy' },
+  { href: '/terms-and-conditions', label: 'Terms and Conditions' },
+  { href: '/cookie-policy', label: 'Cookie Policy' },
+  { href: '/sitemap', label: 'Sitemap' },
+]
+
+
 const SOCIAL_LINKS: SocialLink[] = [
   { icon: <FaFacebook className="text-teal text-4xl" />, href: '#', alt: 'facebook icon' },
   { icon: <FaYoutube className="text-4xl text-teal" />, href: 'https://www.youtube.com/', alt: 'youtube icon' }
@@ -108,9 +116,9 @@ export const Footer: React.FC = () => {
   return (
     <footer className="bg-jet pt-9">
       <div className="mx-auto w-full max-w-[1166px] px-4 xl:px-0">
-        <div className="flex flex-col justify-between sm:px-[18px] md:flex-row md:px-10">
+        <div className="flex flex-col justify-between sm:px-[18px] md:flex-row md:px-10 md:gap-4">
           {/* Logo and Social Section */}
-          <div className="md:w-[316px]">
+          <div className="md:w-2/6">
             <Link href="/">
               <Image src="/logo.png" alt="logo" width={300} height={100} />
             </Link>
@@ -121,18 +129,37 @@ export const Footer: React.FC = () => {
           </div>
 
           {/* Contact Information Section */}
-          <div className="md:w-[316px]">
+          <div className="md:w-2/6 pb-5 md:px-5">
             {CONTACT_INFO.map((info, index) => (
               <ContactSection key={index} info={info} />
             ))}
           </div>
 
           {/* Navigation Links Section */}
-          <div className="mt-6 flex w-full flex-col justify-between text-white sm:flex-row md:mt-0 md:max-w-[341px]">
+          <div className="mt-6 flex w-full flex-col justify-between text-white sm:flex-row md:mt-0 md:w-1/6 pb-5">
             <div>
               <p className="text-xl md:text-2xl font-medium leading-normal text-white inline-block pb-2 border-b-2 border-teal">Pages</p>
               <ul>
                 {FOOTER_LINKS.map((link, index) => (
+                  <li key={index} className="mt-[15px]">
+                    <Link
+                      className="text-white text-md font-normal hover:text-azul"
+                      href={link.href}
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+
+          <div className="mt-6 flex w-full flex-col justify-between text-white sm:flex-row md:mt-0 md:w-1/6 pb-5">
+            <div>
+              <p className="text-xl md:text-2xl font-medium leading-normal text-white inline-block pb-2 border-b-2 border-teal">Useful Links</p>
+              <ul>
+                {USEFUL_LINKS.map((link, index) => (
                   <li key={index} className="mt-[15px]">
                     <Link
                       className="text-white text-md font-normal hover:text-azul"

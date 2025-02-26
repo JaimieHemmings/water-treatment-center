@@ -21,20 +21,20 @@ interface CallToActionBlockProps {
 
 export const CallToActionBlock: React.FC<CallToActionBlockProps> = ({ link, linkLabel, richText, lightbgToggle, backgroundImage, title }) => {
   return (
-    <div className="bg-darkblue">
-      <div className={`w-full py-[5rem] relative overflow-hidden ${lightbgToggle ? 'bg-antiflashwhite' : ''}`}>
+    <div className={`bg-darkblue ${lightbgToggle ? 'border-t-2 border-b-2 border-azul' : null }`}>
+      <div className={`w-full py-[2rem] relative overflow-hidden ${lightbgToggle ? 'bg-antiflashwhite' : ''}`}>
         {backgroundImage && (
           <div className="absolute left-0 top-0 h-full w-full md:w-1/2 m-0">
             <Image
               src={backgroundImage.url}
               alt={backgroundImage.alt}
-              className="absolute left-0 top-0 h-full w-full object-cover object-center rounded-xl m-0"
+              className="absolute left-0 top-0 h-full w-full object-cover object-center m-0"
               width={800}
               height={600}
               priority
             />
             {/* White overlay */}
-            <div className="absolute inset-0 bg-antiflashwhite/60 rounded-xl" />
+            <div className="absolute inset-0 bg-antiflashwhite/60" />
             <div className='absolute inset-0 bg-gradient-to-l from-antiflashwhite to-transparent' />
           </div>
         )}
@@ -89,15 +89,15 @@ export const CallToActionBlock: React.FC<CallToActionBlockProps> = ({ link, link
           )}
           {richText && lightbgToggle && (
             <div className="container flex flex-col md:flex-row justify-between ">
-              <div className="basis-1/2"></div>
-              <div className="basis-1/2 md:pl-5">
+              <div className="md:basis-1/3"></div>
+              <div className="md:basis-2/3 md:pl-5">
               {title && (
                 <h2 className="text-gray-700 text-2xl md:text-4xl font-semibold mb-5 border-b-2 border-teal pb-2 inline-block">
                   {title || 'Get in touch!'}
                 </h2>
               )}
                 <RichText
-                className={`prose md:prose-xl font-semibold mb-5 [&_strong]: ${lightbgToggle ? 'text-gray-700' : 'text-white'}`}
+                className={`prose md:prose-xl font-base mb-5 [&_strong]: ${lightbgToggle ? 'text-gray-700' : 'text-white'}`}
                 data={richText}
                 enableGutter={false}
                 />

@@ -19,7 +19,7 @@ export default async function ServicesBlock() {
 
   const { docs } = response
   return (
-    <div className="w-full bg-darkblue py-[5rem] relative">
+    <div className="w-full bg-darkblue py-[2rem] relative">
       <Image
         src="/dots.svg"
         alt="Decorative dots"

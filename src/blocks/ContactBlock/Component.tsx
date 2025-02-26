@@ -50,9 +50,11 @@ export const ContactBlock: React.FC<ContactBlockProps> = ({
       </div>
       <div className="container flex flex-col md:flex-row py-5">
         <div className="basis-1/2 flex flex-col gap-4">
-          <h3 className="text-white mb-2 border-b-2 border-selectiveyellow pb-2 font-semibold">
+        <div>
+          <h3 className="text-white mb-2 border-b-2 border-selectiveyellow pb-2 font-semibold inline-block">
           Showrooms
           </h3>
+        </div>
           { showRoomAddresses && (
             showRoomAddresses.map((showRoomAddress, index) => {
               return (
@@ -67,9 +69,11 @@ export const ContactBlock: React.FC<ContactBlockProps> = ({
               );
             })
           )}
-          <h3 className="text-white mb-2 border-b-2 border-selectiveyellow pb-2 font-semibold">
-            Warehouse
-          </h3>
+          <div>
+            <h3 className="text-white mb-2 border-b-2 border-selectiveyellow pb-2 font-semibold inline-block">
+              Warehouse
+            </h3>
+          </div>
           { warehouseAddresses && (
             warehouseAddresses.map((warehouseAddress, index) => {
               return (
@@ -80,9 +84,11 @@ export const ContactBlock: React.FC<ContactBlockProps> = ({
               );
             })
           )}
-          <h3 className="text-white mb-2 border-b-2 border-selectiveyellow pb-2 font-semibold">
-            Contact
-          </h3>
+          <div>
+            <h3 className="text-white mb-2 border-b-2 border-selectiveyellow pb-2 font-semibold inline-block">
+              Contact
+            </h3>
+          </div>
           { phoneNumbers && (
             phoneNumbers.map((phoneNumber, index) => {
               return (
@@ -107,16 +113,19 @@ export const ContactBlock: React.FC<ContactBlockProps> = ({
             })
           )}
         </div>
-        <div className="basis-1/2 py-5 md:py-0">
+        <div className="basis-1/2 py-[2rem] md:py-0 md:px-5">
           {
             blocks.map((block, index) => {
               if (block.blockType === 'formBlock') {
                 return (
-                  <FormBlock
-                    enableIntro={block.enableIntro}
-                    key={index}
-                    form={block.form}
-                  />
+                  <>
+                    <h3 className="text-xl md:text-2xl text-white pb-5">Contact Us</h3>
+                    <FormBlock
+                      enableIntro={block.enableIntro}
+                      key={index}
+                      form={block.form}
+                    />
+                  </>
                 );
               }
             })

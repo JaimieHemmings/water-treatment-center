@@ -27,7 +27,7 @@ export const FaqBlock: React.FC<FaqBlockProps> = ({
   linkURL,
 }) => {
   return (
-    <section className="py-[5rem] bg-antiflashwhite text-white relative">
+    <section className="py-[2rem] bg-antiflashwhite text-white relative">
       <div className="absolute top-0 left-0 w-full h-full z-0">
         <Image
           src="/splash.png"

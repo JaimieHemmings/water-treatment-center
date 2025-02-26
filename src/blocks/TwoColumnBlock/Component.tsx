@@ -17,7 +17,7 @@ interface TwoColumnBlockProps {
 export const TwoColumnBlock: React.FC<TwoColumnBlockProps> = ({ contentleft, contentright, title, mainContent }) => {
 
   return (
-    <section className="w-full bg-darkblue py-5 md:py-[3rem] text-white relative">
+    <section className="w-full bg-darkblue py-5 md:py-[2rem] text-white relative">
       <AnimateIn
         animation={{
           y: 60,

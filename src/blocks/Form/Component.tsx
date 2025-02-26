@@ -125,7 +125,7 @@ export const FormBlock: React.FC<
   )
 
   return (
-    <div className="container lg:max-w-[48rem]">
+    <div className="">
       {enableIntro && introContent && !hasSubmitted && (
         <RichText className="mb-8 lg:mb-12" data={introContent} enableGutter={false} />
       )}
@@ -145,7 +145,7 @@ export const FormBlock: React.FC<
                     const Field: React.FC<any> = fields?.[field.blockType]
                     if (Field) {
                       return (
-                        <div className="mb-6 last:mb-0" key={index}>
+                        <div className="mb-2 last:mb-0" key={index}>
                           <Field
                             form={formFromProps}
                             {...field}
@@ -160,9 +160,11 @@ export const FormBlock: React.FC<
                     return null
                   })}
               </div>
-              <Button form={formID} type="submit" variant="dark">
-                {submitButtonLabel}
-              </Button>
+              <div className="flex flex-row w-full justify-end">
+                <Button form={formID} type="submit" variant="dark">
+                  {submitButtonLabel}
+                </Button>
+              </div>
             </form>
           )}
         </FormProvider>

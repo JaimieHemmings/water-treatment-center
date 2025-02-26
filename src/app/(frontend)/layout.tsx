@@ -11,6 +11,7 @@ import { Analytics } from "@vercel/analytics/react"
 
 import './globals.css'
 import { getServerSideURL } from '@/utilities/getURL'
+import GAConsent from '@/components/GAConsent'
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
 
@@ -30,6 +31,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           {children}
           <Analytics />
           <Footer />
+          <GAConsent />
         </Providers>
       </body>
     </html>

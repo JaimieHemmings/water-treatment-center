@@ -21,7 +21,7 @@ export const Text: React.FC<
   return (
     <Width width={width}>
       <Input
-        className="text-white bg-jet border-2 border-darkblue py-5 text-lg"
+        className="text-white bg-jet border-2 border-darkblue py-6 text-lg"
         placeholder={defaultValue}
         id={name}
         type="text"
