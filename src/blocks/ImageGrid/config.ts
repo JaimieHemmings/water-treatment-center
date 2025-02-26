@@ -52,7 +52,6 @@ export const ImageGrid: Block = {
           label: 'Background Image',
           type: 'upload',
           relationTo: 'media',
-          required: true,
         },
         {
           name: 'title',

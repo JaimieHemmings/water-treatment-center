@@ -43,13 +43,15 @@ const GridCard: React.FC<{
         href={item.link.slug} 
         className="w-full h-full block"
       >
-        <Image 
-          src={item.backgroundImage.url} 
-          alt={item.backgroundImage.alt} 
-          fill 
-          className="rounded-xl object-cover absolute top-0 left-0 w-full h-full z-10"
-          loading="lazy" 
-        />
+        {item.backgroundImage && (
+          <Image 
+            src={item.backgroundImage.url} 
+            alt={item.backgroundImage.alt} 
+            fill 
+            className="rounded-xl object-cover absolute top-0 left-0 w-full h-full z-10"
+            loading="lazy" 
+          />
+        )}
         <div 
           className={`
             relative z-20 inset-0 p-5 flex flex-col justify-end rounded-xl transition-all duration-300 ease-in-out h-full pt-[5rem]

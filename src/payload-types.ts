@@ -922,7 +922,7 @@ export interface ImageGrid {
     | {
         theme?: ('light' | 'dark') | null;
         link: number | Page;
-        backgroundImage: number | Media;
+        backgroundImage?: (number | null) | Media;
         title: string;
         paragraph: string;
         id?: string | null;
