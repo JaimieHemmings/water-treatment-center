@@ -83,7 +83,7 @@ const VideoBlock: React.FC<VideoBlockProps> = ({
               </p>
             </AnimateIn>
           </div>
-          <div className="w-1/3 flex flex-col items-end justify-end">
+          <div className="w-full md:w-1/3 flex flex-col items-end justify-end">
           {link && (
             <AnimateIn animation={ANIMATION_CONFIG}>
               <CustomLink
