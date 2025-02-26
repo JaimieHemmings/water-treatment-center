@@ -2275,7 +2275,6 @@ export interface Header {
     | {
         link: number | Page;
         label?: string | null;
-        description?: string | null;
         id?: string | null;
       }[]
     | null;
@@ -2301,7 +2300,6 @@ export interface HeaderSelect<T extends boolean = true> {
     | {
         link?: T;
         label?: T;
-        description?: T;
         id?: T;
       };
   updatedAt?: T;

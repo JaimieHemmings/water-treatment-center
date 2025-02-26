@@ -1,18 +1,42 @@
 'use client';
-import React, { useState } from 'react'
-import Link from 'next/link'
 
-export const HeaderNav: React.FC<{ data: any }> = ({ data }) => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const navItems = data?.navItems || []
+import React from 'react';
+import Link from 'next/link';
 
-  const linkClasses = "font-semibold no-underline hover:no-underline hover:bg-azul px-5 py-2 text-white text-sm flex flex-col justify-center text-center"
-  const mobileMenuClasses = `max-md:absolute max-md:top-full right-0 h-auto md:h-full w-full justify-centre md:flex-row flex bg-darkblue md:relative md:w-auto md:bg-transparent max-md:pt-5
-    ${isMenuOpen ? 'flex flex-col' : 'hidden md:flex md:flex-row'}`
+// Define proper types instead of using 'any'
+interface NavItem {
+  link: {
+    slug: string;
+    title: string;
+  };
+}
+
+interface SubNavItem {
+  slug: string;
+  title: string;
+}
+
+interface HeaderNavProps {
+  data: {
+    navItems?: NavItem[];
+  };
+  subNav: SubNavItem[];
+}
+
+// Extract the link styles to a constant for reuse
+const linkClasses = "text-antiflashwhite px-4 py-2 font-normal lg:text-xl h-full flex items-center hover:bg-azul hover:text-white transition-colors duration-300 max-sm:text-2xl";
+const subLinkClasses = "text-antiflashwhite px-4 py-3 text-base font-normal hover:bg-azul hover:text-white transition-colors duration-300 block max-md:pl-10";
+
+export const HeaderNav: React.FC<HeaderNavProps> = ({ data, subNav }) => {
+  // Safely access navItems with a default empty array
+  const navItems = data?.navItems || [];
+
+  // State for mobile menu
+  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   return (
-    <nav className="flex items-center">
-      {/* Burger Menu Button */}
+    <nav className="md:h-[73px] flex">
+
       <button 
         onClick={() => setIsMenuOpen(!isMenuOpen)}
         className="md:hidden p-2 text-white"
@@ -34,66 +58,74 @@ export const HeaderNav: React.FC<{ data: any }> = ({ data }) => {
           )}
         </svg>
       </button>
+      
+      <ul className={`flex flex-col md:flex-row h-full md:items-center w-full max-md:absolute max-md:top-[59px] max-md:left-0 bg-darkblue max-md:h-screen max-md:justify-start max-md:py-10 ${isMenuOpen ? ('') : ('max-md:hidden')}`}>
 
-      {/* Navigation Items */}
-      <div className={`${mobileMenuClasses} bg-darkblue`}>
-        {navItems.map((item: any, i: number) => {
-          const { link, description } = item
-          return (
-            <Link 
-              key={i} 
-              href={`/${link.slug}`}
-              className={linkClasses}
+        {/* Dynamic nav items */}
+        {navItems.map((item: NavItem, index: number) => (
+          <li className="md:h-full" key={`nav-item-${index}`}>
+            <Link
               onClick={() => setIsMenuOpen(false)}
-              >
-              <span className="font-normal text-xl">
-                {link.title}
-              </span>
-              {description && (
-                <span className="text-md font-thin">
-                  {description}
-                </span>
-              )}
+              href={`/${item.link.slug}`}
+              className={linkClasses}
+            >
+              {item.link.title}
             </Link>
-          )
-        })}
-        <Link
-          href={`/products`}
-          className={linkClasses}
-          onClick={() => setIsMenuOpen(false)}
+          </li>
+        ))}
+        
+        {/* Products dropdown */}
+        <li className="group relative md:h-full">
+          <div className="flex items-center md:h-full">
+            <Link
+              onClick={() => setIsMenuOpen(false)}
+              href="/products"
+              className={`${linkClasses} max-md:w-full`}
+            >
+              Products
+            </Link>
+          </div>
+          
+          <ul 
+            className={`
+              md:absolute md:invisible group-hover:visible md:opacity-0 group-hover:opacity-100 
+              transition-all duration-300 bg-darkblue w-64 md:left-0 md:top-full md:border-t-2 md:border-azul block max-md:w-full
+            `}
           >
-          <span className="font-normal text-xl">
-            Products
-          </span>
-          <span className="text-md font-thin">
-            View the Range
-          </span>
-        </Link>
-        <Link
-          href={`/news`}
-          className={linkClasses}
-          onClick={() => setIsMenuOpen(false)}
+            {subNav.map((item: SubNavItem, index: number) => (
+              <li key={`subnav-item-${index}`}>
+                <Link
+                  onClick={() => setIsMenuOpen(false)}
+                  href={`/products/${item.slug}`}
+                  className={subLinkClasses}
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </li>
+        
+        {/* Static nav items */}
+        <li className="md:h-full">
+          <Link
+            onClick={() => setIsMenuOpen(false)}
+            href="/news"
+            className={linkClasses}
           >
-          <span className="font-normal text-xl">
             News
-          </span>
-          <span className="text-md font-thin">
-            &amp; Updates
-          </span>
-        </Link>
-        <Link 
-          href="/contact" 
-          onClick={() => setIsMenuOpen(false)}
-          className={`${linkClasses} bg-azul hover:bg-teal w-full md:w-auto`}
-        >
-          <span className="font-normal text-xl">
-            Contact Us
-          </span>
-          <span className="text-md font-thin">
-            Get in touch
-          </span>
-        </Link>
-      </div>
+          </Link>
+        </li>
+        <li className="md:h-full">
+          <Link
+            onClick={() => setIsMenuOpen(false)}
+            href="/contact"
+            className={linkClasses}
+          >
+            Contact
+          </Link>
+        </li>
+      </ul>
     </nav>
-  )
-}
+  );
+};

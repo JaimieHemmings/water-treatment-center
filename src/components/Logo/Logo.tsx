@@ -21,7 +21,7 @@ export const Logo = (props: Props) => {
       loading={loading}
       fetchPriority={priority}
       decoding="async"
-      className='max-w-[250px] w-full h-auto'
+      className='max-w-[170px] md:max-w-[200px] w-full h-auto py-1'
       src="/logo.png"
     />
   )

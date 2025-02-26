@@ -25,11 +25,6 @@ export const Header: GlobalConfig = {
           label: 'Label',
           type: 'text',
         },
-        {
-          name: 'description',
-          label: 'Description',
-          type: 'text',
-        }
       ],
       maxRows: 6,
       admin: {
