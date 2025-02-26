@@ -7,8 +7,6 @@ import { Providers } from '@/providers'
 import { InitTheme } from '@/providers/Theme/InitTheme'
 import { mergeOpenGraph } from '@/utilities/mergeOpenGraph'
 
-import { Analytics } from "@vercel/analytics/react"
-
 import './globals.css'
 import { getServerSideURL } from '@/utilities/getURL'
 import GAConsent from '@/components/GAConsent'
@@ -25,11 +23,10 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
         <link rel="manifest" href="/favicon/site.webmanifest" />
       </head>
-      <body>
+      <body className="overflow-x-hidden overscroll-y-none">
         <Providers>
           <Header />
           {children}
-          <Analytics />
           <Footer />
           <GAConsent />
         </Providers>
