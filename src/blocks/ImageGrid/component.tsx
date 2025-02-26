@@ -93,7 +93,7 @@ const ImageGrid: React.FC<ImageGridProps> = ({ title, subtitle, gridItems }) => 
   const rightColumn = gridItems.slice(6, 9);
 
   return (
-    <section className="py-[5rem]">
+    <section className="py-[2rem]">
       <div className="container text-white text-center pb-5 mb-5">
         <SectionTitle
           title={title}
@@ -140,7 +140,7 @@ const ImageGrid: React.FC<ImageGridProps> = ({ title, subtitle, gridItems }) => 
           </div>
 
           {/* Right Column */}
-          <div className="md:w-1/3 relative flex flex-col gap-4 min-h-[750px]">
+          <div className="md:w-1/3 relative flex flex-col gap-4 md:min-h-[750px]">
             {rightColumn.map((item, index) => (
               <GridCard 
                 key={index} 

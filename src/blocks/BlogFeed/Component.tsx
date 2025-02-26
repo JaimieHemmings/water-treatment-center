@@ -1,18 +1,17 @@
 import React from 'react';
+import configPromise from '@payload-config';
+import { getPayload } from 'payload';
+import SectionTitle from '@/components/SectionTitle';
+import CustomLink from '@/components/CustomLink';
 import Image from 'next/image';
-import SectionTitle from "@/components/SectionTitle";
-import configPromise from '@payload-config'
-import { getPayload } from 'payload'
-import { AnimateIn } from '@/components/Animations/AnimateIn'
-import { CustomLink } from '@/components/CustomLink'
 
-export const dynamic = 'force-static'
-export const revalidate = 600
+export const dynamic = 'force-static';
+export const revalidate = 600;
 
 export default async function BlogFeed() {
-  const payload = await getPayload({ config: configPromise })
-  
-  const response:any = await payload.find({
+  const payload = await getPayload({ config: configPromise });
+ 
+  const response = await payload.find({
     collection: 'posts',
     depth: 1,
     limit: 3,
@@ -25,62 +24,46 @@ export default async function BlogFeed() {
       heroImage: true,
       publishedAt: true,
     },
-  })
-
-  const { docs } = response
+  });
+  const { docs } = response;
+ 
   return (
-    <div className="w-full bg-darkblue py-[5rem] relative overflow-x-hidden">
-      <Image
-        src="/dots.svg"
-        alt="Decorative dots"
-        className="absolute bottom-4 right-0 z-10 scale-x-[-1] w-48 h-72 md:w-48 md:h-72"
-        height={300}
-        width={200}
-      />
-      <Image
-        src="/dots.svg"
-        alt="Decorative dots"
-        className="absolute top-4 left-0 z-10 w-48 h-72 md:w-48 md:h-72"
-        height={300}
-        width={200}
-      />
-      <SectionTitle title="Latest News & Updates" subtitle="Stay informed about water quality and solutions" />
-      <div className="container pt-[5rem] flex flex-col justify-normal gap-10 relative z-10">
-        {docs.map((post, index) => (
-          <div key={index} className={`flex flex-col gap-4 ${index % 2 === 1 ? 'md:flex-row-reverse' : 'md:flex-row'}`}>
-            <div className="basis-1/3">
-            <AnimateIn
-              animation={{
-                x: index % 2 === 1 ? 60 : -60,
-                duration: 0.6,
-                delay: 0.1 * index,
-              }}
+    <section className="py-[2rem]">
+      <SectionTitle title="News &amp; Updates" subtitle="Stay informed about water quality and solutions" />
+      <ul className="relative pt-[3rem]">
+        {docs.map((post: any, index) => {
+          return (
+            <li
+              key={index}
+              className="sticky top-[75px] max-md:p-5 md:py-5"
             >
-                <p className="text-sm text-gray-400">
-                  {new Date(post.publishedAt).toLocaleDateString('en-GB')}
-                </p>
-                <h3 className="text-2xl text-white py-2">{post.title}</h3>
-                <p className="text-white">{post.meta.description}</p>
+              <div className={` border-2 border-jet container p-0 bg-antiflashwhite rounded-xl overflow-hidden shadow-lg flex flex-col-reverse ${index % 2 === 0 ? ('md:flex-row') : ('md:flex-row-reverse')} md:items-center md:justify-between`}>
+                <div className="md:w-1/2 p-5">
+                  <p className="text-sm text-teal">
+                    {new Date(post.publishedAt).toLocaleDateString('en-GB')}
+                  </p>
+                  <h3 className="text-2xl text-jet py-2">{post.title}</h3>
+                  <p className="text-jet">{post.meta.description}</p>
+                  <div className="flex">
 
-                <CustomLink theme="light" label="Read More" link={`/news/${post.slug}`} />
-              </AnimateIn>
-            </div>
-            <div className="basis-2/3">
-            <AnimateIn
-              animation={{
-                x: index % 2 === 1 ? -60 : 60,
-                duration: 0.6,
-                delay: 0.1 * index,
-              }}
-            >
-              {post.heroImage && (
-                <Image width={630} height={420} src={post.heroImage.url} alt={post.heroImage.alt} className="w-full h-auto max-h-[350px] object-cover rounded-xl" />
-              )}
-            </AnimateIn>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
+                  <CustomLink theme="light" label="Read More" link={`/news/${post.slug}`} />
+                  </div>
+                </div>
+                <div className="md:w-1/2">
+                  <Image 
+                    src={post.heroImage.url}
+                    alt={post.heroImage.alt}
+                    layout="responsive"
+                    width={post.heroImage.width}
+                    height={post.heroImage.height}
+                    className="rounded-lg max-h-[200px] md:max-h-[300px] md:w-[300px] md:h-[200px] object-cover"
+                  />
+                </div>
+              </div>
+            </li>
+        )
+        })}
+      </ul>
+    </section>
   );
-};
+}
