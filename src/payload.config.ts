@@ -8,7 +8,6 @@ import path from 'path'
 import { buildConfig } from 'payload'
 import { fileURLToPath } from 'url'
 
-import { Categories } from './collections/Categories'
 import { Media } from './collections/Media'
 import { Products } from './collections/Products'
 import { Services } from './collections/Services'
@@ -70,7 +69,7 @@ export default buildConfig({
       connectionString: process.env.DATABASE_URI || '',
     },
   }),
-  collections: [Pages, Posts, Media, Categories, Users, Products, Services, ProductCategories, TestSubmissions, TestKitRequests],
+  collections: [Pages, Posts, Media, Users, Products, Services, ProductCategories, TestSubmissions, TestKitRequests],
   cors: [getServerSideURL()].filter(Boolean),
   globals: [Header, Footer],
   secret: process.env.PAYLOAD_SECRET,

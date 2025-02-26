@@ -62,6 +62,7 @@ export const Posts: CollectionConfig<'posts'> = {
         req,
       }),
     useAsTitle: 'title',
+    group: 'Site Content',
   },
   fields: [
     {

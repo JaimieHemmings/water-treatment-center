@@ -49,6 +49,7 @@ export const ProductCategories: CollectionConfig = {
   admin: {
     defaultColumns: ['title', 'updatedAt'],
     useAsTitle: 'title',
+    group: 'Product Admin',
   },
   fields: [
     {

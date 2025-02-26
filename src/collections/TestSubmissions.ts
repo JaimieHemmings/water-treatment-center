@@ -15,6 +15,7 @@ const TestSubmissions: CollectionConfig = {
   admin: {
     useAsTitle: 'name',
     defaultColumns: ['uuid', 'name', 'email', 'createdAt'],
+    group: 'Form Submissions',
   },
   hooks: {
     beforeChange: [

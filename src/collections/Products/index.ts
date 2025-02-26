@@ -25,6 +25,7 @@ export const Products: CollectionConfig = {
   admin: {
     defaultColumns: ['title', 'status', 'category'],
     useAsTitle: 'title',
+    group: 'Product Admin',
   },
   fields: [
     {

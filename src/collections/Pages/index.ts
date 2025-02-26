@@ -71,6 +71,7 @@ export const Pages: CollectionConfig<'pages'> = {
         req,
       }),
     useAsTitle: 'title',
+    group: 'Site Content'
   },
   fields: [
     {

@@ -14,6 +14,7 @@ const TestKitRequests: CollectionConfig = {
   admin: {
     useAsTitle: 'name',
     defaultColumns: ['name', 'email', 'createdAt', 'sent'],
+    group: 'Form Submissions',
   },
   fields: [
     {
