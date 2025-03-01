@@ -28,8 +28,8 @@ export default async function BlogFeed() {
   const { docs } = response;
  
   return (
-    <section className="py-[2rem]">
-      <div className="33333333333333333333333333333333pb-[2rem]">
+    <section className="container relative py-[2rem] z-20">
+      <div className="sticky top-[100px] container mx-auto pb-[2rem]">
         <SectionTitle title="News &amp; Updates" subtitle="Stay informed about water quality and solutions" />
       </div>
       <ul className="relative pt-[2rem]">
