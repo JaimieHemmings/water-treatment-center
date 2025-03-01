@@ -100,25 +100,26 @@ export const TextWithImageBlock: React.FC<TextWithImageBlockProps> = ({
             </div>
           )}
           </AnimateIn>
-          <AnimateIn
-          animation={{
-            y: 60,
-            opacity: 0,
-            duration: 0.8,
-          }}
-        >
-            {additionalSettings?.ShowThreeColBlock && blocks?.map((block, index) => {
-              if (block.blockType === 'threeColBlock') {
-                return (
+          {additionalSettings?.ShowThreeColBlock && blocks?.map((block, index) => {
+            if (block.blockType === 'threeColBlock') {
+              return (
+                <AnimateIn
+                  key={index}
+                  animation={{
+                    y: 60,
+                    opacity: 0,
+                    duration: 0.8,
+                  }}
+                >
                   <ThreeColBlock
                     key={index}
                     columns={block.columns}
                   />
+                </AnimateIn>
                 );
               }
               return null;
             })}
-          </AnimateIn>
         </div>
       </div>
       
