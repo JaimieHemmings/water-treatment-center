@@ -25,7 +25,7 @@ interface HeroProps {
 }
 
 const SingleSlide: React.FC<{ slide: Slide }> = ({ slide }) => (
-  <div className="relative w-full min-h-[600px] azul-overlay dots-overlay py-20">
+  <div className="relative w-full min-h-[600px] azul-overlay dots-overlay py-20 z-20">
     {slide.video ? (
       <video
         autoPlay

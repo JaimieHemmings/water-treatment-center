@@ -46,20 +46,21 @@ const VideoBlock: React.FC<VideoBlockProps> = ({
   linkLabel
 }) => {
   return (
-    <section className="relative overflow-hidden py-20 w-screen">
+    <section className="relative overflow-hidden py-[2rem] w-full">
       <DecorativeDots position="top" />
 
       {/* Video Background */}
-      <div className="absolute inset-0 -z-10">
+      <div className="z-0">
         <div className="fixed inset-0">
           <video
-            className="absolute top-1/2 left-1/2 min-w-full min-h-full -translate-x-1/2 -translate-y-1/2 object-cover"
+            className="absolute top-1/2 left-1/2 min-w-full min-h-full w-auto h-auto -translate-x-1/2 -translate-y-1/2 object-cover"
             autoPlay
             loop
             muted
             playsInline
           >
             <source src={video.url} type="video/mp4" />
+            Your browser does not support the video tag.
           </video>
         </div>
       </div>

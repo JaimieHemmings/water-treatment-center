@@ -118,14 +118,14 @@ export const ContactBlock: React.FC<ContactBlockProps> = ({
             blocks.map((block, index) => {
               if (block.blockType === 'formBlock') {
                 return (
-                  <>
+                  <div key={index}>
                     <h3 className="text-xl md:text-2xl text-white pb-5">Contact Us</h3>
                     <FormBlock
                       enableIntro={block.enableIntro}
                       key={index}
                       form={block.form}
                     />
-                  </>
+                  </div>
                 );
               }
             })

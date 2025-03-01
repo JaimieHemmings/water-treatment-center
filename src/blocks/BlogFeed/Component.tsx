@@ -29,7 +29,7 @@ export default async function BlogFeed() {
  
   return (
     <section className="py-[2rem]">
-      <div className="sticky top-[100px] pb-[2rem]">
+      <div className="33333333333333333333333333333333pb-[2rem]">
         <SectionTitle title="News &amp; Updates" subtitle="Stay informed about water quality and solutions" />
       </div>
       <ul className="relative pt-[2rem]">
