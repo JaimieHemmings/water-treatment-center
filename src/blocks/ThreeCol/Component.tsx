@@ -11,7 +11,7 @@ export const ThreeColBlock: React.FC<ThreeColBlockProps> = ({
   columns,
 }) => {
   return (
-    <div className="flex flex-col lg:flex-row justify-center gap-4 pt-5">
+    <div className="flex flex-col lg:flex-row justify-center pt-5 bg-darkblue relative z-20">
       {columns.map((column, index) => (
         <div key={index} className="flex flex-col justify-start gap-4 text-white">
           <h2 className="text-2xl md:text-4xl font-bold">{column.title}</h2>
