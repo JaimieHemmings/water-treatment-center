@@ -17,7 +17,7 @@ export default async function Post({ params: paramsPromise }: Args) {
   const products = await queryPostBySlug({ slug })
   const [category] = await queryCategoryBySlug({ slug })
   return (
-    <article className="pb-16 bg-darkblue relative z-0">
+    <article className="bg-darkblue relative z-0">
       <PageClient />
       <div className="relative w-full min-h-[600px] azul-overlay dots-overlay py-[2rem] z-20">
         {category.heroImage && (
