@@ -44,18 +44,16 @@ export const ImageList: React.FC<ImageListProps> = ({ images }) => {
                   loading="lazy"
                 />
               </div>
-              <div className="p-5 flex flex-col justify-between">
+              <div className="p-5 flex flex-col gap-2">
                 <span className="text-azul font-bold text-xl md:text-2xl">
                   0{index + 1}                  
                 </span>
-                <div className="flex flex-col justify-between">
-                  <h3 className="text-xl md:text-2xl pb-3 text-jet m-0">
+                  <h3 className="text-xl md:text-2xl text-jet m-0">
                     {card.title}
                   </h3>
                   <p className="text-jet prose md:prose-md pb-5">
                     {card.description}
                   </p>
-                </div>
               </div>
             </div>
           </AnimateIn>
