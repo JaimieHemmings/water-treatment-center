@@ -22,7 +22,7 @@ interface CallToActionBlockProps {
 export const CallToActionBlock: React.FC<CallToActionBlockProps> = ({ link, linkLabel, richText, lightbgToggle, backgroundImage, title }) => {
   return (
     <section className={`bg-darkblue ${lightbgToggle ? 'border-t-2 border-b-2 border-azul' : null }`}>
-      <div className={`w-full py-[2rem] relative overflow-hidden ${lightbgToggle ? 'bg-antiflashwhite' : ''}`}>
+      <div className={`w-full py-[5rem] relative overflow-hidden ${lightbgToggle ? 'bg-antiflashwhite' : ''}`}>
         {backgroundImage && (
           <div className="absolute left-0 top-0 h-full w-full md:w-1/2 m-0">
             <Image
