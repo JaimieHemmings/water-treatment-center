@@ -35,7 +35,7 @@ export const ContactBlock: React.FC<ContactBlockProps> = ({
   warehouseAddresses,
 }) => {
   return (
-    <section className="w-full pt-5 md:pt-[5rem] bg-darkblue text-white">
+    <section className="w-full pt-[2rem] bg-darkblue text-white">
       <div className="container pb-5">
         <h2 className="border-b-2 border-selectiveyellow text-white inline-block px-2 py-1 mb-5 text-sm">
           {title}
