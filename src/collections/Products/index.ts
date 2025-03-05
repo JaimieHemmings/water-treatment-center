@@ -256,23 +256,6 @@ export const Products: CollectionConfig = {
                   label: 'Technical Specs',
                   fields: [
                     {
-                      name: 'technicalSpecs',
-                      type: 'array',
-                      label: 'Technical Specs',
-                      fields: [
-                        {
-                          name: 'title',
-                          type: 'text',
-                          required: true,
-                        },
-                        {
-                          name: 'value',
-                          type: 'text',
-                          required: true,
-                        },
-                      ],
-                    },
-                    {
                       name: 'numberOfUsers',
                       type: 'number',
                       required: true,

@@ -988,13 +988,6 @@ export interface Product {
       brochure?: (number | null) | Media;
     };
     specs: {
-      technicalSpecs?:
-        | {
-            title: string;
-            value: string;
-            id?: string | null;
-          }[]
-        | null;
       numberOfUsers: number;
       sku?: string | null;
       category: number | ProductCategory;
@@ -1895,13 +1888,6 @@ export interface ProductsSelect<T extends boolean = true> {
         specs?:
           | T
           | {
-              technicalSpecs?:
-                | T
-                | {
-                    title?: T;
-                    value?: T;
-                    id?: T;
-                  };
               numberOfUsers?: T;
               sku?: T;
               category?: T;
