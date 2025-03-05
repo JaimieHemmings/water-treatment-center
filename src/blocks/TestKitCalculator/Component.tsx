@@ -62,7 +62,7 @@ const TestKitCalculator = () => {
   return (
     <section className="py-[5rem]">
       <div className="container max-w-4xl mx-auto text-white">
-        <h2 className="text-4xl md: text-2xl font-bold mb-8">
+        <h2 className="text-4xl md:text-2xl font-bold mb-8">
           Water Test Kit Calculator
         </h2>
         
