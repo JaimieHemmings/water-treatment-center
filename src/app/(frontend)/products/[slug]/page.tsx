@@ -42,7 +42,7 @@ export default async function Post({ params: paramsPromise }: Args) {
         <div className="absolute top-0 left-0 w-full h-full bg-jet opacity-60 pointer-events-none"></div>
         <div className="absolute pointer-events-none left-0 bottom-0 w-full h-1/2 bg-gradient-to-t from-darkblue to-transparent" />
       </div>
-      <div className="flex flex-col items-center bg-darkblue">
+      <div className="flex flex-col items-center bg-darkblue pb-[2rem]">
         <RichText className="text-white" data={category.content} enableGutter={false} />
         <div className="container">
           <div className="flex flex-wrap gap-4">
