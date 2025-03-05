@@ -2220,7 +2220,6 @@ export interface Footer {
   siteNavigation?:
     | {
         link: number | Page;
-        label?: string | null;
         id?: string | null;
       }[]
     | null;
@@ -2231,7 +2230,6 @@ export interface Footer {
   usefulLinks?:
     | {
         link: number | Page;
-        label: string;
         id?: string | null;
       }[]
     | null;
@@ -2263,7 +2261,6 @@ export interface FooterSelect<T extends boolean = true> {
     | T
     | {
         link?: T;
-        label?: T;
         id?: T;
       };
   blurb?: T;
@@ -2271,7 +2268,6 @@ export interface FooterSelect<T extends boolean = true> {
     | T
     | {
         link?: T;
-        label?: T;
         id?: T;
       };
   updatedAt?: T;

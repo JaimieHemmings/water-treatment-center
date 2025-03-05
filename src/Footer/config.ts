@@ -24,11 +24,6 @@ export const Footer: GlobalConfig = {
                   hasMany: false,
                   required: true,
                 },
-                {
-                  name: 'label',
-                  label: 'Label',
-                  type: 'text',
-                },
               ],
               maxRows: 6,
               admin: {
@@ -60,13 +55,6 @@ export const Footer: GlobalConfig = {
                   name: 'link',
                   type: 'relationship',
                   relationTo: 'pages',
-                  hasMany: false,
-                  required: true,
-                },
-                {
-                  name: 'label',
-                  label: 'Label',
-                  type: 'text',
                   required: true,
                 },
               ],

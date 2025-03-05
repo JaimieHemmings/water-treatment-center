@@ -6,37 +6,7 @@ import { FaLocationDot } from "react-icons/fa6";
 import { getCachedGlobal } from '@/utilities/getGlobals'
 
 
-interface SocialLink {
-  icon: any
-  href: string
-  alt: string
-}
-
-interface ContactInfo {
-  icon: any
-  primary: string
-  href?: string
-  isAddress?: boolean
-}
-
-interface FooterData {
-  siteNavigation: Array<{
-    link: {
-      slug: string
-    }
-    label: string
-  }>
-  usefulLinks: Array<{
-    link: {
-      slug: string
-    }
-    label: string
-  }>
-  blurb: string
-}
-
-
-const SOCIAL_LINKS: SocialLink[] = [
+const SOCIAL_LINKS: any = [
   { icon: <FaFacebook className="text-teal text-4xl" />, href: '#', alt: 'facebook icon' },
   { icon: <FaYoutube className="text-4xl text-teal" />, href: 'https://www.youtube.com/', alt: 'youtube icon' }
 ]
@@ -53,7 +23,7 @@ const LocationIcon = () => (
   <FaLocationDot className="text-teal text-2xl" />
 )
 
-const CONTACT_INFO: ContactInfo[] = [
+const CONTACT_INFO: any = [
   {
     icon: <PhoneIcon />,
     primary: '057 9333942',
@@ -91,7 +61,7 @@ const SocialLinks: React.FC = () => (
   </div>
 )
 
-const ContactSection: React.FC<{ info: ContactInfo }> = ({ info }) => (
+const ContactSection: React.FC<{ info: any }> = ({ info }) => (
   <div className="mt-[23px] flex">
     <div className="flex h-[38px] w-[38px] items-center justify-center rounded-[75%]">
       {info.icon}
@@ -110,15 +80,38 @@ const ContactSection: React.FC<{ info: ContactInfo }> = ({ info }) => (
   </div>
 )
 
-export async function Footer() {
-  const footerData = (
-    await getCachedGlobal('footer')()
-  ) as FooterData || {
-    siteNavigation: [],
-    usefulLinks: [],
-    blurb: ''
-  }
+async function getFooterData(): Promise<any> {
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_SERVER_URL}/api/globals/footer?depth=1&draft=false&locale=undefined`,
+      {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        next: { 
+          revalidate: 60
+        }
+      }
+    )
 
+    if (!res.ok) {
+      throw new Error('Failed to fetch footer data')
+    }
+
+    return await res.json()
+  } catch (error) {
+    console.error('Error fetching footer data:', error)
+    return {
+      siteNavigation: [],
+      usefulLinks: [],
+      blurb: ''
+    }
+  }
+}
+
+export async function Footer() {
+  const footerData = await getFooterData()
   return (
     <footer className="bg-jet pt-9 relative z-20">
       <div className="mx-auto w-full max-w-[1166px] px-4 xl:px-0">
@@ -146,17 +139,17 @@ export async function Footer() {
             <div>
               <p className="text-xl md:text-2xl font-medium leading-normal text-white inline-block pb-2 border-b-2 border-teal">Pages</p>
               <ul>
-                {footerData?.siteNavigation?.map((link, index) => (
-                  <li key={index} className="mt-[15px]">
-                    <Link
-                      className="text-white text-md font-normal hover:text-azul"
-                      href={`/${link.link.slug}`}
-                      title={link.label}
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
+              {footerData?.siteNavigation?.map((link, index) => (
+                <li key={index} className="mt-[15px]">
+                  <Link
+                    className="text-white text-md font-normal hover:text-azul"
+                    href={`/${link.link.slug}`}
+                    title={link.link.title}
+                  >
+                    {link.link.title}
+                  </Link>
+                </li>
+              ))}
                 <li className="mt-[15px]">
                   <Link
                     className="text-white text-md font-normal hover:text-azul"
@@ -198,9 +191,9 @@ export async function Footer() {
                 <Link
                   className="text-white text-md font-normal hover:text-azul"
                   href={`/${link.link.slug}`}
-                  title={link.label}
+                  title={link.link.title}
                 >
-                  {link.label}
+                  {link.link.title}
                 </Link>
               </li>
             ))}
