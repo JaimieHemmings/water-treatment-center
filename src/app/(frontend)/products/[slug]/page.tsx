@@ -42,29 +42,31 @@ export default async function Post({ params: paramsPromise }: Args) {
         <div className="absolute top-0 left-0 w-full h-full bg-jet opacity-60 pointer-events-none"></div>
         <div className="absolute pointer-events-none left-0 bottom-0 w-full h-1/2 bg-gradient-to-t from-darkblue to-transparent" />
       </div>
-      <div className="flex flex-col items-center bg-darkblue pb-[2rem]">
+      <div className="flex flex-col items-center bg-darkblue">
         <RichText className="text-white" data={category.content} enableGutter={false} />
-        <div className="container">
-          <div className="flex flex-wrap gap-4">
-            {products.map((product: any, index: any) => (
-              <div key={index} className="w-full sm:w-[calc(50%-8px)] lg:w-[calc(20%-16px)]">
-                <Link
-                  className="flex flex-col gap-4"
-                  href={`/products/${category.slug}/${product.slug}`}
-                >
-                  <Image
-                    className='rounded-lg'
-                    src={product.content.header.productImage.url}
-                    alt={product.content.header.productImage.alt || 'No alt text available'}
-                    width={500}
-                    height={500}
-                  />
-                  <h3 className="text-2xl font-semibold text-white">
-                    {product.title}
-                  </h3>
-                </Link>
-              </div>
-            ))}
+        <div className="bg-darkblue relative z-20 w-full">
+          <div className="container pb-[2rem]">
+            <div className="flex flex-wrap gap-4">
+              {products.map((product: any, index: any) => (
+                <div key={index} className="w-full sm:w-[calc(50%-8px)] lg:w-[calc(20%-16px)]">
+                  <Link
+                    className="flex flex-col gap-4"
+                    href={`/products/${category.slug}/${product.slug}`}
+                  >
+                    <Image
+                      className='rounded-lg'
+                      src={product.content.header.productImage.url}
+                      alt={product.content.header.productImage.alt || 'No alt text available'}
+                      width={500}
+                      height={500}
+                    />
+                    <h3 className="text-2xl font-semibold text-white">
+                      {product.title}
+                    </h3>
+                  </Link>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
