@@ -89,7 +89,7 @@ async function getFooterData(): Promise<any> {
         headers: {
           'Content-Type': 'application/json',
         },
-        next: { 
+        next: {
           revalidate: 60
         }
       }
