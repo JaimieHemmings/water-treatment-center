@@ -83,7 +83,7 @@ const ContactSection: React.FC<{ info: any }> = ({ info }) => (
 async function getFooterData(): Promise<any> {
   try {
     const res = await fetch(
-      `/api/globals/footer?depth=1&draft=false&locale=undefined`,
+      `${process.env.NEXT_PUBLIC_SERVER_URL}/api/globals/footer?depth=1&draft=false&locale=undefined`,
       {
         method: 'GET',
         headers: {
