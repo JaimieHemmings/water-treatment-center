@@ -6,11 +6,10 @@ import Autoplay from 'embla-carousel-autoplay'
 import './styles.css'
 import Image from "next/image";
 import CustomLink from "@/components/CustomLink";
+import { FaDroplet } from "react-icons/fa6";
 
 interface Slide {
-  titleStart: string;
-  titleHighlight: string;
-  titleEnd: string;
+  title: string;
   paragraph: string;
   video?: {
     url: string;
@@ -41,10 +40,10 @@ export const HighImpactHero: React.FC<HeroProps> = ({ slides }) => {
 
   return (
   <div className="w-full relative">
-    <div className="embla embla-hero overflow-hidden h-[90svh]" ref={emblaRef}>    
+    <div className="embla embla-hero overflow-hidden h-[744px]" ref={emblaRef}>    
       <div className="embla__container embla__container-hero flex h-full w-full">
         {slides.map((slide, index) => (
-          <div className="embla__slide embla__slide-hero azul-overlay dots-overlay relative min-w-[100%]" key={index}>
+          <div className="embla__slide embla__slide-hero azul-overlay relative min-w-[100%]" key={index}>
             {slide.video && (
             <video
               autoPlay 
@@ -67,11 +66,15 @@ export const HighImpactHero: React.FC<HeroProps> = ({ slides }) => {
             />
             )}
             <div className="container h-full flex flex-row justify-start items-center relative z-30">
-              <div className="md:basis-2/3">
-                <h1 className="text-4xl md:text-[72px] md:leading-[4rem] text-white">
-                  {slide.titleStart} <span className="text-white border-b-2 border-selectiveyellow inline-block pb-2 my-3">{slide.titleHighlight}</span> {slide.titleEnd}
+              <div className="md:basis-3/4">
+                <p className=" mb-5 text-sm text-white tracking-widest flex flex-row gap-2 items-center uppercase">
+                  <FaDroplet className="inline-block text-selectiveyellow" />
+                  Water Treatment Centre
+                </p>
+                <h1 className="text-4xl md:text-[65px] md:leading-[4rem] text-white">
+                  {slide.title}
                 </h1>
-                <p className="my-5 pt-3 text-lg text-white">
+                <p className="mt-5 mb-10 pt-3 text-xl text-white max-w-[80%]">
                   {slide.paragraph}
                 </p>
                 <CustomLink
@@ -80,7 +83,8 @@ export const HighImpactHero: React.FC<HeroProps> = ({ slides }) => {
                   link={slide.link?.slug || "/contact"}
                 />
               </div>
-            </div><div className="absolute pointer-events-none left-0 bottom-0 w-full h-1/2 bg-gradient-to-t from-darkblue to-transparent" />
+            </div>
+            <div className="absolute pointer-events-none left-0 bottom-0 w-2/3 h-full bg-gradient-to-r from-darkblue to-transparent" />
           </div>
         ))}
       </div>

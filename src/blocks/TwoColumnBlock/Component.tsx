@@ -17,7 +17,7 @@ interface TwoColumnBlockProps {
 export const TwoColumnBlock: React.FC<TwoColumnBlockProps> = ({ contentleft, contentright, title, mainContent }) => {
 
   return (
-    <section className="w-full bg-darkblue py-[2rem] text-white relative z-20">
+    <section className="w-full bg-darkblue py-[5rem] text-white relative z-20">
       <AnimateIn
         animation={{
           y: 60,
@@ -28,7 +28,7 @@ export const TwoColumnBlock: React.FC<TwoColumnBlockProps> = ({ contentleft, con
       >
         <SectionTitle title={title} subtitle={mainContent} />
       </AnimateIn>
-      <div className="container pb-5 flex flex-col md:flex-row justify-between">
+      <div className="container pb-5 flex flex-col md:flex-row justify-between mt-5">
         <div className="md:basis-1/3 pt-5">
         <AnimateIn
           animation={{

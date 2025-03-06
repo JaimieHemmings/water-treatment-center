@@ -52,21 +52,9 @@ export const hero: Field = {
           },
         },
         {
-          name: 'titleStart',
+          name: 'title',
           type: 'text',
           label: 'Title',
-          required: true,
-        },
-        {
-          name: 'titleHighlight',
-          type: 'text',
-          label: 'Title Highlight',
-          required: true,
-        },
-        {
-          name: 'titleEnd',
-          type: 'text',
-          label: 'Title End',
           required: true,
         },
         {

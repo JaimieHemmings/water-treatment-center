@@ -20,6 +20,9 @@ export const Email: React.FC<
 > = ({ name, defaultValue, errors, label, register, required: requiredFromProps, width }) => {
   return (
     <Width width={width}>
+      <Label htmlFor={name} className="my-2 text-jet block">
+        {label}*
+      </Label>
       <Input
         className="text-white bg-jet border-2 border-darkblue py-6 text-lg"
         placeholder={label}

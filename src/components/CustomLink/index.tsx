@@ -21,10 +21,10 @@ export const CustomLink: React.FC<CustomLinkProps> = ({
 }) => {
   const baseClasses = "inline-flex items-center justify-center whitespace-nowrap font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50";
   
-  const themClasses = {
+  const themeClasses = {
     light: "inline-flex items-center justify-center whitespace-nowrap font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-11 px-8 mt-3 border-2 bg-selectiveyellow text-white border-selectiveyellow hover:bg-white hover:text-selectiveyellow text-lg hover:border-selectiveyellow no-underline",
-    dark: " no-underline inline-flex items-center justify-center whitespace-nowrap font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-11 px-8 mt-3 bg-white border border-selectiveyellow text-selectiveyellow hover:bg-selectiveyellow hover:text-white text-lg",
-    white: "ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 underline-offset-4 inline-flex items-center justify-center whitespace-nowrap font-medium transition-colors disabled:pointer-events-none disabled:opacity-50 h-11 px-8 mt-3 border-2 text-white border-white hover:bg-white hover:text-azul text-lg relative z-30 no-underline hover:no-underline inline-flex items-center justify-center whitespace-nowrap font-medium transition-colors disabled:pointer-events-none disabled:opacity-50 h-11 px-8 mt-3 border-2 text-white border-white hover:bg-white hover:text-selectiveyellow text-lg relative z-30 no-underline hover:no-underline"
+    dark: "no-underline bg-darkblue text-base px-10 py-3 uppercase hover:bg-white text-white hover:text-darkblue border-2 border-darkblue tracking-widest",
+    white: "no-underline bg-white text-base px-10 py-3 uppercase hover:bg-selectiveyellow text-jet hover:text-white"
   };
 
   return (
@@ -34,7 +34,7 @@ export const CustomLink: React.FC<CustomLinkProps> = ({
       href={link}
       className={cn(
         baseClasses,
-        themClasses[theme],
+        themeClasses[theme],
         className
       )}
     >

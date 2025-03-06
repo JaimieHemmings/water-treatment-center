@@ -160,7 +160,7 @@ export const FormBlock: React.FC<
                     return null
                   })}
               </div>
-              <div className="flex flex-row w-full justify-end">
+              <div className="flex flex-row w-full justify-start">
                 <Button form={formID} type="submit" variant="dark">
                   {submitButtonLabel}
                 </Button>

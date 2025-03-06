@@ -3,13 +3,11 @@
 import React, { useEffect } from "react"
 import useEmblaCarousel from 'embla-carousel-react'
 import Autoplay from 'embla-carousel-autoplay'
-import Link from 'next/link'
 import Image from "next/image"
+import { FaDroplet } from "react-icons/fa6";
 
 interface Slide {
-  titleStart: string
-  titleHighlight: string
-  titleEnd: string
+  title: string
   paragraph: string
   video?: {
     url: string
@@ -25,7 +23,7 @@ interface HeroProps {
 }
 
 const SingleSlide: React.FC<{ slide: Slide }> = ({ slide }) => (
-  <div className="relative w-full min-h-[600px] azul-overlay dots-overlay py-20 z-20">
+  <div className="relative w-full min-h-[600px] azul-overlay py-20 z-20">
     {slide.video ? (
       <video
         autoPlay
@@ -46,16 +44,19 @@ const SingleSlide: React.FC<{ slide: Slide }> = ({ slide }) => (
         priority
       />
     )}
-    <div className="container mx-auto h-full flex flex-col justify-center items-center relative z-10">
-      <h1 className="text-4xl md:text-[72px] text-center md:leading-[80px] text-white">
-        {slide.titleStart}{' '}
-        <span className="text-selectiveyellow">{slide.titleHighlight}</span>{' '}
-        {slide.titleEnd}
+    <div className="container mx-auto h-full flex flex-col justify-start relative z-10">      
+      <p className=" mb-5 text-sm text-white tracking-widest flex flex-row gap-2 items-center uppercase">
+        <FaDroplet className="inline-block text-selectiveyellow" />
+        Water Treatment Centre
+      </p>
+      <h1 className="text-4xl md:text-[72px] md:leading-[80px] text-white md:max-w-[75%]">
+        {slide.title}
       </h1>
-      <p className="my-5 pt-5 text-lg text-center md:mx-auto md:max-w-[60%] text-white">
+      <p className="my-5 pt-5 text-lg md:max-w-[75%] text-white">
         {slide.paragraph}
       </p>
-    </div><div className="absolute pointer-events-none left-0 bottom-0 w-full h-1/2 bg-gradient-to-t from-darkblue to-transparent" />
+    </div>
+    <div className="absolute pointer-events-none left-0 bottom-0 w-full h-full bg-gradient-to-r from-darkblue to-transparent" />
   </div>
 )
 
@@ -105,27 +106,16 @@ export const MediumImpactHero: React.FC<HeroProps> = ({ slides }) => {
                 />
               )}
               <div className="container mx-auto h-full flex flex-col justify-center items-center relative z-10">
-                <h1 className="text-4xl md:text-[72px] text-center md:leading-[80px] text-white">
-                  {slide.titleStart}{' '}
-                  <span className="text-selectiveyellow">
-                    {slide.titleHighlight}
-                  </span>{' '}
-                  {slide.titleEnd}
-                </h1>
-                <p className="my-5 pt-5 text-lg text-center md:mx-auto md:max-w-[60%] text-white">
-                  {slide.paragraph}
-                </p>
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center justify-center whitespace-nowrap font-medium 
-                           ring-offset-background transition-colors focus-visible:outline-none 
-                           focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 
-                           disabled:pointer-events-none disabled:opacity-50 h-11 px-8 mt-3 
-                           bg-jet border border-selectiveyellow text-selectiveyellow 
-                           hover:bg-selectiveyellow hover:text-jet text-lg relative z-30"
-                >
-                  Get A Quote
-                </Link>
+              <p className=" mb-5 text-sm text-white tracking-widest flex flex-row gap-2 items-center uppercase">
+                <FaDroplet className="inline-block text-selectiveyellow" />
+                Water Treatment Centre
+              </p>
+              <h1 className="text-4xl md:text-[72px] md:leading-[80px] text-white md:max-w-[75%]">
+                {slide.title}
+              </h1>
+              <p className="my-5 pt-5 text-lg md:max-w-[75%] text-white">
+                {slide.paragraph}
+              </p>
               </div>
             </div>
           ))}

@@ -7,8 +7,8 @@ import { getCachedGlobal } from '@/utilities/getGlobals'
 
 
 const SOCIAL_LINKS: any = [
-  { icon: <FaFacebook className="text-teal text-4xl" />, href: '#', alt: 'facebook icon' },
-  { icon: <FaYoutube className="text-4xl text-teal" />, href: 'https://www.youtube.com/', alt: 'youtube icon' }
+  { icon: <FaFacebook className="text-white text-4xl" />, href: '#', alt: 'facebook icon' },
+  { icon: <FaYoutube className="text-4xl text-white" />, href: 'https://www.youtube.com/', alt: 'youtube icon' }
 ]
 
 const PhoneIcon = () => (
@@ -62,8 +62,8 @@ const SocialLinks: React.FC = () => (
 )
 
 const ContactSection: React.FC<{ info: any }> = ({ info }) => (
-  <div className="mt-[23px] flex">
-    <div className="flex h-[38px] w-[38px] items-center justify-center rounded-[75%]">
+  <div className="mt-[16px] flex">
+    <div className="flex h-[20px] w-[12px] top-[4px] relative items-center justify-center rounded-[75%]">
       {info.icon}
     </div>
     <div className="ml-[18px]">
@@ -113,11 +113,11 @@ async function getFooterData(): Promise<any> {
 export async function Footer() {
   const footerData = await getFooterData()
   return (
-    <footer className="bg-jet pt-9 relative z-20">
-      <div className="mx-auto w-full max-w-[1166px] px-4 xl:px-0">
+    <footer className="bg-darkblue pt-9 relative z-20">
+      <div className="mx-auto w-full container px-4 xl:px-0">
         <div className="flex flex-col justify-between sm:px-[18px] md:flex-row md:px-10 md:gap-4">
           {/* Logo and Social Section */}
-          <div className="md:w-2/6">
+          <div className="md:w-1/8">
             <Link href="/">
               <Image src="/logo.png" alt="logo" width={300} height={100} />
             </Link>
@@ -127,22 +127,15 @@ export async function Footer() {
             <SocialLinks />
           </div>
 
-          {/* Contact Information Section */}
-          <div className="md:w-2/6 pb-5 md:px-5">
-            {CONTACT_INFO.map((info, index) => (
-              <ContactSection key={index} info={info} />
-            ))}
-          </div>
-
           {/* Navigation Links Section */}
-          <div className="mt-6 flex w-full flex-col justify-between text-white sm:flex-row md:mt-0 md:w-1/6 pb-5">
+          <div className="mt-6 flex w-full flex-col justify-between text-white sm:flex-row md:mt-0 md:w-2/8 p-5 pt-0">
             <div>
-              <p className="text-xl md:text-2xl font-medium leading-normal text-white inline-block pb-2 border-b-2 border-teal">Pages</p>
+              <h2 className="text-md md:text-xl font-medium leading-normal text-selectiveyellow uppercase inline-block pb-2 tracking-widest">Quick Links</h2>
               <ul>
               {footerData?.siteNavigation?.map((link, index) => (
                 <li key={index} className="mt-[15px]">
                   <Link
-                    className="text-white text-md font-normal hover:text-azul"
+                    className="text-white text-md uppercase font-normal hover:text-azul"
                     href={`/${link.link.slug}`}
                     title={link.link.title}
                   >
@@ -152,16 +145,16 @@ export async function Footer() {
               ))}
                 <li className="mt-[15px]">
                   <Link
-                    className="text-white text-md font-normal hover:text-azul"
+                    className="text-white uppercase text-md font-normal hover:text-azul"
                     href="/products"
                     title="Products"
                   >
-                    Products
+                    PRODUCTS
                   </Link>
                 </li>
                 <li className="mt-[15px]">
                   <Link
-                    className="text-white text-md font-normal hover:text-azul"
+                    className="text-white uppercase text-md font-normal hover:text-azul"
                     href="/news"
                     title="News"
                   >
@@ -170,7 +163,7 @@ export async function Footer() {
                 </li>
                 <li className="mt-[15px]">
                   <Link
-                    className="text-white text-md font-normal hover:text-azul"
+                    className="text-white uppercase text-md font-normal hover:text-azul"
                     href="/contact"
                     title="Contact"
                   >
@@ -181,15 +174,23 @@ export async function Footer() {
             </div>
           </div>
 
+          {/* Contact Information Section */}
+          <div className="md:w-2/8 pb-5 md:px-5">
+            <h2 className="text-md md:text-xl font-medium leading-normal text-selectiveyellow uppercase inline-block pb-2 tracking-widest">Contact Us</h2>
+            {CONTACT_INFO.map((info, index) => (
+              <ContactSection key={index} info={info} />
+            ))}
+          </div>
 
-          <div className="mt-6 flex w-full flex-col justify-between text-white sm:flex-row md:mt-0 md:w-1/6 pb-5">
+
+          <div className="mt-6 flex w-full flex-col justify-between text-white sm:flex-row md:mt-0 md:w-2/8 pb-5">
             <div>
-              <p className="text-xl md:text-2xl font-medium leading-normal text-white inline-block pb-2 border-b-2 border-teal">Useful Links</p>
+            <h2 className="text-md md:text-xl font-medium leading-normal text-selectiveyellow uppercase inline-block pb-2 tracking-widest">Useful Links</h2>
               <ul>
               {footerData?.usefulLinks?.map((link, index) => (
               <li key={index} className="mt-[15px]">
                 <Link
-                  className="text-white text-md font-normal hover:text-azul"
+                  className="text-white uppercase text-md font-normal hover:text-azul"
                   href={`/${link.link.slug}`}
                   title={link.link.title}
                 >
@@ -203,8 +204,7 @@ export async function Footer() {
         </div>
 
         {/* Copyright Section */}
-        <hr className="mt-[30px] text-white" />
-        <div className="flex items-center justify-center pb-8 pt-[9px] md:py-8">
+        <div className="flex justify-start pb-8 pt-4 mt-[30px] border-t-[1px] border-selectiveyellow">
           <p className="text-sm font-normal text-white md:text-md">
             © Copyright {new Date().getFullYear()}, All Rights Reserved by The Water Treatment Centre
           </p>

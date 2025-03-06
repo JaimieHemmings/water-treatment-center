@@ -7,6 +7,7 @@ import Image from 'next/image'
 import CustomLink from '@/components/CustomLink'
 import AnimateIn from '@/components/Animations/AnimateIn'
 import Bounded from '@/utilities/Bounded'
+import { FaDroplet } from "react-icons/fa6";
 
 export const dynamic = 'force-static'
 export const revalidate = 600
@@ -37,19 +38,21 @@ export default async function PostsPage() {
           className="absolute inset-0 w-full h-full object-cover"
           priority
         />
-        <div className="container mx-auto h-full flex flex-col justify-center items-center relative z-10">
-          <h1 className="text-4xl md:text-[72px] text-center md:leading-[80px] text-white">
-            A Filter{' '}
-            <span className="text-selectiveyellow">
-              For Every
-            </span>
-            {' '}Application
-          </h1>
-          <p className="my-5 pt-5 text-lg text-center md:mx-auto md:max-w-[60%] text-white">
-          Pure, clean water shouldn&apos;t be a luxury - it&apos;s essential for your family&apos;s health and well-being. Our wide range of water filtration products are designed to meet the needs of every home and business, no matter the size or application.
-          </p>
+        <div className="container mx-auto h-full flex flex-row justify-center items-center relative z-10">
+          <div className="basis-1/2">
+            <p className="mb-5 text-sm text-white tracking-widest flex flex-row gap-2 items-center uppercase">
+              <FaDroplet className="inline-block text-selectiveyellow" />
+              Water Treatment Centre
+            </p>
+            <h1 className="text-4xl md:text-[72px] md:leading-[80px] text-white">
+              A Filter For Every Application
+            </h1>
+            <p className="my-5 pt-5 text-lg md:max-w-[60%] text-white">
+            Pure, clean water shouldn&apos;t be a luxury - it&apos;s essential for your family&apos;s health and well-being. Our wide range of water filtration products are designed to meet the needs of every home and business, no matter the size or application.
+            </p>
+          </div>
         </div>
-        <div className="absolute pointer-events-none left-0 bottom-0 w-full h-1/2 bg-gradient-to-t from-darkblue to-transparent" />
+        <div className="absolute pointer-events-none left-0 bottom-0 w-full h-full bg-gradient-to-r from-darkblue to-transparent" />
       </div>
       <PageClient />
       {docs.length > 0 && (

@@ -3,6 +3,7 @@ import SectionTitle from '@/components/SectionTitle'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
+import { FaDroplet } from "react-icons/fa6";
 
 interface GridItem {
   theme: 'light' | 'dark'
@@ -61,7 +62,7 @@ const GridCard: React.FC<{
             }`}
         >
           <div>
-            <h3 className={`text-sm font-base mb-2 pb-2 border-b-2 inline-block
+            <h3 className={`text-sm uppercase tracking-widest px-2 font-base mb-2 pb-2 border-b-2 inline-block font-semibold
               ${item.theme === 'light'
                 ? 'border-azul text-jet'
                 : 'text-antiflashwhite border-antiflashwhite'
@@ -93,12 +94,13 @@ const ImageGrid: React.FC<ImageGridProps> = ({ title, subtitle, gridItems }) => 
   const rightColumn = gridItems.slice(6, 9);
 
   return (
-    <section className="py-[2rem]">
+    <section className="py-[5rem] md:py-[10rem]">
       <div className="container text-white text-center pb-5 mb-5">
-        <SectionTitle
-          title={title}
-          subtitle={subtitle}
-        />
+        <h2 className="text-sm uppercase text-selectiveyellow pb-5">
+          <FaDroplet className="inline-block text-selectiveyellow mr-2 relative -top-[2px]" />
+          {title}
+        </h2>
+        <p className="text-white text-2xl md:text-4xl md:max-w-[40%] mx-auto">{subtitle}</p>
       </div>
       <div className="container flex flex-col justify-between">
         {/* Top Row */}

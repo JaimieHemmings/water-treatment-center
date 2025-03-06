@@ -36,6 +36,7 @@ const ReviewCarousel: React.FC<ReviewCarouselProps> = ({ reviews }) => {
               </p>
               <p className="text-2xl mt-5 text-teal font-semibold">
                 {review.reviewer}
+                <span className="block text-white text-base pt-1">Our Client</span>
               </p>
             </div>
           ))}

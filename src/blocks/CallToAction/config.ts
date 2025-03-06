@@ -19,21 +19,20 @@ export const CallToAction: Block = {
       required: false,
     },
     {
-      name: 'lightbgToggle',
-      label: 'Light Background',
-      type: 'checkbox',
-      defaultValue: false,
+      name: 'subtitle',
+      type: 'text',
+      label: 'Subtitle',
+      admin: {
+        condition: (data, siblingData) => {
+          return Boolean(siblingData?.backgroundImage)
+        },
+      },
     },
     {
       name: 'backgroundImage',
       type: 'upload',
       relationTo: 'media',
       required: false,
-      admin: {
-        condition: (data, siblingData) => {
-          return siblingData?.lightbgToggle === true
-        },
-      },
     },
     {
       name: 'richText',

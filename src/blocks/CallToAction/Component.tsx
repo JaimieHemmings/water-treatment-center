@@ -4,27 +4,29 @@ import CustomLink from '@/components/CustomLink';
 import Bounded from '@/utilities/Bounded';
 import AnimateIn from '@/components/Animations/AnimateIn';
 import Image from 'next/image';
+import { FaDroplet } from "react-icons/fa6";
 
 interface CallToActionBlockProps {
   title?: string,
+  subtitle?: string;
   link: {
     slug: string;
   };
   linkLabel: string;
   richText: any;
   lightbgToggle: boolean;
-  backgroundImage?: {  // Add this new prop
+  backgroundImage?: { 
     url: string;
     alt: string;
   };
 }
 
-export const CallToActionBlock: React.FC<CallToActionBlockProps> = ({ link, linkLabel, richText, lightbgToggle, backgroundImage, title }) => {
+export const CallToActionBlock: React.FC<CallToActionBlockProps> = ({ link, linkLabel, richText, lightbgToggle, backgroundImage, title, subtitle }) => {
   return (
-    <section className={`bg-darkblue ${lightbgToggle ? 'border-t-2 border-b-2 border-azul' : null }`}>
-      <div className={`w-full py-[5rem] relative overflow-hidden ${lightbgToggle ? 'bg-antiflashwhite' : ''}`}>
+    <section className="bg-darkblue">
+      <div className="w-full py-[5rem] relative overflow-hidden">
         {backgroundImage && (
-          <div className="absolute left-0 top-0 h-full w-full md:w-1/2 m-0">
+          <div className="absolute left-0 top-0 h-full w-full m-0">
             <Image
               src={backgroundImage.url}
               alt={backgroundImage.alt}
@@ -33,92 +35,80 @@ export const CallToActionBlock: React.FC<CallToActionBlockProps> = ({ link, link
               height={600}
               priority
             />
-            {/* White overlay */}
-            <div className="absolute inset-0 bg-antiflashwhite/60" />
-            <div className='absolute inset-0 bg-gradient-to-l from-antiflashwhite to-transparent' />
+            <div className="absolute inset-0 bg-darkblue/60" />
           </div>
         )}
-    <Image
-      src="/dots.svg"
-      alt="Decorative dots"
-      className="absolute bottom-4 right-0 z-10 scale-x-[-1] w-48 h-72 md:w-48 md:h-72 max-md:hidden"
-      height={300}
-      width={200}
-      style={lightbgToggle ? { filter: 'brightness(0)' } : undefined}
-    />
-      {!lightbgToggle && (
-        <video
+        <Image
+          src="/dots.svg"
+          alt="Decorative dots"
+          className="absolute top-2 right-0 z-10 scale-x-[-1] w-48 h-72 md:w-48 md:h-72 max-md:hidden"
+          height={300}
+          width={200}
+          style={lightbgToggle ? { filter: 'brightness(0)' } : undefined}
+        />
+        {!backgroundImage && (
+          <video
           autoPlay
           loop
           muted
           playsInline
           className="absolute inset-0 w-full h-full object-cover min-w-full min-h-full"
-        >
+          >
           <source src="/water-drop.mp4" type="video/mp4" />
         </video>
-      )}
+        )}
       <div
         className={`w-full
         h-full
         absolute
         z-1
-        ${lightbgToggle ? '' : 'bg-gradient-to-br from-teal to-azul opacity-70'}
+        ${backgroundImage ? 'bg-darkblue/80' : 'bg-[#009290]/70'} 
         top-0
-        left-0
-        `} />
+        left-0`} />
       <Bounded>
-        <div className="p-4 relative z-20">
-          <AnimateIn
-            animation={{
-              y: 60,
-              opacity: 0,
-              duration: 1,
-              ease: 'power2.out',}}
-          >
-          {richText && !lightbgToggle && (
-            <div>
-              <h2 className="border-b-2 border-selectiveyellow text-white inline-block px-2 py-1 mb-5 text-sm">
-                {title || 'Get in touch!'}
-              </h2>
-              <RichText
-              className={`text-2xl md:text-4xl font-semibold mb-5 ${lightbgToggle ? 'text-darkblue' : 'text-white'}`}
-              data={richText}
-              enableGutter={false}
-              />
-            </div>
-          )}
-          {richText && lightbgToggle && (
-            <div className="container flex flex-col md:flex-row justify-between ">
-              <div className="md:basis-1/3"></div>
-              <div className="md:basis-2/3 md:pl-5">
-              {title && (
-                <h2 className="text-gray-700 text-2xl md:text-4xl font-semibold mb-5 border-b-2 border-teal pb-2 inline-block">
-                  {title || 'Get in touch!'}
-                </h2>
-              )}
-                <RichText
-                className={`prose md:prose-xl font-base mb-5 [&_strong]: ${lightbgToggle ? 'text-gray-700' : 'text-white'}`}
-                data={richText}
-                enableGutter={false}
-                />
-              </div>
-            </div>
-          )}
-
-          </AnimateIn>
-          <div className="flex justify-end space-x-4">
+        <div className="flex flex-col md:flex-row justify-between">
+          <div className="basis-1/2">
             <AnimateIn
               animation={{
+                y: 60,
                 opacity: 0,
                 duration: 1,
-                ease: 'power2.out',}}
+                ease: 'power2.out',
+              }}
             >
-              <CustomLink theme="light" label={linkLabel} link={link.slug} />
+              <h2 className={`${backgroundImage ? 'text-selectiveyellow' : 'text-white'} inline-block px-2 py-1 mb-5 text-sm uppercase`}>
+                <FaDroplet className={`inline-block ${backgroundImage ? 'text-selectiveyellow' : 'text-white'} text-base relative -top-[1px] mr-1`} /> {title || 'Get in touch!'}
+              </h2>
+              <div>
+              {subtitle && (
+                <p className="text-white text-2xl md:text-4xl pb-2 border-b-2 border-selectiveyellow mb-5 inline-block font-semibold">{subtitle}</p>
+              )}
+              </div>
+              <RichText
+                className={`${backgroundImage ? 'prose md:prose-md text-base md:text-xl' : 'text-2xl md:text-4xl font-semibold'} mb-5 text-white`}
+                data={richText}
+                enableGutter={false}
+              />
+              {!backgroundImage && (
+                <span className="w-1/2 h-1 border-b-2 relative block border-white mb-5" />
+              )}
             </AnimateIn>
+          </div>
+          <div className="basis-1/2 flex flex-col items-centre max-w-[200px] justify-center">
+            <AnimateIn
+              animation={{
+                y: 60,
+                opacity: 0,
+                duration: 1,
+                ease: 'power2.out',
+              }}
+            >
+              <CustomLink theme="white" label={linkLabel} link={link.slug} /> 
+            </AnimateIn>         
           </div>
         </div>
       </Bounded>
-    </div>
+      </div>
     </section>
   );
 };

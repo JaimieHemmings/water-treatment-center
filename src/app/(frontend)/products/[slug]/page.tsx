@@ -6,6 +6,7 @@ import PageClient from './page.client'
 import Image from 'next/image'
 import { generateMeta } from '@/utilities/generateMeta'
 import RichText from '@/components/RichText'
+import { FaDroplet } from "react-icons/fa6";
 type Args = {
   params: Promise<{
     slug?: string
@@ -31,13 +32,19 @@ export default async function Post({ params: paramsPromise }: Args) {
             priority
           />
         )}
-        <div className="container mx-auto h-full flex flex-col justify-center items-center relative z-10">
-          <h1 className="text-4xl md:text-[72px] text-center md:leading-[80px] text-white border-b-2 border-selectiveyellow">
-            {category.title}
-          </h1>
-          <p className="my-5 pt-5 text-lg text-center md:mx-auto md:max-w-[60%] text-white">
-            {category.excerpt}
-          </p>
+        <div className="container mx-auto my-auto h-full flex flex-row justify-start relative z-10">
+          <div className="md:basis-1/2 flex flex-col justify-center items-start h-full pt-[5rem]">
+            <p className=" mb-5 text-sm text-white tracking-widest flex flex-row gap-2 items-center uppercase">
+              <FaDroplet className="inline-block text-selectiveyellow" />
+              Water Treatment Centre
+            </p>
+            <h1 className="text-4xl md:text-[72px] md:leading-[80px] text-white">
+              {category.title}
+            </h1>
+            <p className="my-5 text-lg text-white">
+              {category.excerpt}
+            </p>
+          </div>
         </div>
         <div className="absolute top-0 left-0 w-full h-full bg-jet opacity-60 pointer-events-none"></div>
         <div className="absolute pointer-events-none left-0 bottom-0 w-full h-1/2 bg-gradient-to-t from-darkblue to-transparent" />

@@ -25,15 +25,15 @@
 }
 
 .review {
-  text-indent: 50px;
+  text-indent: 70px;
   position: relative;
 }
 
 .review:after {
   content: "“";
   position: absolute;
-  top: -35px;
-  left: -50px;
-  font-size: 5rem;
-  opacity: 40%;
+  top: -70px;
+  left: -75px;
+  font-size: 8rem;
+  color: rgb(0, 146, 143);
 }

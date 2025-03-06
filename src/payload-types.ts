@@ -98,9 +98,7 @@ export interface Page {
       | {
           image?: (number | null) | Media;
           video?: (number | null) | Media;
-          titleStart: string;
-          titleHighlight: string;
-          titleEnd: string;
+          title: string;
           paragraph: string;
           link?: (number | null) | Page;
           linkLabel?: string | null;
@@ -243,7 +241,7 @@ export interface Media {
  */
 export interface CallToActionBlock {
   title?: string | null;
-  lightbgToggle?: boolean | null;
+  subtitle?: string | null;
   backgroundImage?: (number | null) | Media;
   richText?: {
     root: {
@@ -701,6 +699,10 @@ export interface ContactBlock {
  * via the `definition` "TextWithImageBlock".
  */
 export interface TextWithImageBlock {
+  darkmode?: boolean | null;
+  title?: string | null;
+  intro?: string | null;
+  quote?: string | null;
   content?: {
     root: {
       type: string;
@@ -716,8 +718,9 @@ export interface TextWithImageBlock {
     };
     [k: string]: unknown;
   } | null;
-  title?: string | null;
   image: number | Media;
+  link?: (number | null) | Page;
+  linkLabel?: string | null;
   cropImage?: boolean | null;
   additionalSettings?: {
     ShowThreeColBlock?: boolean | null;
@@ -1293,9 +1296,7 @@ export interface PagesSelect<T extends boolean = true> {
           | {
               image?: T;
               video?: T;
-              titleStart?: T;
-              titleHighlight?: T;
-              titleEnd?: T;
+              title?: T;
               paragraph?: T;
               link?: T;
               linkLabel?: T;
@@ -1346,7 +1347,7 @@ export interface PagesSelect<T extends boolean = true> {
  */
 export interface CallToActionBlockSelect<T extends boolean = true> {
   title?: T;
-  lightbgToggle?: T;
+  subtitle?: T;
   backgroundImage?: T;
   richText?: T;
   link?: T;
@@ -1484,9 +1485,14 @@ export interface ContactBlockSelect<T extends boolean = true> {
  * via the `definition` "TextWithImageBlock_select".
  */
 export interface TextWithImageBlockSelect<T extends boolean = true> {
-  content?: T;
+  darkmode?: T;
   title?: T;
+  intro?: T;
+  quote?: T;
+  content?: T;
   image?: T;
+  link?: T;
+  linkLabel?: T;
   cropImage?: T;
   additionalSettings?:
     | T

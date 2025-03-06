@@ -46,7 +46,7 @@ const VideoBlock: React.FC<VideoBlockProps> = ({
   linkLabel
 }) => {
   return (
-    <section className="relative overflow-hidden py-[2rem] w-full">
+    <section className="relative overflow-hidden py-[5rem] w-full">
       <DecorativeDots position="top" />
 
       {/* Video Background */}

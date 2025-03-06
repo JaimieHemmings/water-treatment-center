@@ -18,7 +18,7 @@ interface ImageListProps {
 
 export const ImageList: React.FC<ImageListProps> = ({ images }) => {
   return (
-    <section className="bg-darkblue text-jet py-[2rem] w-full">
+    <section className="bg-white text-jet py-[5rem] w-full">
       <div className="container">
         <div className="flex flex-col md:flex-row gap-4 justify-between">
         {images.map((card, index) => (
@@ -33,7 +33,7 @@ export const ImageList: React.FC<ImageListProps> = ({ images }) => {
             }}
             className="md:basis-1/3"
             >
-            <div className='flex flex-col rounded-xl overflow-hidden bg-antiflashwhite h-full'>
+            <div className='flex flex-col rounded-xl overflow-hidden h-full border-[1px] border-t-none'>
               <div className="relative w-full h-[200px]">
                 <Image 
                   src={card.image.url} 
@@ -44,14 +44,15 @@ export const ImageList: React.FC<ImageListProps> = ({ images }) => {
                   loading="lazy"
                 />
               </div>
-              <div className="p-5 flex flex-col gap-2">
-                <span className="text-azul font-bold text-xl md:text-2xl">
+              <div className="p-5 flex flex-col gap-2 h-full border-jet/40 relative">
+                <span className="text-white bg-selectiveyellow rounded-full font-bold text-md absolute left-[75%] w-10 h-10 flex items-center justify-center -top-6">
                   0{index + 1}                  
                 </span>
-                  <h3 className="text-xl md:text-2xl text-jet m-0">
+                  <h3 className="text-xl md:text-2xl text-jet m-0 pt-5">
                     {card.title}
                   </h3>
-                  <p className="text-jet prose md:prose-md pb-5">
+                  <span className="border-2 w-1/2 relative block border-selectiveyellow"></span>
+                  <p className="text-jet prose md:prose-md">
                     {card.description}
                   </p>
               </div>

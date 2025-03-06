@@ -8,6 +8,26 @@ export const TextWithImageBlock: Block = {
   imageURL: '/block-images/text-with-image-block.jpg',
   fields: [
     {
+      name: 'darkmode',
+      type: 'checkbox',
+      label: 'Enable Dark Mode',
+    },
+    {
+      name: 'title',
+      type: 'text',
+      label: 'Title',
+    },
+    {
+      name: 'intro',
+      type: 'text',
+      label: 'Intro',
+    },
+    {
+      name: 'quote',
+      type: 'text',
+      label: 'Quote',
+    },
+    {
       name: 'content',
       type: 'richText',
       editor: lexicalEditor({
@@ -17,18 +37,23 @@ export const TextWithImageBlock: Block = {
           ]
         },
       }),
-      label: false,
-    },
-    {
-      name: 'title',
-      type: 'text',
-      label: 'Title',
+      label: 'Content',
     },
     {
       name: 'image',
       type: 'upload',
       relationTo: 'media',
       required: true,
+    },
+    { name: 'link',
+      relationTo: 'pages',
+      type: 'relationship',
+      label: 'Link',
+    },
+    {
+      name: 'linkLabel',
+      type: 'text',
+      label: 'Link Label',
     },
     {
       name: 'cropImage',
