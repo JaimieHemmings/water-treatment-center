@@ -128,7 +128,7 @@ export async function Footer() {
           </div>
 
           {/* Navigation Links Section */}
-          <div className="mt-6 flex w-full flex-col justify-between text-white sm:flex-row md:mt-0 md:w-2/8 md:p-5 pt-0">
+          <div className="mt-6 flex w-full flex-col justify-between text-white sm:flex-row md:mt-0 md:w-2/8 md:p-5 md:pt-0">
             <div>
               <h2 className="text-md md:text-xl font-medium leading-normal text-selectiveyellow uppercase inline-block pb-2 tracking-widest">Quick Links</h2>
               <ul>
