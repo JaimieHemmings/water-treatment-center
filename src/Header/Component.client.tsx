@@ -70,7 +70,7 @@ export default async function HeaderClient({ data }) {
         </div>
       </div>
     </div>
-    <header className="bg-darkblue text-white top-0 left-0 w-full z-[9999] sticky">
+    <header className="bg-darkblue text-white top-0 left-0 w-full z-[9990] sticky">
       <div className="flex flex-row justify-between container align-middle">
         <Link href="/" className="my-auto">
           <Logo loading="eager" priority="high" className="invert dark:invert-0 py-3" />
