@@ -5,6 +5,7 @@ import { getPayload } from 'payload'
 import { AnimateIn } from '@/components/Animations/AnimateIn'
 import RichText from '@/components/RichText'
 import { FaDroplet } from "react-icons/fa6";
+import { IoIosInformationCircleOutline } from "react-icons/io";
 
 export const dynamic = 'force-static'
 export const revalidate = 600
@@ -54,10 +55,12 @@ export default async function ServicesBlock() {
               {service.features && (
                 <ul className="list-none list-inside mt-4">
                   {service.features.map((feature) => (
-                    <li key={feature.id} className="text-base border-l-2 pl-4 border-selectiveyellow my-2">
-                      <p>
+                    <li key={feature.id} className="text-base my-2">
+                      <p className="relative pl-8">
+                        <IoIosInformationCircleOutline className="absolute top-[3px] left-0 text-2xl text-selectiveyellow" />
                         {feature.description}
                       </p>
+                      <span className="bg-selectiveyellow/60 h-[1px] w-1/3 block mt-2" />
                     </li>
                   ))}
                 </ul>
