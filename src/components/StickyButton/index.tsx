@@ -16,7 +16,7 @@ const StickyButton: React.FC<StickyButtonProps> = ({ label, link }) => {
           bg-darkblue 
           text-white 
           font-medium 
-          px-3 
+          px-4 
           py-9 
           rounded-l-lg 
           shadow-lg 

@@ -81,7 +81,7 @@ export const CallToActionBlock: React.FC<CallToActionBlockProps> = ({ link, link
               </h2>
               <div>
               {subtitle && (
-                <p className="text-white text-2xl md:text-4xl pb-2 border-b-2 border-selectiveyellow mb-5 inline-block font-semibold">{subtitle}</p>
+                <p className="text-white text-2xl md:text-4xl pb-4 border-b-2 border-selectiveyellow mb-5 inline-block font-semibold">{subtitle}</p>
               )}
               </div>
               <RichText
