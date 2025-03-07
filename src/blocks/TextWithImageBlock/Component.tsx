@@ -52,7 +52,7 @@ export const TextWithImageBlock: React.FC<TextWithImageBlockProps> = ({
 }) => {
   return (
     <section 
-      className={`w-full py-20 ${darkmode ? 'bg-darkblue text-white' : 'bg-white text-jet'} text-jet relative overflow-hidden`}
+      className={`w-full py-[5rem] ${darkmode ? 'bg-darkblue text-white' : 'bg-white text-jet'} text-jet relative overflow-hidden`}
     >
       <div className={`container mx-auto px-4 flex ${darkmode ? 'lg:flex-row-reverse flex-col' : 'flex-col-reverse lg:flex-row'} justify-between gap-10 relative z-20`}>
         <div className={`${darkmode ? 'basis-1/3' : 'basis-1/2 '} h-full relative`}>
@@ -84,7 +84,7 @@ export const TextWithImageBlock: React.FC<TextWithImageBlockProps> = ({
             duration: 0.8,
           }}
         >
-          <div className={`${darkmode ? 'border-l-[5px] border-selectiveyellow pl-5' : ''} `}>
+          <div>
             <h2 className={`text-sm md:text-sm font-semibold text-selectiveyellow m-0 pb-5 tracking-widest`}>
               <FaDroplet className="inline-block text-selectiveyellow mr-2 relative -top-[2px]" />
               {title}
@@ -100,7 +100,7 @@ export const TextWithImageBlock: React.FC<TextWithImageBlockProps> = ({
             <RichText 
               data={content}
               enableGutter={false}
-              className="prose md:prose-lg max-w-none [&_strong]:text-white my-5"
+              className={`prose md:prose-lg max-w-none ${darkmode ? '[&_strong]:text-white' : '[&_strong]:text-jet'} my-5`}
             />
           )}
           {link && (

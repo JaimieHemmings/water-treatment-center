@@ -581,7 +581,8 @@ export interface Form {
  * via the `definition` "TextBlock".
  */
 export interface TextBlock {
-  content?: {
+  title?: string | null;
+  content: {
     root: {
       type: string;
       children: {
@@ -595,8 +596,7 @@ export interface TextBlock {
       version: number;
     };
     [k: string]: unknown;
-  } | null;
-  title?: string | null;
+  };
   id?: string | null;
   blockName?: string | null;
   blockType: 'textBlock';
@@ -1397,8 +1397,8 @@ export interface FormBlockSelect<T extends boolean = true> {
  * via the `definition` "TextBlock_select".
  */
 export interface TextBlockSelect<T extends boolean = true> {
-  content?: T;
   title?: T;
+  content?: T;
   id?: T;
   blockName?: T;
 }

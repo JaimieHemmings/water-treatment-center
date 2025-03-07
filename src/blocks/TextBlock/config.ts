@@ -10,6 +10,11 @@ export const TextBlock: Block = {
   interfaceName: 'TextBlock',
   fields: [
     {
+      name: 'title',
+      type: 'text',
+      label: 'Title',
+    },
+    {
       name: 'content',
       type: 'richText',
       editor: lexicalEditor({
@@ -20,12 +25,8 @@ export const TextBlock: Block = {
         },
       }),
       label: false,
+      required: true
     },
-    {
-      name: 'title',
-      type: 'text',
-      label: 'Title',
-    }
   ],
   labels: {
     plural: 'Text Blocks',
