@@ -40,10 +40,6 @@ export default async function PostsPage() {
         />
         <div className="container mx-auto h-full flex flex-row justify-start items-center relative z-10">
           <div className="md:basis-2/3">
-            <p className="mb-5 text-sm text-white tracking-widest flex flex-row gap-2 items-center uppercase">
-              <FaDroplet className="inline-block text-selectiveyellow" />
-              Water Treatment Centre
-            </p>
             <h1 className="text-4xl md:text-[72px] md:leading-[80px] text-white">
               A Filter For Every Application
             </h1>

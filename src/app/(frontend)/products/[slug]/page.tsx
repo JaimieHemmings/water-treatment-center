@@ -34,10 +34,6 @@ export default async function Post({ params: paramsPromise }: Args) {
         )}
         <div className="container mx-auto my-auto h-full flex flex-row justify-start relative z-10">
           <div className="md:basis-1/2 flex flex-col justify-center items-start h-full pt-[5rem]">
-            <p className=" mb-5 text-sm text-white tracking-widest flex flex-row gap-2 items-center uppercase">
-              <FaDroplet className="inline-block text-selectiveyellow" />
-              Water Treatment Centre
-            </p>
             <h1 className="text-4xl md:text-[72px] md:leading-[80px] text-white">
               {category.title}
             </h1>
