@@ -32,6 +32,28 @@ export const Header: GlobalConfig = {
         },
       },
     },
+    {
+      name: 'subNavItems',
+      type: 'array',
+      fields: [
+        {
+          name: 'link',
+          type: 'relationship',
+          relationTo: 'pages',
+          hasMany: false,
+          required: true,
+        },
+        {
+          name: 'label',
+          label: 'Label',
+          type: 'text',
+        },
+      ],
+      maxRows: 6,
+      admin: {
+        initCollapsed: true,
+    },
+  },
   ],
   hooks: {
     afterChange: [revalidateHeader],

@@ -6,6 +6,7 @@ import { Header } from '@/Header/Component'
 import { Providers } from '@/providers'
 import { InitTheme } from '@/providers/Theme/InitTheme'
 import { mergeOpenGraph } from '@/utilities/mergeOpenGraph'
+import StickyButton from '@/components/StickyButton'
 
 import './globals.css'
 import { getServerSideURL } from '@/utilities/getURL'
@@ -29,6 +30,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           {children}
           <Footer />
           <GAConsent />
+          <StickyButton link="/contact" label="Contact Us" />
         </Providers>
       </body>
     </html>

@@ -68,7 +68,7 @@ export const HighImpactHero: React.FC<HeroProps> = ({ slides }) => {
             <div className="container h-full flex flex-row justify-start items-center relative z-30">
               <div className="md:basis-3/4">
                 <p className=" mb-5 text-sm text-white tracking-widest flex flex-row gap-2 items-center uppercase">
-                  <FaDroplet className="inline-block text-selectiveyellow" />
+                <FaDroplet className="inline-block text-selectiveyellow" />
                   Water Treatment Centre
                 </p>
                 <h1 className="text-4xl md:text-[65px] md:leading-[4rem] text-white">

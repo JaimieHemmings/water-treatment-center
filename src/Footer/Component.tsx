@@ -128,7 +128,7 @@ export async function Footer() {
           </div>
 
           {/* Navigation Links Section */}
-          <div className="mt-6 flex w-full flex-col justify-between text-white sm:flex-row md:mt-0 md:w-2/8 p-5 pt-0">
+          <div className="mt-6 flex w-full flex-col justify-between text-white sm:flex-row md:mt-0 md:w-2/8 md:p-5 pt-0">
             <div>
               <h2 className="text-md md:text-xl font-medium leading-normal text-selectiveyellow uppercase inline-block pb-2 tracking-widest">Quick Links</h2>
               <ul>
@@ -175,7 +175,7 @@ export async function Footer() {
           </div>
 
           {/* Contact Information Section */}
-          <div className="md:w-2/8 pb-5 md:px-5">
+          <div className="md:w-2/8 pb-5 md:px-5 mt-5 md:mt-0">
             <h2 className="text-md md:text-xl font-medium leading-normal text-selectiveyellow uppercase inline-block pb-2 tracking-widest">Contact Us</h2>
             {CONTACT_INFO.map((info, index) => (
               <ContactSection key={index} info={info} />
@@ -183,7 +183,7 @@ export async function Footer() {
           </div>
 
 
-          <div className="mt-6 flex w-full flex-col justify-between text-white sm:flex-row md:mt-0 md:w-2/8 pb-5">
+          <div className="mt-5 flex w-full flex-col justify-between text-white sm:flex-row md:mt-0 md:w-2/8 md:pb-5">
             <div>
             <h2 className="text-md md:text-xl font-medium leading-normal text-selectiveyellow uppercase inline-block pb-2 tracking-widest">Useful Links</h2>
               <ul>

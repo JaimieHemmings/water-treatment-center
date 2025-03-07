@@ -4,6 +4,7 @@ import { IoPhonePortraitSharp } from "react-icons/io5";
 import {  MdEmail } from "react-icons/md";
 import { getPayload } from 'payload'
 import configPromise from '@payload-config'
+import { FaDroplet } from "react-icons/fa6";
 
 import { Logo } from '@/components/Logo/Logo'
 import { HeaderNav } from './Nav'
@@ -75,6 +76,22 @@ export default async function HeaderClient({ data }) {
           <Logo loading="eager" priority="high" className="invert dark:invert-0 py-3" />
         </Link>
         <HeaderNav data={data} subNav={docs} />
+      </div>
+      <div className="flex-row justify-between align-middle bg-white py-2 hidden md:flex tracking-widest border-b-[2px] border-darkblue">
+        <ul className="container flex flex-row gap-4 justify-end w-full text-md text-selectiveyellow">
+        {data.subNavItems.map((item: any, index: number) => (
+          <li className="md:h-full" key={`subnav-${index}`}>
+            <Link
+              href={`/${item.link.slug}`}
+              className="flex flex-row justify-center items-center hover:text-azul text-selectiveyellow transition-all duration-300 gap-2"
+            >
+
+              <FaDroplet className="inline-block" />
+              {item.title || item.label}
+            </Link>
+          </li>
+        ))}
+        </ul>
       </div>
     </header>
     </>
