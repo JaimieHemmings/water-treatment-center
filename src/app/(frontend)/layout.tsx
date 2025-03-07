@@ -30,7 +30,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           {children}
           <Footer />
           <GAConsent />
-          <StickyButton link="/contact" label="Contact Us" />
+          <StickyButton link="/contact" label="Contact" />
         </Providers>
       </body>
     </html>
