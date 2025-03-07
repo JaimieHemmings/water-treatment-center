@@ -1,5 +1,6 @@
 import React from 'react'
-import Link from 'next/link'
+import Link from 'next/link';
+import { IoIosMail } from "react-icons/io";
 
 interface StickyButtonProps {
   label: string
@@ -13,22 +14,24 @@ const StickyButton: React.FC<StickyButtonProps> = ({ label, link }) => {
         href={link}
         className="
           bg-darkblue 
-          text-jet 
+          text-white 
           font-medium 
           px-3 
           py-9 
           rounded-l-lg 
           shadow-lg 
-          hover:bg-selectiveyellow/90 
+          hover:bg-selectiveyellow 
           transition-all 
           duration-300 
           flex 
-          items-center 
-          justify-center
+          flex-col 
+          items-center
+          gap-4
           writing-mode-vertical
         "
       >
-        <span className="[writing-mode:vertical-rl] rotate-180 text-white tracking-widest">
+        <span className="[writing-mode:vertical-rl] rotate-180 tracking-widest flex items-center gap-2">
+          <IoIosMail className="rotate-90 text-2xl font-bold" />
           {label}
         </span>
       </Link>
