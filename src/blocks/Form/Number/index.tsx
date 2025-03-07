@@ -24,9 +24,9 @@ export const Number: React.FC<
       </Label>
       <Input
         className="text-white bg-jet border-2 border-darkblue py-6 text-lg"
-        placeholder={defaultValue}
+        placeholder={label}
         id={name}
-        type="number"
+        type="tel"
         {...register(name, { required: requiredFromProps })}
       />
       {requiredFromProps && errors[name] && <Error />}
