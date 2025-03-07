@@ -37,8 +37,8 @@ export const ContactBlock: React.FC<ContactBlockProps> = ({
 }) => {
   return (
     <section className="w-full pt-[5rem] bg-darkblue text-white">
-      <div className="container flex flex-col md:flex-row-reverse py-5">
-        <div className="basis-1/2 flex flex-col md:p-5">
+      <div className="container flex flex-col md:flex-row-reverse">
+        <div className="basis-1/2 flex flex-col md:px-5">
           <h2 className="text-selectiveyellow tracking-widest uppercase inline-block px-2 py-1 text-sm">
             <FaDroplet className="inline-block text-selectiveyellow mr-2 -top-[2px] relative" />
             {title}
@@ -122,8 +122,8 @@ export const ContactBlock: React.FC<ContactBlockProps> = ({
             })
           )}
         </div>
-        <div className="basis-1/2 py-[2rem] md:py-[5rem] p-5">
-          <div className="bg-white p-5 rounded-xl pb-[5rem]">
+        <div className="basis-1/2 py-[2rem] px-5">
+          <div className="bg-white rounded-xl p-5 py-[2rem] pb-[5rem]">
             <h3 className="text-2xl md:text-4xl text-jet py-5">Contact Us</h3>
           {
             blocks.map((block, index) => {

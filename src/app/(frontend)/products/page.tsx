@@ -58,7 +58,7 @@ export default async function PostsPage() {
       {docs.length > 0 && (
         <div className="container mx-auto py-20 flex flex-col justify-between gap-10">
           {docs.map((doc: any, index: any) => (
-            <div key={index} className={`flex flex-col gap-10 justify-between ${index % 2 === 0 ? 'md:flex-row-reverse' : 'md:flex-row'}`}>
+            <div key={index} className={`py-20 flex flex-col gap-10 justify-between ${index % 2 === 0 ? 'md:flex-row-reverse' : 'md:flex-row'}`}>
               <div className="basis-1/2">
                 <AnimateIn
                   animation={{
@@ -77,7 +77,7 @@ export default async function PostsPage() {
                   <CustomLink
                     link={`/products/${doc.slug}`}
                     theme="white"
-                    label="Read More"
+                    label="View Range"
                   />
                 </AnimateIn>
               </div>
@@ -105,7 +105,7 @@ export default async function PostsPage() {
         )
       }
 
-<section className="bg-darkblue">
+    <section className="bg-darkblue">
       <div className="w-full py-[5rem] relative overflow-hidden">
         <video
           autoPlay

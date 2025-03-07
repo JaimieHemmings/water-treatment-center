@@ -7,6 +7,9 @@ import React from 'react'
 import PageClient from './page.client'
 import Image from 'next/image'
 import { FaDroplet } from "react-icons/fa6";
+import AnimateIn from '@/components/Animations/AnimateIn'
+import Bounded from '@/utilities/Bounded'
+import CustomLink from '@/components/CustomLink'
 
 export const dynamic = 'force-static'
 export const revalidate = 600
@@ -31,7 +34,7 @@ export default async function PostsPage() {
   const { docs, totalPages, page } = response
 
   return (
-    <div className="pb-24 bg-darkblue">
+    <div className="bg-darkblue">
       <PageClient />
       <div className="relative w-full min-h-[400px] azul-overlay py-20">
         <Image
@@ -65,6 +68,61 @@ export default async function PostsPage() {
           <Pagination page={page} totalPages={totalPages} />
         )}
       </div>
+      <section className="bg-darkblue">
+      <div className="w-full py-[5rem] relative overflow-hidden">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover min-w-full min-h-full"
+        >
+        <source src="/water-drop.mp4" type="video/mp4" />
+      </video>
+      <div
+        className="w-full
+        h-full
+        absolute
+        z-1
+        bg-[#009290]/70
+        top-0
+        left-0" />
+      <Bounded>
+        <div className="flex flex-col md:flex-row justify-between">
+          <div className="basis-1/2">
+            <AnimateIn
+              animation={{
+                y: 60,
+                opacity: 0,
+                duration: 1,
+                ease: 'power2.out',
+              }}
+            >
+              <h2 className="text-white inline-block px-2 py-1 mb-5 text-sm uppercase">
+                <FaDroplet className="inline-block text-white text-base relative -top-[1px] mr-1 tracking-widest" /> Get In Touch
+              </h2>
+              <p
+                className="text-2xl md:text-4xl font-semibold'} mb-5 text-white"
+              >We&apos;re here to help! Connect with our experts and find the perfect solution for your needs!</p>
+              <span className="w-1/2 h-1 border-b-2 relative block border-white mb-5" />
+            </AnimateIn>
+          </div>
+          <div className="basis-1/2 flex flex-col items-centre max-w-[200px] justify-center">
+            <AnimateIn
+              animation={{
+                y: 60,
+                opacity: 0,
+                duration: 1,
+                ease: 'power2.out',
+              }}
+            >
+              <CustomLink theme="white" label="Get In Touch" link="/contact" /> 
+            </AnimateIn>         
+          </div>
+        </div>
+      </Bounded>
+      </div>
+    </section>
     </div>
   )
 }

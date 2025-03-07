@@ -13,6 +13,7 @@ import { LivePreviewListener } from '@/components/LivePreviewListener'
 import Bounded from '@/utilities/Bounded'
 import CustomLink from '@/components/CustomLink'
 import AnimateIn from '@/components/Animations/AnimateIn'
+import { FaDroplet } from "react-icons/fa6";
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
   const posts = await payload.find({
@@ -49,57 +50,64 @@ export default async function Post({ params: paramsPromise }: Args) {
       {draft && <LivePreviewListener />}
       <PostHero post={post} />
       <div className="flex flex-col items-center gap-4 pt-8 bg-darkblue">
-        <div className="container">
+        <div className="container py-[5rem]">
           <RichText className="max-w-none text-white" data={post.content} enableGutter={false} />
         </div>
       </div>
-    <section className="w-full bg-jet py-20 mt-[5rem] relative overflow-hidden">
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="absolute inset-0 w-full h-full object-cover min-w-full min-h-full"
-      >
+      <section className="bg-darkblue">
+      <div className="w-full py-[5rem] relative overflow-hidden">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover min-w-full min-h-full"
+        >
         <source src="/water-drop.mp4" type="video/mp4" />
       </video>
-      <div className="w-full h-full absolute z-1 bg-gradient-to-br from-teal to-azul opacity-70 top-0 left-0" />
+      <div
+        className="w-full
+        h-full
+        absolute
+        z-1
+        bg-[#009290]/70
+        top-0
+        left-0" />
       <Bounded>
-        <div className="p-4">
-          <AnimateIn
-            animation={{
-              y: 60,
-              opacity: 0,
-              duration: 1,
-              ease: 'power2.out',}}
-          >
-            <h2 className="border-selectiveyellow border-b-2 pb-2 text-white inline-block font-semibold mb-5 text-sm">
-              Get In Touch
-            </h2>
-          </AnimateIn>
-          <AnimateIn
-            animation={{
-              y: 60,
-              opacity: 0,
-              duration: 1,
-              ease: 'power2.out',}}
-          >
-          <p className="text-2xl md:text-4xl font-semibold text-white mb-5">
-            Get in touch to imporve the water quality in your home!
-          </p>
-          </AnimateIn>
-          <div className="flex justify-end space-x-4">
+        <div className="flex flex-col md:flex-row justify-between">
+          <div className="basis-1/2">
             <AnimateIn
               animation={{
+                y: 60,
                 opacity: 0,
                 duration: 1,
-                ease: 'power2.out',}}
+                ease: 'power2.out',
+              }}
             >
-              <CustomLink theme="light" label="Contact Us" link="/contact" />
+              <h2 className="text-white inline-block px-2 py-1 mb-5 text-sm uppercase">
+                <FaDroplet className="inline-block text-white text-base relative -top-[1px] mr-1 tracking-widest" /> Get In Touch
+              </h2>
+              <p
+                className="text-2xl md:text-4xl font-semibold'} mb-5 text-white"
+              >We&apos;re here to help! Connect with our experts and find the perfect solution for your needs!</p>
+              <span className="w-1/2 h-1 border-b-2 relative block border-white mb-5" />
             </AnimateIn>
+          </div>
+          <div className="basis-1/2 flex flex-col items-centre max-w-[200px] justify-center">
+            <AnimateIn
+              animation={{
+                y: 60,
+                opacity: 0,
+                duration: 1,
+                ease: 'power2.out',
+              }}
+            >
+              <CustomLink theme="white" label="Get In Touch" link="/contact" /> 
+            </AnimateIn>         
           </div>
         </div>
       </Bounded>
+      </div>
     </section>
     </article>
   )
