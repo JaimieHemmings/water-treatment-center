@@ -4,6 +4,7 @@ import configPromise from '@payload-config'
 import { getPayload } from 'payload'
 import { AnimateIn } from '@/components/Animations/AnimateIn'
 import RichText from '@/components/RichText'
+import { FaDroplet } from "react-icons/fa6";
 
 export const dynamic = 'force-static'
 export const revalidate = 600
@@ -19,7 +20,7 @@ export default async function ServicesBlock() {
 
   const { docs } = response
   return (
-    <div className="w-full bg-darkblue py-[2rem] relative">
+    <div className="w-full bg-white text-jet py-[2rem] relative">
       <Image
         src="/dots.svg"
         alt="Decorative dots"
@@ -45,15 +46,18 @@ export default async function ServicesBlock() {
                 delay: 0.1 * index,
               }}
             >
-              <h3 className="text-2xl md:text-4xl text-white py-2">{service.title}</h3>
-              <RichText data={service.description} enableGutter={false} className="max-w-none prose md:prose-md mb-5 text-md md:xl mr-0 [&_strong]:font-bold text-white" />
+              <h3 className="text-2xl md:text-4xl py-2 text-selectiveyellow font-bold mb-5">
+                <FaDroplet className="inline-block mr-2 relative -top-[2px]" />
+                {service.title}
+              </h3>
+              <RichText data={service.description} enableGutter={false} className="max-w-none prose md:prose-md mb-10 text-md md:xl mr-0 [&_strong]:font-bold" />
               {service.features && (
-                <ul className="list-none list-inside text-white mt-4">
+                <ul className="list-none list-inside mt-4">
                   {service.features.map((feature) => (
-                    <li key={feature.id} className="text-base border-b border-selectiveyellow py-2">
-                      <span className="font-semibold">
+                    <li key={feature.id} className="text-base border-l-2 pl-4 border-selectiveyellow my-2">
+                      <p>
                         {feature.description}
-                      </span>
+                      </p>
                     </li>
                   ))}
                 </ul>

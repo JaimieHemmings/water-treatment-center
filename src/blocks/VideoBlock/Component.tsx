@@ -1,8 +1,8 @@
 import React from 'react'
 import Image from 'next/image'
-import SectionTitle from '@/components/SectionTitle'
 import AnimateIn from '@/components/Animations/AnimateIn'
 import CustomLink from '@/components/CustomLink'
+import { FaDroplet } from "react-icons/fa6";
 
 interface VideoBlockProps {
   title: string
@@ -69,10 +69,12 @@ const VideoBlock: React.FC<VideoBlockProps> = ({
       <div className="absolute inset-0 bg-darkblue/80" />
 
       {/* Content */}
-      <div className="relative z-10">
-        <div className="text-white">
-          <SectionTitle title={title} subtitle={subtitle} />
-        </div>
+      <div className="relative z-10 container text-white">
+        <h2 className={`text-sm md:text-sm font-semibold text-selectiveyellow m-0 pb-5 tracking-widest`}>
+          <FaDroplet className="inline-block text-selectiveyellow mr-2 relative -top-[2px]" />
+          {title}
+        </h2>
+        <p className="text-2xl md:text-4xl">{subtitle}</p>
       </div>
 
       <div className="container flex flex-col justify-between">

@@ -2,7 +2,7 @@ import React from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import RichText from "@/components/RichText";
-import SectionTitle from "@/components/SectionTitle";
+import { FaDroplet } from "react-icons/fa6";
 import { AnimateIn } from "@/components/Animations/AnimateIn";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -26,7 +26,13 @@ export const TwoColumnBlock: React.FC<TwoColumnBlockProps> = ({ contentleft, con
           ease: "power2.out",
         }}
       >
-        <SectionTitle title={title} subtitle={mainContent} />
+        <div className="container border-l-2 border-selectiveyellow pl-5">
+          <h2 className={`text-sm md:text-sm font-semibold text-selectiveyellow m-0 pb-5 tracking-widest`}>
+            <FaDroplet className="inline-block text-selectiveyellow mr-2 relative -top-[2px]" />
+            {title}
+          </h2>
+          <p className="text-2xl md:text-4xl">{mainContent}</p>
+        </div>
       </AnimateIn>
       <div className="container pb-5 flex flex-col md:flex-row justify-between mt-5">
         <div className="md:basis-1/3 pt-5">

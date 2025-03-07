@@ -29,7 +29,7 @@ export default async function PostsPage() {
   const { docs } = response
   return (
     <div className="bg-darkblue">
-      <div className="relative w-full min-h-[600px] azul-overlay dots-overlay py-20">
+      <div className="relative w-full min-h-[600px] azul-overlay py-20">
         <Image
           src="/glass-of-water.webp"
           alt="background Image"
@@ -38,8 +38,8 @@ export default async function PostsPage() {
           className="absolute inset-0 w-full h-full object-cover"
           priority
         />
-        <div className="container mx-auto h-full flex flex-row justify-center items-center relative z-10">
-          <div className="basis-1/2">
+        <div className="container mx-auto h-full flex flex-row justify-start items-center relative z-10">
+          <div className="md:basis-2/3">
             <p className="mb-5 text-sm text-white tracking-widest flex flex-row gap-2 items-center uppercase">
               <FaDroplet className="inline-block text-selectiveyellow" />
               Water Treatment Centre
@@ -47,7 +47,7 @@ export default async function PostsPage() {
             <h1 className="text-4xl md:text-[72px] md:leading-[80px] text-white">
               A Filter For Every Application
             </h1>
-            <p className="my-5 pt-5 text-lg md:max-w-[60%] text-white">
+            <p className="my-5 pt-5 text-lg text-white">
             Pure, clean water shouldn&apos;t be a luxury - it&apos;s essential for your family&apos;s health and well-being. Our wide range of water filtration products are designed to meet the needs of every home and business, no matter the size or application.
             </p>
           </div>
@@ -105,7 +105,8 @@ export default async function PostsPage() {
         )
       }
 
-      <section className="w-full bg-jet py-20 relative overflow-hidden">
+<section className="bg-darkblue">
+      <div className="w-full py-[5rem] relative overflow-hidden">
         <video
           autoPlay
           loop
@@ -113,46 +114,52 @@ export default async function PostsPage() {
           playsInline
           className="absolute inset-0 w-full h-full object-cover min-w-full min-h-full"
         >
-          <source src="/water-drop.mp4" type="video/mp4" />
-        </video>
-        <div className="w-full h-full absolute z-1 bg-gradient-to-br from-teal to-azul opacity-70 top-0 left-0" />
-        <Bounded>
-          <div className="p-4">
+        <source src="/water-drop.mp4" type="video/mp4" />
+      </video>
+      <div
+        className="w-full
+        h-full
+        absolute
+        z-1
+        bg-[#009290]/70
+        top-0
+        left-0" />
+      <Bounded>
+        <div className="flex flex-col md:flex-row justify-between">
+          <div className="basis-1/2">
             <AnimateIn
               animation={{
                 y: 60,
                 opacity: 0,
                 duration: 1,
-                ease: 'power2.out',}}
+                ease: 'power2.out',
+              }}
             >
-              <h2 className="bg-selectiveyellow text-white inline-block px-5 py-2 rounded-xl font-semibold mb-5">
-                Get In Touch
+              <h2 className="text-white inline-block px-2 py-1 mb-5 text-sm uppercase">
+                <FaDroplet className="inline-block text-white text-base relative -top-[1px] mr-1 tracking-widest" /> Get In Touch
               </h2>
+              <p
+                className="text-2xl md:text-4xl font-semibold'} mb-5 text-white"
+              >We&apos;re here to help! Connect with our experts and find the perfect solution for your needs!</p>
+              <span className="w-1/2 h-1 border-b-2 relative block border-white mb-5" />
             </AnimateIn>
+          </div>
+          <div className="basis-1/2 flex flex-col items-centre max-w-[200px] justify-center">
             <AnimateIn
               animation={{
                 y: 60,
                 opacity: 0,
                 duration: 1,
-                ease: 'power2.out',}}
+                ease: 'power2.out',
+              }}
             >
-              <p className="text-2xl md:text-5xl font-semibold text-white">
-              Have questions about water filtration? We&apos;re here to help! Click below to connect with our experts and find the perfect solution for your needs.
-              </p>
-            </AnimateIn>
-            <div className="flex justify-end space-x-4">
-              <AnimateIn
-                animation={{
-                  opacity: 0,
-                  duration: 1,
-                  ease: 'power2.out',}}
-              >
-                <CustomLink theme="light" label="Get In Touch" link="/contact" />
-              </AnimateIn>
-            </div>
+              <CustomLink theme="white" label="Get In Touch" link="/contact" /> 
+            </AnimateIn>         
           </div>
-        </Bounded>
-      </section>
+        </div>
+      </Bounded>
+      </div>
+    </section>
     </div>
   )
 }
