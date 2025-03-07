@@ -39,7 +39,7 @@ export const ContactBlock: React.FC<ContactBlockProps> = ({
     <section className="w-full pt-[5rem] bg-darkblue text-white">
       <div className="container flex flex-col md:flex-row-reverse">
         <div className="basis-1/2 flex flex-col md:px-5">
-          <h2 className="text-selectiveyellow tracking-widest uppercase inline-block px-2 py-1 text-sm">
+          <h2 className="text-selectiveyellow tracking-widest uppercase inline-block py-1 text-sm">
             <FaDroplet className="inline-block text-selectiveyellow mr-2 -top-[2px] relative" />
             {title}
           </h2>
