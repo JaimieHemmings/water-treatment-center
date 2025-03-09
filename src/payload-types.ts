@@ -2211,13 +2211,6 @@ export interface Header {
         id?: string | null;
       }[]
     | null;
-  subNavItems?:
-    | {
-        link: number | Page;
-        label?: string | null;
-        id?: string | null;
-      }[]
-    | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -2255,13 +2248,6 @@ export interface Footer {
  */
 export interface HeaderSelect<T extends boolean = true> {
   navItems?:
-    | T
-    | {
-        link?: T;
-        label?: T;
-        id?: T;
-      };
-  subNavItems?:
     | T
     | {
         link?: T;

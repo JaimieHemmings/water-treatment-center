@@ -31,29 +31,29 @@ export const Header: GlobalConfig = {
           RowLabel: '@/Header/RowLabel#RowLabel',
         },
       },
-    },
-    {
-      name: 'subNavItems',
-      type: 'array',
-      fields: [
-        {
-          name: 'link',
-          type: 'relationship',
-          relationTo: 'pages',
-          hasMany: false,
-          required: true,
-        },
-        {
-          name: 'label',
-          label: 'Label',
-          type: 'text',
-        },
-      ],
-      maxRows: 6,
-      admin: {
-        initCollapsed: true,
-    },
-  },
+     },
+  //   {
+  //     name: 'subNavItems',
+  //     type: 'array',
+  //     fields: [
+  //       {
+  //         name: 'link',
+  //         type: 'relationship',
+  //         relationTo: 'pages',
+  //         hasMany: false,
+  //         required: true,
+  //       },
+  //       {
+  //         name: 'label',
+  //         label: 'Label',
+  //         type: 'text',
+  //       },
+  //     ],
+  //     maxRows: 6,
+  //     admin: {
+  //       initCollapsed: true,
+  //   },
+  // },
   ],
   hooks: {
     afterChange: [revalidateHeader],

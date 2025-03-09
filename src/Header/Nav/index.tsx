@@ -2,7 +2,6 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { FaChevronDown } from "react-icons/fa6";
 
 // Define proper types instead of using 'any'
 interface NavItem {
@@ -10,6 +9,7 @@ interface NavItem {
     slug: string;
     title: string;
   };
+  label: string;
 }
 
 interface SubNavItem {
@@ -60,7 +60,7 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({ data, subNav }) => {
         </svg>
       </button>
       
-      <ul className={`flex flex-col md:flex-row h-full md:items-center w-full max-md:absolute max-md:top-[59px] max-md:left-0 bg-darkblue max-md:h-screen max-md:justify-start max-md:py-10 ${isMenuOpen ? ('') : ('max-md:hidden')}`}>
+      <ul className={`flex flex-col md:flex-row h-full md:items-center w-full max-md:absolute max-md:top-[57px] max-md:left-0 bg-darkblue max-md:h-screen max-md:justify-start max-md:py-10 ${isMenuOpen ? ('') : ('max-md:hidden')}`}>
 
         {/* Dynamic nav items */}
         {navItems.map((item: NavItem, index: number) => (
@@ -70,7 +70,7 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({ data, subNav }) => {
               href={`/${item.link.slug}`}
               className={linkClasses}
             >
-              {item.link.title}
+              {item.label}
             </Link>
           </li>
         ))}
@@ -83,15 +83,16 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({ data, subNav }) => {
               href="/products"
               className={`${linkClasses} max-md:w-full`}
             >
-              Products <FaChevronDown className="text-sm ml-2 max-md:hidden" />
+               Products{/* <FaChevronDown className="text-sm ml-2 md:hidden" /> */}
             </Link>
           </div>
           
           <ul 
-            className={`
-              md:absolute md:invisible group-hover:visible md:opacity-0 group-hover:opacity-100 
-              transition-all duration-300 bg-darkblue w-64 md:left-0 md:top-full md:border-t-2 md:border-azul block max-md:w-full
-            `}
+            // className="              
+            //   md:absolute md:invisible group-hover:visible md:opacity-0 group-hover:opacity-100 
+            //   transition-all duration-300 bg-darkblue w-64 md:left-0 md:top-full md:border-t-2 md:border-azul block max-md:w-full
+            // "
+            className="block relative md:hidden md:invisible bg-darkblue w-64 max-md:w-full"
           >
             {subNav.map((item: SubNavItem, index: number) => (
               <li key={`subnav-item-${index}`}>

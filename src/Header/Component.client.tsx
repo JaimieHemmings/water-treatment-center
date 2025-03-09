@@ -27,6 +27,8 @@ export default async function HeaderClient({ data }) {
 
     const { docs } = response
 
+    const subLinkClasses = "text-antiflashwhite px-4 py-3 text-base font-normal hover:bg-azul hover:text-white transition-colors duration-300 block max-md:pl-10";
+
   return (
     <>
     <div className="w-full bg-white hidden md:block relative z-[999]">
@@ -79,7 +81,24 @@ export default async function HeaderClient({ data }) {
       </div>
       <div className="flex-row justify-between align-middle bg-white py-2 hidden md:flex tracking-widest border-b-[2px] border-darkblue">
         <ul className="container flex flex-row gap-4 justify-end w-full text-md text-selectiveyellow">
-        {data.subNavItems.map((item: any, index: number) => (
+
+
+
+
+        {docs.map((item: any, index: number) => (
+          <li key={`subnav-item-${index}`}>
+            <Link
+              href={`/products/${item.slug}`}
+              className="flex flex-row justify-center items-center hover:text-azul text-selectiveyellow transition-all duration-300 gap-2 text-sm"
+            >
+              <FaDroplet className="inline-block" />
+              {item.title}
+            </Link>
+          </li>
+        ))}
+
+        {/* for item in data.subNavItems */}
+        {/* {data.subNavItems.map((item: any, index: number) => (
           <li className="md:h-full" key={`subnav-${index}`}>
             <Link
               href={`/${item.link.slug}`}
@@ -90,7 +109,8 @@ export default async function HeaderClient({ data }) {
               {item.title || item.label}
             </Link>
           </li>
-        ))}
+        ))} */}
+                
         </ul>
       </div>
     </header>
