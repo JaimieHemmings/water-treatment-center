@@ -14,14 +14,13 @@ interface CallToActionBlockProps {
   };
   linkLabel: string;
   richText: any;
-  lightbgToggle: boolean;
   backgroundImage?: { 
     url: string;
     alt: string;
   };
 }
 
-export const CallToActionBlock: React.FC<CallToActionBlockProps> = ({ link, linkLabel, richText, lightbgToggle, backgroundImage, title, subtitle }) => {
+export const CallToActionBlock: React.FC<CallToActionBlockProps> = ({ link, linkLabel, richText, backgroundImage, title, subtitle }) => {
   return (
     <section className="bg-darkblue">
       <div className="w-full py-[5rem] relative overflow-hidden">
@@ -38,14 +37,6 @@ export const CallToActionBlock: React.FC<CallToActionBlockProps> = ({ link, link
             <div className="absolute inset-0 bg-darkblue/60" />
           </div>
         )}
-        <Image
-          src="/dots.svg"
-          alt="Decorative dots"
-          className="absolute top-2 right-0 z-10 scale-x-[-1] w-48 h-72 md:w-48 md:h-72 max-md:hidden"
-          height={300}
-          width={200}
-          style={lightbgToggle ? { filter: 'brightness(0)' } : undefined}
-        />
         {!backgroundImage && (
           <video
           autoPlay
@@ -76,7 +67,7 @@ export const CallToActionBlock: React.FC<CallToActionBlockProps> = ({ link, link
                 ease: 'power2.out',
               }}
             >
-              <h2 className={`${backgroundImage ? 'text-selectiveyellow' : 'text-white'} inline-block px-2 py-1 mb-5 text-sm uppercase`}>
+              <h2 className={`${backgroundImage ? 'text-selectiveyellow' : 'text-white'} tracking-widest inline-block px-2 py-1 mb-5 text-sm uppercase`}>
                 <FaDroplet className={`inline-block ${backgroundImage ? 'text-selectiveyellow' : 'text-white'} text-base relative -top-[1px] mr-1`} /> {title || 'Get in touch!'}
               </h2>
               <div>

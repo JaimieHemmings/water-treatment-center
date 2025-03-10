@@ -16,6 +16,7 @@ export interface Config {
     media: Media;
     users: User;
     products: Product;
+    'supporting-documents': SupportingDocument;
     services: Service;
     'product-categories': ProductCategory;
     'test-submissions': TestSubmission;
@@ -35,6 +36,7 @@ export interface Config {
     media: MediaSelect<false> | MediaSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
     products: ProductsSelect<false> | ProductsSelect<true>;
+    'supporting-documents': SupportingDocumentsSelect<false> | SupportingDocumentsSelect<true>;
     services: ServicesSelect<false> | ServicesSelect<true>;
     'product-categories': ProductCategoriesSelect<false> | ProductCategoriesSelect<true>;
     'test-submissions': TestSubmissionsSelect<false> | TestSubmissionsSelect<true>;
@@ -1049,6 +1051,49 @@ export interface ProductCategory {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "supporting-documents".
+ */
+export interface SupportingDocument {
+  id: number;
+  title: string;
+  association: number | ProductCategory;
+  hero: {
+    title: string;
+    paragraph?: string | null;
+    image: number | Media;
+  };
+  content: {
+    content: {
+      root: {
+        type: string;
+        children: {
+          type: string;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    };
+  };
+  meta?: {
+    title?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (number | null) | Media;
+    description?: string | null;
+  };
+  slug?: string | null;
+  slugLock?: boolean | null;
+  createdAt: string;
+  updatedAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "services".
  */
 export interface Service {
@@ -1206,6 +1251,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'products';
         value: number | Product;
+      } | null)
+    | ({
+        relationTo: 'supporting-documents';
+        value: number | SupportingDocument;
       } | null)
     | ({
         relationTo: 'services';
@@ -1898,6 +1947,37 @@ export interface ProductsSelect<T extends boolean = true> {
               sku?: T;
               category?: T;
             };
+      };
+  meta?:
+    | T
+    | {
+        title?: T;
+        image?: T;
+        description?: T;
+      };
+  slug?: T;
+  slugLock?: T;
+  createdAt?: T;
+  updatedAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "supporting-documents_select".
+ */
+export interface SupportingDocumentsSelect<T extends boolean = true> {
+  title?: T;
+  association?: T;
+  hero?:
+    | T
+    | {
+        title?: T;
+        paragraph?: T;
+        image?: T;
+      };
+  content?:
+    | T
+    | {
+        content?: T;
       };
   meta?:
     | T

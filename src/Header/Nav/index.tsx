@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import { FaDroplet } from "react-icons/fa6";
 
 // Define proper types instead of using 'any'
 interface NavItem {
@@ -22,13 +23,13 @@ interface HeaderNavProps {
     navItems?: NavItem[];
   };
   subNav: SubNavItem[];
+  supDocs: any;
 }
 
 // Extract the link styles to a constant for reuse
-const linkClasses = "text-antiflashwhite px-4 py-2 font-normal lg:text-xl h-full flex items-center hover:bg-azul hover:text-white transition-colors duration-300 max-sm:text-2xl";
-const subLinkClasses = "text-antiflashwhite px-4 py-3 text-base font-normal hover:bg-azul hover:text-white transition-colors duration-300 block max-md:pl-10";
+const linkClasses = "text-antiflashwhite px-4 py-2 font-normal lg:text-xl md:h-full flex items-center hover:bg-azul hover:text-white transition-colors duration-300 max-sm:text-2xl";
 
-export const HeaderNav: React.FC<HeaderNavProps> = ({ data, subNav }) => {
+export const HeaderNav: React.FC<HeaderNavProps> = ({ data, subNav, supDocs }) => {
   // Safely access navItems with a default empty array
   const navItems = data?.navItems || [];
 
@@ -75,40 +76,51 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({ data, subNav }) => {
           </li>
         ))}
         
-        {/* Products dropdown */}
-        <li className="group relative md:h-full">
-          <div className="flex items-center md:h-full">
-            <Link
-              onClick={() => setIsMenuOpen(false)}
-              href="/products"
-              className={`${linkClasses} max-md:w-full`}
-            >
-               Products{/* <FaChevronDown className="text-sm ml-2 md:hidden" /> */}
-            </Link>
-          </div>
-          
-          <ul 
-            // className="              
-            //   md:absolute md:invisible group-hover:visible md:opacity-0 group-hover:opacity-100 
-            //   transition-all duration-300 bg-darkblue w-64 md:left-0 md:top-full md:border-t-2 md:border-azul block max-md:w-full
-            // "
-            className="block relative md:hidden md:invisible bg-darkblue w-64 max-md:w-full"
-          >
-            {subNav.map((item: SubNavItem, index: number) => (
-              <li key={`subnav-item-${index}`}>
-                <Link
-                  onClick={() => setIsMenuOpen(false)}
-                  href={`/products/${item.slug}`}
-                  className={subLinkClasses}
-                >
-                  {item.title}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </li>
-        
         {/* Static nav items */}
+        <li className="md:hidden">
+          <Link
+            onClick={() => setIsMenuOpen(false)}
+            href="/products"
+            className={linkClasses}
+          >
+            Products
+          </Link>
+            <ul className="py-2 bg-darkblue pl-8 md:hidden">
+              {subNav.map((item: SubNavItem, index: number) => {
+                const hasDropdownItems = supDocs.docs.some(
+                  (supItem: any) => supItem.association.slug === item.slug
+                );
+                return (
+                <li
+                  className="py-2"
+                  key={`subnav-item-${index}`}>
+                  <Link
+                    className="text-lg text-white"
+                    onClick={() => setIsMenuOpen(false)}
+                    href={`/products/${item.slug}`}
+                  >
+                    - {item.title}
+                  </Link>
+                  {hasDropdownItems && (
+                    <ul className="py-2 bg-darkblue">
+                    {supDocs.docs
+                      .filter((supItem: any) => supItem.association.slug === item.slug)
+                      .map((supItem: any, supIndex: number) => (
+                        <li key={`${supIndex}`}>
+                          <Link
+                            href={`/support/${supItem.slug}`}
+                            className="block px-2 pl-8 py-2 text-md text-white"
+                            >
+                            - {supItem.title}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </li>
+              )})}
+            </ul>
+        </li>
         <li className="md:h-full">
           <Link
             onClick={() => setIsMenuOpen(false)}

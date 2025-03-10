@@ -10,6 +10,7 @@ import { fileURLToPath } from 'url'
 
 import { Media } from './collections/Media'
 import { Products } from './collections/Products'
+import { Supporting } from './collections/Supporting'
 import { Services } from './collections/Services'
 import { ProductCategories } from './collections/ProductCategories'
 import { Pages } from './collections/Pages'
@@ -69,7 +70,7 @@ export default buildConfig({
       connectionString: process.env.DATABASE_URI || '',
     },
   }),
-  collections: [Pages, Posts, Media, Users, Products, Services, ProductCategories, TestSubmissions, TestKitRequests],
+  collections: [Pages, Posts, Media, Users, Products, Supporting, Services, ProductCategories, TestSubmissions, TestKitRequests],
   cors: [getServerSideURL()].filter(Boolean),
   globals: [Header, Footer],
   secret: process.env.PAYLOAD_SECRET,

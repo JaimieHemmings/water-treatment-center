@@ -6,7 +6,6 @@ import PageClient from './page.client'
 import Image from 'next/image'
 import { generateMeta } from '@/utilities/generateMeta'
 import RichText from '@/components/RichText'
-import { FaDroplet } from "react-icons/fa6";
 type Args = {
   params: Promise<{
     slug?: string
@@ -20,7 +19,7 @@ export default async function Post({ params: paramsPromise }: Args) {
   return (
     <article className="bg-darkblue relative z-0">
       <PageClient />
-      <div className="relative w-full min-h-[600px] azul-overlay dots-overlay py-[2rem] z-20">
+      <div className="relative w-full min-h-[600px] azul-overlay py-[2rem] z-20">
         {category.heroImage && (
           <Image
           // @ts-ignore
@@ -43,7 +42,7 @@ export default async function Post({ params: paramsPromise }: Args) {
           </div>
         </div>
         <div className="absolute top-0 left-0 w-full h-full bg-jet opacity-60 pointer-events-none"></div>
-        <div className="absolute pointer-events-none left-0 bottom-0 w-full h-1/2 bg-gradient-to-t from-darkblue to-transparent" />
+        <div className="absolute pointer-events-none left-0 bottom-0 w-full h-full bg-gradient-to-r from-darkblue to-transparent" />
       </div>
       <div className="flex flex-col items-center bg-darkblue">
         <RichText className="text-white" data={category.content} enableGutter={false} />

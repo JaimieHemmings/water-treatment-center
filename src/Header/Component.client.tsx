@@ -8,6 +8,7 @@ import { FaDroplet } from "react-icons/fa6";
 
 import { Logo } from '@/components/Logo/Logo'
 import { HeaderNav } from './Nav'
+import { FaChevronDown } from 'react-icons/fa';
 
 export default async function HeaderClient({ data }) {
 
@@ -27,7 +28,16 @@ export default async function HeaderClient({ data }) {
 
     const { docs } = response
 
-    const subLinkClasses = "text-antiflashwhite px-4 py-3 text-base font-normal hover:bg-azul hover:text-white transition-colors duration-300 block max-md:pl-10";
+    const supportingDocs:any = await payload.find({
+      collection: 'supporting-documents',
+      depth: 1,
+      overrideAccess: false,
+      select: {
+        title: true,
+        slug: true,
+        association: true,
+      },
+    })
 
   return (
     <>
@@ -77,39 +87,48 @@ export default async function HeaderClient({ data }) {
         <Link href="/" className="my-auto">
           <Logo loading="eager" priority="high" className="invert dark:invert-0 py-3" />
         </Link>
-        <HeaderNav data={data} subNav={docs} />
+        <HeaderNav data={data} subNav={docs} supDocs={supportingDocs} />
       </div>
-      <div className="flex-row justify-between align-middle bg-white py-2 hidden md:flex tracking-widest border-b-[2px] border-darkblue">
+      <div className="flex-row justify-between align-middle bg-white hidden md:flex tracking-widest border-b-[2px] border-darkblue">
         <ul className="container flex flex-row gap-4 justify-end w-full text-md text-selectiveyellow">
+        {docs.map((item: any, index: number) => {
+          const hasDropdownItems = supportingDocs.docs.some(
+            (supItem: any) => supItem.association.slug === item.slug
+          );
 
-
-
-
-        {docs.map((item: any, index: number) => (
-          <li key={`subnav-item-${index}`}>
+          return (
+          <li key={`subnav-item-${index}`} className="group relative">
             <Link
               href={`/products/${item.slug}`}
-              className="flex flex-row justify-center items-center hover:text-azul text-selectiveyellow transition-all duration-300 gap-2 text-sm"
+              className="flex flex-row justify-center items-center hover:text-azul text-selectiveyellow transition-all duration-300 gap-2 text-xs lg:text-sm py-2"
             >
               <FaDroplet className="inline-block" />
-              {item.title}
+              {item.title} {hasDropdownItems && <FaChevronDown className="inline-block" />}
             </Link>
-          </li>
-        ))}
 
-        {/* for item in data.subNavItems */}
-        {/* {data.subNavItems.map((item: any, index: number) => (
-          <li className="md:h-full" key={`subnav-${index}`}>
-            <Link
-              href={`/${item.link.slug}`}
-              className="flex flex-row justify-center items-center hover:text-azul text-selectiveyellow transition-all duration-300 gap-2"
+            {/* Dropdown menu */}
+            {hasDropdownItems && (
+            <ul 
+              className="absolute -left-2 top-6 lg:top-7 mt-2 hidden group-hover:block shadow-lg rounded-md min-w-[200px] border-t-2 border-jet"
             >
-
-              <FaDroplet className="inline-block" />
-              {item.title || item.label}
-            </Link>
+              {supportingDocs.docs
+                .filter((supItem: any) => supItem.association.slug === item.slug)
+                .map((supItem: any, supIndex: number) => (
+                  <li key={`${supIndex}`}>
+                    <Link
+                      href={`/support/${supItem.slug}`}
+                      className="block px-2 pl-8 py-2 text-xs md:text-sm text-selectiveyellow transition-all duration-300 bg-white relative"
+                    >
+                      <FaDroplet className="absolute top-3 left-2" />
+                      {supItem.title}
+                    </Link>
+                  </li>
+                ))
+              }
+            </ul>
+            )}
           </li>
-        ))} */}
+        )})}
                 
         </ul>
       </div>
