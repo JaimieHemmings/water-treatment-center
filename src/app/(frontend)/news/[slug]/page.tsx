@@ -51,7 +51,7 @@ export default async function Post({ params: paramsPromise }: Args) {
       <PostHero post={post} />
       <div className="flex flex-col items-center gap-4 pt-8 bg-darkblue">
         <div className="container py-[5rem]">
-          <RichText className="max-w-none text-white" data={post.content} enableGutter={false} />
+          <RichText className="max-w-none text-white prose md:prose-md" data={post.content} enableGutter={false} />
         </div>
       </div>
       <section className="bg-darkblue">
