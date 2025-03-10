@@ -71,7 +71,7 @@ const querySupportBySlug = cache(async ({ support }: { support: string }) => {
 })
 
 export async function generateMetadata({ params: paramsPromise }: Args): Promise<Metadata> {
-  const { slug = '' } = await paramsPromise
-  const post = await querySupportBySlug({ slug })
+  const { support = '' } = await paramsPromise
+  const post = await querySupportBySlug({ support })
   return generateMeta({ doc: post })
 }
