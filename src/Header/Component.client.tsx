@@ -116,7 +116,7 @@ export default async function HeaderClient({ data }) {
                 .map((supItem: any, supIndex: number) => (
                   <li key={`${supIndex}`}>
                     <Link
-                      href={`/support/${supItem.slug}`}
+                      href={`/products/${item.slug}/support/${supItem.slug}`}
                       className="block px-2 pl-8 py-2 text-xs md:text-sm text-selectiveyellow transition-all duration-300 bg-white relative"
                     >
                       <FaDroplet className="absolute top-3 left-2" />

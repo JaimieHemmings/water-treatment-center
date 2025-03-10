@@ -27,12 +27,16 @@ export default async function Product({ params }: Props) {
   return (
     <article className="bg-darkblue relative z-0 md:pt-10">
       <PageClient />
-      <Header productData={productData} />
-      <ProductNav />
-      <ProductFeatures productData={productData} />
-      <ProductCTA />
-      <ProductDetails productData={productData} />
-      <ServiceDetails productData={productData} />
+      {productData && (
+        <>
+        <Header productData={productData} />
+        <ProductNav />
+        <ProductFeatures productData={productData} />
+        <ProductCTA />
+        <ProductDetails productData={productData} />
+        <ServiceDetails productData={productData} />
+        </>
+      )}
       <section className="bg-darkblue">
       <div className="w-full py-[5rem] relative overflow-hidden">
         <video

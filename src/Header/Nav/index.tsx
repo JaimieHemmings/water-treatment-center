@@ -108,7 +108,7 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({ data, subNav, supDocs }) =
                       .map((supItem: any, supIndex: number) => (
                         <li key={`${supIndex}`}>
                           <Link
-                            href={`/support/${supItem.slug}`}
+                            href={`/products/${item.slug}/support/${supItem.slug}`}
                             className="block px-2 pl-8 py-2 text-md text-white"
                             >
                             - {supItem.title}

@@ -8,41 +8,51 @@ import { LivePreviewListener } from '@/components/LivePreviewListener'
 import SupportHero from './Components/SupportHero'
 import RichText from '@/components/RichText'
 import { generateMeta } from '@/utilities/generateMeta'
+import { notFound } from 'next/navigation'
 
 type Args = {
   params: Promise<{
     slug?: string
+    support?: string
   }>
 }
 
 export default async function Post({ params: paramsPromise }: any) {
   const { isEnabled: draft } = await draftMode()
-  const { slug = '' } = await paramsPromise
-  const post = await querySupportBySlug({ slug })
+  const { support = '' } = await paramsPromise
+  const post = await querySupportBySlug({ support })
+
+  if(!post) {
+    notFound()
+  }
+
   return (
     <article className="bg-darkblue relative z-0">
       <PageClient />
       {draft && <LivePreviewListener />}
-
-      <SupportHero
+      {post && (
+      <>
+        <SupportHero
         slideImage={post.hero.image}
         slideTitle={post.hero.title}
         slideParagraph={post.hero.paragraph}
-      />
+        />
 
-      {post.content && (
-        <RichText
+        {post.content && (
+          <RichText
           className="text-white"
           data={post.content.content}
           enableGutter={false}
-        />
+          />
+        )}
+      </>
       )}
 
     </article>
   )
 }
 
-const querySupportBySlug = cache(async ({ slug }: { slug: string }) => {
+const querySupportBySlug = cache(async ({ support }: { support: string }) => {
   const { isEnabled: draft } = await draftMode()
   const payload = await getPayload({ config: configPromise })
   const result = await payload.find({
@@ -53,7 +63,7 @@ const querySupportBySlug = cache(async ({ slug }: { slug: string }) => {
     pagination: false,
     where: {
       slug: {
-        equals: slug,
+        equals: support,
       },
     },
   })
