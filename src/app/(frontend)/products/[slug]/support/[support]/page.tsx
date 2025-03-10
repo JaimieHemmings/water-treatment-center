@@ -9,6 +9,7 @@ import SupportHero from './Components/SupportHero'
 import RichText from '@/components/RichText'
 import { generateMeta } from '@/utilities/generateMeta'
 import { notFound } from 'next/navigation'
+import { RenderBlocks } from '@/blocks/RenderBlocks'
 
 type Args = {
   params: Promise<{
@@ -39,11 +40,7 @@ export default async function Post({ params: paramsPromise }: any) {
         />
 
         {post.content && (
-          <RichText
-          className="text-white"
-          data={post.content.content}
-          enableGutter={false}
-          />
+          <RenderBlocks blocks={post.content.content} />
         )}
       </>
       )}

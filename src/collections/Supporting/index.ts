@@ -38,10 +38,11 @@ export const Supporting: CollectionConfig = {
     update: authenticated,
   },
   defaultPopulate: {
+    title: true,
     slug: true,
   },
   admin: {
-    defaultColumns: ['title',],
+    defaultColumns: ['title', 'slug', 'updatedAt'],
     useAsTitle: 'title',
     group: 'Product Admin',
   },
@@ -93,19 +94,8 @@ export const Supporting: CollectionConfig = {
             {
               name: 'content',
               label: 'Content',
-              type: 'richText',
-              editor: lexicalEditor({
-                features: ({ rootFeatures }) => {
-                  return [
-                    ...rootFeatures,
-                    HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
-                    BlocksFeature({ blocks: [CallToAction, FaqBlock, ImageGrid, ImageList, StatsBlock, TextWithImageBlock, TwoColumnBlock, VideoBlock, YoutubeBlock ] }),
-                    FixedToolbarFeature(),
-                    InlineToolbarFeature(),
-                    HorizontalRuleFeature(),
-                  ]
-                },
-              }),
+              type: 'blocks',
+              blocks: [CallToAction, FaqBlock, ImageGrid, ImageList, StatsBlock, TextWithImageBlock, TwoColumnBlock, VideoBlock, YoutubeBlock ],
               required: true,
             },
           ],

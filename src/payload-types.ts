@@ -1063,21 +1063,17 @@ export interface SupportingDocument {
     image: number | Media;
   };
   content: {
-    content: {
-      root: {
-        type: string;
-        children: {
-          type: string;
-          version: number;
-          [k: string]: unknown;
-        }[];
-        direction: ('ltr' | 'rtl') | null;
-        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-        indent: number;
-        version: number;
-      };
-      [k: string]: unknown;
-    };
+    content: (
+      | CallToActionBlock
+      | FaqBlock
+      | ImageGrid
+      | ImageList
+      | StatsBlock
+      | TextWithImageBlock
+      | TwoColumn
+      | VideoBlock
+      | YoutubeBlock
+    )[];
   };
   meta?: {
     title?: string | null;
@@ -1977,7 +1973,19 @@ export interface SupportingDocumentsSelect<T extends boolean = true> {
   content?:
     | T
     | {
-        content?: T;
+        content?:
+          | T
+          | {
+              cta?: T | CallToActionBlockSelect<T>;
+              faqblock?: T | FaqBlockSelect<T>;
+              imageGrid?: T | ImageGridSelect<T>;
+              imageList?: T | ImageListSelect<T>;
+              statsBlock?: T | StatsBlockSelect<T>;
+              textWithImageBlock?: T | TextWithImageBlockSelect<T>;
+              twoColumn?: T | TwoColumnSelect<T>;
+              videoBlock?: T | VideoBlockSelect<T>;
+              youtubeBlock?: T | YoutubeBlockSelect<T>;
+            };
       };
   meta?:
     | T
