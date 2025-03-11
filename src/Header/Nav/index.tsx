@@ -1,8 +1,10 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
-import { FaDroplet } from "react-icons/fa6";
+import { FaSearch } from "react-icons/fa";
+import { IoArrowForwardCircle } from "react-icons/io5";
+import { useRouter } from 'next/navigation';
 
 // Define proper types instead of using 'any'
 interface NavItem {
@@ -32,6 +34,19 @@ const linkClasses = "text-antiflashwhite px-4 py-2 font-normal lg:text-xl md:h-f
 export const HeaderNav: React.FC<HeaderNavProps> = ({ data, subNav, supDocs }) => {
   // Safely access navItems with a default empty array
   const navItems = data?.navItems || [];
+  const [showSearch, setShowSearch] = useState(false);
+
+  const [searchTerm, setSearchTerm] = useState('');
+  const router = useRouter();
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchTerm.trim()) {
+      router.push(`/search?q=${encodeURIComponent(searchTerm.trim())}`);
+      setSearchTerm('');
+      setShowSearch(false);
+    }
+  };
 
   // State for mobile menu
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
@@ -139,6 +154,44 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({ data, subNav, supDocs }) =
             Contact
           </Link>
         </li>
+        <li className="relative">
+        <span className="text-antiflashwhite px-4 py-2 font-normal lg:text-xl md:h-full flex items-center max-sm:text-2xl hover:cursor-pointer gap-2">
+          <FaSearch 
+            onClick={() => setShowSearch(!showSearch)} 
+            className="hover:text-azul transition-colors duration-300 text-2xl lg:text-2xl"
+          />
+          <form onSubmit={handleSubmit}>
+            <input 
+              type="text" 
+              placeholder="Search..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className={`
+                bg-antiflashwhite 
+                outline-darkblue
+                px-2 
+                py-1 
+                text-jet 
+                placeholder:text-jet/50
+                transition-all
+                rounded-xl
+                duration-300
+                ring-0
+                focus:ring-0
+                focus:outline-none
+                ${showSearch ? 'w-full md:w-[200px] opacity-100' : 'w-0 opacity-0'}
+              `}
+            />
+            <button 
+              type="submit"
+              className="absolute right-0 top-2 bg-azul rounded-r-xl hover:bg-selectiveyellow transition-colors duration-300"
+              disabled={!searchTerm.trim()}
+            >
+              <IoArrowForwardCircle className={`inline-block ${showSearch ? 'opacity-100 text-[32px] lg:text-4xl' : 'w-0 opacity-0'}`} />
+            </button>
+          </form>
+        </span>
+      </li>
       </ul>
     </nav>
   );
