@@ -184,7 +184,7 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({ data, subNav, supDocs }) =
             />
             <button 
               type="submit"
-              className="absolute right-0 top-2 bg-azul rounded-r-xl hover:bg-selectiveyellow transition-colors duration-300"
+              className="absolute right-0 top-2 bg-azul rounded-r-xl hover:bg-selectiveyellow transition-colors duration-300 cursor-pointer"
               disabled={!searchTerm.trim()}
             >
               <IoArrowForwardCircle className={`inline-block ${showSearch ? 'opacity-100 text-[32px] lg:text-4xl' : 'w-0 opacity-0'}`} />
