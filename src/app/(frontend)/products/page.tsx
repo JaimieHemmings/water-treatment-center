@@ -22,7 +22,6 @@ export default async function PostsPage() {
     select: {
       title: true,
       slug: true,
-      heroImage: true,
       excerpt: true,
     },
   })
