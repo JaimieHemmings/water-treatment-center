@@ -1073,6 +1073,7 @@ export interface SupportingDocument {
       | TwoColumn
       | VideoBlock
       | YoutubeBlock
+      | SplitTextBlock
     )[];
   };
   meta?: {
@@ -1087,6 +1088,37 @@ export interface SupportingDocument {
   slugLock?: boolean | null;
   createdAt: string;
   updatedAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "splitTextBlock".
+ */
+export interface SplitTextBlock {
+  items?:
+    | {
+        title: string;
+        text: {
+          root: {
+            type: string;
+            children: {
+              type: string;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        };
+        image?: (number | null) | Media;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'splitTextBlock';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1985,6 +2017,7 @@ export interface SupportingDocumentsSelect<T extends boolean = true> {
               twoColumn?: T | TwoColumnSelect<T>;
               videoBlock?: T | VideoBlockSelect<T>;
               youtubeBlock?: T | YoutubeBlockSelect<T>;
+              splitTextBlock?: T | SplitTextBlockSelect<T>;
             };
       };
   meta?:
@@ -1998,6 +2031,22 @@ export interface SupportingDocumentsSelect<T extends boolean = true> {
   slugLock?: T;
   createdAt?: T;
   updatedAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "splitTextBlock_select".
+ */
+export interface SplitTextBlockSelect<T extends boolean = true> {
+  items?:
+    | T
+    | {
+        title?: T;
+        text?: T;
+        image?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

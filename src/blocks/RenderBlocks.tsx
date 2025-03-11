@@ -22,6 +22,7 @@ import TestKitForm from '@/blocks/TestKitForm/Component'
 import TestKitCalculator from '@/blocks/TestKitCalculator/Component'
 import ReviewBlock from '@/blocks/ReviewBlock/Component'
 import ImageGrid from '@/blocks/ImageGrid/component'
+import SplitTextBlock from '@/blocks/SplitTextBlock/Component'
 
 const blockComponents = {
   content: ContentBlock,
@@ -44,6 +45,7 @@ const blockComponents = {
   testKitCalculator: TestKitCalculator,
   reviewBlock: ReviewBlock,
   imageGrid: ImageGrid,
+  splitTextBlock: SplitTextBlock,
 }
 
 export const RenderBlocks: React.FC<{
