@@ -30,7 +30,7 @@ export default async function BlogFeed() {
   return (
     <section className="relative py-[5rem] z-20 bg-white">
       <div className="container">
-        <div className="sticky top-[130px] mx-auto pb-[2rem]">
+        <div className="sticky top-[100px] md:top-[130px] mx-auto pb-[2rem]">
           <div className="pl-5 border-l-[5px] border-selectiveyellow">
             <h2 className="text-sm md:text-sm text-selectiveyellow m-0 pb-5 tracking-widest uppercase">
               <FaDroplet className="inline-block text-selectiveyellow mr-2" />
@@ -58,7 +58,7 @@ export default async function BlogFeed() {
                     <CustomLink theme="dark" label="Read More" link={`/news/${post.slug}`} />
                     </div>
                   </div>
-                  <div className="md:w-1/2 relative min-h-[350px] md:h-full">
+                  <div className="md:w-1/2 relative min-h-[200px] md:min-h-[350px] md:h-full">
                     <Image 
                       src={post.heroImage.url}
                       alt={post.heroImage.alt}
