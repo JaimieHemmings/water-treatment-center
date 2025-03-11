@@ -21,7 +21,6 @@ export default async function HeaderClient({ data }) {
       select: {
         title: true,
         slug: true,
-        heroImage: true,
         excerpt: true,
       },
     })
