@@ -1,16 +1,7 @@
-// @ts-nocheck
 import { getServerSideSitemap } from 'next-sitemap'
 import { getPayload } from 'payload'
 import config from '@payload-config'
 import { unstable_cache } from 'next/cache'
-
-interface SupportingDoc {
-  slug: string
-  updatedAt: string
-  association?: {
-    slug: string
-  }
-}
 
 const getSupportDocsSitemap = unstable_cache(
   async () => {
@@ -38,8 +29,8 @@ const getSupportDocsSitemap = unstable_cache(
 
     const sitemap = results.docs
       ? results.docs
-          .filter((doc: SupportingDoc) => Boolean(doc?.slug && doc?.association?.slug))
-          .map((doc: SupportingDoc) => {
+          .filter((doc: any) => Boolean(doc?.slug && doc?.association?.slug))
+          .map((doc: any) => {
             return {
               loc: `${SITE_URL}/products/${doc.association?.slug}/support/${doc.slug}`,
               lastmod: doc.updatedAt || dateFallback,
