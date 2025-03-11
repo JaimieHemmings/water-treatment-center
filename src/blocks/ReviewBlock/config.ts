@@ -17,11 +17,6 @@ export const ReviewBlock: Block = {
       required: false,
     },
     {
-      name: 'youtubeEmbed',
-      label: 'Youtube Embed',
-      type: 'text',
-    },
-    {
       name: 'reviews',
       label: 'Reviews',
       type: 'array',

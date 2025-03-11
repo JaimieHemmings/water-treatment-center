@@ -27,23 +27,18 @@ const ReviewBlock: React.FC<ReviewBlockProps> = ({title, subtitle, reviews, yout
             alt="Logo" 
             className="opacity-10 w-[50%] h-auto -z-1 right-0 bottom-0 absolute" 
           />
-          <div className="pb-5 text-white border-l-[5px] border-selectiveyellow pl-5 mb-5">
-            <h2 className="text-sm md:text-sm text-selectiveyellow m-0 pb-5 tracking-widest uppercase">
-              <FaDroplet className="inline-block text-selectiveyellow mr-2 -top-[4px]" />
-              {title}
-            </h2>
-            <p className="text-2xl md:text-4xl">{subtitle}</p>
-          </div>
+          
           <ReviewCarousel reviews={reviews} />
         </div>
         <div className="lg:basis-1/2">
           <div className="relative w-full rounded-lg overflow-hidden">
-            <div 
-              className="youtube-container"
-              dangerouslySetInnerHTML={{
-                __html: youtubeEmbed
-              }}
-            />
+            <div className="pb-5 text-white border-l-[5px] border-selectiveyellow pl-5 mb-5">
+              <h2 className="text-sm md:text-sm text-selectiveyellow m-0 pb-5 tracking-widest uppercase">
+                <FaDroplet className="inline-block text-selectiveyellow mr-2 -top-[4px]" />
+                {title}
+              </h2>
+              <p className="text-2xl md:text-4xl">{subtitle}</p>
+            </div>
           </div>
           <div className="flex-row items-center justify-center mt-5">
             <Link
