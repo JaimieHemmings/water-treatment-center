@@ -5,7 +5,6 @@ import React, { cache } from 'react'
 import PageClient from './page.client'
 import Image from 'next/image'
 import { generateMeta } from '@/utilities/generateMeta'
-import RichText from '@/components/RichText'
 import { RenderBlocks } from '@/blocks/RenderBlocks'
 type Args = {
   params: Promise<{
