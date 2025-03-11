@@ -85,7 +85,7 @@ export const TextWithImageBlock: React.FC<TextWithImageBlockProps> = ({
           }}
         >
           <div>
-            <h2 className={`text-sm md:text-sm font-semibold text-selectiveyellow m-0 pb-5 tracking-widest`}>
+            <h2 className={`text-sm text-selectiveyellow m-0 pb-5 tracking-widest uppercase`}>
               <FaDroplet className="inline-block text-selectiveyellow mr-2 relative -top-[2px]" />
               {title}
             </h2>
