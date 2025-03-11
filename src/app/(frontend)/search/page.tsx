@@ -107,10 +107,6 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
           </div>
         ))}
       </div>
-
-
-
-
       <section className="bg-darkblue">
       <div className="w-full py-[5rem] relative overflow-hidden">
           <video
@@ -167,6 +163,7 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
 
 export function generateMetadata(): Metadata {
   return {
-    title: `Payload Website Template Search`,
+    title: `Search | The Water Treatment Centre`,
+    description: `Search results | The Water Treatment Centre`,
   }
 }
