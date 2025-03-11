@@ -129,6 +129,7 @@ export interface Page {
     | TestKitCalculator
     | ReviewBlock
     | ImageGrid
+    | SplitTextBlock
   )[];
   meta?: {
     title?: string | null;
@@ -924,6 +925,118 @@ export interface ImageGrid {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "splitTextBlock".
+ */
+export interface SplitTextBlock {
+  items?:
+    | {
+        title: string;
+        text: {
+          root: {
+            type: string;
+            children: {
+              type: string;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        };
+        lType?: ('cms' | 'supporting') | null;
+        CMSLink?: (number | null) | Page;
+        supportingDocsLink?: (number | null) | SupportingDocument;
+        image?: (number | null) | Media;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'splitTextBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "supporting-documents".
+ */
+export interface SupportingDocument {
+  id: number;
+  title: string;
+  association: number | ProductCategory;
+  hero: {
+    title: string;
+    paragraph?: string | null;
+    image: number | Media;
+  };
+  content: {
+    content: (
+      | CallToActionBlock
+      | FaqBlock
+      | ImageGrid
+      | ImageList
+      | StatsBlock
+      | TextWithImageBlock
+      | TwoColumn
+      | VideoBlock
+      | YoutubeBlock
+      | SplitTextBlock
+    )[];
+  };
+  meta?: {
+    title?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (number | null) | Media;
+    description?: string | null;
+  };
+  slug?: string | null;
+  slugLock?: boolean | null;
+  createdAt: string;
+  updatedAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "product-categories".
+ */
+export interface ProductCategory {
+  id: number;
+  title: string;
+  excerpt: string;
+  hero: {
+    heroImage: number | Media;
+  };
+  content: {
+    content: (
+      | CallToActionBlock
+      | FaqBlock
+      | ImageGrid
+      | ImageList
+      | StatsBlock
+      | TextWithImageBlock
+      | TwoColumn
+      | VideoBlock
+      | YoutubeBlock
+    )[];
+  };
+  meta?: {
+    title?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (number | null) | Media;
+    description?: string | null;
+  };
+  slug?: string | null;
+  slugLock?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "products".
  */
 export interface Product {
@@ -1010,115 +1123,6 @@ export interface Product {
   slugLock?: boolean | null;
   createdAt: string;
   updatedAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "product-categories".
- */
-export interface ProductCategory {
-  id: number;
-  title: string;
-  excerpt: string;
-  hero: {
-    heroImage: number | Media;
-  };
-  content: {
-    content: (
-      | CallToActionBlock
-      | FaqBlock
-      | ImageGrid
-      | ImageList
-      | StatsBlock
-      | TextWithImageBlock
-      | TwoColumn
-      | VideoBlock
-      | YoutubeBlock
-    )[];
-  };
-  meta?: {
-    title?: string | null;
-    /**
-     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
-     */
-    image?: (number | null) | Media;
-    description?: string | null;
-  };
-  slug?: string | null;
-  slugLock?: boolean | null;
-  updatedAt: string;
-  createdAt: string;
-  _status?: ('draft' | 'published') | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "supporting-documents".
- */
-export interface SupportingDocument {
-  id: number;
-  title: string;
-  association: number | ProductCategory;
-  hero: {
-    title: string;
-    paragraph?: string | null;
-    image: number | Media;
-  };
-  content: {
-    content: (
-      | CallToActionBlock
-      | FaqBlock
-      | ImageGrid
-      | ImageList
-      | StatsBlock
-      | TextWithImageBlock
-      | TwoColumn
-      | VideoBlock
-      | YoutubeBlock
-      | SplitTextBlock
-    )[];
-  };
-  meta?: {
-    title?: string | null;
-    /**
-     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
-     */
-    image?: (number | null) | Media;
-    description?: string | null;
-  };
-  slug?: string | null;
-  slugLock?: boolean | null;
-  createdAt: string;
-  updatedAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "splitTextBlock".
- */
-export interface SplitTextBlock {
-  items?:
-    | {
-        title: string;
-        text: {
-          root: {
-            type: string;
-            children: {
-              type: string;
-              version: number;
-              [k: string]: unknown;
-            }[];
-            direction: ('ltr' | 'rtl') | null;
-            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-            indent: number;
-            version: number;
-          };
-          [k: string]: unknown;
-        };
-        image?: (number | null) | Media;
-        id?: string | null;
-      }[]
-    | null;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'splitTextBlock';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1403,6 +1407,7 @@ export interface PagesSelect<T extends boolean = true> {
         testKitCalculator?: T | TestKitCalculatorSelect<T>;
         reviewBlock?: T | ReviewBlockSelect<T>;
         imageGrid?: T | ImageGridSelect<T>;
+        splitTextBlock?: T | SplitTextBlockSelect<T>;
       };
   meta?:
     | T
@@ -1753,6 +1758,25 @@ export interface ImageGridSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "splitTextBlock_select".
+ */
+export interface SplitTextBlockSelect<T extends boolean = true> {
+  items?:
+    | T
+    | {
+        title?: T;
+        text?: T;
+        lType?: T;
+        CMSLink?: T;
+        supportingDocsLink?: T;
+        image?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "posts_select".
  */
 export interface PostsSelect<T extends boolean = true> {
@@ -2031,22 +2055,6 @@ export interface SupportingDocumentsSelect<T extends boolean = true> {
   slugLock?: T;
   createdAt?: T;
   updatedAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "splitTextBlock_select".
- */
-export interface SplitTextBlockSelect<T extends boolean = true> {
-  items?:
-    | T
-    | {
-        title?: T;
-        text?: T;
-        image?: T;
-        id?: T;
-      };
-  id?: T;
-  blockName?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

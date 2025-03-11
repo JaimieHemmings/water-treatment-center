@@ -27,6 +27,7 @@ import { TestKitForm } from '@/blocks/TestKitForm/config'
 import { TestKitCalculator } from '@/blocks/TestKitCalculator/config'
 import { ReviewBlock } from '@/blocks/ReviewBlock/config'
 import { ImageGrid } from '@/blocks/ImageGrid/config'
+import { SplitTextBlock } from '@/blocks/SplitTextBlock/config'
 
 import {
   MetaDescriptionField,
@@ -91,7 +92,7 @@ export const Pages: CollectionConfig<'pages'> = {
             {
               name: 'layout',
               type: 'blocks',
-              blocks: [CallToAction, Content, FormBlock, TextBlock, TwoColumnBlock, ProductsHome, ServicesBlock, BlogFeed, ContactBlock, TextWithImageBlock, StatsBlock, BlockRow, ImageList, FaqBlock, VideoBlock, YoutubeBlock, TestKitForm, TestKitCalculator, ReviewBlock, ImageGrid],
+              blocks: [CallToAction, Content, FormBlock, TextBlock, TwoColumnBlock, ProductsHome, ServicesBlock, BlogFeed, ContactBlock, TextWithImageBlock, StatsBlock, BlockRow, ImageList, FaqBlock, VideoBlock, YoutubeBlock, TestKitForm, TestKitCalculator, ReviewBlock, ImageGrid, SplitTextBlock],
               required: true,
               admin: {
                 initCollapsed: true,

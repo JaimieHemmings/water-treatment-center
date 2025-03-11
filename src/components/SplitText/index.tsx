@@ -1,9 +1,10 @@
 import React from 'react'
 import RichText from '@/components/RichText'
 import Image from 'next/image'
-import AnimateIn from '../Animations/AnimateIn'
+import AnimateIn from '@/components/Animations/AnimateIn'
+import CustomLink from '@/components/CustomLink'
 
-const SplitText = ({ item, index }) => {
+export const SplitText: React.FC<any> = ({ item, index }) => {
   return (
     <div
       className={`flex flex-col ${index % 2 === 0 ? 'md:flex-row-reverse' : 'md:flex-row'}`}
@@ -37,7 +38,13 @@ const SplitText = ({ item, index }) => {
             {item.title}
           </h2>
           <span className="relative w-1/2 h-[2px] bg-selectiveyellow block mb-3"></span>
-          <RichText data={item.text} className="p-0" />
+          <RichText data={item.text} className="p-0 mb-10" />
+          { item.lType == 'cms' && (
+            <CustomLink link={item.CMSLink.slug} label="Read More" theme="white" />
+          )}
+          { item.lType == 'supporting' && (
+            <CustomLink link={`/products/${item.supportingDocsLink.pageAssociation}/support/${item.supportingDocsLink.slug}`} label="Read More" theme="white" />
+          )}
         </AnimateIn>
       </div>
     </div>
