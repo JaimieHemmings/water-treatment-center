@@ -890,7 +890,6 @@ export interface TestKitCalculator {
 export interface ReviewBlock {
   title: string;
   subtitle?: string | null;
-  youtubeEmbed?: string | null;
   reviews?:
     | {
         review: string;
@@ -1725,7 +1724,6 @@ export interface TestKitCalculatorSelect<T extends boolean = true> {
 export interface ReviewBlockSelect<T extends boolean = true> {
   title?: T;
   subtitle?: T;
-  youtubeEmbed?: T;
   reviews?:
     | T
     | {
