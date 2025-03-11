@@ -2,21 +2,13 @@ import { MetadataRoute } from 'next'
 import { getPayload } from 'payload'
 import configPromise from '@payload-config'
 
-interface PayloadDoc {
-  slug: string
-  updatedAt: string
-  category?: {
-    slug: string
-  }
-}
-
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   try {
     const payload = await getPayload({ config: configPromise })
     const baseUrl = 'https://thewatertreatmentcentre.ie'
 
     // Fetch all published content
-    const [products, categories, pages] = await Promise.all([
+    const [products, categories, supportingDocs, posts, pages] = await Promise.all([
       payload.find({
         collection: 'products'
       }),
@@ -24,6 +16,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       payload.find({
         collection: 'product-categories',
       }),
+
+      payload.find({
+        collection: 'supporting-documents',
+      }),
+
+      payload.find({
+        collection: 'posts',
+      }),
+
       payload.find({
         collection: 'pages',
         where: {
@@ -40,6 +41,26 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         priority: 1
       }
     ]
+
+    // Add supporting documents
+    supportingDocs.docs.forEach((doc: any) => {
+      sitemapEntries.push({
+        url: `${baseUrl}/products/${doc.association.slug}/support/${doc.slug}`,
+        lastModified: new Date(doc.updatedAt),
+        changeFrequency: 'monthly',
+        priority: 0.6
+      })
+    })
+
+    // Add posts
+    posts.docs.forEach((post: any) => {
+      sitemapEntries.push({
+        url: `${baseUrl}/news/${post.slug}`,
+        lastModified: new Date(post.updatedAt),
+        changeFrequency: 'weekly',
+        priority: 0.7
+      })
+    })
 
     // Add products
     products.docs.forEach((product: any) => {
