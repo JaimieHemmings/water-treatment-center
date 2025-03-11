@@ -74,38 +74,46 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
         </div>
       </div>
       <PageClient />
-      <div className="container mb-16 text-white flex flex-col gap-4 py-[5rem]">
-        {posts.docs.map((post: any, index) => (
-          <div key={index} className="flex flex-col md:flex-row justify-center gap-4 py-10">
-            <div className="md:basis-1/2">
+      <div className="container py-[5rem] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {posts.docs.map((post: any, index) => (
+          <div key={index} className="bg-white rounded-xl overflow-hidden shadow-lg border border-selectiveyellow/20">
+            <div className="relative h-[250px]">
               {post.content.header.productImage && (
                 <Image
-                  className="rounded-2xl w-full h-auto"
+                  className="object-cover p-5"
                   src={post.content.header.productImage.url}
                   alt={post.title}
-                  width={400}
-                  height={400}
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
               )}
             </div>
-            <div className="md:basis-1/2 flex flex-col gap-4">
-              <h3 className="tracking-widest text-white text-sm uppercase">
-                <FaDroplet className="inline-block text-white relative -top-[2px] mr-2" />
+            <div className="p-6 flex flex-col gap-4">
+              <h3 className="tracking-widest text-selectiveyellow text-sm uppercase">
+                <FaDroplet className="inline-block text-selectiveyellow relative -top-[2px] mr-2" />
                 {post.content.specs.category.title}
               </h3>
-              <h2 className="text-2xl md:text-4xl">{post.title}</h2>
-              {post.meta.description && (
-                <p className="prose md:prose-md">{post.meta.description}</p>
+              <h2 className="text-xl text-jet font-semibold">{post.title}</h2>
+              {post.meta.description ? (
+                <p className="text-jet/70 line-clamp-2">{post.meta.description}</p>
+              ) : (
+                <p className="text-jet/50">Description not available</p>
               )}
-              {!post.meta.description && (
-                <p className="prose md:prose-md">Description not available</p>
-              )}
-              <div>
-                <CustomLink theme="white" label="View" link={`/products/${post.content.specs.category.slug}/${post.slug}`} />
+              <div className="mt-auto pt-4">
+                <CustomLink 
+                  theme="dark" 
+                  label="View Details" 
+                  link={`/products/${post.content.specs.category.slug}/${post.slug}`} 
+                />
               </div>
             </div>
           </div>
         ))}
+      {posts.docs.length === 0 && (
+        <div className="text-center py-[5rem] container">
+          <p className="text-xl text-jet/70">No results found for &aposl;{query}&aposl;</p>
+        </div>
+      )}
       </div>
       <section className="bg-darkblue">
       <div className="w-full py-[5rem] relative overflow-hidden">
