@@ -20,6 +20,7 @@ export default async function PostsPage() {
     depth: 1,
     overrideAccess: false,
     select: {
+      hero: true,
       title: true,
       slug: true,
       excerpt: true,
@@ -86,10 +87,10 @@ export default async function PostsPage() {
                   }}
                 >
                   <Image
-                    src={doc.heroImage.url}
-                    alt={doc.heroImage.alt}
-                    width={doc.heroImage.width}
-                    height={doc.heroImage.height}
+                    src={doc.hero.heroImage.url}
+                    alt={doc.hero.heroImage.alt}
+                    width={doc.hero.heroImage.width}
+                    height={doc.hero.heroImage.height}
                     className="object-cover rounded-xl"
                   />
                 </AnimateIn>
