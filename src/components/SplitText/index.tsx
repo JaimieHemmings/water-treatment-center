@@ -39,11 +39,21 @@ export const SplitText: React.FC<any> = ({ item, index }) => {
           </h2>
           <span className="relative w-1/2 h-[2px] bg-selectiveyellow block mb-3"></span>
           <RichText data={item.text} className="p-0 mb-10" />
-          { item.lType == 'cms' && (
-            <CustomLink link={item.CMSLink.slug} label="Read More" theme="white" />
+
+          {item.lType === 'cms' && item.CMSLink?.slug && (
+            <CustomLink 
+              link={item.CMSLink.slug} 
+              label="Read More" 
+              theme="white" 
+            />
           )}
-          { item.lType == 'supporting' && (
-            <CustomLink link={`/products/${item.supportingDocsLink.pageAssociation}/support/${item.supportingDocsLink.slug}`} label="Read More" theme="white" />
+
+          {item.lType === 'supporting' && item.supportingDocsLink?.pageAssociation && item.supportingDocsLink?.slug && (
+            <CustomLink 
+              link={`/products/${item.supportingDocsLink.pageAssociation}/support/${item.supportingDocsLink.slug}`} 
+              label="Read More" 
+              theme="white" 
+            />
           )}
         </AnimateIn>
       </div>
