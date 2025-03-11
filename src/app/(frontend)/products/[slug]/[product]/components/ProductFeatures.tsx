@@ -54,7 +54,7 @@ interface ProductFeaturesProps {
 
 const FeatureItem: React.FC<FeatureItemProps> = ({ title, description }) => (
   <li className="relative pl-[15px]">
-    <CiCircleCheck className="absolute top-0 left-0 text-4xl text-azul"/>
+    <CiCircleCheck className="absolute top-0 left-0 text-4xl text-selectiveyellow"/>
     <h4 className="text-xl md:text-2xl pl-8 pb-3">{title}</h4>
     <p className="pl-8">{description}</p>
   </li>
@@ -65,7 +65,7 @@ const ProductFeatures: React.FC<ProductFeaturesProps> = ({ productData }) => {
     <>
       <section className="container py-20 text-white" id="features">
         <div className="text-center">
-          <h2 className="border-b-2 border-azul text-white inline-block px-2 py-1 mb-5 text-sm">
+          <h2 className="border-b-2 border-selectiveyellow text-white inline-block px-2 py-1 mb-5 text-sm">
             FEATURES
           </h2>
           <AnimateIn
@@ -229,7 +229,7 @@ const ProductFeatures: React.FC<ProductFeaturesProps> = ({ productData }) => {
                   />
                 </div>
                 <div className="p-5 flex flex-col justify-between">
-                  <span className="text-azul font-bold text-xl md:text-2xl">0{index + 1}</span>
+                  <span className="text-selectiveyellow font-bold text-xl md:text-2xl">0{index + 1}</span>
                   <h3 className="text-xl md:text-2xl pb-3 text-antiflashwhite">
                     {card.title}
                   </h3>

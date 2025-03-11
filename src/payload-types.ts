@@ -1019,21 +1019,21 @@ export interface ProductCategory {
   id: number;
   title: string;
   excerpt: string;
-  heroImage: number | Media;
+  hero: {
+    heroImage: number | Media;
+  };
   content: {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
+    content: (
+      | CallToActionBlock
+      | FaqBlock
+      | ImageGrid
+      | ImageList
+      | StatsBlock
+      | TextWithImageBlock
+      | TwoColumn
+      | VideoBlock
+      | YoutubeBlock
+    )[];
   };
   meta?: {
     title?: string | null;
@@ -2023,8 +2023,28 @@ export interface ServicesSelect<T extends boolean = true> {
 export interface ProductCategoriesSelect<T extends boolean = true> {
   title?: T;
   excerpt?: T;
-  heroImage?: T;
-  content?: T;
+  hero?:
+    | T
+    | {
+        heroImage?: T;
+      };
+  content?:
+    | T
+    | {
+        content?:
+          | T
+          | {
+              cta?: T | CallToActionBlockSelect<T>;
+              faqblock?: T | FaqBlockSelect<T>;
+              imageGrid?: T | ImageGridSelect<T>;
+              imageList?: T | ImageListSelect<T>;
+              statsBlock?: T | StatsBlockSelect<T>;
+              textWithImageBlock?: T | TextWithImageBlockSelect<T>;
+              twoColumn?: T | TwoColumnSelect<T>;
+              videoBlock?: T | VideoBlockSelect<T>;
+              youtubeBlock?: T | YoutubeBlockSelect<T>;
+            };
+      };
   meta?:
     | T
     | {

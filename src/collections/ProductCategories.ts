@@ -1,18 +1,15 @@
 import type { CollectionConfig } from 'payload'
 
-import {
-  BlocksFeature,
-  FixedToolbarFeature,
-  HeadingFeature,
-  HorizontalRuleFeature,
-  InlineToolbarFeature,
-  lexicalEditor,
-} from '@payloadcms/richtext-lexical'
-
 import { authenticated } from '../access/authenticated'
 import { authenticatedOrPublished } from '../access/authenticatedOrPublished'
-import { Banner } from '../blocks/Banner/config'
-import { MediaBlock } from '../blocks/MediaBlock/config'
+import { CallToAction } from '@/blocks/CallToAction/config'
+import { FaqBlock } from '@/blocks/FaqBlock/config'
+import { ImageGrid } from '@/blocks/ImageGrid/config'
+import { ImageList } from '@/blocks/ImageList/config'
+import { StatsBlock } from '@/blocks/StatsBlock/config'
+import { TwoColumnBlock } from '@/blocks/TwoColumnBlock/config'
+import { VideoBlock } from '@/blocks/VideoBlock/config'
+import { YoutubeBlock } from '@/blocks/YoutubeBlock/config'
 
 import {
   MetaDescriptionField,
@@ -22,11 +19,7 @@ import {
   PreviewField,
 } from '@payloadcms/plugin-seo/fields'
 import { slugField } from '@/fields/slug'
-import { VideoBlock } from '@/blocks/VideoBlock/config'
-import { TwoColumnBlock } from '@/blocks/TwoColumnBlock/config'
 import { TextWithImageBlock } from '@/blocks/TextWithImageBlock/config'
-import { ImageList } from '@/blocks/ImageList/config'
-import { CallToAction } from '@/blocks/CallToAction/config'
 
 export const ProductCategories: CollectionConfig = {
   slug: 'product-categories',
@@ -68,6 +61,8 @@ export const ProductCategories: CollectionConfig = {
       type: 'tabs',
       tabs: [
         {
+          name: 'hero',
+          label: 'Hero',
           fields: [
             {
               name: 'heroImage',
@@ -76,34 +71,19 @@ export const ProductCategories: CollectionConfig = {
               relationTo: 'media',
               required: true,
             },
+          ]
+        },
+        {
+          name: 'content',
+          label: 'Content',
+          fields: [
             {
               name: 'content',
-              type: 'richText',
-              editor: lexicalEditor({
-                features: ({ rootFeatures }) => {
-                  return [
-                    ...rootFeatures,
-                    HeadingFeature({ enabledHeadingSizes: ['h2', 'h3', 'h4'] }),
-                    BlocksFeature({ blocks: [
-                      Banner,
-                      MediaBlock,
-                      VideoBlock,
-                      TwoColumnBlock,
-                      TextWithImageBlock,
-                      ImageList,
-                      CallToAction
-                    ] }),
-                    FixedToolbarFeature(),
-                    InlineToolbarFeature(),
-                    HorizontalRuleFeature(),
-                  ]
-                },
-              }),
-              label: false,
+              label: 'Content',
+              type: 'blocks',
+              blocks: [CallToAction, FaqBlock, ImageGrid, ImageList, StatsBlock, TextWithImageBlock, TwoColumnBlock, VideoBlock, YoutubeBlock ],
               required: true,
-            },
-          ],
-          label: 'Content',
+            }],
         },
         {
           name: 'meta',

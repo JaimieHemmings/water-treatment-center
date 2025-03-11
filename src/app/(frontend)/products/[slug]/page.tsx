@@ -6,6 +6,7 @@ import PageClient from './page.client'
 import Image from 'next/image'
 import { generateMeta } from '@/utilities/generateMeta'
 import RichText from '@/components/RichText'
+import { RenderBlocks } from '@/blocks/RenderBlocks'
 type Args = {
   params: Promise<{
     slug?: string
@@ -20,10 +21,10 @@ export default async function Post({ params: paramsPromise }: Args) {
     <article className="bg-darkblue relative z-0">
       <PageClient />
       <div className="relative w-full min-h-[600px] azul-overlay py-[2rem] z-20">
-        {category.heroImage && (
+        {category.hero.heroImage && (
           <Image
           // @ts-ignore
-            src={category.heroImage.url}
+            src={category.hero.heroImage.url}
             alt="background Image"
             width={1920}
             height={1080}
@@ -45,8 +46,8 @@ export default async function Post({ params: paramsPromise }: Args) {
         <div className="absolute pointer-events-none left-0 bottom-0 w-full h-full bg-gradient-to-r from-darkblue to-transparent" />
       </div>
       <div className="flex flex-col items-center bg-darkblue">
-        <RichText className="text-white" data={category.content} enableGutter={false} />
-        <div className="bg-darkblue relative z-20 w-full">
+        <RenderBlocks blocks={category.content.content} />
+        <div className="bg-darkblue relative z-20 w-full py-[5rem]">
           <div className="container pb-[2rem]">
             <div className="flex flex-wrap gap-4">
               {products.map((product: any, index: any) => (
