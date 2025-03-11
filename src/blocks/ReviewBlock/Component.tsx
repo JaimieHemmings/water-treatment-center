@@ -19,17 +19,6 @@ const ReviewBlock: React.FC<ReviewBlockProps> = ({title, subtitle, reviews, yout
   return (
     <div className="py-[5rem]">
       <div className="container flex flex-col lg:flex-row gap-10 py-5 pt-[3rem]">
-        <div className="lg:basis-1/2 relative">
-          <Image 
-            src="/logo-image.png" 
-            width={150} 
-            height={150} 
-            alt="Logo" 
-            className="opacity-10 w-[50%] h-auto -z-1 right-0 bottom-0 absolute" 
-          />
-          
-          <ReviewCarousel reviews={reviews} />
-        </div>
         <div className="lg:basis-1/2">
           <div className="relative w-full rounded-lg overflow-hidden">
             <div className="pb-5 text-white border-l-[5px] border-selectiveyellow pl-5 mb-5">
@@ -52,6 +41,17 @@ const ReviewBlock: React.FC<ReviewBlockProps> = ({title, subtitle, reviews, yout
               </span>
             </Link>
           </div>
+        </div>
+        <div className="lg:basis-1/2 relative">
+          <Image 
+            src="/logo-image.png" 
+            width={150} 
+            height={150} 
+            alt="Logo" 
+            className="opacity-10 w-[50%] h-auto -z-1 right-0 bottom-0 absolute" 
+          />
+          
+          <ReviewCarousel reviews={reviews} />
         </div>
       </div>
     </div>
