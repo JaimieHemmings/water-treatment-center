@@ -24,6 +24,7 @@ import { getServerSideURL } from './utilities/getURL'
 import TestSubmissions from './collections/TestSubmissions'
 import TestKitRequests from './collections/TestKitRequests'
 import HardnessResults from './collections/water-hardness-results'
+import WellTestResults from './collections/WellTestResults'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -71,7 +72,7 @@ export default buildConfig({
       connectionString: process.env.DATABASE_URI || '',
     },
   }),
-  collections: [Pages, Posts, Media, Users, Products, Supporting, Services, ProductCategories, TestSubmissions, TestKitRequests, HardnessResults],
+  collections: [Pages, Posts, Media, Users, Products, Supporting, Services, ProductCategories, TestSubmissions, TestKitRequests, HardnessResults,WellTestResults],
   cors: [getServerSideURL()].filter(Boolean),
   globals: [Header, Footer],
   secret: process.env.PAYLOAD_SECRET,

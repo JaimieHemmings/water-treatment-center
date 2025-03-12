@@ -19,7 +19,7 @@ import { FaqBlock } from '@/blocks/FaqBlock/Component'
 import VideoBlock from '@/blocks/VideoBlock/Component'
 import YoutubeBlock from '@/blocks/YoutubeBlock/Component'
 import TestKitForm from '@/blocks/TestKitForm/Component'
-import TestKitCalculator from '@/blocks/TestKitCalculator/Component'
+import WellTestCalculator from '@/blocks/WellTestCalculator/Component'
 import ReviewBlock from '@/blocks/ReviewBlock/Component'
 import ImageGrid from '@/blocks/ImageGrid/component'
 import SplitTextBlock from '@/blocks/SplitTextBlock/Component'
@@ -43,7 +43,7 @@ const blockComponents = {
   videoBlock: VideoBlock,
   youtubeBlock: YoutubeBlock,
   testKitForm: TestKitForm,
-  testKitCalculator: TestKitCalculator,
+  wellTestCalculator: WellTestCalculator,
   reviewBlock: ReviewBlock,
   imageGrid: ImageGrid,
   splitTextBlock: SplitTextBlock,

@@ -22,6 +22,7 @@ export interface Config {
     'test-submissions': TestSubmission;
     'test-kit-requests': TestKitRequest;
     'hardness-test-results': HardnessTestResult;
+    'well-test-results': WellTestResult;
     redirects: Redirect;
     forms: Form;
     'form-submissions': FormSubmission;
@@ -43,6 +44,7 @@ export interface Config {
     'test-submissions': TestSubmissionsSelect<false> | TestSubmissionsSelect<true>;
     'test-kit-requests': TestKitRequestsSelect<false> | TestKitRequestsSelect<true>;
     'hardness-test-results': HardnessTestResultsSelect<false> | HardnessTestResultsSelect<true>;
+    'well-test-results': WellTestResultsSelect<false> | WellTestResultsSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
@@ -128,7 +130,6 @@ export interface Page {
     | VideoBlock
     | YoutubeBlock
     | TestKitForm
-    | TestKitCalculator
     | ReviewBlock
     | ImageGrid
     | SplitTextBlock
@@ -155,21 +156,6 @@ export interface Page {
 export interface Media {
   id: number;
   alt?: string | null;
-  caption?: {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
   updatedAt: string;
   createdAt: string;
   url?: string | null;
@@ -878,15 +864,6 @@ export interface TestKitForm {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "TestKitCalculator".
- */
-export interface TestKitCalculator {
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'testKitCalculator';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "ReviewBlock".
  */
 export interface ReviewBlock {
@@ -985,6 +962,7 @@ export interface SupportingDocument {
       | SplitTextBlock
       | TestKitForm
       | HardnessTest
+      | WellTestCalculator
     )[];
   };
   meta?: {
@@ -1049,6 +1027,15 @@ export interface HardnessTest {
   id?: string | null;
   blockName?: string | null;
   blockType: 'hardnessTest';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "WellTestCalculator".
+ */
+export interface WellTestCalculator {
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'wellTestCalculator';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1214,6 +1201,31 @@ export interface HardnessTestResult {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "well-test-results".
+ */
+export interface WellTestResult {
+  id: number;
+  fullname: string;
+  email: string;
+  phone?: string | null;
+  aluminium: number;
+  ammonium: number;
+  coliformsTotal: number;
+  colourApparent: number;
+  conductivity: number;
+  eColi: number;
+  hardnessTotal: number;
+  iron: number;
+  manganese: number;
+  nitrite: number;
+  pH: number;
+  tbc22c: number;
+  turbidity: number;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1337,6 +1349,10 @@ export interface PayloadLockedDocument {
         value: number | HardnessTestResult;
       } | null)
     | ({
+        relationTo: 'well-test-results';
+        value: number | WellTestResult;
+      } | null)
+    | ({
         relationTo: 'redirects';
         value: number | Redirect;
       } | null)
@@ -1436,7 +1452,6 @@ export interface PagesSelect<T extends boolean = true> {
         videoBlock?: T | VideoBlockSelect<T>;
         youtubeBlock?: T | YoutubeBlockSelect<T>;
         testKitForm?: T | TestKitFormSelect<T>;
-        testKitCalculator?: T | TestKitCalculatorSelect<T>;
         reviewBlock?: T | ReviewBlockSelect<T>;
         imageGrid?: T | ImageGridSelect<T>;
         splitTextBlock?: T | SplitTextBlockSelect<T>;
@@ -1744,14 +1759,6 @@ export interface TestKitFormSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "TestKitCalculator_select".
- */
-export interface TestKitCalculatorSelect<T extends boolean = true> {
-  id?: T;
-  blockName?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "ReviewBlock_select".
  */
 export interface ReviewBlockSelect<T extends boolean = true> {
@@ -1841,7 +1848,6 @@ export interface PostsSelect<T extends boolean = true> {
  */
 export interface MediaSelect<T extends boolean = true> {
   alt?: T;
-  caption?: T;
   updatedAt?: T;
   createdAt?: T;
   url?: T;
@@ -2075,6 +2081,7 @@ export interface SupportingDocumentsSelect<T extends boolean = true> {
               splitTextBlock?: T | SplitTextBlockSelect<T>;
               testKitForm?: T | TestKitFormSelect<T>;
               hardnessTest?: T | HardnessTestSelect<T>;
+              wellTestCalculator?: T | WellTestCalculatorSelect<T>;
             };
       };
   meta?:
@@ -2097,6 +2104,14 @@ export interface HardnessTestSelect<T extends boolean = true> {
   title?: T;
   subtitle?: T;
   paragraph?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "WellTestCalculator_select".
+ */
+export interface WellTestCalculatorSelect<T extends boolean = true> {
   id?: T;
   blockName?: T;
 }
@@ -2194,6 +2209,30 @@ export interface HardnessTestResultsSelect<T extends boolean = true> {
   email?: T;
   telephone?: T;
   hardness?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "well-test-results_select".
+ */
+export interface WellTestResultsSelect<T extends boolean = true> {
+  fullname?: T;
+  email?: T;
+  phone?: T;
+  aluminium?: T;
+  ammonium?: T;
+  coliformsTotal?: T;
+  colourApparent?: T;
+  conductivity?: T;
+  eColi?: T;
+  hardnessTotal?: T;
+  iron?: T;
+  manganese?: T;
+  nitrite?: T;
+  pH?: T;
+  tbc22c?: T;
+  turbidity?: T;
   updatedAt?: T;
   createdAt?: T;
 }
