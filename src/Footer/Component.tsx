@@ -191,7 +191,7 @@ export async function Footer() {
                 <li key={index} className="mt-[15px]">
                   {link.lType === 'cms' && link.CMSLink?.slug && (
                     <Link
-                      className="text-white text-md font-normal hover:text-azul"
+                      className="text-white text-md font-normal uppercase hover:text-azul"
                       href={`/${link.CMSLink.slug}`}
                       title={link.title}
                       >
@@ -199,7 +199,8 @@ export async function Footer() {
                     </Link>
                     )}
                     {link.lType === 'supporting' && link.supportingDocsLink?.pageAssociation && link.supportingDocsLink?.slug && (
-                      <Link 
+                      <Link
+                        className="text-white text-md font-normal uppercase hover:text-azul"
                         href={`/products/${link.supportingDocsLink.pageAssociation}/support/${link.supportingDocsLink.slug}`} 
                         title={link.title} 
                       >
