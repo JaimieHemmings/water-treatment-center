@@ -21,6 +21,8 @@ import { TwoColumnBlock } from '@/blocks/TwoColumnBlock/config'
 import { VideoBlock } from '@/blocks/VideoBlock/config'
 import { YoutubeBlock } from '@/blocks/YoutubeBlock/config'
 import { SplitTextBlock } from '@/blocks/SplitTextBlock/config'
+import { TestKitForm } from '@/blocks/TestKitForm/config'
+import { HardnessTest } from '@/blocks/HardnessTest/config'
 
 export const Supporting: CollectionConfig = {
   slug: 'supporting-documents',
@@ -89,7 +91,7 @@ export const Supporting: CollectionConfig = {
               name: 'content',
               label: 'Content',
               type: 'blocks',
-              blocks: [CallToAction, FaqBlock, ImageGrid, ImageList, StatsBlock, TextWithImageBlock, TwoColumnBlock, VideoBlock, YoutubeBlock, SplitTextBlock ],
+              blocks: [CallToAction, FaqBlock, ImageGrid, ImageList, StatsBlock, TextWithImageBlock, TwoColumnBlock, VideoBlock, YoutubeBlock, SplitTextBlock, TestKitForm, HardnessTest],
               required: true,
             },
           ],

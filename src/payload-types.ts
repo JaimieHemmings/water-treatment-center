@@ -981,6 +981,8 @@ export interface SupportingDocument {
       | VideoBlock
       | YoutubeBlock
       | SplitTextBlock
+      | TestKitForm
+      | HardnessTest
     )[];
   };
   meta?: {
@@ -1033,6 +1035,16 @@ export interface ProductCategory {
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "HardnessTest".
+ */
+export interface HardnessTest {
+  title?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'hardnessTest';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -2040,6 +2052,8 @@ export interface SupportingDocumentsSelect<T extends boolean = true> {
               videoBlock?: T | VideoBlockSelect<T>;
               youtubeBlock?: T | YoutubeBlockSelect<T>;
               splitTextBlock?: T | SplitTextBlockSelect<T>;
+              testKitForm?: T | TestKitFormSelect<T>;
+              hardnessTest?: T | HardnessTestSelect<T>;
             };
       };
   meta?:
@@ -2053,6 +2067,15 @@ export interface SupportingDocumentsSelect<T extends boolean = true> {
   slugLock?: T;
   createdAt?: T;
   updatedAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "HardnessTest_select".
+ */
+export interface HardnessTestSelect<T extends boolean = true> {
+  title?: T;
+  id?: T;
+  blockName?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

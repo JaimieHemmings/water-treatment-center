@@ -1,6 +1,5 @@
 'use client';
 import React, { useState } from 'react'
-import { AnimateIn } from '@/components/Animations/AnimateIn'
 
 const TestKitForm = () => {
   const [formData, setFormData] = useState({
@@ -49,12 +48,10 @@ const TestKitForm = () => {
     return (
       <section className="py-[5rem]">
         <div className="container max-w-2xl mx-auto text-center">
-          <AnimateIn animation={{ y: 60, opacity: 0 }}>
-            <h2 className="text-2xl md:text-4xl text-white mb-4">Thank You!</h2>
-            <p className="text-white text-lg">
-              We&apos;ll be in touch soon with your free test kit.
-            </p>
-          </AnimateIn>
+          <h2 className="text-2xl md:text-4xl text-white mb-4">Thank You!</h2>
+          <p className="text-white text-lg">
+            We&apos;ll be in touch soon with your free test kit.
+          </p>
         </div>
       </section>
     )
@@ -69,12 +66,13 @@ const TestKitForm = () => {
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
             <label htmlFor="name" className="block text-white mb-2">
-              Name
+              Name*
             </label>
             <input
               type="text"
               id="name"
               name="name"
+              placeholder="Enter your name..."
               value={formData.name}
               onChange={handleChange}
               required
@@ -84,12 +82,13 @@ const TestKitForm = () => {
           
           <div>
             <label htmlFor="email" className="block text-white mb-2">
-              Email
+              Email*
             </label>
             <input
               type="email"
               id="email"
               name="email"
+              placeholder="Enter your email..."
               value={formData.email}
               onChange={handleChange}
               required
@@ -99,9 +98,10 @@ const TestKitForm = () => {
 
           <div>
             <label htmlFor="telephone" className="block text-white mb-2">
-              Telephone
+              Telephone*
             </label>
             <input
+              placeholder="Enter your phone number..."
               type="tel"
               id="telephone"
               name="telephone"
@@ -114,10 +114,11 @@ const TestKitForm = () => {
 
           <div>
             <label htmlFor="address" className="block text-white mb-2">
-              Address
+              Address*
             </label>
             <textarea
               id="address"
+              placeholder="Enter your address..."
               name="address"
               rows={4}
               value={formData.address}
@@ -134,6 +135,7 @@ const TestKitForm = () => {
             <textarea
               id="message"
               name="message"
+              placeholder="Provide any additional information..."
               value={formData.message}
               onChange={handleChange as any}
               rows={4}
