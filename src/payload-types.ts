@@ -118,7 +118,6 @@ export interface Page {
     | FormBlock
     | TextBlock
     | TwoColumn
-    | ProductsHome
     | ServicesBlock
     | BlogFeed
     | ContactBlock
@@ -618,15 +617,6 @@ export interface TwoColumn {
   id?: string | null;
   blockName?: string | null;
   blockType: 'twoColumn';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "ProductsHome".
- */
-export interface ProductsHome {
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'productsHome';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1208,19 +1198,19 @@ export interface WellTestResult {
   fullname: string;
   email: string;
   phone?: string | null;
-  aluminium: number;
-  ammonium: number;
-  coliformsTotal: number;
-  colourApparent: number;
-  conductivity: number;
-  eColi: number;
-  hardnessTotal: number;
-  iron: number;
-  manganese: number;
-  nitrite: number;
-  pH: number;
-  tbc22c: number;
-  turbidity: number;
+  aluminium: string;
+  ammonium: string;
+  coliformsTotal: string;
+  colourApparent: string;
+  conductivity: string;
+  eColi: string;
+  hardnessTotal: string;
+  iron: string;
+  manganese: string;
+  nitrite: string;
+  pH: string;
+  tbc22c: string;
+  turbidity: string;
   updatedAt: string;
   createdAt: string;
 }
@@ -1440,7 +1430,6 @@ export interface PagesSelect<T extends boolean = true> {
         formBlock?: T | FormBlockSelect<T>;
         textBlock?: T | TextBlockSelect<T>;
         twoColumn?: T | TwoColumnSelect<T>;
-        productsHome?: T | ProductsHomeSelect<T>;
         servicesBlock?: T | ServicesBlockSelect<T>;
         blogFeed?: T | BlogFeedSelect<T>;
         contactBlock?: T | ContactBlockSelect<T>;
@@ -1540,14 +1529,6 @@ export interface TwoColumnSelect<T extends boolean = true> {
   mainContent?: T;
   contentleft?: T;
   contentright?: T;
-  id?: T;
-  blockName?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "ProductsHome_select".
- */
-export interface ProductsHomeSelect<T extends boolean = true> {
   id?: T;
   blockName?: T;
 }

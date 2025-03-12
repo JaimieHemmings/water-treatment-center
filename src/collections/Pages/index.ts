@@ -9,7 +9,6 @@ import { TextBlock } from '@/blocks/TextBlock/config'
 import { TwoColumnBlock } from '@/blocks/TwoColumnBlock/config'
 import { BlogFeed } from '@/blocks/BlogFeed/config'
 import { ServicesBlock } from '@/blocks/Services/config'
-import { ProductsHome } from '@/blocks/ProductsHome/config'
 import { ContactBlock } from '@/blocks/ContactBlock/config'
 import { hero } from '@/heros/config'
 import { slugField } from '@/fields/slug'
@@ -91,7 +90,7 @@ export const Pages: CollectionConfig<'pages'> = {
             {
               name: 'layout',
               type: 'blocks',
-              blocks: [CallToAction, Content, FormBlock, TextBlock, TwoColumnBlock, ProductsHome, ServicesBlock, BlogFeed, ContactBlock, TextWithImageBlock, StatsBlock, BlockRow, ImageList, FaqBlock, VideoBlock, YoutubeBlock, TestKitForm, ReviewBlock, ImageGrid, SplitTextBlock],
+              blocks: [CallToAction, Content, FormBlock, TextBlock, TwoColumnBlock, ServicesBlock, BlogFeed, ContactBlock, TextWithImageBlock, StatsBlock, BlockRow, ImageList, FaqBlock, VideoBlock, YoutubeBlock, TestKitForm, ReviewBlock, ImageGrid, SplitTextBlock],
               required: true,
               admin: {
                 initCollapsed: true,

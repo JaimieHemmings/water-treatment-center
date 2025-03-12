@@ -8,7 +8,6 @@ import { FormBlock } from '@/blocks/Form/Component'
 import { TextBlock } from '@/blocks/TextBlock/Component'
 import { ImageList } from '@/blocks/ImageList/Component'
 import { TwoColumnBlock } from '@/blocks/TwoColumnBlock/Component'
-import { ProductsHome } from '@/blocks/ProductsHome/Component'
 import ServicesBlock from '@/blocks/Services/Component'
 import BlogFeed from '@/blocks/BlogFeed/Component'
 import { ContactBlock } from '@/blocks/ContactBlock/Component'
@@ -31,7 +30,6 @@ const blockComponents = {
   formBlock: FormBlock,
   textBlock: TextBlock,
   twoColumn: TwoColumnBlock,
-  productsHome: ProductsHome,
   servicesBlock: ServicesBlock,
   blogFeed: BlogFeed,
   contactBlock: ContactBlock,

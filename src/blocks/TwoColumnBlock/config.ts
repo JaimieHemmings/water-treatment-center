@@ -1,7 +1,7 @@
 import type { Block } from 'payload'
 
 export const TwoColumnBlock: Block = {
-  imageURL: '/block-images/two-column.webp',
+  imageURL: '/block-images/two-column-block.jpg',
   slug: 'twoColumn',
   interfaceName: 'TwoColumn',
   fields: [

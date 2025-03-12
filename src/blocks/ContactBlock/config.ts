@@ -2,9 +2,9 @@ import type { Block } from 'payload'
 import { FormBlock } from '@/blocks/Form/config'
 
 export const ContactBlock: Block = {
+  imageURL:'/block-images/contact-block.jpg',
   slug: 'contactBlock',
   interfaceName: 'ContactBlock',
-  imageURL: '/block-images/contact-block.jpg',
   fields: [
     {
       name: 'title',
