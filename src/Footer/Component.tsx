@@ -188,16 +188,26 @@ export async function Footer() {
             <h2 className="text-md md:text-xl font-medium leading-normal text-selectiveyellow uppercase inline-block pb-2 tracking-widest">Useful Links</h2>
               <ul>
               {footerData?.usefulLinks?.map((link, index) => (
-              <li key={index} className="mt-[15px]">
-                <Link
-                  className="text-white uppercase text-md font-normal hover:text-azul"
-                  href={`/${link.link.slug}`}
-                  title={link.link.title}
-                >
-                  {link.link.title}
-                </Link>
-              </li>
-            ))}
+                <li key={index} className="mt-[15px]">
+                  {link.lType === 'cms' && link.CMSLink?.slug && (
+                    <Link
+                      className="text-white text-md font-normal hover:text-azul"
+                      href={`/${link.CMSLink.slug}`}
+                      title={link.title}
+                      >
+                      {link.label}
+                    </Link>
+                    )}
+                    {link.lType === 'supporting' && link.supportingDocsLink?.pageAssociation && link.supportingDocsLink?.slug && (
+                      <Link 
+                        href={`/products/${link.supportingDocsLink.pageAssociation}/support/${link.supportingDocsLink.slug}`} 
+                        title={link.title} 
+                      >
+                        {link.label}
+                      </Link>
+                    )}
+                </li>
+              ))}
               </ul>
             </div>
           </div>

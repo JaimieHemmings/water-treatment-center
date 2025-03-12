@@ -52,10 +52,66 @@ export const Footer: GlobalConfig = {
               type: 'array',
               fields: [
                 {
-                  name: 'link',
+                  name: 'label',
+                  label: 'Label',
+                  type: 'text',
+                  required: true,
+                },
+                {
+                  name: 'lType',
+                  label: 'Link Type',
+                  type: 'select',
+                  options: [
+                    {
+                      label: 'CMS Page',
+                      value: 'cms',
+                    },
+                    {
+                      label: 'Supporting Document',
+                      value: 'supporting',
+                    },
+                  ],
+                  defaultValue: 'cms',
+                },
+                {
+                  name: 'CMSLink',
+                  label: 'CMS Link',
                   type: 'relationship',
                   relationTo: 'pages',
-                  required: true,
+                  admin: {
+                    condition: (data, siblingData) => {
+                      return siblingData?.lType === 'cms'
+                    },
+                  },
+                },
+                {
+                  name: 'supportingDocsLink',
+                  label: 'Link to Supporting Document',
+                  type: 'relationship',
+                  relationTo: 'supporting-documents',
+                  admin: {
+                    condition: (data, siblingData) => {
+                      return siblingData?.lType === 'supporting'
+                    },
+                  },
+                  hooks: {
+                    afterRead: [
+                      async ({ value, req }) => {
+                        if (!value) return value;
+                        const doc = await req.payload.findByID({
+                          collection: 'supporting-documents',
+                          id: value,
+                          depth: 1
+                        });
+                        return {
+                          ...doc,
+                          ...value,
+                          // @ts-ignore
+                          pageAssociation: doc.association?.slug
+                        };
+                      }
+                    ]
+                  }
                 },
               ],
               maxRows: 6,

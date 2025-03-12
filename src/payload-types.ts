@@ -2476,7 +2476,10 @@ export interface Footer {
    */
   usefulLinks?:
     | {
-        link: number | Page;
+        label: string;
+        lType?: ('cms' | 'supporting') | null;
+        CMSLink?: (number | null) | Page;
+        supportingDocsLink?: (number | null) | SupportingDocument;
         id?: string | null;
       }[]
     | null;
@@ -2514,7 +2517,10 @@ export interface FooterSelect<T extends boolean = true> {
   usefulLinks?:
     | T
     | {
-        link?: T;
+        label?: T;
+        lType?: T;
+        CMSLink?: T;
+        supportingDocsLink?: T;
         id?: T;
       };
   updatedAt?: T;
