@@ -1,6 +1,7 @@
 import type { Block } from 'payload'
 
 export const TestKitForm: Block = {
+  imageURL: '/block-images/testkit-form-block.jpg',
   slug: 'testKitForm',
   interfaceName: 'TestKitForm',
   fields: [],

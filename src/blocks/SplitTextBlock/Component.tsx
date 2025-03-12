@@ -4,7 +4,7 @@ import { SplitTextBlock as SplitTextBlockProps } from '@/payload-types'
 
 export const SplitTextBlock:React.FC<SplitTextBlockProps> = ({ items }) => {
   return (
-    <section className="py-[2rem] pb-[5rem] bg-darkblue text-white">
+    <section className="py-[2rem] pb-[5rem] bg-darkblue text-white relative z-20">
       {items && (
       <div className="container">
           {items?.map((item, index) => (

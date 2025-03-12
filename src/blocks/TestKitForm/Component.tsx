@@ -46,7 +46,7 @@ const TestKitForm = () => {
 
   if (isSubmitted) {
     return (
-      <section className="py-[5rem]">
+      <section className="py-[5rem] relative z-20 bg-darkblue text-white">
         <div className="container max-w-2xl mx-auto text-center">
           <h2 className="text-2xl md:text-4xl text-white mb-4">Thank You!</h2>
           <p className="text-white text-lg">
@@ -58,7 +58,7 @@ const TestKitForm = () => {
   }
 
   return (
-    <section className="py-[5rem]">
+    <section className="py-[5rem] relative z-20 bg-darkblue text-white">
       <div className="container max-w-2xl mx-auto">
         <h2 className="text-2xl md:text-4xl text-white mb-8">
           Free Test Kit

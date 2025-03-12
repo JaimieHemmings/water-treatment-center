@@ -1,6 +1,7 @@
 import type { Block } from 'payload'
 
 export const ReviewBlock: Block = {
+  imageURL: '/block-images/review-block.jpg',
   slug: 'reviewBlock',
   interfaceName: 'ReviewBlock',
   fields: [

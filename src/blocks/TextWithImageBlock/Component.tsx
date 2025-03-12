@@ -52,7 +52,7 @@ export const TextWithImageBlock: React.FC<TextWithImageBlockProps> = ({
 }) => {
   return (
     <section 
-      className={`w-full py-[5rem] ${darkmode ? 'bg-darkblue text-white' : 'bg-white text-jet'} text-jet relative overflow-hidden`}
+      className={`w-full py-[5rem] ${darkmode ? 'bg-darkblue text-white' : 'bg-white text-jet'} text-jet relative overflow-hidden z-20`}
     >
       <div className={`container mx-auto px-4 flex ${darkmode ? 'lg:flex-row-reverse flex-col' : 'flex-col-reverse lg:flex-row'} justify-between gap-10 relative z-20`}>
         <div className={`${darkmode ? 'basis-1/3' : 'basis-1/2 '} h-full relative`}>

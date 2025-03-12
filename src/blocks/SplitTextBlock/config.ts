@@ -1,6 +1,7 @@
 import type { Block } from 'payload'
 
 export const SplitTextBlock: Block = {
+  imageURL: '/block-images/splittext-block.jpg',
   slug: 'splitTextBlock',
   interfaceName: 'splitTextBlock',
   fields: [

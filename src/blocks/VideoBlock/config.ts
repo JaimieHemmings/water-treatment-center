@@ -1,6 +1,7 @@
 import type { Block } from 'payload'
 
 export const VideoBlock: Block = {
+  imageURL: '/block-images/video-block.jpg',
   slug: 'videoBlock',
   interfaceName: 'VideoBlock',
   fields: [

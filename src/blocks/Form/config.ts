@@ -8,6 +8,7 @@ import {
 } from '@payloadcms/richtext-lexical'
 
 export const FormBlock: Block = {
+  imageURL: '/block-images/form.jpg',
   slug: 'formBlock',
   interfaceName: 'FormBlock',
   fields: [
