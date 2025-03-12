@@ -39,6 +39,7 @@ export default async function Post({ params: paramsPromise }: any) {
         />
 
         {post.content && (
+          // @ts-ignore
           <RenderBlocks blocks={post.content.content} />
         )}
       </>
