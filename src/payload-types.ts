@@ -21,6 +21,7 @@ export interface Config {
     'product-categories': ProductCategory;
     'test-submissions': TestSubmission;
     'test-kit-requests': TestKitRequest;
+    'hardness-test-results': HardnessTestResult;
     redirects: Redirect;
     forms: Form;
     'form-submissions': FormSubmission;
@@ -41,6 +42,7 @@ export interface Config {
     'product-categories': ProductCategoriesSelect<false> | ProductCategoriesSelect<true>;
     'test-submissions': TestSubmissionsSelect<false> | TestSubmissionsSelect<true>;
     'test-kit-requests': TestKitRequestsSelect<false> | TestKitRequestsSelect<true>;
+    'hardness-test-results': HardnessTestResultsSelect<false> | HardnessTestResultsSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
@@ -1042,6 +1044,8 @@ export interface ProductCategory {
  */
 export interface HardnessTest {
   title?: string | null;
+  subtitle?: string | null;
+  paragraph?: string | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'hardnessTest';
@@ -1197,6 +1201,19 @@ export interface TestKitRequest {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "hardness-test-results".
+ */
+export interface HardnessTestResult {
+  id: number;
+  name: string;
+  email: string;
+  telephone: string;
+  hardness: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1314,6 +1331,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'test-kit-requests';
         value: number | TestKitRequest;
+      } | null)
+    | ({
+        relationTo: 'hardness-test-results';
+        value: number | HardnessTestResult;
       } | null)
     | ({
         relationTo: 'redirects';
@@ -2074,6 +2095,8 @@ export interface SupportingDocumentsSelect<T extends boolean = true> {
  */
 export interface HardnessTestSelect<T extends boolean = true> {
   title?: T;
+  subtitle?: T;
+  paragraph?: T;
   id?: T;
   blockName?: T;
 }
@@ -2159,6 +2182,18 @@ export interface TestKitRequestsSelect<T extends boolean = true> {
   address?: T;
   message?: T;
   sent?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "hardness-test-results_select".
+ */
+export interface HardnessTestResultsSelect<T extends boolean = true> {
+  name?: T;
+  email?: T;
+  telephone?: T;
+  hardness?: T;
   updatedAt?: T;
   createdAt?: T;
 }

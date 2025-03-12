@@ -6,8 +6,18 @@ export const HardnessTest: Block = {
   fields: [
     {
       name: 'title',
-      label: 'Title',
       type: 'text',
+      label: 'Title',
+    },
+    {
+      name: 'subtitle',
+      type: 'text',
+      label: 'Subtitle',
+    },
+    {
+      name: 'paragraph',
+      type: 'textarea',
+      label: 'Paragraph',
     },
   ],
   labels: {
