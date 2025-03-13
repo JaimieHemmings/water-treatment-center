@@ -155,6 +155,7 @@ const WellTestCalculator = () => {
               <input
                 type="text"
                 name="fullname"
+                placeholder="Your Name"
                 required
                 value={formData.fullname}
                 className="w-full px-4 py-2 rounded bg-white/10 border border-white/20"
@@ -166,6 +167,7 @@ const WellTestCalculator = () => {
               <input
                 type="email"
                 name="email"
+                placeholder="Your Email"
                 value={formData.email}
                 required
                 className="w-full px-4 py-2 rounded bg-white/10 border border-white/20"
