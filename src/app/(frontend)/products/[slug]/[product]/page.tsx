@@ -34,7 +34,7 @@ export default async function Product({ params }: Props) {
         <ProductFeatures productData={productData} />
         <ProductCTA />
         <ProductDetails productData={productData} />
-        <ServiceDetails productData={productData} />
+        <ServiceDetails />
         </>
       )}
       <section className="bg-darkblue">

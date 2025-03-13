@@ -35,6 +35,12 @@ export const Products: CollectionConfig = {
       unique: true,
     },
     {
+      name: 'featuredImage',
+      type: 'upload',
+      relationTo: 'media',
+      required: true,
+    },
+    {
       type: 'tabs',
       tabs: [
         {
@@ -107,12 +113,6 @@ export const Products: CollectionConfig = {
                           required: true,
                         },
                       ],
-                    },
-                    {
-                      name: 'featuresListOneImage',
-                      type: 'upload',
-                      relationTo: 'media',
-                      required: true,
                     },
                     {
                       name: 'fullWidthHighlightTitle',

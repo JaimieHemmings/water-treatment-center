@@ -2,6 +2,8 @@ import React from 'react';
 import Image from 'next/image';
 import AnimateIn from '@/components/Animations/AnimateIn';
 import { CiCircleCheck } from "react-icons/ci";
+import Gallery from './Gallery';
+import { FaDroplet } from "react-icons/fa6";
 
 interface Feature {
   title: string
@@ -45,6 +47,9 @@ interface ProductData {
   productImage: ProductImage
   content: {
     features: Features
+    media: {
+      gallery: ProductImage[]
+    }
   }
 }
 
@@ -65,7 +70,8 @@ const ProductFeatures: React.FC<ProductFeaturesProps> = ({ productData }) => {
     <>
       <section className="container py-20 text-white" id="features">
         <div className="text-center">
-          <h2 className="border-b-2 border-selectiveyellow text-white inline-block px-2 py-1 mb-5 text-sm">
+          <h2 className="text-selectiveyellow inline-block px-2 py-1 mb-5 text-sm tracking-widest">
+            <FaDroplet className="inline-block text-selectiveyellow relative -top-[2px] mr-2" />
             FEATURES
           </h2>
           <AnimateIn
@@ -84,22 +90,7 @@ const ProductFeatures: React.FC<ProductFeaturesProps> = ({ productData }) => {
         <div className="w-full flex flex-col md:flex-row gap-4 py-20">
           <div className="md:basis-1/2 h-full aspect-square rounded-xl max-h-[450px]">
             {productData.content.features.featuresListOneImage && (
-              <AnimateIn
-                animation={{
-                  y: 50,
-                  opacity: 0,
-                  rotate: -5,
-                  duration: 0.8,
-                }}
-                className="h-full"
-              >
-                <Image
-                  src={productData.content.features.featuresListOneImage.url}
-                  alt={productData.content.features.featuresListOneImage.alt || 'Product image'}
-                  className="object-cover rounded-xl transition-all duration-300"
-                  fill
-                />
-              </AnimateIn>
+              <Gallery productData={productData.content.media.gallery} />
             )}
           </div>
 

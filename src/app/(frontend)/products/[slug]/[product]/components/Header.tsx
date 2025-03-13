@@ -5,7 +5,7 @@ import { FaEuroSign } from "react-icons/fa";
 import { GiAutoRepair } from "react-icons/gi";
 import { GrMoney } from "react-icons/gr";
 import AnimateIn from '@/components/Animations/AnimateIn'
-import Gallery from './Gallery';
+import Image from 'next/image';
 
 const Header = ({ productData }) => {
   return (
@@ -17,7 +17,13 @@ const Header = ({ productData }) => {
             opacity: 0,
             duration: 0.8,
           }}>
-          <Gallery productData={productData} />
+          <Image
+            src={productData.featuredImage.url}
+            height={1000}
+            width={800}
+            alt={productData.featuredImage.alt || 'Product image'}
+            className="w-full h-auto object-cover rounded-xl transition-all duration-300"
+          />
         </AnimateIn>
       </div>
       <div className="md:basis-1/2 p-5">

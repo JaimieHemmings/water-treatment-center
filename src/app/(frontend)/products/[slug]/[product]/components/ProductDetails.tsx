@@ -3,13 +3,17 @@ import React from 'react'
 import AnimateIn from '@/components/Animations/AnimateIn'
 import Link from 'next/link'
 import ProductAccordian from './ProductAccordian'
+import { FaDroplet } from 'react-icons/fa6'
 
 const ProductDetails = ({ productData }) => {
   return (
     <section className="w-full py-[5rem] text-jet bg-antiflashwhite" id="details">
       <div className="container flex md:flex-row flex-col gap-4">
         <div className="md:basis-1/2">
-          <h2 className="border-b-2 border-selectiveyellow text-jet inline-block px-2 py-1 mb-5 text-sm">Details</h2>
+          <h2 className="text-selectiveyellow inline-block px-2 py-1 mb-5 text-sm tracking-widest">
+            <FaDroplet className="inline-block text-selectiveyellow relative -top-[2px] mr-2" />
+            Details
+          </h2>
           <h3 className="text-2xl md:text-4xl">
             {productData.content.details.detailsTitle}
           </h3>

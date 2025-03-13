@@ -2,32 +2,13 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 
-interface GalleryImage {
-  image: {
-    url: string;
-    alt: string;
-    width: number;
-    height: number;
-  }
-}
+const Gallery = ({ productData }: { productData: any }) => {
+  const thumbnailImages = productData
+  console.log(thumbnailImages)
 
-interface ProductData {
-  content: {
-    media: {
-      productImage: GalleryImage;
-      gallery?: GalleryImage[];
-    }
-  }
-}
+  const [selectedImage, setSelectedImage] = useState<any>(thumbnailImages[0]);
 
-const Gallery = ({ productData }: { productData: ProductData }) => {
-  const thumbnailImages = [
-    ...(productData.content.media.gallery || [])
-  ];
-
-  const [selectedImage, setSelectedImage] = useState<GalleryImage>(thumbnailImages[0]);
-
-  const handleImageClick = (image: GalleryImage) => {
+  const handleImageClick = (image: any) => {
     setSelectedImage(image);
   };
 
@@ -39,7 +20,6 @@ const Gallery = ({ productData }: { productData: ProductData }) => {
           alt={selectedImage.image.alt || 'No alt text available'}
           className="object-cover rounded-xl transition-all duration-300"
           fill
-          priority
         />
       </div>
 

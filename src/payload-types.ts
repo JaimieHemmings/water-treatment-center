@@ -1034,6 +1034,7 @@ export interface WellTestCalculator {
 export interface Product {
   id: number;
   title: string;
+  featuredImage: number | Media;
   content: {
     header: {
       productImage: number | Media;
@@ -1055,7 +1056,6 @@ export interface Product {
             id?: string | null;
           }[]
         | null;
-      featuresListOneImage: number | Media;
       fullWidthHighlightTitle: string;
       fullWidthHighlightDescription: string;
       featuresSubtitleTwo: string;
@@ -1937,6 +1937,7 @@ export interface UsersSelect<T extends boolean = true> {
  */
 export interface ProductsSelect<T extends boolean = true> {
   title?: T;
+  featuredImage?: T;
   content?:
     | T
     | {
@@ -1964,7 +1965,6 @@ export interface ProductsSelect<T extends boolean = true> {
                     description?: T;
                     id?: T;
                   };
-              featuresListOneImage?: T;
               fullWidthHighlightTitle?: T;
               fullWidthHighlightDescription?: T;
               featuresSubtitleTwo?: T;

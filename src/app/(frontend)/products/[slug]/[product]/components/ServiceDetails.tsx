@@ -3,8 +3,9 @@ import { GiAutoRepair } from "react-icons/gi";
 import { FaGear } from "react-icons/fa6";
 import { FaHeadset } from "react-icons/fa";
 import Image from 'next/image';
+import { FaDroplet } from "react-icons/fa6";
 
-const ServiceDetails = ({ productData }) => {
+const ServiceDetails = () => {
   return (
     <section className="w-full bg-darkblue py-[5rem]" id="services">
       <div className="container flex flex-col md:flex-row gap-4">
@@ -17,7 +18,8 @@ const ServiceDetails = ({ productData }) => {
           />
         </div>
         <div className="md:basis-1/2 p-5">
-          <h2 className="border-b-2 border-selectiveyellow text-white inline-block px-2 py-1 mb-5 text-sm">
+          <h2 className="text-selectiveyellow inline-block px-2 py-1 mb-5 text-sm tracking-widest">
+            <FaDroplet className="inline-block text-selectiveyellow relative -top-[2px] mr-2" />
             Installation &amp; Maintenance Service
           </h2>
           <h3 className="text-white text-2xl md:text-4xl">
