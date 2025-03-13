@@ -4,6 +4,7 @@ import AnimateIn from '@/components/Animations/AnimateIn';
 import { CiCircleCheck } from "react-icons/ci";
 import Gallery from './Gallery';
 import { FaDroplet } from "react-icons/fa6";
+import VideoBlock from './VideoBlock';
 
 interface Feature {
   title: string
@@ -51,6 +52,7 @@ interface ProductData {
       gallery: ProductImage[]
     }
   }
+  video: any
 }
 
 interface ProductFeaturesProps {
@@ -87,7 +89,7 @@ const ProductFeatures: React.FC<ProductFeaturesProps> = ({ productData }) => {
           </AnimateIn>
         </div>
 
-        <div className="w-full flex flex-col md:flex-row gap-4 py-20">
+        <div className="w-full flex flex-col md:flex-row gap-4 pt-20 pb-10">
           <div className="md:basis-1/2 h-full aspect-square rounded-xl">
             {productData.content.media && (
               <Gallery productData={productData.content.media} />
@@ -128,24 +130,10 @@ const ProductFeatures: React.FC<ProductFeaturesProps> = ({ productData }) => {
           </div>
         </div>
       </section>
-      <section className="bg-antiflashwhite text-jet py-12 text-center w-full relative overflow-hidden">
-        <Image
-          src="/dots.svg"
-          alt="Decorative dots"
-          width={100}
-          height={100}
-          className="absolute bottom-0 right-0 scale-x-[-1]"
-        />
-        <div className="container">
-          <h2 className="text-2xl md:text-4xl pb-5">
-            {productData.content.features.fullWidthHighlightTitle}
-          </h2>
-          <p className="text-lg md:text-xl">
-            {productData.content.features.fullWidthHighlightDescription}
-          </p>
-        </div>
-      </section> 
-      <section className="py-[5rem]">
+      {productData.video?.video?.url && (
+        <VideoBlock video={productData.video} />
+      )}
+      <section className="pb-20 pt-10">
         <div className="container flex flex-col md:flex-row text-white">
           <div className="md:basis-1/2 md:p-5">
           <AnimateIn

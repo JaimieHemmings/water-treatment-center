@@ -115,18 +115,6 @@ export const Products: CollectionConfig = {
                       ],
                     },
                     {
-                      name: 'fullWidthHighlightTitle',
-                      type: 'text',
-                      label: 'Full Width Highlight Title',
-                      required: true,
-                    },
-                    {
-                      name: 'fullWidthHighlightDescription',
-                      type: 'textarea',
-                      label: 'Full Width Highlight Description',
-                      required: true,
-                    },
-                    {
                       name: 'featuresSubtitleTwo',
                       type: 'text',
                       required: true,
@@ -298,6 +286,22 @@ export const Products: CollectionConfig = {
               titlePath: 'meta.title',
               descriptionPath: 'meta.description',
             }),
+          ],
+        },
+        {
+          name: 'video',
+          label: 'Video',
+          fields: [
+            {
+              name: 'video',
+              type: 'upload',
+              relationTo: 'media',
+            },
+            {
+              name: 'preloadImage',
+              type: 'upload',
+              relationTo: 'media',
+            },
           ],
         },
       ],

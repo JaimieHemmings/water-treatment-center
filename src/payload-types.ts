@@ -1056,8 +1056,6 @@ export interface Product {
             id?: string | null;
           }[]
         | null;
-      fullWidthHighlightTitle: string;
-      fullWidthHighlightDescription: string;
       featuresSubtitleTwo: string;
       featuresListTwo?:
         | {
@@ -1110,6 +1108,10 @@ export interface Product {
      */
     image?: (number | null) | Media;
     description?: string | null;
+  };
+  video?: {
+    video?: (number | null) | Media;
+    preloadImage?: (number | null) | Media;
   };
   slug?: string | null;
   slugLock?: boolean | null;
@@ -1965,8 +1967,6 @@ export interface ProductsSelect<T extends boolean = true> {
                     description?: T;
                     id?: T;
                   };
-              fullWidthHighlightTitle?: T;
-              fullWidthHighlightDescription?: T;
               featuresSubtitleTwo?: T;
               featuresListTwo?:
                 | T
@@ -2024,6 +2024,12 @@ export interface ProductsSelect<T extends boolean = true> {
         title?: T;
         image?: T;
         description?: T;
+      };
+  video?:
+    | T
+    | {
+        video?: T;
+        preloadImage?: T;
       };
   slug?: T;
   slugLock?: T;

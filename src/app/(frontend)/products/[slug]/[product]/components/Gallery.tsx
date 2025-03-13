@@ -4,7 +4,6 @@ import Image from 'next/image';
 
 const Gallery = ({ productData }: { productData: any }) => {
   const thumbnailImages = productData.gallery
-  console.log(thumbnailImages)
 
   const [selectedImage, setSelectedImage] = useState<any>(thumbnailImages[0]);
 
