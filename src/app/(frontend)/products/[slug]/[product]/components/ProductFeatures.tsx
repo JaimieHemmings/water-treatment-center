@@ -88,9 +88,9 @@ const ProductFeatures: React.FC<ProductFeaturesProps> = ({ productData }) => {
         </div>
 
         <div className="w-full flex flex-col md:flex-row gap-4 py-20">
-          <div className="md:basis-1/2 h-full aspect-square rounded-xl max-h-[450px]">
-            {productData.content.features.featuresListOneImage && (
-              <Gallery productData={productData.content.media.gallery} />
+          <div className="md:basis-1/2 h-full aspect-square rounded-xl">
+            {productData.content.media && (
+              <Gallery productData={productData.content.media} />
             )}
           </div>
 
@@ -102,7 +102,7 @@ const ProductFeatures: React.FC<ProductFeaturesProps> = ({ productData }) => {
                 duration: 0.8,
               }}
             >
-              <h3 className="text-2xl md:text-4xl pb-5">
+              <h3 className="text-2xl md:text-4xl pb-5 mt-5 md:mt-0">
                 {productData.content.features.featuresSubtitleOne}
               </h3>
             </AnimateIn>

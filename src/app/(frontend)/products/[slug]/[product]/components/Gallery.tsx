@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 
 const Gallery = ({ productData }: { productData: any }) => {
-  const thumbnailImages = productData
+  const thumbnailImages = productData.gallery
   console.log(thumbnailImages)
 
   const [selectedImage, setSelectedImage] = useState<any>(thumbnailImages[0]);
@@ -21,6 +21,7 @@ const Gallery = ({ productData }: { productData: any }) => {
           className="object-cover rounded-xl transition-all duration-300"
           fill
         />
+        <p>Test</p>
       </div>
 
       <div className="grid grid-cols-4 gap-2">
