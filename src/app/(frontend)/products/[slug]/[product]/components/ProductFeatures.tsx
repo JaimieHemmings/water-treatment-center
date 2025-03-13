@@ -60,8 +60,8 @@ interface ProductFeaturesProps {
 }
 
 const FeatureItem: React.FC<FeatureItemProps> = ({ title, description }) => (
-  <li className="relative pl-[15px]">
-    <CiCircleCheck className="absolute top-0 left-0 text-4xl text-selectiveyellow"/>
+  <li className="relative pl-[8px]">
+    <CiCircleCheck className="absolute top-[5px] left-0 text-2xl text-selectiveyellow"/>
     <h4 className="text-xl md:text-2xl pl-8 pb-3">{title}</h4>
     <p className="pl-8">{description}</p>
   </li>
@@ -70,7 +70,7 @@ const FeatureItem: React.FC<FeatureItemProps> = ({ title, description }) => (
 const ProductFeatures: React.FC<ProductFeaturesProps> = ({ productData }) => {
   return (
     <>
-      <section className="container py-20 text-white" id="features">
+      <section className="container pt-20 pb-10 md:pb-5 text-white" id="features">
         <div className="text-center">
           <h2 className="text-selectiveyellow inline-block px-2 py-1 mb-5 text-sm tracking-widest">
             <FaDroplet className="inline-block text-selectiveyellow relative -top-[2px] mr-2" />
@@ -89,14 +89,14 @@ const ProductFeatures: React.FC<ProductFeaturesProps> = ({ productData }) => {
           </AnimateIn>
         </div>
 
-        <div className="w-full flex flex-col md:flex-row gap-4 pt-20 pb-10">
+        <div className="w-full flex flex-col md:flex-row gap-4 pt-20 pb-10 md:pb-0">
           <div className="md:basis-1/2 h-full aspect-square rounded-xl">
             {productData.content.media && (
               <Gallery productData={productData.content.media} />
             )}
           </div>
 
-          <div className="basis-1/2 md:p-5">
+          <div className="basis-1/2 md:p-5 md:pb-0">
             <AnimateIn
               animation={{
                 y: 50,
@@ -108,7 +108,7 @@ const ProductFeatures: React.FC<ProductFeaturesProps> = ({ productData }) => {
                 {productData.content.features.featuresSubtitleOne}
               </h3>
             </AnimateIn>
-            <ul className="py-5 flex flex-col gap-8">
+            <ul className="py-5 pb-0 flex flex-col gap-8">
               {productData.content.features.featuresListOne.map((feature, index) => (
                 <>
                 <AnimateIn
