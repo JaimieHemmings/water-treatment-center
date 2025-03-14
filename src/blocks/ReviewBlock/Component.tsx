@@ -17,7 +17,7 @@ interface ReviewBlockProps {
 
 const ReviewBlock: React.FC<ReviewBlockProps> = ({title, subtitle, reviews, youtubeEmbed}) => {
   return (
-    <div className="py-[5rem]">
+    <div className="py-[5rem] relative bg-darkblue z-20">
       <div className="container flex flex-col lg:flex-row gap-10 py-5 pt-[3rem]">
         <div className="lg:basis-1/2">
           <div className="relative w-full rounded-lg overflow-hidden">
