@@ -31,6 +31,6 @@ export default async function HeaderClient({ data }) {
   })
 
   return (
-    <NavBar supportingDocs={supportingDocs} docs={docs} />
+    <NavBar supportingDocs={supportingDocs} docs={docs} data={data} />
   )
 }

@@ -23,9 +23,10 @@ type HeaderNavProps = {
   };
   isOpen?: boolean;
   setIsOpen?: (value: boolean) => void;
+  data: any;
 }
 
-export const HeaderNav = ({ docs, supDocs, isOpen, setIsOpen }: HeaderNavProps) => {
+export const HeaderNav = ({ docs, supDocs, isOpen, setIsOpen, data }: HeaderNavProps) => {
   const [activeItem, setActiveItem] = useState<string | null>(null)
 
   const handleItemClick = (slug: string) => {
@@ -37,9 +38,11 @@ export const HeaderNav = ({ docs, supDocs, isOpen, setIsOpen }: HeaderNavProps) 
       setIsOpen(false);
     }
   };
+
+  console.log(data.navItems)
   return (
     <nav className={`bg-darkblue max-lg:h-screen max-lg:py-5 max-lg:w-[220px] max-lg:px-5 lg:container lg:px-0 absolute lg:relative left-0 max-lg:top-[65px] ${isOpen ? 'block' : 'hidden'} lg:block`}>
-      <ul className="grid grid-cols-1 lg:grid-cols-6 gap-4 lg:gap-0">
+      <ul className="flex flex-col lg:flex-row lg:justify-between gap-4 lg:gap-0">
         {docs.map((item) => {
           const hasDropdownItems = supDocs?.docs.some(
             (supItem) => supItem.association.slug === item.slug
@@ -91,15 +94,17 @@ export const HeaderNav = ({ docs, supDocs, isOpen, setIsOpen }: HeaderNavProps) 
             </li>
           )
         })}
-        <li>
-        <Link 
-          href="/shopping-guide"
-          onClick={handleMenuClick}
-          className="px-1 py-2 text-white hover:text-selectiveyellow tracking-wide font-semibold text-base w-full flex gap-2"
-        >
-          Guide
-        </Link>
-        </li>
+        {Array.isArray(data?.navItems) && data.navItems.map((item, index) => (
+          <li key={`nav-item-${index}`}>
+            <Link 
+              href={item.link.slug}
+              onClick={handleMenuClick}
+              className="px-1 py-2 text-white hover:text-selectiveyellow tracking-wide font-semibold text-base w-full flex gap-2 items-center justify-center lg:justify-start"
+            >
+              {item.label}
+            </Link>
+          </li>
+        ))}
         <li className="relative group lg:text-center lg:hidden" onClick={handleMenuClick}>
           <CustomLink label="Contact" link="/contact" theme="light" />
         </li>

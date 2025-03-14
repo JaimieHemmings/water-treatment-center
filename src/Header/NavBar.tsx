@@ -8,7 +8,7 @@ import { HeaderNav } from './Nav';
 import SearchForm from './SearchForm';
 import { Fade as Hamburger } from 'hamburger-react'
 
-const NavBar = ({docs, supportingDocs}) => {
+const NavBar = ({docs, supportingDocs, data}) => {
   const [isOpen, setIsOpen] = useState(false)
   return (
     <div className="w-full py-1 sticky top-0 z-[999] bg-darkblue">
@@ -46,7 +46,7 @@ const NavBar = ({docs, supportingDocs}) => {
         </div>
       </div>
       <div className="container">
-        <HeaderNav docs={docs} supDocs={supportingDocs} isOpen={isOpen} setIsOpen={setIsOpen} />
+        <HeaderNav docs={docs} supDocs={supportingDocs} isOpen={isOpen} setIsOpen={setIsOpen} data={data} />
       </div>
     </div>
   )
