@@ -69,7 +69,7 @@ export default {
           DEFAULT: '#00928f',
         },
         darkblue:{
-          DEFAULT: '#0c1f2d',
+          DEFAULT: '#153045',
         },
         accent: {
           DEFAULT: 'hsl(var(--accent))',

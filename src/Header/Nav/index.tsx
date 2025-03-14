@@ -1,198 +1,112 @@
 'use client';
+import React, {useState} from 'react'
+import Link from 'next/link'
+import { GoChevronDown } from "react-icons/go";
+import SearchForm from '../SearchForm';
+import CustomLink from '@/components/CustomLink';
+import { IoPhonePortraitSharp } from "react-icons/io5";
 
-import React, { useState } from 'react';
-import Link from 'next/link';
-import { FaSearch } from "react-icons/fa";
-import { IoArrowForwardCircle } from "react-icons/io5";
-import { useRouter } from 'next/navigation';
-
-// Define proper types instead of using 'any'
-interface NavItem {
-  link: {
-    slug: string;
+type HeaderNavProps = {
+  docs: Array<{
     title: string;
+    slug: string;
+    excerpt?: string;
+  }>;
+  supDocs: {
+    docs: Array<{
+      title: string;
+      slug: string;
+      association: {
+        slug: string;
+      };
+    }>;
   };
-  label: string;
+  isOpen?: boolean;
 }
 
-interface SubNavItem {
-  slug: string;
-  title: string;
-}
+export const HeaderNav = ({ docs, supDocs, isOpen }: HeaderNavProps) => {
+  const [activeItem, setActiveItem] = useState<string | null>(null)
 
-interface HeaderNavProps {
-  data: {
-    navItems?: NavItem[];
-  };
-  subNav: SubNavItem[];
-  supDocs: any;
-}
-
-// Extract the link styles to a constant for reuse
-const linkClasses = "text-antiflashwhite px-4 py-2 font-normal lg:text-xl md:h-full flex items-center hover:bg-azul hover:text-white transition-colors duration-300 max-sm:text-2xl";
-
-export const HeaderNav: React.FC<HeaderNavProps> = ({ data, subNav, supDocs }) => {
-  // Safely access navItems with a default empty array
-  const navItems = data?.navItems || [];
-  const [showSearch, setShowSearch] = useState(false);
-
-  const [searchTerm, setSearchTerm] = useState('');
-  const router = useRouter();
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (searchTerm.trim()) {
-      router.push(`/search?q=${encodeURIComponent(searchTerm.trim())}`);
-      setSearchTerm('');
-      setShowSearch(false);
-    }
-  };
-
-  // State for mobile menu
-  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-
+  const handleItemClick = (slug: string) => {
+    setActiveItem(activeItem === slug ? null : slug)
+  }
   return (
-    <nav className="md:h-[73px] flex">
-
-      <button 
-        onClick={() => setIsMenuOpen(!isMenuOpen)}
-        className="md:hidden p-2 text-white"
-        aria-label="Toggle menu"
-      >
-        <svg 
-          className="w-8 h-8" 
-          fill="none" 
-          strokeLinecap="round" 
-          strokeLinejoin="round" 
-          strokeWidth="2" 
-          viewBox="0 0 24 24" 
-          stroke="currentColor"
-        >
-          {isMenuOpen ? (
-            <path d="M6 18L18 6M6 6l12 12" />
-          ) : (
-            <path d="M4 6h16M4 12h16M4 18h16" />
-          )}
-        </svg>
-      </button>
-      
-      <ul className={`flex flex-col md:flex-row h-full md:items-center w-full max-md:absolute max-md:top-[57px] max-md:left-0 bg-darkblue max-md:h-screen max-md:justify-start max-md:py-10 ${isMenuOpen ? ('') : ('max-md:hidden')}`}>
-
-        {/* Dynamic nav items */}
-        {navItems.map((item: NavItem, index: number) => (
-          <li className="md:h-full" key={`nav-item-${index}`}>
-            <Link
-              onClick={() => setIsMenuOpen(false)}
-              href={`/${item.link.slug}`}
-              className={linkClasses}
-            >
-              {item.label}
-            </Link>
-          </li>
-        ))}
-        
-        {/* Static nav items */}
-        <li className="md:hidden">
-          <Link
-            onClick={() => setIsMenuOpen(false)}
-            href="/products"
-            className={linkClasses}
-          >
-            Products
-          </Link>
-            <ul className="py-2 bg-darkblue pl-8 md:hidden">
-              {subNav.map((item: SubNavItem, index: number) => {
-                const hasDropdownItems = supDocs.docs.some(
-                  (supItem: any) => supItem.association.slug === item.slug
-                );
-                return (
-                <li
-                  className="py-2"
-                  key={`subnav-item-${index}`}>
+    <nav className={`bg-darkblue max-lg:h-screen max-lg:py-5 max-lg:w-[220px] max-lg:px-5 lg:container lg:px-0 absolute lg:relative left-0 max-lg:top-[65px] ${isOpen ? 'block' : 'hidden'} lg:block`}>
+      <ul className="grid grid-cols-1 lg:grid-cols-6 gap-4 lg:gap-0">
+        {docs.map((item) => {
+          const hasDropdownItems = supDocs?.docs.some(
+            (supItem) => supItem.association.slug === item.slug
+          );
+          
+          const isActive = activeItem === item.slug
+          
+          return (
+            <li key={item.slug} className="relative group">
+              <button 
+                className="px-1 py-2 text-white hover:text-selectiveyellow tracking-wide font-semibold text-base w-full flex gap-2 items-center"
+                onClick={() => handleItemClick(item.slug)}
+              >
+                {item.title} 
+                <GoChevronDown className={`inline-block transition-transform ${isActive ? 'rotate-180' : ''}`} />
+              </button>
+              <ul className={`
+                lg:absolute 
+                bg-white px-4 py-2 rounded-lg shadow-lg lg:min-w-[200px]
+                lg:hidden lg:group-hover:grid
+                ${isActive ? 'grid' : 'hidden'}
+              `}>
+                <li>
                   <Link
-                    className="text-lg text-white"
-                    onClick={() => setIsMenuOpen(false)}
                     href={`/products/${item.slug}`}
+                    className="block px-1 py-1 text-md text-gray-800 hover:text-selectiveyellow"
                   >
-                    - {item.title}
+                    {item.title}
                   </Link>
-                  {hasDropdownItems && (
-                    <ul className="py-2 bg-darkblue">
-                    {supDocs.docs
-                      .filter((supItem: any) => supItem.association.slug === item.slug)
-                      .map((supItem: any, supIndex: number) => (
-                        <li key={`${supIndex}`}>
-                          <Link
-                            href={`/products/${item.slug}/support/${supItem.slug}`}
-                            className="block px-2 pl-8 py-2 text-md text-white"
-                            >
-                            - {supItem.title}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
                 </li>
-              )})}
-            </ul>
+                
+                {hasDropdownItems && 
+                  supDocs.docs
+                    .filter((supItem) => supItem.association.slug === item.slug)
+                    .map((supItem) => (
+                      <li key={supItem.slug}>
+                        <Link
+                          href={`/products/${item.slug}/support/${supItem.slug}`}
+                          className="block px-1 py-1 text-md text-gray-800 hover:text-selectiveyellow"
+                        >
+                          {supItem.title}
+                        </Link>
+                      </li>
+                    ))
+                }
+              </ul>
+            </li>
+          )
+        })}
+        <li>
+        <Link 
+          href="/shopping-guide"
+          className="px-1 py-2 text-white hover:text-selectiveyellow tracking-wide font-semibold text-base w-full flex gap-2"
+        >
+          Guide
+        </Link>
         </li>
-        <li className="md:h-full">
-          <Link
-            onClick={() => setIsMenuOpen(false)}
-            href="/news"
-            className={linkClasses}
-          >
-            News
-          </Link>
+        <li className="relative group lg:text-center lg:hidden">
+          <CustomLink label="Contact" link="/contact" theme="light" />
         </li>
-        <li className="md:h-full">
-          <Link
-            onClick={() => setIsMenuOpen(false)}
-            href="/contact"
-            className={linkClasses}
-          >
-            Contact
-          </Link>
+        <li className="lg:hidden">
+          <a href="tel:0579333942" className="flex items-center gap-2 text-white">
+            <IoPhonePortraitSharp />
+            <span>057 9333942</span>
+          </a>
+          <a href="tel:0861715686" className="flex items-center gap-2 text-white">
+            <IoPhonePortraitSharp />
+            <span>086 1715686</span>
+          </a>
         </li>
-        <li className="relative">
-        <span className="text-antiflashwhite px-4 py-2 font-normal lg:text-xl md:h-full flex items-center max-sm:text-2xl hover:cursor-pointer gap-2">
-          <FaSearch 
-            onClick={() => setShowSearch(!showSearch)} 
-            className="hover:text-azul transition-colors duration-300 text-2xl lg:text-2xl"
-          />
-          <form onSubmit={handleSubmit}>
-            <input 
-              type="text" 
-              placeholder="Search..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className={`
-                bg-antiflashwhite 
-                outline-darkblue
-                px-2 
-                py-1 
-                text-jet 
-                placeholder:text-jet/50
-                transition-all
-                rounded-xl
-                duration-300
-                ring-0
-                focus:ring-0
-                focus:outline-none
-                ${showSearch ? 'w-full md:w-[200px] opacity-100' : 'w-0 opacity-0'}
-              `}
-            />
-            <button 
-              type="submit"
-              className="absolute right-0 top-2 bg-azul rounded-r-xl hover:bg-selectiveyellow transition-colors duration-300 cursor-pointer"
-              disabled={!searchTerm.trim()}
-            >
-              <IoArrowForwardCircle className={`inline-block ${showSearch ? 'opacity-100 text-[32px] lg:text-4xl' : 'w-0 opacity-0'}`} />
-            </button>
-          </form>
-        </span>
-      </li>
       </ul>
+      <div className="lg:hidden mt-10">
+        <SearchForm />
+      </div>
     </nav>
-  );
-};
+  )
+}

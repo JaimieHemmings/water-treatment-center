@@ -34,7 +34,7 @@ export const CallToActionBlock: React.FC<CallToActionBlockProps> = ({ link, link
               height={600}
               priority
             />
-            <div className="absolute inset-0 bg-darkblue/60" />
+            <div className="absolute inset-0 bg-darkblue/40" />
           </div>
         )}
         {!backgroundImage && (
@@ -76,7 +76,7 @@ export const CallToActionBlock: React.FC<CallToActionBlockProps> = ({ link, link
               )}
               </div>
               <RichText
-                className={`${backgroundImage ? 'prose md:prose-md text-base md:text-xl' : 'text-2xl md:text-4xl font-semibold'} mb-5 text-white`}
+                className={`${backgroundImage ? 'prose md:prose-md text-2xl md:text-4xl' : 'text-2xl md:text-4xl font-semibold'} mb-5 text-white`}
                 data={richText}
                 enableGutter={false}
               />
