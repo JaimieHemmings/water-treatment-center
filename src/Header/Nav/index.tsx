@@ -97,9 +97,9 @@ export const HeaderNav = ({ docs, supDocs, isOpen, setIsOpen, data }: HeaderNavP
         {Array.isArray(data?.navItems) && data.navItems.map((item, index) => (
           <li key={`nav-item-${index}`}>
             <Link 
-              href={item.link.slug}
+              href={`/${item.link.slug}`}
               onClick={handleMenuClick}
-              className="px-1 py-2 text-white hover:text-selectiveyellow tracking-wide font-semibold text-base w-full flex gap-2 items-center justify-center lg:justify-start"
+              className="px-1 py-2 text-white hover:text-selectiveyellow tracking-wide font-semibold text-base w-full flex gap-2 items-center lg:justify-start"
             >
               {item.label}
             </Link>
