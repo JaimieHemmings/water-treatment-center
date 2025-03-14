@@ -11,7 +11,7 @@ import { Fade as Hamburger } from 'hamburger-react'
 const NavBar = ({docs, supportingDocs, data}) => {
   const [isOpen, setIsOpen] = useState(false)
   return (
-    <div className="w-full py-1 sticky top-0 z-[999] bg-darkblue">
+    <div className="w-full py-1 sticky top-0 z-[999] bg-darkblue border-b-2 border-white">
       <div className="container px-1 md:px-0">
         <div className="flex flex-row gap-4 w-full justify-between">
           <Link href="/" className="my-auto max-lg:basis:1/3 lg:w-[200px] shrink-0">
