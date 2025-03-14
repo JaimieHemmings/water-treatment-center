@@ -40,7 +40,7 @@ export const HeaderNav = ({ docs, supDocs, isOpen, setIsOpen, data }: HeaderNavP
   };
   
   return (
-    <nav className={`bg-darkblue max-lg:h-screen max-lg:py-5 max-lg:w-[220px] max-lg:px-5 lg:container lg:px-0 absolute lg:relative left-0 max-lg:top-[65px] ${isOpen ? 'block' : 'hidden'} lg:block`}>
+    <nav className={`bg-darkblue max-lg:h-[calc(100vh-76px)] max-lg:py-5 max-lg:w-[220px] max-lg:px-5 lg:container lg:px-0 absolute lg:relative left-0 max-lg:top-[76px] max-lg:overflow-y-scroll ${isOpen ? 'block' : 'hidden'} lg:block`}>
       <ul className="flex flex-col lg:flex-row lg:justify-between gap-4 lg:gap-0">
         {docs.map((item) => {
           const hasDropdownItems = supDocs?.docs.some(
