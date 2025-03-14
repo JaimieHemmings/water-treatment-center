@@ -19,6 +19,8 @@ export default async function HeaderClient({ data }) {
 
   const { docs } = response
 
+  docs.reverse();
+
   const supportingDocs:any = await payload.find({
     collection: 'supporting-documents',
     depth: 1,

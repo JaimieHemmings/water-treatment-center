@@ -38,8 +38,7 @@ export const HeaderNav = ({ docs, supDocs, isOpen, setIsOpen, data }: HeaderNavP
       setIsOpen(false);
     }
   };
-
-  console.log(data.navItems)
+  
   return (
     <nav className={`bg-darkblue max-lg:h-screen max-lg:py-5 max-lg:w-[220px] max-lg:px-5 lg:container lg:px-0 absolute lg:relative left-0 max-lg:top-[65px] ${isOpen ? 'block' : 'hidden'} lg:block`}>
       <ul className="flex flex-col lg:flex-row lg:justify-between gap-4 lg:gap-0">
