@@ -8,6 +8,8 @@ import { FaDroplet } from "react-icons/fa6";
 
 interface Slide {
   title: string
+  titleHighlight?: string
+  titleEnd?: string
   paragraph: string
   video?: {
     url: string
@@ -45,8 +47,16 @@ const SingleSlide: React.FC<{ slide: Slide }> = ({ slide }) => (
       />
     )}
     <div className="container mx-auto h-full flex flex-col justify-start relative z-10">
-      <h1 className="text-4xl md:text-[72px] md:leading-[80px] text-white md:max-w-[75%]">
+      <h1 className="text-4xl md:text-[65px] md:leading-[4rem] text-white md:max-w-[70%]">
         {slide.title}
+        {slide.titleHighlight && (
+          <span className="text-selectiveyellow">{' '}{slide.titleHighlight}{' '}</span>
+        )}
+        {slide.titleEnd && (
+          <span>
+            {slide.titleEnd}
+          </span>
+        )}
       </h1>
       <p className="my-5 pt-5 text-lg md:max-w-[75%] text-white">
         {slide.paragraph}
