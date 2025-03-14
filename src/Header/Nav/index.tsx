@@ -22,14 +22,21 @@ type HeaderNavProps = {
     }>;
   };
   isOpen?: boolean;
+  setIsOpen?: (value: boolean) => void;
 }
 
-export const HeaderNav = ({ docs, supDocs, isOpen }: HeaderNavProps) => {
+export const HeaderNav = ({ docs, supDocs, isOpen, setIsOpen }: HeaderNavProps) => {
   const [activeItem, setActiveItem] = useState<string | null>(null)
 
   const handleItemClick = (slug: string) => {
     setActiveItem(activeItem === slug ? null : slug)
   }
+
+  const handleMenuClick = () => {
+    if (setIsOpen) {
+      setIsOpen(false);
+    }
+  };
   return (
     <nav className={`bg-darkblue max-lg:h-screen max-lg:py-5 max-lg:w-[220px] max-lg:px-5 lg:container lg:px-0 absolute lg:relative left-0 max-lg:top-[65px] ${isOpen ? 'block' : 'hidden'} lg:block`}>
       <ul className="grid grid-cols-1 lg:grid-cols-6 gap-4 lg:gap-0">
@@ -59,6 +66,7 @@ export const HeaderNav = ({ docs, supDocs, isOpen }: HeaderNavProps) => {
                   <Link
                     href={`/products/${item.slug}`}
                     className="block px-1 py-1 text-md text-gray-800 hover:text-selectiveyellow"
+                    onClick={handleMenuClick}
                   >
                     {item.title}
                   </Link>
@@ -71,6 +79,7 @@ export const HeaderNav = ({ docs, supDocs, isOpen }: HeaderNavProps) => {
                       <li key={supItem.slug}>
                         <Link
                           href={`/products/${item.slug}/support/${supItem.slug}`}
+                          onClick={handleMenuClick}
                           className="block px-1 py-1 text-md text-gray-800 hover:text-selectiveyellow"
                         >
                           {supItem.title}
@@ -85,12 +94,13 @@ export const HeaderNav = ({ docs, supDocs, isOpen }: HeaderNavProps) => {
         <li>
         <Link 
           href="/shopping-guide"
+          onClick={handleMenuClick}
           className="px-1 py-2 text-white hover:text-selectiveyellow tracking-wide font-semibold text-base w-full flex gap-2"
         >
           Guide
         </Link>
         </li>
-        <li className="relative group lg:text-center lg:hidden">
+        <li className="relative group lg:text-center lg:hidden" onClick={handleMenuClick}>
           <CustomLink label="Contact" link="/contact" theme="light" />
         </li>
         <li className="lg:hidden">
@@ -105,7 +115,7 @@ export const HeaderNav = ({ docs, supDocs, isOpen }: HeaderNavProps) => {
         </li>
       </ul>
       <div className="lg:hidden mt-10">
-        <SearchForm />
+        <SearchForm setIsOpen={setIsOpen} isOpen={isOpen} />
       </div>
     </nav>
   )

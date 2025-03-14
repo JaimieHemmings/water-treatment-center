@@ -3,7 +3,12 @@ import React, { useState } from 'react'
 import { useRouter } from 'next/navigation';
 import { FaSearch } from "react-icons/fa";
 
-const SearchForm = () => {
+interface SearchFormProps {
+  setIsOpen?: (value: boolean) => void;
+  isOpen?: boolean;
+}
+
+const SearchForm:React.FC<SearchFormProps> = ({setIsOpen, isOpen}) => {
 
   const [searchTerm, setSearchTerm] = useState('');
   const router = useRouter();
@@ -13,6 +18,12 @@ const SearchForm = () => {
     if (searchTerm.trim()) {
       router.push(`/search?q=${encodeURIComponent(searchTerm.trim())}`);
       setSearchTerm('');
+    }
+  };
+
+  const handleMenuClick = () => {
+    if (setIsOpen) {
+      setIsOpen(false);
     }
   };
 
@@ -29,6 +40,7 @@ const SearchForm = () => {
         <button 
           type="submit"
           className="absolute right-2 text-gray-500 hover:text-gray-700"
+          onClick={handleMenuClick}
         >
           <FaSearch className="w-8 h-8 p-2" />
         </button>

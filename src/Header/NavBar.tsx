@@ -46,7 +46,7 @@ const NavBar = ({docs, supportingDocs}) => {
         </div>
       </div>
       <div className="container">
-        <HeaderNav docs={docs} supDocs={supportingDocs} isOpen={isOpen} />
+        <HeaderNav docs={docs} supDocs={supportingDocs} isOpen={isOpen} setIsOpen={setIsOpen} />
       </div>
     </div>
   )
