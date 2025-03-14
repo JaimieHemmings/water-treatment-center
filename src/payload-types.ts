@@ -105,6 +105,8 @@ export interface Page {
           image?: (number | null) | Media;
           video?: (number | null) | Media;
           title: string;
+          titleHighlight?: string | null;
+          titleEnd?: string | null;
           paragraph: string;
           link?: (number | null) | Page;
           linkLabel?: string | null;
@@ -1418,6 +1420,8 @@ export interface PagesSelect<T extends boolean = true> {
               image?: T;
               video?: T;
               title?: T;
+              titleHighlight?: T;
+              titleEnd?: T;
               paragraph?: T;
               link?: T;
               linkLabel?: T;

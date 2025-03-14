@@ -58,6 +58,16 @@ export const hero: Field = {
           required: true,
         },
         {
+          name: 'titleHighlight',
+          type: 'text',
+          label: 'Title Highlight',
+        },
+        {
+          name: 'titleEnd',
+          type: 'text',
+          label: 'Title End',
+        },
+        {
           name: 'paragraph',
           type: 'text',
           label: 'Paragraph',

@@ -10,6 +10,8 @@ import { FaDroplet } from "react-icons/fa6";
 
 interface Slide {
   title: string;
+  titleHighlight?: string;
+  titleEnd?: string;
   paragraph: string;
   video?: {
     url: string;
@@ -73,6 +75,14 @@ export const HighImpactHero: React.FC<HeroProps> = ({ slides }) => {
                 </p>
                 <h1 className="text-4xl md:text-[65px] md:leading-[4rem] text-white">
                   {slide.title}
+                  {slide.titleHighlight && (
+                    <span className="text-selectiveyellow">{' '}{slide.titleHighlight}{' '}</span>
+                  )}
+                  {slide.titleEnd && (
+                    <span>
+                      {slide.titleEnd}
+                    </span>
+                  )}
                 </h1>
                 <p className="mt-5 mb-10 pt-3 text-xl text-white max-w-[80%]">
                   {slide.paragraph}
