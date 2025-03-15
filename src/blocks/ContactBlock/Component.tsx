@@ -122,7 +122,7 @@ export const ContactBlock: React.FC<ContactBlockProps> = ({
             })
           )}
         </div>
-        <div className="basis-1/2 py-[2rem] px-5">
+        <div className="basis-1/2 py-[2rem] md:px-5 md:pl-0">
           <div className="bg-white rounded-xl p-5 py-[2rem] pb-[5rem]">
             <h3 className="text-2xl md:text-4xl text-jet py-5">Contact Us</h3>
           {
