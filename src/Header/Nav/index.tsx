@@ -40,8 +40,8 @@ export const HeaderNav = ({ docs, supDocs, isOpen, setIsOpen, data }: HeaderNavP
   };
   
   return (
-    <nav className={`bg-darkblue max-lg:h-[calc(100vh-76px)] max-lg:py-5 max-lg:w-[220px] max-lg:px-5 lg:container lg:px-0 absolute lg:relative left-0 max-lg:top-[76px] max-lg:overflow-y-scroll ${isOpen ? 'block' : 'hidden'} lg:block`}>
-      <ul className="flex flex-col lg:flex-row lg:justify-between gap-4 lg:gap-0">
+    <nav className={`bg-darkblue max-lg:h-[calc(100vh-65px)] max-lg:py-5 max-lg:w-[220px] max-lg:px-5 lg:container lg:px-0 absolute lg:relative left-0 max-lg:top-[65px] max-lg:overflow-y-scroll ${isOpen ? 'block' : 'hidden'} lg:block max-md:border-t-2 border-white`}>
+      <ul className="flex flex-col lg:flex-row lg:justify-between">
         {docs.map((item) => {
           const hasDropdownItems = supDocs?.docs.some(
             (supItem) => supItem.association.slug === item.slug
@@ -107,7 +107,7 @@ export const HeaderNav = ({ docs, supDocs, isOpen, setIsOpen, data }: HeaderNavP
         <li className="relative group lg:text-center lg:hidden" onClick={handleMenuClick}>
           <CustomLink label="Contact" link="/contact" theme="light" />
         </li>
-        <li className="lg:hidden">
+        <li className="lg:hidden mt-5">
           <a href="tel:0579333942" className="flex items-center gap-2 text-white">
             <IoPhonePortraitSharp />
             <span>057 9333942</span>
@@ -118,7 +118,7 @@ export const HeaderNav = ({ docs, supDocs, isOpen, setIsOpen, data }: HeaderNavP
           </a>
         </li>
       </ul>
-      <div className="lg:hidden mt-10">
+      <div className="lg:hidden mt-5 lg:mt-10">
         <SearchForm setIsOpen={setIsOpen} isOpen={isOpen} />
       </div>
     </nav>
