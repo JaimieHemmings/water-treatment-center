@@ -1,6 +1,7 @@
 import React from "react";
 import RichText from "@/components/RichText";
 import { AnimateIn } from "@/components/Animations/AnimateIn";
+import { FaDroplet } from "react-icons/fa6";
 
 interface TextBlockProps {
   title: string;
@@ -20,7 +21,8 @@ export const TextBlock: React.FC<TextBlockProps> = ({ content, title }) => {
             ease: "power2.out",
           }}
         >
-          <h2 className="text-selectiveyellow text-md tracking-widest inline-block mb-5">
+          <h2 className={`text-sm text-selectiveyellow m-0 pb-5 tracking-widest uppercase`}>
+            <FaDroplet className="inline-block text-selectiveyellow mr-2 relative -top-[2px]" />
             {title}
           </h2>
         </AnimateIn>

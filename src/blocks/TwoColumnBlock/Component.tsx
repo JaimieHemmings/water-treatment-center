@@ -27,7 +27,7 @@ export const TwoColumnBlock: React.FC<TwoColumnBlockProps> = ({ contentleft, con
         }}
       >
         <div className="container border-l-2 border-selectiveyellow pl-5">
-          <h2 className={`text-sm md:text-sm text-selectiveyellow m-0 pb-5 tracking-widest`}>
+          <h2 className={`text-sm text-selectiveyellow m-0 pb-5 tracking-widest uppercase`}>
             <FaDroplet className="inline-block text-selectiveyellow mr-2 relative -top-[2px]" />
             {title}
           </h2>
