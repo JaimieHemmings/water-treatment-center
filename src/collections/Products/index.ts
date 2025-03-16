@@ -23,7 +23,7 @@ export const Products: CollectionConfig = {
     slug: true,
   },
   admin: {
-    defaultColumns: ['title', 'status', 'category'],
+    defaultColumns: ['title', 'category'],
     useAsTitle: 'title',
     group: 'Product Admin',
   },
@@ -38,6 +38,12 @@ export const Products: CollectionConfig = {
       name: 'featuredImage',
       type: 'upload',
       relationTo: 'media',
+      required: true,
+    },
+    {
+      name: 'category',
+      type: 'relationship',
+      relationTo: 'subcategories',
       required: true,
     },
     {
@@ -252,12 +258,6 @@ export const Products: CollectionConfig = {
                       name: 'sku',
                       type: 'text',
                       unique: true,
-                    },
-                    {
-                      name: 'category',
-                      type: 'relationship',
-                      relationTo: 'product-categories',
-                      required: true,
                     },
                   ],
                 },

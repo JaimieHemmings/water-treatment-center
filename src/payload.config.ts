@@ -13,6 +13,7 @@ import { Products } from './collections/Products'
 import { Supporting } from './collections/Supporting'
 import { Services } from './collections/Services'
 import { ProductCategories } from './collections/ProductCategories'
+import { subcategories } from './collections/ProductSubCategories'
 import { Pages } from './collections/Pages'
 import { Posts } from './collections/Posts'
 import { Users } from './collections/Users'
@@ -72,7 +73,7 @@ export default buildConfig({
       connectionString: process.env.DATABASE_URI || '',
     },
   }),
-  collections: [Pages, Posts, Media, Users, Products, Supporting, Services, ProductCategories, TestSubmissions, TestKitRequests, HardnessResults,WellTestResults],
+  collections: [Pages, Posts, Media, Users, Products, Supporting, Services, ProductCategories, subcategories, TestSubmissions, TestKitRequests, HardnessResults, WellTestResults],
   cors: [getServerSideURL()].filter(Boolean),
   globals: [Header, Footer],
   secret: process.env.PAYLOAD_SECRET,

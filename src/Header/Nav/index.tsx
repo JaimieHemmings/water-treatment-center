@@ -21,12 +21,20 @@ type HeaderNavProps = {
       };
     }>;
   };
+  subDocs?: Array<{
+    category: {
+      slug: string;
+    };
+    slug: string;
+    title: string;
+  }>;
   isOpen?: boolean;
   setIsOpen?: (value: boolean) => void;
   data: any;
 }
 
-export const HeaderNav = ({ docs, supDocs, isOpen, setIsOpen, data }: HeaderNavProps) => {
+export const HeaderNav = ({ docs, supDocs, isOpen, setIsOpen, data, subDocs }: HeaderNavProps) => {
+
   const [activeItem, setActiveItem] = useState<string | null>(null)
 
   const handleItemClick = (slug: string) => {
@@ -52,27 +60,37 @@ export const HeaderNav = ({ docs, supDocs, isOpen, setIsOpen, data }: HeaderNavP
           return (
             <li key={item.slug} className="relative group">
               <button 
+                aria-controls={`dropdown-${item.slug}`}
+                aria-expanded={isActive}
                 className="px-1 py-2 text-white hover:text-selectiveyellow tracking-wide font-semibold text-base w-full flex gap-2 items-center"
                 onClick={() => handleItemClick(item.slug)}
               >
                 {item.title} 
-                <GoChevronDown className={`inline-block transition-transform ${isActive ? 'rotate-180' : ''}`} />
+                <GoChevronDown
+                  aria-hidden="true"
+                  className={`inline-block transition-transform ${isActive ? 'rotate-180' : ''}`} />
               </button>
-              <ul className={`
+              <ul
+                role="menu" className={`
                 lg:absolute 
                 bg-white px-4 py-2 rounded-lg shadow-lg lg:min-w-[200px]
                 lg:hidden lg:group-hover:grid
                 ${isActive ? 'grid' : 'hidden'}
               `}>
-                <li>
-                  <Link
-                    href={`/products/${item.slug}`}
-                    className="block px-1 py-1 text-md text-gray-800 hover:text-selectiveyellow"
-                    onClick={handleMenuClick}
-                  >
-                    {item.title}
-                  </Link>
-                </li>
+                  {subDocs
+                    ?.filter((subItem) => subItem.category.slug === item.slug)
+                    .map((subItem) => (
+                      <li key={subItem.slug}>
+                        <Link
+                          href={`/products/${item.slug}/${subItem.slug}`}
+                          onClick={handleMenuClick}
+                          className="block px-1 py-1 text-md text-gray-800 hover:text-selectiveyellow"
+                        >
+                          {subItem.title}
+                        </Link>
+                      </li>
+                    ))
+                  }
                 
                 {hasDropdownItems && 
                   supDocs.docs

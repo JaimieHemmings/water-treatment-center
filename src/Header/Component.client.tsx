@@ -32,7 +32,20 @@ export default async function HeaderClient({ data }) {
     },
   })
 
+  const subcategories:any = await payload.find({
+    collection: 'subcategories',
+    depth: 1,
+    overrideAccess: false,
+    select: {
+      title: true,
+      slug: true,
+      category: true,
+    },
+  })
+
+  const subDocs = subcategories.docs
+
   return (
-    <NavBar supportingDocs={supportingDocs} docs={docs} data={data} />
+    <NavBar supportingDocs={supportingDocs} docs={docs} data={data} subDocs={subDocs} />
   )
 }

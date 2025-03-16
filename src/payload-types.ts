@@ -19,6 +19,7 @@ export interface Config {
     'supporting-documents': SupportingDocument;
     services: Service;
     'product-categories': ProductCategory;
+    subcategories: Subcategory;
     'test-submissions': TestSubmission;
     'test-kit-requests': TestKitRequest;
     'hardness-test-results': HardnessTestResult;
@@ -41,6 +42,7 @@ export interface Config {
     'supporting-documents': SupportingDocumentsSelect<false> | SupportingDocumentsSelect<true>;
     services: ServicesSelect<false> | ServicesSelect<true>;
     'product-categories': ProductCategoriesSelect<false> | ProductCategoriesSelect<true>;
+    subcategories: SubcategoriesSelect<false> | SubcategoriesSelect<true>;
     'test-submissions': TestSubmissionsSelect<false> | TestSubmissionsSelect<true>;
     'test-kit-requests': TestKitRequestsSelect<false> | TestKitRequestsSelect<true>;
     'hardness-test-results': HardnessTestResultsSelect<false> | HardnessTestResultsSelect<true>;
@@ -1037,6 +1039,7 @@ export interface Product {
   id: number;
   title: string;
   featuredImage: number | Media;
+  category: number | Subcategory;
   content: {
     header: {
       productImage: number | Media;
@@ -1100,7 +1103,6 @@ export interface Product {
     specs: {
       numberOfUsers: number;
       sku?: string | null;
-      category: number | ProductCategory;
     };
   };
   meta?: {
@@ -1119,6 +1121,28 @@ export interface Product {
   slugLock?: boolean | null;
   createdAt: string;
   updatedAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "subcategories".
+ */
+export interface Subcategory {
+  id: number;
+  title: string;
+  category: number | ProductCategory;
+  seo?: {
+    title?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (number | null) | Media;
+    description?: string | null;
+  };
+  slug?: string | null;
+  slugLock?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1329,6 +1353,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'product-categories';
         value: number | ProductCategory;
+      } | null)
+    | ({
+        relationTo: 'subcategories';
+        value: number | Subcategory;
       } | null)
     | ({
         relationTo: 'test-submissions';
@@ -1944,6 +1972,7 @@ export interface UsersSelect<T extends boolean = true> {
 export interface ProductsSelect<T extends boolean = true> {
   title?: T;
   featuredImage?: T;
+  category?: T;
   content?:
     | T
     | {
@@ -2019,7 +2048,6 @@ export interface ProductsSelect<T extends boolean = true> {
           | {
               numberOfUsers?: T;
               sku?: T;
-              category?: T;
             };
       };
   meta?:
@@ -2153,6 +2181,26 @@ export interface ProductCategoriesSelect<T extends boolean = true> {
             };
       };
   meta?:
+    | T
+    | {
+        title?: T;
+        image?: T;
+        description?: T;
+      };
+  slug?: T;
+  slugLock?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "subcategories_select".
+ */
+export interface SubcategoriesSelect<T extends boolean = true> {
+  title?: T;
+  category?: T;
+  seo?:
     | T
     | {
         title?: T;
