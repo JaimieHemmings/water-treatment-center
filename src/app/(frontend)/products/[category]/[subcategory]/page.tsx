@@ -1,3 +1,4 @@
+import { Metadata } from 'next'
 import Link from 'next/link'
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
@@ -12,9 +13,10 @@ type Params = {
     category: string;
     subcategory: string
   }
+  searchParams: { [key: string]: string | string[] | undefined }
 }
 
-export default async function SubCategoryData({ params }: Params) {
+export default async function SubCategoryData({ params }: Params): Promise<MetaData> {
   const { category, subcategory } = await params
   const products = await queryPostBySlug({ slug: subcategory })
   const [categoryData] = await queryCategoryBySlug({ slug: subcategory })
