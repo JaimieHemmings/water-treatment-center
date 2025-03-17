@@ -6,6 +6,11 @@ export const VideoBlock: Block = {
   interfaceName: 'VideoBlock',
   fields: [
     {
+      name: 'videoOnly',
+      label: 'Video Only',
+      type: 'checkbox',
+    },
+    {
       name: 'title',
       label: 'Title',
       type: 'text',

@@ -15,7 +15,8 @@ interface VideoBlockProps {
   link: {
     slug: string
   }
-  linkLabel: string
+  linkLabel: string;
+  videoOnly?: boolean
 }
 
 const ANIMATION_CONFIG = {
@@ -43,8 +44,24 @@ const VideoBlock: React.FC<VideoBlockProps> = ({
   contentleft,
   video,
   link,
-  linkLabel
+  linkLabel,
+  videoOnly
 }) => {
+
+  if (videoOnly) {
+    return (
+      <video
+        className="w-full h-auto"
+        loop
+        playsInline
+        controls
+      >
+        <source src={video.url} type="video/mp4" />
+        Your browser does not support the video tag.
+    </video>
+    )
+  }
+
   return (
     <section className="relative overflow-hidden py-[5rem] w-full">
       <DecorativeDots position="top" />

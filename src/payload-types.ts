@@ -812,6 +812,7 @@ export interface FaqBlock {
  * via the `definition` "VideoBlock".
  */
 export interface VideoBlock {
+  videoOnly?: boolean | null;
   title?: string | null;
   subtitle?: string | null;
   contentleft?: string | null;
@@ -1763,6 +1764,7 @@ export interface FaqBlockSelect<T extends boolean = true> {
  * via the `definition` "VideoBlock_select".
  */
 export interface VideoBlockSelect<T extends boolean = true> {
+  videoOnly?: T;
   title?: T;
   subtitle?: T;
   contentleft?: T;

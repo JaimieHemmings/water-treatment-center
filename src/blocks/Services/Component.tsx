@@ -4,7 +4,6 @@ import configPromise from '@payload-config'
 import { getPayload } from 'payload'
 import { AnimateIn } from '@/components/Animations/AnimateIn'
 import RichText from '@/components/RichText'
-import { FaDroplet } from "react-icons/fa6";
 import { IoIosInformationCircleOutline } from "react-icons/io";
 
 export const dynamic = 'force-static'
@@ -47,11 +46,14 @@ export default async function ServicesBlock() {
                 delay: 0.1 * index,
               }}
             >
-              <h3 className="text-2xl md:text-4xl py-2 text-selectiveyellow font-bold mb-5">
-                <FaDroplet className="inline-block mr-2 relative -top-[2px]" />
-                {service.title}
-              </h3>
-              <RichText data={service.description} enableGutter={false} className="max-w-none prose md:prose-md mb-10 text-md md:xl mr-0 [&_strong]:font-bold" />
+              <div
+                className="pl-4 border-l-4 border-selectiveyellow"
+              >
+                <h3 className="text-2xl md:text-4xl py-2 text-selectiveyellow font-bold mb-2">
+                  {service.title}
+                </h3>
+                <RichText data={service.description} enableGutter={false} className="max-w-none prose md:prose-md mb-10 text-md md:xl mr-0 [&_strong]:font-bold" />
+              </div>
               {service.features && (
                 <ul className="list-none list-inside mt-4">
                   {service.features.map((feature) => (
