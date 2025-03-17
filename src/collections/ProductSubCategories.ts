@@ -47,6 +47,10 @@ export const subcategories: CollectionConfig = {
       defaultValue: 'New Subcategory',
     },
     {
+      name: 'excerpt',
+      type: 'textarea',
+    },
+    {
       name: 'category',
       type: 'relationship',
       relationTo: 'product-categories',

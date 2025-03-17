@@ -1132,6 +1132,7 @@ export interface Product {
 export interface Subcategory {
   id: number;
   title: string;
+  excerpt?: string | null;
   category: number | ProductCategory;
   hero: {
     heroImage: number | Media;
@@ -2221,6 +2222,7 @@ export interface ProductCategoriesSelect<T extends boolean = true> {
  */
 export interface SubcategoriesSelect<T extends boolean = true> {
   title?: T;
+  excerpt?: T;
   category?: T;
   hero?:
     | T

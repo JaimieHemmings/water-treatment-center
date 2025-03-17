@@ -34,12 +34,12 @@ export default async function SubCategoryData({ params }: Params) {
           />
         )}
         <div className="container mx-auto my-auto h-full flex flex-row justify-start relative z-10">
-          <div className="md:basis-1/2 flex flex-col justify-center items-start h-full pt-[5rem]">
+          <div className="md:basis-2/3 flex flex-col justify-center items-start h-full pt-[5rem]">
             <h1 className="text-4xl md:text-[72px] md:leading-[80px] text-white">
               {categoryData.title}
             </h1>
             <p className="my-5 text-lg text-white">
-              Excerpt here
+            {categoryData.excerpt}
             </p>
           </div>
         </div>
