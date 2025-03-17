@@ -237,6 +237,7 @@ export interface CallToActionBlock {
   title?: string | null;
   subtitle?: string | null;
   backgroundImage?: (number | null) | Media;
+  lightMode?: boolean | null;
   richText?: {
     root: {
       type: string;
@@ -1517,6 +1518,7 @@ export interface CallToActionBlockSelect<T extends boolean = true> {
   title?: T;
   subtitle?: T;
   backgroundImage?: T;
+  lightMode?: T;
   richText?: T;
   link?: T;
   linkLabel?: T;

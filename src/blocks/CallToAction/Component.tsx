@@ -18,9 +18,10 @@ interface CallToActionBlockProps {
     url: string;
     alt: string;
   };
+  lightMode?: boolean;
 }
 
-export const CallToActionBlock: React.FC<CallToActionBlockProps> = ({ link, linkLabel, richText, backgroundImage, title, subtitle }) => {
+export const CallToActionBlock: React.FC<CallToActionBlockProps> = ({ link, linkLabel, richText, backgroundImage, title, subtitle, lightMode }) => {
   return (
     <section className="bg-darkblue">
       <div className="w-full py-[5rem] relative overflow-hidden">
@@ -52,10 +53,14 @@ export const CallToActionBlock: React.FC<CallToActionBlockProps> = ({ link, link
         className={`w-full
         h-full
         absolute
-        z-1
-        ${backgroundImage ? 'bg-darkblue/80' : 'bg-[#009290]/70'} 
+        z-10
+        ${backgroundImage && !lightMode ? 'bg-darkblue/80' : 'bg-[#009290]/70'}
+        ${backgroundImage && lightMode ? 'bg-white/20' : ''} 
         top-0
         left-0`} />
+        {lightMode && (
+          <div className="absolute pointer-events-none left-0 bottom-0 w-1/2 h-full bg-gradient-to-r from-white to-transparent" />
+        )}
       <Bounded>
         <div className="flex flex-col md:flex-row justify-between">
           <div className="basis-1/2">
@@ -72,11 +77,11 @@ export const CallToActionBlock: React.FC<CallToActionBlockProps> = ({ link, link
               </h2>
               <div>
               {subtitle && (
-                <p className="text-white text-2xl md:text-4xl pb-4 border-b-2 border-selectiveyellow mb-5 inline-block font-semibold">{subtitle}</p>
+                <p className={`text-white text-2xl md:text-4xl pb-4 border-b-2 border-selectiveyellow mb-5 inline-block font-semibold ${lightMode ? 'text-darkblue' : ''}`}>{subtitle}</p>
               )}
               </div>
               <RichText
-                className={`${backgroundImage ? 'prose md:prose-md text-2xl md:text-4xl' : 'text-2xl md:text-4xl font-semibold'} mb-5 text-white`}
+                className={`${backgroundImage ? 'prose md:prose-md text-2xl md:text-4xl' : 'text-2xl md:text-4xl font-semibold'} mb-5 ${lightMode ? 'text-darkblue' : 'text-white'}`}
                 data={richText}
                 enableGutter={false}
               />
@@ -94,7 +99,12 @@ export const CallToActionBlock: React.FC<CallToActionBlockProps> = ({ link, link
                 ease: 'power2.out',
               }}
             >
-              <CustomLink theme="white" label={linkLabel} link={link.slug} /> 
+              {lightMode && (
+                <CustomLink theme="dark" label={linkLabel} link={link.slug} />
+              )}
+              {!lightMode && (
+                <CustomLink theme="white" label={linkLabel} link={link.slug} /> 
+              )}
             </AnimateIn>         
           </div>
         </div>

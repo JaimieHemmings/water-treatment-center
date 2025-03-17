@@ -35,6 +35,16 @@ export const CallToAction: Block = {
       required: false,
     },
     {
+      name: 'lightMode',
+      type: 'checkbox',
+      label: 'Light Mode',
+      admin: {
+        condition: (data, siblingData) => {
+          return Boolean(siblingData?.backgroundImage)
+        },
+      },
+    },
+    {
       name: 'richText',
       type: 'richText',
       editor: lexicalEditor({
