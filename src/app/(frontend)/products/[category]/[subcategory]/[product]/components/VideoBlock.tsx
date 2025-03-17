@@ -2,7 +2,6 @@ import React from 'react'
 
 const VideoBlock = ({ video }: any) => {
   if (!video) return null
-  console.log({video})
   return (
     <div className="relative z-30 w-full bg-darkblue">
       <div className="md:container">
