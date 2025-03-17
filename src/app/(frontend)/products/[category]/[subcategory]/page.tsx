@@ -1,4 +1,3 @@
-import { Metadata } from 'next'
 import Link from 'next/link'
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
@@ -108,7 +107,7 @@ const queryPostBySlug = cache(async ({ slug }: { slug: string }) => {
   return result.docs || []
 })
 
-export const generateMetadata = async ({ params: paramsPromise }: Args) => {
+export const generateMetadata = async ({ params: paramsPromise }: any) => {
   const { slug = '' } = await paramsPromise
   const [category] = await queryCategoryBySlug({ slug })
   return generateMeta({ doc: category })
