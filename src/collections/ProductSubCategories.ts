@@ -32,6 +32,7 @@ export const subcategories: CollectionConfig = {
   defaultPopulate: {
     title: true,
     category: true,
+    slug: true,
   },
   admin: {
     defaultColumns: ['title', 'category', 'updatedAt'],

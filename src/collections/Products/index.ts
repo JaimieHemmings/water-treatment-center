@@ -21,6 +21,8 @@ export const Products: CollectionConfig = {
   },
   defaultPopulate: {
     slug: true,
+    category: true,
+    parent: true,
   },
   admin: {
     defaultColumns: ['title', 'category'],
@@ -41,7 +43,16 @@ export const Products: CollectionConfig = {
       required: true,
     },
     {
+      name: 'parent',
+      label: 'Category',
+      type: 'relationship',
+      relationTo: 'product-categories',
+      required: true,
+
+    },
+    {
       name: 'category',
+      label: 'Subcategory',
       type: 'relationship',
       relationTo: 'subcategories',
       required: true,

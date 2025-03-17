@@ -8,13 +8,17 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const baseUrl = 'https://thewatertreatmentcentre.ie'
 
     // Fetch all published content
-    const [products, categories, supportingDocs, posts, pages] = await Promise.all([
+    const [products, categories, subcategories, supportingDocs, posts, pages] = await Promise.all([
       payload.find({
         collection: 'products'
       }),
 
       payload.find({
         collection: 'product-categories',
+      }),
+
+      payload.find({
+        collection: 'subcategories',
       }),
 
       payload.find({
@@ -42,6 +46,36 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       }
     ]
 
+    // Add products
+    products.docs.forEach((product: any) => {
+      sitemapEntries.push({
+        url: `${baseUrl}/products/${product.parent.slug}/${product.category.slug}/${product.slug}`,
+        lastModified: new Date(product.updatedAt),
+        changeFrequency: 'weekly',
+        priority: 0.8
+      })
+    })
+
+    // Add pages
+    pages.docs.forEach((page: any) => {
+      sitemapEntries.push({
+        url: `${baseUrl}/${page.slug}`,
+        lastModified: new Date(page.updatedAt),
+        changeFrequency: 'monthly',
+        priority: 0.7
+      })
+    })
+
+    // Add categories
+    subcategories.docs.forEach((category: any) => {
+      sitemapEntries.push({
+        url: `${baseUrl}/products/${category.category.slug}/${category.slug}`,
+        lastModified: new Date(category.updatedAt),
+        changeFrequency: 'weekly',
+        priority: 0.9
+      })
+    })
+
     // Add supporting documents
     supportingDocs.docs.forEach((doc: any) => {
       sitemapEntries.push({
@@ -62,37 +96,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       })
     })
 
-    // Add products
-    products.docs.forEach((product: any) => {
-      if (product.category?.slug) {
-        sitemapEntries.push({
-          url: `${baseUrl}/products/${product.category.slug}/${product.slug}`,
-          lastModified: new Date(product.updatedAt),
-          changeFrequency: 'weekly',
-          priority: 0.8
-        })
-      }
-    })
-
-    // Add categories
-    categories.docs.forEach((category: any) => {
-      sitemapEntries.push({
-        url: `${baseUrl}/products/${category.slug}`,
-        lastModified: new Date(category.updatedAt),
-        changeFrequency: 'weekly',
-        priority: 0.9
-      })
-    })
-
-    // Add pages
-    pages.docs.forEach((page: any) => {
-      sitemapEntries.push({
-        url: `${baseUrl}/${page.slug}`,
-        lastModified: new Date(page.updatedAt),
-        changeFrequency: 'monthly',
-        priority: 0.7
-      })
-    })
     return sitemapEntries
 
   } catch (error) {

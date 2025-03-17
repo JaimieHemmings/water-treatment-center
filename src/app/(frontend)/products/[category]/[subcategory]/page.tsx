@@ -18,7 +18,6 @@ export default async function SubCategoryData({ params }: Params) {
   const { category, subcategory } = await params
   const products = await queryPostBySlug({ slug: subcategory })
   const [categoryData] = await queryCategoryBySlug({ slug: subcategory })
-  console.log(`Category: ${category}, Subcategory: ${subcategory}`)
   return (
     <article className="bg-darkblue relative z-0">
       <PageClient />

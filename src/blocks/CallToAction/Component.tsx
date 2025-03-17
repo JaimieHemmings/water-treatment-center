@@ -55,7 +55,7 @@ export const CallToActionBlock: React.FC<CallToActionBlockProps> = ({ link, link
         absolute
         z-10
         ${backgroundImage && !lightMode ? 'bg-darkblue/80' : 'bg-[#009290]/70'}
-        ${backgroundImage && lightMode ? 'bg-white/20' : ''} 
+        ${backgroundImage && lightMode ? 'bg-white/40' : ''} 
         top-0
         left-0`} />
         {lightMode && (

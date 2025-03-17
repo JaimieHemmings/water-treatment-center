@@ -1040,6 +1040,7 @@ export interface Product {
   id: number;
   title: string;
   featuredImage: number | Media;
+  parent: number | ProductCategory;
   category: number | Subcategory;
   content: {
     header: {
@@ -1990,6 +1991,7 @@ export interface UsersSelect<T extends boolean = true> {
 export interface ProductsSelect<T extends boolean = true> {
   title?: T;
   featuredImage?: T;
+  parent?: T;
   category?: T;
   content?:
     | T
