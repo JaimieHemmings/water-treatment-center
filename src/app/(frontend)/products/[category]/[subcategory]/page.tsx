@@ -9,14 +9,13 @@ import { generateMeta } from '@/utilities/generateMeta'
 import { RenderBlocks } from '@/blocks/RenderBlocks'
 
 type Params = {
-  params: {
-    category: string;
+  params: Promise<{
+    category?: string
     subcategory: string
-  }
-  searchParams: { [key: string]: string | string[] | undefined }
+  }>
 }
 
-export default async function SubCategoryData({ params }: Params): Promise<MetaData> {
+export default async function SubCategoryData({ params }: Params) {
   const { category, subcategory } = await params
   const products = await queryPostBySlug({ slug: subcategory })
   const [categoryData] = await queryCategoryBySlug({ slug: subcategory })
