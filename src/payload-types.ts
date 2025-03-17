@@ -819,6 +819,7 @@ export interface VideoBlock {
   link?: (number | null) | Page;
   linkLabel?: string | null;
   video: number | Media;
+  preloadImage?: (number | null) | Media;
   id?: string | null;
   blockName?: string | null;
   blockType: 'videoBlock';
@@ -1772,6 +1773,7 @@ export interface VideoBlockSelect<T extends boolean = true> {
   link?: T;
   linkLabel?: T;
   video?: T;
+  preloadImage?: T;
   id?: T;
   blockName?: T;
 }

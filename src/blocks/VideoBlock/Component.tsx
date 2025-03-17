@@ -17,6 +17,9 @@ interface VideoBlockProps {
   }
   linkLabel: string;
   videoOnly?: boolean
+  preloadImage?: {
+    url: string
+  }
 }
 
 const ANIMATION_CONFIG = {
@@ -45,7 +48,8 @@ const VideoBlock: React.FC<VideoBlockProps> = ({
   video,
   link,
   linkLabel,
-  videoOnly
+  videoOnly,
+  preloadImage
 }) => {
 
   if (videoOnly) {
@@ -55,6 +59,7 @@ const VideoBlock: React.FC<VideoBlockProps> = ({
         loop
         playsInline
         controls
+        poster={preloadImage?.url || '/video-poster.jpg'}
       >
         <source src={video.url} type="video/mp4" />
         Your browser does not support the video tag.

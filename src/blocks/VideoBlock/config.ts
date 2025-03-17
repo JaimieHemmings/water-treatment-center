@@ -42,7 +42,13 @@ export const VideoBlock: Block = {
       type: 'upload',
       relationTo: 'media',
       required: true,
-    }
+    },
+    {
+      name: 'preloadImage',
+      label: 'Preload Image',
+      type: 'upload',
+      relationTo: 'media',
+    },
   ],
   labels: {
     plural: 'Video Blocks',
