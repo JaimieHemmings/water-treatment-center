@@ -2,13 +2,12 @@
 
 import React, { useEffect, useState } from 'react';
 import Cookies from 'js-cookie';
-import { FaTimes } from 'react-icons/fa';
 import ReactGA from "react-ga4";
 
 const COOKIE_NAME = 'ga-consent';
 const COOKIE_VALUE = 'accepted';
-const COOKIE_DURATION = 365; // days
-const GA_MEASUREMENT_ID = 'G-XXXXXXXXXX'; // Replace with your GA4 measurement ID
+const COOKIE_DURATION = 365;
+const GA_MEASUREMENT_ID = 'G-TK0L4CBHEV';
 
 const GAConsent = () => {
   const [showBanner, setShowBanner] = useState(false);
