@@ -8,6 +8,7 @@ import { FaDroplet } from "react-icons/fa6";
 import Image from 'next/image'
 import Bounded from '@/utilities/Bounded'
 import AnimateIn from '@/components/Animations/AnimateIn'
+import Link from 'next/link'
 
 type Args = {
   searchParams: Promise<{
@@ -27,6 +28,8 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
       slug: true,
       content: true,
       meta: true,
+      parent: true,
+      category: true,
     },
     // pagination: false reduces overhead if you don't need totalDocs
     pagination: false,
@@ -76,7 +79,7 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
       <PageClient />
       <div className="container py-[5rem] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       {posts.docs.map((post: any, index) => (
-          <div key={index} className="bg-white rounded-xl overflow-hidden shadow-lg border border-selectiveyellow/20">
+          <Link href={`/products/${post.parent.slug}/${post.category.slug}/${post.slug}`} key={index} className="bg-white rounded-xl overflow-hidden shadow-lg border border-selectiveyellow/20">
             <div className="relative h-[250px]">
               {post.content.header.productImage && (
                 <Image
@@ -91,7 +94,7 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
             <div className="p-6 flex flex-col gap-4">
               <h3 className="tracking-widest text-selectiveyellow text-sm uppercase">
                 <FaDroplet className="inline-block text-selectiveyellow relative -top-[2px] mr-2" />
-                {post.content.specs.category.title}
+                {post.parent.title}
               </h3>
               <h2 className="text-xl text-jet font-semibold">{post.title}</h2>
               {post.meta.description ? (
@@ -99,19 +102,12 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
               ) : (
                 <p className="text-jet/50">Description not available</p>
               )}
-              <div className="mt-auto pt-4">
-                <CustomLink 
-                  theme="dark" 
-                  label="View Details" 
-                  link={`/products/${post.content.specs.category.slug}/${post.slug}`} 
-                />
-              </div>
             </div>
-          </div>
+          </Link>
         ))}
       {posts.docs.length === 0 && (
         <div className="text-center py-[5rem] container">
-          <p className="text-xl text-jet/70">No results found for &aposl;{query}&aposl;</p>
+          <p className="text-xl text-white/70">No results found for &apos;{query}&apos;</p>
         </div>
       )}
       </div>
