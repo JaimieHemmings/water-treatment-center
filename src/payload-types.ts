@@ -1130,6 +1130,22 @@ export interface Subcategory {
   id: number;
   title: string;
   category: number | ProductCategory;
+  hero: {
+    heroImage: number | Media;
+  };
+  content: {
+    content: (
+      | CallToActionBlock
+      | FaqBlock
+      | ImageGrid
+      | ImageList
+      | StatsBlock
+      | TextWithImageBlock
+      | TwoColumn
+      | VideoBlock
+      | YoutubeBlock
+    )[];
+  };
   seo?: {
     title?: string | null;
     /**
@@ -2200,6 +2216,28 @@ export interface ProductCategoriesSelect<T extends boolean = true> {
 export interface SubcategoriesSelect<T extends boolean = true> {
   title?: T;
   category?: T;
+  hero?:
+    | T
+    | {
+        heroImage?: T;
+      };
+  content?:
+    | T
+    | {
+        content?:
+          | T
+          | {
+              cta?: T | CallToActionBlockSelect<T>;
+              faqblock?: T | FaqBlockSelect<T>;
+              imageGrid?: T | ImageGridSelect<T>;
+              imageList?: T | ImageListSelect<T>;
+              statsBlock?: T | StatsBlockSelect<T>;
+              textWithImageBlock?: T | TextWithImageBlockSelect<T>;
+              twoColumn?: T | TwoColumnSelect<T>;
+              videoBlock?: T | VideoBlockSelect<T>;
+              youtubeBlock?: T | YoutubeBlockSelect<T>;
+            };
+      };
   seo?:
     | T
     | {

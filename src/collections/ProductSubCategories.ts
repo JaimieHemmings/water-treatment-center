@@ -2,6 +2,16 @@ import type { CollectionConfig } from 'payload'
 import { authenticated } from '../access/authenticated'
 import { authenticatedOrPublished } from '../access/authenticatedOrPublished'
 
+import { CallToAction } from '@/blocks/CallToAction/config'
+import { FaqBlock } from '@/blocks/FaqBlock/config'
+import { ImageGrid } from '@/blocks/ImageGrid/config'
+import { ImageList } from '@/blocks/ImageList/config'
+import { StatsBlock } from '@/blocks/StatsBlock/config'
+import { TwoColumnBlock } from '@/blocks/TwoColumnBlock/config'
+import { VideoBlock } from '@/blocks/VideoBlock/config'
+import { YoutubeBlock } from '@/blocks/YoutubeBlock/config'
+import { TextWithImageBlock } from '@/blocks/TextWithImageBlock/config'
+
 import {
   MetaDescriptionField,
   MetaImageField,
@@ -44,6 +54,31 @@ export const subcategories: CollectionConfig = {
     {
       type: 'tabs',
       tabs: [
+        {
+          name: 'hero',
+          label: 'Hero',
+          fields: [
+            {
+              name: 'heroImage',
+              label: 'Hero Image',
+              type: 'upload',
+              relationTo: 'media',
+              required: true,
+            },
+          ],
+        },
+        {
+          name: 'content',
+          label: 'Content',
+          fields: [
+            {
+              name: 'content',
+              label: 'Content',
+              type: 'blocks',
+              blocks: [CallToAction, FaqBlock, ImageGrid, ImageList, StatsBlock, TextWithImageBlock, TwoColumnBlock, VideoBlock, YoutubeBlock ],
+              required: true,
+            }],
+        },
         {
           name: 'seo',
           label: 'SEO',
