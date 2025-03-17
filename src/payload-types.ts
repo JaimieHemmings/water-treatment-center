@@ -1150,7 +1150,7 @@ export interface Subcategory {
       | YoutubeBlock
     )[];
   };
-  seo?: {
+  meta?: {
     title?: string | null;
     /**
      * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
@@ -2246,7 +2246,7 @@ export interface SubcategoriesSelect<T extends boolean = true> {
               youtubeBlock?: T | YoutubeBlockSelect<T>;
             };
       };
-  seo?:
+  meta?:
     | T
     | {
         title?: T;

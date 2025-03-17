@@ -107,8 +107,7 @@ const queryPostBySlug = cache(async ({ slug }: { slug: string }) => {
 })
 
 export const generateMetadata = async ({ params: paramsPromise }: any) => {
-  const { slug = '' } = await paramsPromise
-  const [category] = await queryCategoryBySlug({ slug })
-  // @ts-ignore
-  return generateMeta({ doc: category })
+  const { category, subcategory } = await paramsPromise
+  const [categoryData] = await queryCategoryBySlug({ slug: subcategory })
+  return generateMeta({ doc: categoryData })
 }

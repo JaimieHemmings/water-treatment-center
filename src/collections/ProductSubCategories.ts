@@ -85,7 +85,7 @@ export const subcategories: CollectionConfig = {
             }],
         },
         {
-          name: 'seo',
+          name: 'meta',
           label: 'SEO',
           fields: [
             OverviewField({
