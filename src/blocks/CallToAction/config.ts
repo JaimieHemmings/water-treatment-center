@@ -1,4 +1,5 @@
 import type { Block } from 'payload'
+import { FormBlock } from '@/blocks/Form/config'
 
 import {
   FixedToolbarFeature,
@@ -57,19 +58,52 @@ export const CallToAction: Block = {
           ]
         },
       }),
-      label: false,
+      label: 'Content',
+    },
+    {
+      name: 'ctaType',
+      type: 'radio',
+      options: [
+        {
+          label: 'Link',
+          value: 'link',
+        },
+        {
+          label: 'Form',
+          value: 'form',
+        },
+      ],
+      defaultValue: 'link',
+      required: true,
     },
     {
       name: 'link',
       type: 'relationship',
       relationTo: 'pages',
       required: true,
+      admin: {
+        condition: (data, siblingData) => siblingData?.ctaType === 'link',
+      },
     },
     {
       name: 'linkLabel',
       type: 'text',
       required: true,
+      admin: {
+        condition: (data, siblingData) => siblingData?.ctaType === 'link',
+      },
     },
+    {
+      name: 'blocks',
+      type: 'blocks',
+      blocks: [
+        FormBlock
+      ],
+      required: true,
+      admin: {
+        condition: (data, siblingData) => siblingData?.ctaType === 'form',
+      },
+    }
   ],
   labels: {
     plural: 'Calls to Action',

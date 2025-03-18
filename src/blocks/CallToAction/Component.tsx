@@ -5,6 +5,7 @@ import Bounded from '@/utilities/Bounded';
 import AnimateIn from '@/components/Animations/AnimateIn';
 import Image from 'next/image';
 import { FaDroplet } from "react-icons/fa6";
+import { FormBlock } from "@/blocks/Form/Component";
 
 interface CallToActionBlockProps {
   title?: string,
@@ -19,9 +20,11 @@ interface CallToActionBlockProps {
     alt: string;
   };
   lightMode?: boolean;
+  ctaType?: string;
+  blocks: any;
 }
 
-export const CallToActionBlock: React.FC<CallToActionBlockProps> = ({ link, linkLabel, richText, backgroundImage, title, subtitle, lightMode }) => {
+export const CallToActionBlock: React.FC<CallToActionBlockProps> = ({ link, linkLabel, richText, backgroundImage, title, subtitle, lightMode, ctaType, blocks }) => {
   return (
     <section className="bg-darkblue">
       <div className="w-full py-[5rem] relative overflow-hidden">
@@ -81,7 +84,7 @@ export const CallToActionBlock: React.FC<CallToActionBlockProps> = ({ link, link
               )}
               </div>
               <RichText
-                className={`${backgroundImage ? 'prose md:prose-md text-2xl md:text-4xl' : 'text-2xl md:text-4xl font-semibold'} mb-5 ${lightMode ? 'text-darkblue' : 'text-white'}`}
+                className={`px-5 ${backgroundImage ? 'prose md:prose-md text-2xl md:text-4xl' : 'text-2xl md:text-4xl font-semibold'} mb-5 ${lightMode ? 'text-darkblue' : 'text-white'}`}
                 data={richText}
                 enableGutter={false}
               />
@@ -90,7 +93,8 @@ export const CallToActionBlock: React.FC<CallToActionBlockProps> = ({ link, link
               )}
             </AnimateIn>
           </div>
-          <div className="basis-1/2 flex flex-col items-centre max-w-[200px] justify-center">
+          <div className={`basis-1/2 flex flex-col items-centre ${ctaType === 'form' ? ' p-5 bg-white rounded-xl' : 'max-w-[200px]'} justify-center`}>
+          {ctaType === 'link' && (
             <AnimateIn
               animation={{
                 y: 60,
@@ -105,7 +109,23 @@ export const CallToActionBlock: React.FC<CallToActionBlockProps> = ({ link, link
               {!lightMode && (
                 <CustomLink theme="white" label={linkLabel} link={link.slug} /> 
               )}
-            </AnimateIn>         
+            </AnimateIn>   
+          )}    
+          {ctaType === 'form' && (
+            blocks.map((block, index) => {
+              if (block.blockType === 'formBlock') {
+                return (
+                  <div key={index} className="w-full">
+                    <FormBlock
+                      enableIntro={block.enableIntro}
+                      key={index}
+                      form={block.form}
+                      />
+                  </div>
+                );
+              }
+            })
+          )}  
           </div>
         </div>
       </Bounded>
