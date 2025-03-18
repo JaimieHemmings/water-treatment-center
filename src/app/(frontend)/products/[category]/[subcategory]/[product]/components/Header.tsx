@@ -22,7 +22,7 @@ const Header = ({ productData }) => {
             height={1000}
             width={800}
             alt={productData.featuredImage.alt || 'Product image'}
-            className="w-full h-auto object-cover rounded-xl transition-all duration-300"
+            className="max-h-[600px] mx-auto w-auto transition-all duration-300"
           />
         </AnimateIn>
       </div>
