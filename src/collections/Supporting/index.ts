@@ -24,6 +24,7 @@ import { SplitTextBlock } from '@/blocks/SplitTextBlock/config'
 import { TestKitForm } from '@/blocks/TestKitForm/config'
 import { HardnessTest } from '@/blocks/HardnessTest/config'
 import { WellTestCalculator } from '@/blocks/WellTestCalculator/config'
+import { fields } from '@payloadcms/plugin-form-builder'
 
 export const Supporting: CollectionConfig = {
   slug: 'supporting-documents',
@@ -37,6 +38,7 @@ export const Supporting: CollectionConfig = {
   defaultPopulate: {
     title: true,
     slug: true,
+    association: true,
   },
   admin: {
     defaultColumns: ['title', 'slug', 'updatedAt'],
@@ -56,6 +58,22 @@ export const Supporting: CollectionConfig = {
       relationTo: 'product-categories',
       required: true,
       hasMany: false,
+      maxDepth: 1,
+      hooks: {
+        afterRead: [
+          async ({ value, req }) => {
+            if (typeof value === 'object' && value !== null) {
+              return value.slug;
+            }
+            const payload = req.payload;
+            const doc = await payload.findByID({
+              collection: 'product-categories',
+              id: value,
+            });
+            return doc.slug;
+          },
+        ],
+      },
     },
     {
       type: 'tabs',

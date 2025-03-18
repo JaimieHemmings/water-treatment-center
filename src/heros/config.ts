@@ -74,9 +74,35 @@ export const hero: Field = {
           required: true,
         },
         {
-          name: 'link',
+          name: 'lType',
+          type: 'radio',
+          options: [
+            {
+              label: 'Supporting Document',
+              value: 'support',
+            },
+            {
+              label: 'Page',
+              value: 'page',
+            },
+          ],
+          defaultValue: 'page',
+        },
+        {
+          name: 'pageLink',
           type: 'relationship',
           relationTo: 'pages',
+          admin: {
+            condition: (data, siblingData) => siblingData?.lType === 'page',
+          },
+        },
+        {
+          name: 'supportLink',
+          type: 'relationship',
+          relationTo: 'supporting-documents',
+          admin: {
+            condition: (data, siblingData) => siblingData?.lType === 'support',
+          },
         },
         {
           name: 'linkLabel',

@@ -21,9 +21,14 @@ interface Slide {
     url: string;
   },
   linkLabel?: string;
-  link?: {
+  supportLink?: {
+    slug?: string;
+    association?: string;
+  }
+  pageLink?: {
     slug?: string;
   }
+  lType: string;
 }
 
 interface HeroProps {
@@ -87,11 +92,20 @@ export const HighImpactHero: React.FC<HeroProps> = ({ slides }) => {
                 <p className="mt-5 mb-10 pt-3 text-xl text-white max-w-[80%]">
                   {slide.paragraph}
                 </p>
-                <CustomLink
-                  theme="white"
-                  label={slide.linkLabel || "Get A Quote"}
-                  link={slide.link?.slug || "/contact"}
-                />
+                {slide.lType === "support" && (
+                  <CustomLink
+                    theme="white"
+                    label={slide.linkLabel || "Get A Quote"}
+                    link={`/products/${slide.supportLink?.association}/support/${slide.supportLink?.slug}` || "/contact"}
+                  />
+                )}
+                {slide.lType === "page" && (
+                  <CustomLink
+                    theme="white"
+                    label={slide.linkLabel || "Get A Quote"}
+                    link={`/${slide.pageLink?.slug}` || "/contact"}
+                  />
+                )}
               </div>
             </div>
             <div className="absolute pointer-events-none left-0 bottom-0 w-2/3 h-full bg-gradient-to-r from-darkblue to-transparent" />

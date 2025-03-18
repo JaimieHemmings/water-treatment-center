@@ -110,7 +110,9 @@ export interface Page {
           titleHighlight?: string | null;
           titleEnd?: string | null;
           paragraph: string;
-          link?: (number | null) | Page;
+          lType?: ('support' | 'page') | null;
+          pageLink?: (number | null) | Page;
+          supportLink?: (number | null) | SupportingDocument;
           linkLabel?: string | null;
           id?: string | null;
         }[]
@@ -228,6 +230,87 @@ export interface Media {
       filename?: string | null;
     };
   };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "supporting-documents".
+ */
+export interface SupportingDocument {
+  id: number;
+  title: string;
+  association: number | ProductCategory;
+  hero: {
+    title: string;
+    paragraph?: string | null;
+    image: number | Media;
+  };
+  content: {
+    content: (
+      | CallToActionBlock
+      | FaqBlock
+      | ImageGrid
+      | ImageList
+      | StatsBlock
+      | TextWithImageBlock
+      | TwoColumn
+      | VideoBlock
+      | YoutubeBlock
+      | SplitTextBlock
+      | TestKitForm
+      | HardnessTest
+      | WellTestCalculator
+    )[];
+  };
+  meta?: {
+    title?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (number | null) | Media;
+    description?: string | null;
+  };
+  slug?: string | null;
+  slugLock?: boolean | null;
+  createdAt: string;
+  updatedAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "product-categories".
+ */
+export interface ProductCategory {
+  id: number;
+  title: string;
+  excerpt: string;
+  hero: {
+    heroImage: number | Media;
+  };
+  content: {
+    content: (
+      | CallToActionBlock
+      | FaqBlock
+      | ImageGrid
+      | ImageList
+      | StatsBlock
+      | TextWithImageBlock
+      | TwoColumn
+      | VideoBlock
+      | YoutubeBlock
+    )[];
+  };
+  meta?: {
+    title?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (number | null) | Media;
+    description?: string | null;
+  };
+  slug?: string | null;
+  slugLock?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -462,6 +545,271 @@ export interface Form {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FaqBlock".
+ */
+export interface FaqBlock {
+  title: string;
+  questions?:
+    | {
+        question: string;
+        answer: string;
+        id?: string | null;
+      }[]
+    | null;
+  sideTitle: string;
+  sideContent: string;
+  linkLabel: string;
+  linkURL: number | Page;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'faqblock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ImageGrid".
+ */
+export interface ImageGrid {
+  title: string;
+  subtitle: string;
+  gridItems?:
+    | {
+        theme?: ('light' | 'dark') | null;
+        link: number | Page;
+        backgroundImage?: (number | null) | Media;
+        title: string;
+        paragraph: string;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'imageGrid';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ImageList".
+ */
+export interface ImageList {
+  images?:
+    | {
+        image: number | Media;
+        title: string;
+        description: string;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'imageList';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "StatsBlock".
+ */
+export interface StatsBlock {
+  titleStart: string;
+  titleHighlight: string;
+  titleEnd: string;
+  description: string;
+  stats?:
+    | {
+        value?: string | null;
+        title?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'statsBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TextWithImageBlock".
+ */
+export interface TextWithImageBlock {
+  darkmode?: boolean | null;
+  title?: string | null;
+  intro?: string | null;
+  quote?: string | null;
+  content?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  image: number | Media;
+  link?: (number | null) | Page;
+  linkLabel?: string | null;
+  cropImage?: boolean | null;
+  additionalSettings?: {
+    ShowThreeColBlock?: boolean | null;
+  };
+  blocks?: ThreeColBlock[] | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'textWithImageBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ThreeColBlock".
+ */
+export interface ThreeColBlock {
+  columns?:
+    | {
+        title: string;
+        content: string;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'threeColBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TwoColumn".
+ */
+export interface TwoColumn {
+  title: string;
+  mainContent?: string | null;
+  contentleft: string;
+  contentright: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'twoColumn';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "VideoBlock".
+ */
+export interface VideoBlock {
+  videoOnly?: boolean | null;
+  title?: string | null;
+  subtitle?: string | null;
+  contentleft?: string | null;
+  link?: (number | null) | Page;
+  linkLabel?: string | null;
+  video: number | Media;
+  preloadImage?: (number | null) | Media;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'videoBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "YoutubeBlock".
+ */
+export interface YoutubeBlock {
+  content?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  title?: string | null;
+  youtubeEmbed?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'youtubeBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "splitTextBlock".
+ */
+export interface SplitTextBlock {
+  items?:
+    | {
+        title: string;
+        text: {
+          root: {
+            type: string;
+            children: {
+              type: string;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        };
+        lType?: ('cms' | 'supporting') | null;
+        CMSLink?: (number | null) | Page;
+        supportingDocsLink?: (number | null) | SupportingDocument;
+        image?: (number | null) | Media;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'splitTextBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TestKitForm".
+ */
+export interface TestKitForm {
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'testKitForm';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "HardnessTest".
+ */
+export interface HardnessTest {
+  title?: string | null;
+  subtitle?: string | null;
+  paragraph?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'hardnessTest';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "WellTestCalculator".
+ */
+export interface WellTestCalculator {
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'wellTestCalculator';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "ContentBlock".
  */
 export interface ContentBlock {
@@ -600,33 +948,6 @@ export interface TextBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "TwoColumn".
- */
-export interface TwoColumn {
-  title: string;
-  mainContent?: string | null;
-  contentleft: string;
-  contentright: {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  };
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'twoColumn';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "ServicesBlock".
  */
 export interface ServicesBlock {
@@ -684,78 +1005,6 @@ export interface ContactBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "TextWithImageBlock".
- */
-export interface TextWithImageBlock {
-  darkmode?: boolean | null;
-  title?: string | null;
-  intro?: string | null;
-  quote?: string | null;
-  content?: {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
-  image: number | Media;
-  link?: (number | null) | Page;
-  linkLabel?: string | null;
-  cropImage?: boolean | null;
-  additionalSettings?: {
-    ShowThreeColBlock?: boolean | null;
-  };
-  blocks?: ThreeColBlock[] | null;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'textWithImageBlock';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "ThreeColBlock".
- */
-export interface ThreeColBlock {
-  columns?:
-    | {
-        title: string;
-        content: string;
-        id?: string | null;
-      }[]
-    | null;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'threeColBlock';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "StatsBlock".
- */
-export interface StatsBlock {
-  titleStart: string;
-  titleHighlight: string;
-  titleEnd: string;
-  description: string;
-  stats?:
-    | {
-        value?: string | null;
-        title?: string | null;
-        id?: string | null;
-      }[]
-    | null;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'statsBlock';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "BlockRow".
  */
 export interface BlockRow {
@@ -770,96 +1019,6 @@ export interface BlockRow {
   id?: string | null;
   blockName?: string | null;
   blockType: 'blockRow';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "ImageList".
- */
-export interface ImageList {
-  images?:
-    | {
-        image: number | Media;
-        title: string;
-        description: string;
-        id?: string | null;
-      }[]
-    | null;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'imageList';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "FaqBlock".
- */
-export interface FaqBlock {
-  title: string;
-  questions?:
-    | {
-        question: string;
-        answer: string;
-        id?: string | null;
-      }[]
-    | null;
-  sideTitle: string;
-  sideContent: string;
-  linkLabel: string;
-  linkURL: number | Page;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'faqblock';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "VideoBlock".
- */
-export interface VideoBlock {
-  videoOnly?: boolean | null;
-  title?: string | null;
-  subtitle?: string | null;
-  contentleft?: string | null;
-  link?: (number | null) | Page;
-  linkLabel?: string | null;
-  video: number | Media;
-  preloadImage?: (number | null) | Media;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'videoBlock';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "YoutubeBlock".
- */
-export interface YoutubeBlock {
-  content?: {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
-  title?: string | null;
-  youtubeEmbed?: string | null;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'youtubeBlock';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "TestKitForm".
- */
-export interface TestKitForm {
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'testKitForm';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -878,163 +1037,6 @@ export interface ReviewBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'reviewBlock';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "ImageGrid".
- */
-export interface ImageGrid {
-  title: string;
-  subtitle: string;
-  gridItems?:
-    | {
-        theme?: ('light' | 'dark') | null;
-        link: number | Page;
-        backgroundImage?: (number | null) | Media;
-        title: string;
-        paragraph: string;
-        id?: string | null;
-      }[]
-    | null;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'imageGrid';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "splitTextBlock".
- */
-export interface SplitTextBlock {
-  items?:
-    | {
-        title: string;
-        text: {
-          root: {
-            type: string;
-            children: {
-              type: string;
-              version: number;
-              [k: string]: unknown;
-            }[];
-            direction: ('ltr' | 'rtl') | null;
-            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-            indent: number;
-            version: number;
-          };
-          [k: string]: unknown;
-        };
-        lType?: ('cms' | 'supporting') | null;
-        CMSLink?: (number | null) | Page;
-        supportingDocsLink?: (number | null) | SupportingDocument;
-        image?: (number | null) | Media;
-        id?: string | null;
-      }[]
-    | null;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'splitTextBlock';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "supporting-documents".
- */
-export interface SupportingDocument {
-  id: number;
-  title: string;
-  association: number | ProductCategory;
-  hero: {
-    title: string;
-    paragraph?: string | null;
-    image: number | Media;
-  };
-  content: {
-    content: (
-      | CallToActionBlock
-      | FaqBlock
-      | ImageGrid
-      | ImageList
-      | StatsBlock
-      | TextWithImageBlock
-      | TwoColumn
-      | VideoBlock
-      | YoutubeBlock
-      | SplitTextBlock
-      | TestKitForm
-      | HardnessTest
-      | WellTestCalculator
-    )[];
-  };
-  meta?: {
-    title?: string | null;
-    /**
-     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
-     */
-    image?: (number | null) | Media;
-    description?: string | null;
-  };
-  slug?: string | null;
-  slugLock?: boolean | null;
-  createdAt: string;
-  updatedAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "product-categories".
- */
-export interface ProductCategory {
-  id: number;
-  title: string;
-  excerpt: string;
-  hero: {
-    heroImage: number | Media;
-  };
-  content: {
-    content: (
-      | CallToActionBlock
-      | FaqBlock
-      | ImageGrid
-      | ImageList
-      | StatsBlock
-      | TextWithImageBlock
-      | TwoColumn
-      | VideoBlock
-      | YoutubeBlock
-    )[];
-  };
-  meta?: {
-    title?: string | null;
-    /**
-     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
-     */
-    image?: (number | null) | Media;
-    description?: string | null;
-  };
-  slug?: string | null;
-  slugLock?: boolean | null;
-  updatedAt: string;
-  createdAt: string;
-  _status?: ('draft' | 'published') | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "HardnessTest".
- */
-export interface HardnessTest {
-  title?: string | null;
-  subtitle?: string | null;
-  paragraph?: string | null;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'hardnessTest';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "WellTestCalculator".
- */
-export interface WellTestCalculator {
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'wellTestCalculator';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1474,7 +1476,9 @@ export interface PagesSelect<T extends boolean = true> {
               titleHighlight?: T;
               titleEnd?: T;
               paragraph?: T;
-              link?: T;
+              lType?: T;
+              pageLink?: T;
+              supportLink?: T;
               linkLabel?: T;
               id?: T;
             };
