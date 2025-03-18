@@ -18,7 +18,7 @@ const ServiceDetails = () => {
           />
         </div>
         <div className="md:basis-1/2 p-5">
-          <h2 className="text-selectiveyellow inline-block px-2 py-1 mb-5 text-sm tracking-widest">
+          <h2 className="text-selectiveyellow inline-block px-2 py-1 mb-5 text-sm tracking-widest uppercase">
             <FaDroplet className="inline-block text-selectiveyellow relative -top-[2px] mr-2" />
             Installation &amp; Maintenance Service
           </h2>

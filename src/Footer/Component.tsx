@@ -10,12 +10,12 @@ import { FaInstagram } from "react-icons/fa";
 const SOCIAL_LINKS: any = [
   { 
     icon: <FaFacebook className="text-white text-4xl" />,
-    href: '#',
+    href: 'https://www.facebook.com/www.thewatertreatmentcentre.ie/?locale=en_GB',
     alt: 'facebook icon'
   },
   {
     icon: <FaYoutube className="text-4xl text-white" />,
-    href: 'https://www.youtube.com/',
+    href: 'https://www.youtube.com/channel/UCrZ_V32WasPvf6MpT5aBtwQ',
     alt: 'youtube icon'
   },
   {
