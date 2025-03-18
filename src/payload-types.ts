@@ -1110,6 +1110,16 @@ export interface Product {
         | null;
       brochure?: (number | null) | Media;
     };
+    faq?: {
+      content?: string | null;
+      faq?:
+        | {
+            question?: string | null;
+            answer?: string | null;
+            id?: string | null;
+          }[]
+        | null;
+    };
     specs: {
       numberOfUsers: number;
       sku?: string | null;
@@ -2100,6 +2110,18 @@ export interface ProductsSelect<T extends boolean = true> {
                     id?: T;
                   };
               brochure?: T;
+            };
+        faq?:
+          | T
+          | {
+              content?: T;
+              faq?:
+                | T
+                | {
+                    question?: T;
+                    answer?: T;
+                    id?: T;
+                  };
             };
         specs?:
           | T

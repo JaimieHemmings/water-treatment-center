@@ -25,7 +25,7 @@ export const Products: CollectionConfig = {
     parent: true,
   },
   admin: {
-    defaultColumns: ['title', 'category'],
+    defaultColumns: ['title', 'parent', 'category'],
     useAsTitle: 'title',
     group: 'Product Admin',
   },
@@ -253,6 +253,32 @@ export const Products: CollectionConfig = {
                       relationTo: 'media',
                       label: 'Brochure',
                       required: false,
+                    },
+                  ],
+                },
+                {
+                  name: 'faq',
+                  label: 'FAQ',
+                  fields: [
+                    {
+                      name: 'content',
+                      type: 'textarea',
+                    },
+                    {
+                      name: 'faq',
+                      type: 'array',
+                      label: 'FAQ',
+                      maxRows: 6,
+                      fields: [
+                        {
+                          name: 'question',
+                          type: 'text',
+                        },
+                        {
+                          name: 'answer',
+                          type: 'textarea',
+                        },
+                      ],
                     },
                   ],
                 },

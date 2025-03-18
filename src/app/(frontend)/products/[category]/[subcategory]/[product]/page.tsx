@@ -13,6 +13,7 @@ import { FaDroplet } from "react-icons/fa6";
 import AnimateIn from '@/components/Animations/AnimateIn'
 import Bounded from '@/utilities/Bounded'
 import CustomLink from '@/components/CustomLink'
+import FAQ from './components/FAQ'
 
 type Props = {
   params: Promise<{
@@ -34,6 +35,9 @@ export default async function Product({ params }: Props) {
         <ProductFeatures productData={productData} />
         <ProductCTA />
         <ProductDetails productData={productData} />
+        {productData.content.faq && (
+          <FAQ data={productData.content.faq} />
+        )}
         <ServiceDetails />
         </>
       )}

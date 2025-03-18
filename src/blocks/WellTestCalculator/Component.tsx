@@ -79,19 +79,19 @@ const WellTestCalculator = () => {
         fullname: formData.fullname,
         email: formData.email,
         phone: formData.phone,
-        aluminium: formData.parameters.aluminium.value,
-        ammonium: formData.parameters.ammonium.value,
-        coliformsTotal: formData.parameters.coliformsTotal.value,
-        colourApparent: formData.parameters.colourApparent.value,
-        conductivity: formData.parameters.conductivity.value,
-        eColi: formData.parameters.eColi.value,
-        hardnessTotal: formData.parameters.hardnessTotal.value,
-        iron: formData.parameters.iron.value,
-        manganese: formData.parameters.manganese.value,
-        nitrite: formData.parameters.nitrite.value,
-        pH: formData.parameters.pH.value,
-        tbc22c: formData.parameters.tbc22c.value,
-        turbidity: formData.parameters.turbidity.value
+        aluminium: Number(formData.parameters.aluminium.value),
+        ammonium: Number(formData.parameters.ammonium.value),
+        coliformsTotal: Number(formData.parameters.coliformsTotal.value),
+        colourApparent: Number(formData.parameters.colourApparent.value),
+        conductivity: Number(formData.parameters.conductivity.value),
+        eColi: Number(formData.parameters.eColi.value),
+        hardnessTotal: Number(formData.parameters.hardnessTotal.value),
+        iron: Number(formData.parameters.iron.value),
+        manganese: Number(formData.parameters.manganese.value),
+        nitrite: Number(formData.parameters.nitrite.value),
+        pH: Number(formData.parameters.pH.value),
+        tbc22c: Number(formData.parameters.tbc22c.value),
+        turbidity: Number(formData.parameters.turbidity.value)
       }
 
       console.log(JSON.stringify(formattedData))

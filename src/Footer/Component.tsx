@@ -3,12 +3,31 @@ import Image from 'next/image'
 import { FaFacebook, FaYoutube, FaPhoneAlt } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { FaLocationDot } from "react-icons/fa6";
-import { getCachedGlobal } from '@/utilities/getGlobals'
+import { FaTiktok } from "react-icons/fa";
+import { FaInstagram } from "react-icons/fa";
 
 
 const SOCIAL_LINKS: any = [
-  { icon: <FaFacebook className="text-white text-4xl" />, href: '#', alt: 'facebook icon' },
-  { icon: <FaYoutube className="text-4xl text-white" />, href: 'https://www.youtube.com/', alt: 'youtube icon' }
+  { 
+    icon: <FaFacebook className="text-white text-4xl" />,
+    href: '#',
+    alt: 'facebook icon'
+  },
+  {
+    icon: <FaYoutube className="text-4xl text-white" />,
+    href: 'https://www.youtube.com/',
+    alt: 'youtube icon'
+  },
+  {
+    icon: <FaTiktok className="text-white text-4xl" />,
+    href: 'https://www.tiktok.com/',
+    alt: 'tiktok icon'
+  },
+  {
+    icon: <FaInstagram className="text-white text-4xl" />,
+    href: 'https://www.instagram.com/',
+    alt: 'instagram icon'
+  }
 ]
 
 const PhoneIcon = () => (
