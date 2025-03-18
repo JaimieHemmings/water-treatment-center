@@ -1,18 +1,41 @@
 import type { Metadata } from 'next'
 import React from 'react'
-
+import configPromise from '@payload-config'
+import { getPayload } from 'payload'
 import { Footer } from '@/Footer/Component'
 import { Header } from '@/Header/Component'
 import { Providers } from '@/providers'
 import { InitTheme } from '@/providers/Theme/InitTheme'
 import { mergeOpenGraph } from '@/utilities/mergeOpenGraph'
 import StickyButton from '@/components/StickyButton'
+import TimedBanner from '@/components/Banner'
 
 import './globals.css'
 import { getServerSideURL } from '@/utilities/getURL'
 import GAConsent from '@/components/GAConsent'
 
+interface Banner {
+  title: string;
+  message: string;
+  linkText: string;
+  linkUrl: string;
+  displayDelay: number;
+}
+
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
+
+  const payload = await getPayload({ config: configPromise })
+  const bannerData = await payload.find({
+    collection: 'banners',
+    where: {
+      isActive: {
+        equals: true,
+      },
+    },
+    limit: 1,
+  });
+
+  const banner = bannerData.docs[0] as Banner | undefined;
 
   return (
     <html lang="en" suppressHydrationWarning>
@@ -30,6 +53,15 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           {children}
           <Footer />
           <GAConsent />
+          {banner && (
+            <TimedBanner
+              title={banner.title}
+              message={banner.message}
+              linkText={banner.linkText}
+              linkUrl={banner.linkUrl}
+              displayDelay={banner.displayDelay}
+            />
+          )}
           <StickyButton link="/contact" label="Contact" />
         </Providers>
       </body>

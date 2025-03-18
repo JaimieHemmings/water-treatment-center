@@ -20,6 +20,7 @@ import { Users } from './collections/Users'
 import { Footer } from './Footer/config'
 import { Header } from './Header/config'
 import { plugins } from './plugins'
+import Banner from './collections/Banners'
 import { defaultLexical } from '@/fields/defaultLexical'
 import { getServerSideURL } from './utilities/getURL'
 import TestSubmissions from './collections/TestSubmissions'
@@ -73,7 +74,7 @@ export default buildConfig({
       connectionString: process.env.DATABASE_URI || '',
     },
   }),
-  collections: [Pages, Posts, Media, Users, Products, Supporting, Services, ProductCategories, subcategories, TestSubmissions, TestKitRequests, HardnessResults, WellTestResults],
+  collections: [Pages, Posts, Media, Users, Products, Supporting, Services, ProductCategories, subcategories, TestSubmissions, TestKitRequests, HardnessResults, WellTestResults, Banner],
   cors: [getServerSideURL()].filter(Boolean),
   globals: [Header, Footer],
   secret: process.env.PAYLOAD_SECRET,

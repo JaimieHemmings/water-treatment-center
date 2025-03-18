@@ -24,6 +24,7 @@ export interface Config {
     'test-kit-requests': TestKitRequest;
     'hardness-test-results': HardnessTestResult;
     'well-test-results': WellTestResult;
+    banners: Banner;
     redirects: Redirect;
     forms: Form;
     'form-submissions': FormSubmission;
@@ -47,6 +48,7 @@ export interface Config {
     'test-kit-requests': TestKitRequestsSelect<false> | TestKitRequestsSelect<true>;
     'hardness-test-results': HardnessTestResultsSelect<false> | HardnessTestResultsSelect<true>;
     'well-test-results': WellTestResultsSelect<false> | WellTestResultsSelect<true>;
+    banners: BannersSelect<false> | BannersSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
@@ -110,7 +112,7 @@ export interface Page {
           titleHighlight?: string | null;
           titleEnd?: string | null;
           paragraph: string;
-          lType?: ('support' | 'page') | null;
+          lType?: ('support' | 'page' | 'noLink') | null;
           pageLink?: (number | null) | Page;
           supportLink?: (number | null) | SupportingDocument;
           linkLabel?: string | null;
@@ -1269,6 +1271,21 @@ export interface WellTestResult {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "banners".
+ */
+export interface Banner {
+  id: number;
+  title: string;
+  message: string;
+  linkText: string;
+  linkUrl: string;
+  displayDelay: number;
+  isActive: boolean;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1398,6 +1415,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'well-test-results';
         value: number | WellTestResult;
+      } | null)
+    | ({
+        relationTo: 'banners';
+        value: number | Banner;
       } | null)
     | ({
         relationTo: 'redirects';
@@ -2332,6 +2353,20 @@ export interface WellTestResultsSelect<T extends boolean = true> {
   pH?: T;
   tbc22c?: T;
   turbidity?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "banners_select".
+ */
+export interface BannersSelect<T extends boolean = true> {
+  title?: T;
+  message?: T;
+  linkText?: T;
+  linkUrl?: T;
+  displayDelay?: T;
+  isActive?: T;
   updatedAt?: T;
   createdAt?: T;
 }

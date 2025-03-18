@@ -75,6 +75,7 @@ export const hero: Field = {
         },
         {
           name: 'lType',
+          label: 'Link Type',
           type: 'radio',
           options: [
             {
@@ -85,8 +86,12 @@ export const hero: Field = {
               label: 'Page',
               value: 'page',
             },
+            {
+              label: 'No Link',
+              value: 'noLink',
+            },
           ],
-          defaultValue: 'page',
+          defaultValue: 'noLink',
         },
         {
           name: 'pageLink',
@@ -108,6 +113,9 @@ export const hero: Field = {
           name: 'linkLabel',
           type: 'text',
           label: 'Link Label',
+          admin: {
+            condition: (data, siblingData) => siblingData?.lType !== 'noLink',
+          },
         },
       ],
     },
