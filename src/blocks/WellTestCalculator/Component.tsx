@@ -94,6 +94,8 @@ const WellTestCalculator = () => {
         turbidity: formData.parameters.turbidity.value
       }
 
+      console.log(JSON.stringify(formattedData))
+
       const response = await fetch('/api/well-test-results', {
         method: 'POST',
         headers: {
@@ -288,9 +290,9 @@ const WellTestCalculator = () => {
     {/* Recommendations */}
     <div className="mt-8 p-6 rounded bg-white/5">
       <h4 className="text-xl font-semibold mb-4">Recommendations</h4>
-      <p className="text-sm mb-4">
+      <p className="text-lg mb-4">
         Based on your results, we recommend addressing the parameters that are above the recommended limits.
-        Our team will be in touch shortly o discuss your results and possible solutions.
+        Our team will be in touch shortly to discuss your results and possible solutions.
       </p>
     </div>
   </div>
