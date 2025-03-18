@@ -104,10 +104,10 @@ export const CallToActionBlock: React.FC<CallToActionBlockProps> = ({ link, link
               }}
             >
               {lightMode && (
-                <CustomLink theme="dark" label={linkLabel} link={link.slug} />
+                <CustomLink theme="dark" label={linkLabel} link={`/${link.slug}`} />
               )}
               {!lightMode && (
-                <CustomLink theme="white" label={linkLabel} link={link.slug} /> 
+                <CustomLink theme="white" label={linkLabel} link={`/${link.slug}`} /> 
               )}
             </AnimateIn>   
           )}    
