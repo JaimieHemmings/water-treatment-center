@@ -31,6 +31,13 @@ const CostCalculatorBlock:React.FC<CostCalculatorBlockProps> = ({title, paragrap
     twentyYears: 0
   })
 
+  const formatCurrency = (value: number): string => {
+    return new Intl.NumberFormat('en-IE', {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
+    }).format(value);
+  };
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
     setCosts(prev => ({
@@ -61,7 +68,7 @@ const CostCalculatorBlock:React.FC<CostCalculatorBlockProps> = ({title, paragrap
               <FaDroplet className="inline-block text-selectiveyellow -top-[2px] relative mr-2" />
               {title}
             </h2>
-            <p className="text-2xl md:text-4xl my-2">
+            <p className="text-2xl md:text-4xl my-2 max-w-[50%]">
               {subtitle}
             </p>
             <p className="mb-5 prose md:prose-md max-w-none">
@@ -131,25 +138,25 @@ const CostCalculatorBlock:React.FC<CostCalculatorBlockProps> = ({title, paragrap
           <div className="bg-gray-50 p-6 rounded-lg">
             <h3 className="text-xl font-semibold text-darkblue mb-4">Estimated Costs</h3>
             <div className="space-y-3">
-              <p className="flex justify-between">
+              <p className="flex justify-start gap-4">
                 <span>Weekly Cost:</span>
-                <span className="font-semibold">€{totalCosts.weekly.toFixed(2)}</span>
+                <span className="font-semibold">€ {formatCurrency(totalCosts.weekly)}</span>
               </p>
-              <p className="flex justify-between">
+              <p className="flex justify-start gap-4">
                 <span>Monthly Cost:</span>
-                <span className="font-semibold">€{totalCosts.monthly.toFixed(2)}</span>
+                <span className="font-semibold">€ {formatCurrency(totalCosts.monthly)}</span>
               </p>
-              <p className="flex justify-between">
+              <p className="flex justify-start gap-4">
                 <span>Yearly Cost:</span>
-                <span className="font-semibold">€{totalCosts.yearly.toFixed(2)}</span>
+                <span className="font-semibold">€ {formatCurrency(totalCosts.yearly)}</span>
               </p>
-              <p className="flex justify-between">
+              <p className="flex justify-start gap-4">
                 <span>10 Year Cost:</span>
-                <span className="font-semibold">€{totalCosts.tenYears.toFixed(2)}</span>
+                <span className="font-semibold">€ {formatCurrency(totalCosts.tenYears)}</span>
               </p>
-              <p className="flex justify-between">
+              <p className="flex justify-start gap-4">
                 <span>20 Year Cost:</span>
-                <span className="font-semibold">€{totalCosts.twentyYears.toFixed(2)}</span>
+                <span className="font-semibold">€ {formatCurrency(totalCosts.twentyYears)}</span>
               </p>
             </div>
           </div>
