@@ -28,22 +28,14 @@ const ProductDetails = ({ productData }) => {
         </div>
         <div className="md:basis-1/2 md:p-5">
           {productData.content.details.detailsImage && (
-            <AnimateIn
-              animation={{
-                y: 50,
-                opacity: 0,
-                duration: 0.8,
-              }}
-              className="h-full min-h-[400px]"
-            >
-              <Image
-                src={productData.content.details.detailsImage.url}
-                alt={productData.content.details.detailsImage.alt || 'No alt text available'}
-                className="inset-0 w-full object-cover h-full rounded-xl transition-all duration-300"
-                fill
-                loading='lazy'
-              />
-            </AnimateIn>
+            <Image
+              src={productData.content.details.detailsImage.url}
+              alt={productData.content.details.detailsImage.alt || 'No alt text available'}
+              className="relative max-w-full h-auto mx-auto"
+              width={800}
+              height={1000}
+              loading='lazy'
+            />
           )}
         </div>
       </div>      

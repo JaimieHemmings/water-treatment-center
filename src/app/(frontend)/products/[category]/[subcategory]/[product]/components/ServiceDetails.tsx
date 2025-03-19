@@ -11,8 +11,8 @@ const ServiceDetails = () => {
       <div className="container flex flex-col md:flex-row gap-4">
         <div className="md:basis-1/2 relative p-5 min-h-[400px]">
           <Image
-            src="/glass-of-water.webp"
-            alt="Glass of water"
+            src="/washing-hands.webp"
+            alt="A man washing his hands"
             className="object-cover rounded-xl transition-all duration-300"
             fill
           />
