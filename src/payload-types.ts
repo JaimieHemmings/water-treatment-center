@@ -1046,8 +1046,9 @@ export interface ReviewBlock {
  * via the `definition` "CostCalculatorBlock".
  */
 export interface CostCalculatorBlock {
-  title?: string | null;
-  paragraph?: string | null;
+  title: string;
+  subtitle: string;
+  paragraph: string;
   id?: string | null;
   blockName?: string | null;
   blockType: 'costCalculatorBlock';
@@ -1914,6 +1915,7 @@ export interface SplitTextBlockSelect<T extends boolean = true> {
  */
 export interface CostCalculatorBlockSelect<T extends boolean = true> {
   title?: T;
+  subtitle?: T;
   paragraph?: T;
   id?: T;
   blockName?: T;

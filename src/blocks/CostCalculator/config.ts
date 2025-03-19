@@ -8,11 +8,19 @@ export const CostCalculatorBlock: Block = {
       name: 'title',
       label: 'Title',
       type: 'text',
+      required: true,
+    },
+    {
+      name: 'subtitle',
+      label: 'Subtitle',
+      type: 'text',
+      required: true,
     },
     {
       name: 'paragraph',
       label: 'Paragraph',
       type: 'textarea',
+      required: true,
     }
   ],
   labels: {

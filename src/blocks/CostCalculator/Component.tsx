@@ -1,5 +1,6 @@
 'use client';
 import React, { useState, useEffect } from 'react'
+import { FaDroplet } from "react-icons/fa6";
 
 interface CostData {
   bottlePrice: number
@@ -10,10 +11,11 @@ interface CostData {
 
 interface CostCalculatorBlockProps {
   title: string
+  subtitle: string
   paragraph: string
 }
 
-const CostCalculatorBlock:React.FC<CostCalculatorBlockProps> = ({title, paragraph}) => {
+const CostCalculatorBlock:React.FC<CostCalculatorBlockProps> = ({title, paragraph, subtitle}) => {
   const [costs, setCosts] = useState<CostData>({
     bottlePrice: 0,
     filterPrice: 0,
@@ -51,11 +53,21 @@ const CostCalculatorBlock:React.FC<CostCalculatorBlockProps> = ({title, paragrap
   }, [costs])
 
   return (
-    <div className="py-[5rem] bg-antiflashwhite">
-      <div className="container max-w-4xl">
+    <div className="py-[5rem] bg-darkblue">
+      <div className="container">
         <div className="bg-white rounded-lg shadow-lg p-8">
-          <h2 className="text-3xl font-bold text-darkblue mb-8">Water Cost Calculator</h2>
-          
+          <div className="pb-5">
+            <h2 className="text-sm tracking-widest font-bold text-selectiveyellow">
+              <FaDroplet className="inline-block text-selectiveyellow -top-[2px] relative mr-2" />
+              {title}
+            </h2>
+            <p className="text-2xl md:text-4xl my-2">
+              {subtitle}
+            </p>
+            <p className="mb-5 prose md:prose-md max-w-none">
+              {paragraph}
+            </p>
+          </div>          
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
