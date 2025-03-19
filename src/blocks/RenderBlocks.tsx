@@ -23,6 +23,7 @@ import ReviewBlock from '@/blocks/ReviewBlock/Component'
 import ImageGrid from '@/blocks/ImageGrid/component'
 import SplitTextBlock from '@/blocks/SplitTextBlock/Component'
 import HardnessTest from '@/blocks/HardnessTest/Component'
+import CostCalculatorBlock from './CostCalculator/Component'
 
 const blockComponents = {
   content: ContentBlock,
@@ -46,6 +47,7 @@ const blockComponents = {
   imageGrid: ImageGrid,
   splitTextBlock: SplitTextBlock,
   hardnessTest: HardnessTest,
+  costCalculatorBlock: CostCalculatorBlock
 }
 
 export const RenderBlocks: React.FC<{

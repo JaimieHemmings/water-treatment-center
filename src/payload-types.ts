@@ -140,6 +140,7 @@ export interface Page {
     | ReviewBlock
     | ImageGrid
     | SplitTextBlock
+    | CostCalculatorBlock
   )[];
   meta?: {
     title?: string | null;
@@ -1042,6 +1043,17 @@ export interface ReviewBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CostCalculatorBlock".
+ */
+export interface CostCalculatorBlock {
+  title?: string | null;
+  paragraph?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'costCalculatorBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "products".
  */
 export interface Product {
@@ -1536,6 +1548,7 @@ export interface PagesSelect<T extends boolean = true> {
         reviewBlock?: T | ReviewBlockSelect<T>;
         imageGrid?: T | ImageGridSelect<T>;
         splitTextBlock?: T | SplitTextBlockSelect<T>;
+        costCalculatorBlock?: T | CostCalculatorBlockSelect<T>;
       };
   meta?:
     | T
@@ -1892,6 +1905,16 @@ export interface SplitTextBlockSelect<T extends boolean = true> {
         image?: T;
         id?: T;
       };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CostCalculatorBlock_select".
+ */
+export interface CostCalculatorBlockSelect<T extends boolean = true> {
+  title?: T;
+  paragraph?: T;
   id?: T;
   blockName?: T;
 }
