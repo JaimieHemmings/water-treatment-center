@@ -3,8 +3,6 @@ import React from 'react'
 import Image from 'next/image'
 
 type Props = {
-  breakout?: boolean
-  captionClassName?: string
   className?: string
   enableGutter?: boolean
   imgClassName?: string
@@ -13,7 +11,6 @@ type Props = {
     width: number
     height: number
   }
-  disableInnerContainer?: boolean
   media?: {
     url: string
     width: number

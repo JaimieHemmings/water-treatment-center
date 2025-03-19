@@ -15,7 +15,6 @@ import { CodeBlock, CodeBlockProps } from '@/blocks/Code/Component'
 
 import type {
   BannerBlock as BannerBlockProps,
-  MediaBlock as MediaBlockProps,
 } from '@/payload-types'
 
 import CTABlockProps from '@/blocks/CallToAction/Component'
@@ -31,7 +30,7 @@ import { ImageList } from '@/blocks/ImageList/Component'
 
 type NodeTypes =
   | DefaultNodeTypes
-  | SerializedBlockNode<typeof CTABlockProps | MediaBlockProps | BannerBlockProps | CodeBlockProps>
+  | SerializedBlockNode<typeof CTABlockProps | BannerBlockProps | CodeBlockProps>
 
 const internalDocToHref = ({ linkNode }: { linkNode: SerializedLinkNode }) => {
   const { value, relationTo } = linkNode.fields.doc!
@@ -52,13 +51,7 @@ const jsxConverters: JSXConvertersFunction<NodeTypes> = ({ defaultConverters }) 
     videoBlock: ({ node }) => <VideoBlock {...node.fields} />,
     banner: ({ node }) => <BannerBlock className="col-start-2 mb-4" {...node.fields} />,
     mediaBlock: ({ node }) => (
-      <MediaBlock
-        className="col-start-1 col-span-3"
-        imgClassName="m-0"
-        {...node.fields}
-        captionClassName="mx-auto"
-        enableGutter={false}
-        disableInnerContainer={true}
+      <MediaBlock {...node.fields}
       />
     ),
     code: ({ node }) => <CodeBlock className="col-start-2" {...node.fields} />,
