@@ -42,10 +42,10 @@ export const MediaBlock: React.FC<Props> = (props) => {
     >
       {(media || staticImage) && (
         <Image
-          src={media.url || staticImage?.src || ''}
+          src={media?.url || staticImage?.src || ''}
           alt="Placeholder"
-          width={media.width || staticImage?.width}
-          height={media.height || staticImage?.height}
+          width={media?.width || staticImage?.width}
+          height={media?.height || staticImage?.height}
           className={`${className} ${imgClassName} mx-auto maz-w-full h-auto`}
         />
       )}
