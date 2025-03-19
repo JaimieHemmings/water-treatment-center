@@ -147,7 +147,6 @@ const ProductFeatures: React.FC<ProductFeaturesProps> = ({ productData }) => {
             </AnimateIn>
             <ul className="py-5 flex flex-col gap-8">
               {productData.content.features.featuresListTwo.map((feature, index) => (
-                <>
                 <AnimateIn
                   key={index}
                   animation={{
@@ -161,7 +160,6 @@ const ProductFeatures: React.FC<ProductFeaturesProps> = ({ productData }) => {
                     description={feature.description}
                   />
                 </AnimateIn>
-                </>
               ))}
             </ul>
           </div>
