@@ -1,10 +1,8 @@
 import { cn } from 'src/utilities/cn'
 import React from 'react'
-
-import type { MediaBlock as MediaBlockProps } from '@/payload-types'
 import Image from 'next/image'
 
-type Props = MediaBlockProps & {
+type Props = {
   breakout?: boolean
   captionClassName?: string
   className?: string
