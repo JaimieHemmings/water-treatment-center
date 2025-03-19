@@ -59,7 +59,7 @@ const CostCalculatorBlock:React.FC<CostCalculatorBlockProps> = ({title, paragrap
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Price per Bottle (£)
+                Price per Bottle (€)
               </label>
               <input
                 type="number"
@@ -74,7 +74,7 @@ const CostCalculatorBlock:React.FC<CostCalculatorBlockProps> = ({title, paragrap
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Price per Filter (£)
+                Price per Filter (€)
               </label>
               <input
                 type="number"
@@ -121,23 +121,23 @@ const CostCalculatorBlock:React.FC<CostCalculatorBlockProps> = ({title, paragrap
             <div className="space-y-3">
               <p className="flex justify-between">
                 <span>Weekly Cost:</span>
-                <span className="font-semibold">£{totalCosts.weekly.toFixed(2)}</span>
+                <span className="font-semibold">€{totalCosts.weekly.toFixed(2)}</span>
               </p>
               <p className="flex justify-between">
                 <span>Monthly Cost:</span>
-                <span className="font-semibold">£{totalCosts.monthly.toFixed(2)}</span>
+                <span className="font-semibold">€{totalCosts.monthly.toFixed(2)}</span>
               </p>
               <p className="flex justify-between">
                 <span>Yearly Cost:</span>
-                <span className="font-semibold">£{totalCosts.yearly.toFixed(2)}</span>
+                <span className="font-semibold">€{totalCosts.yearly.toFixed(2)}</span>
               </p>
               <p className="flex justify-between">
                 <span>10 Year Cost:</span>
-                <span className="font-semibold">£{totalCosts.tenYears.toFixed(2)}</span>
+                <span className="font-semibold">€{totalCosts.tenYears.toFixed(2)}</span>
               </p>
               <p className="flex justify-between">
                 <span>20 Year Cost:</span>
-                <span className="font-semibold">£{totalCosts.twentyYears.toFixed(2)}</span>
+                <span className="font-semibold">€{totalCosts.twentyYears.toFixed(2)}</span>
               </p>
             </div>
           </div>
