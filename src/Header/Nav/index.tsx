@@ -122,6 +122,15 @@ export const HeaderNav = ({ docs, supDocs, isOpen, setIsOpen, data, subDocs }: H
             </Link>
           </li>
         ))}
+        <li>
+            <Link 
+              href="/news"
+              onClick={handleMenuClick}
+              className="px-1 py-2 text-white hover:text-selectiveyellow tracking-wide font-semibold text-base w-full flex gap-2 items-center lg:justify-start"
+            >
+              News
+            </Link>
+          </li>
         <li className="relative group lg:text-center lg:hidden" onClick={handleMenuClick}>
           <CustomLink label="Contact" link="/contact" theme="light" />
         </li>
