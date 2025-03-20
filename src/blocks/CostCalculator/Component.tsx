@@ -60,116 +60,111 @@ const CostCalculatorBlock:React.FC<CostCalculatorBlockProps> = ({title, paragrap
   }, [costs])
 
   return (
-    <div className="py-[5rem] bg-darkblue">
+    <div className="py-[5rem] bg-white">
       <div className="container">
-        <div className="bg-white rounded-lg shadow-lg p-8">
-          <div className="pb-5">
-            <h2 className="text-sm tracking-widest font-bold text-selectiveyellow">
-              <FaDroplet className="inline-block text-selectiveyellow -top-[2px] relative mr-2" />
-              {title}
-            </h2>
-            <p className="text-2xl md:text-4xl my-2 max-w-[50%]">
-              {subtitle}
-            </p>
-            <p className="mb-5 prose md:prose-lg max-w-none">
-              {paragraph}
-            </p>
-          </div>          
-          <div className="flex flex-col md:flex-row gap-6 mb-8">
-            <div className="md:basis-2/3 flex flex-row gap-6 justify-around">
+        <div className="pb-5 mb-5">
+          <h2 className="text-sm tracking-widest text-selectiveyellow uppercase mb-5">
+            <FaDroplet className="inline-block text-selectiveyellow -top-[2px] relative mr-2" />
+            {title}
+          </h2>
+          <p className="text-2xl md:text-4xl mb-2 max-w-[50%]">
+            {subtitle}
+          </p>
+          <p className="mb-5 prose md:prose-lg max-w-none">
+            {paragraph}
+          </p>
+        </div>          
+        <div className="flex flex-col md:flex-row gap-6 mb-8">
+          <div className="md:basis-2/3 flex flex-row gap-6 justify-around">
+            <div>
               <div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Price per Bottle (€)
-                  </label>
-                  <input
-                    type="number"
-                    name="bottlePrice"
-                    value={costs.bottlePrice}
-                    onChange={handleInputChange}
-                    min="0"
-                    step="0.01"
-                    className="w-full p-3 border border-gray-300 rounded-md mb-3"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Price per Filter (€)
-                  </label>
-                  <input
-                    type="number"
-                    name="filterPrice"
-                    value={costs.filterPrice}
-                    onChange={handleInputChange}
-                    min="0"
-                    step="0.01"
-                    className="w-full p-3 border border-gray-300 rounded-md"
-                  />
-                </div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Price per Bottle (€)
+                </label>
+                <input
+                  type="number"
+                  name="bottlePrice"
+                  value={costs.bottlePrice}
+                  onChange={handleInputChange}
+                  min="0"
+                  step="0.01"
+                  className="w-full p-3 border border-gray-300 rounded-md mb-3"
+                />
               </div>
 
               <div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Bottles Used per Week
-                  </label>
-                  <input
-                    type="number"
-                    name="bottlesPerWeek"
-                    value={costs.bottlesPerWeek}
-                    onChange={handleInputChange}
-                    min="0"
-                    className="w-full p-3 border border-gray-300 rounded-md mb-3"
-                  />
-                </div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Price per Filter (€)
+                </label>
+                <input
+                  type="number"
+                  name="filterPrice"
+                  value={costs.filterPrice}
+                  onChange={handleInputChange}
+                  min="0"
+                  step="0.01"
+                  className="w-full p-3 border border-gray-300 rounded-md"
+                />
+              </div>
+            </div>
 
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Filters Used per Week
-                  </label>
-                  <input
-                    type="number"
-                    name="filtersPerWeek"
-                    value={costs.filtersPerWeek}
-                    onChange={handleInputChange}
-                    min="0"
-                    className="w-full p-3 border border-gray-300 rounded-md"
-                  />
-                </div>
+            <div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Bottles Used per Week
+                </label>
+                <input
+                  type="number"
+                  name="bottlesPerWeek"
+                  value={costs.bottlesPerWeek}
+                  onChange={handleInputChange}
+                  min="0"
+                  className="w-full p-3 border border-gray-300 rounded-md mb-3"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Filters Used per Week
+                </label>
+                <input
+                  type="number"
+                  name="filtersPerWeek"
+                  value={costs.filtersPerWeek}
+                  onChange={handleInputChange}
+                  min="0"
+                  className="w-full p-3 border border-gray-300 rounded-md"
+                />
               </div>
             </div>
-            <div className="md:basis-1/3">
-              <div className="bg-gray-50 p-6 rounded-lg prose md:prose-lg">
-                <h3 className="text-xl font-semibold text-darkblue mb-4">Estimated Costs</h3>
-                <div className="space-y-3">
-                  <p
-                    className="flex justify-between gap-4"
-                    style={{marginBottom: '0 !important'}}
-                  >
-                    <span>Weekly Cost:</span>
-                    <span className="font-semibold">€ {formatCurrency(totalCosts.weekly)}</span>
-                  </p>
-                  <p className="flex justify-between gap-4">
-                    <span>Monthly Cost:</span>
-                    <span className="font-semibold">€ {formatCurrency(totalCosts.monthly)}</span>
-                  </p>
-                  <p className="flex justify-between gap-4">
-                    <span>Yearly Cost:</span>
-                    <span className="font-semibold">€ {formatCurrency(totalCosts.yearly)}</span>
-                  </p>
-                  <p className="flex justify-between gap-4">
-                    <span>10 Year Cost:</span>
-                    <span className="font-semibold">€ {formatCurrency(totalCosts.tenYears)}</span>
-                  </p>
-                  <p className="flex justify-between gap-4">
-                    <span>20 Year Cost:</span>
-                    <span className="font-semibold">€ {formatCurrency(totalCosts.twentyYears)}</span>
-                  </p>
-                </div>
+          </div>
+          <div className="md:basis-1/3">
+            <div className="bg-gray-50 p-6 rounded-lg">
+              <h3 className="text-xl font-semibold text-darkblue mb-4">Estimated Costs</h3>
+              <div className="space-y-3">
+                <p className="flex justify-between gap-4">
+                  <span>Weekly Cost:</span>
+                  <span className="font-semibold">€ {formatCurrency(totalCosts.weekly)}</span>
+                </p>
+                <p className="flex justify-between gap-4">
+                  <span>Monthly Cost:</span>
+                  <span className="font-semibold">€ {formatCurrency(totalCosts.monthly)}</span>
+                </p>
+                <p className="flex justify-between gap-4">
+                  <span>Yearly Cost:</span>
+                  <span className="font-semibold">€ {formatCurrency(totalCosts.yearly)}</span>
+                </p>
+                <p className="flex justify-between gap-4">
+                  <span>10 Year Cost:</span>
+                  <span className="font-semibold">€ {formatCurrency(totalCosts.tenYears)}</span>
+                </p>
+                <p className="flex justify-between gap-4">
+                  <span>20 Year Cost:</span>
+                  <span className="font-semibold">€ {formatCurrency(totalCosts.twentyYears)}</span>
+                </p>
               </div>
-            
             </div>
+          
           </div>
         </div>
       </div>

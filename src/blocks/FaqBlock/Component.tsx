@@ -33,7 +33,7 @@ export const FaqBlock: React.FC<FaqBlockProps> = ({
           src="/ripples.jpg"
           alt="Decorative splash"
           className="w-full h-full object-cover opacity-20"
-          layout="fill"
+          fill
         />
       </div>
       <div className="relative z-10">
@@ -49,7 +49,7 @@ export const FaqBlock: React.FC<FaqBlockProps> = ({
                 {sideTitle}
               </p>
             </div>
-              <p className="text-slate-700 pb-5 prose md:prose-md">
+              <p className="text-slate-700 pb-5 prose md:prose-lg">
                 {sideContent}
               </p>
               <div className="w-full flex flex-row justify-start align-middle">

@@ -25,7 +25,7 @@ interface HeroProps {
 }
 
 const SingleSlide: React.FC<{ slide: Slide }> = ({ slide }) => (
-  <div className="relative w-full min-h-[600px] azul-overlay py-20 z-20">
+  <div className="relative w-full max-md:py-[5rem] md:min-h-[600px] azul-overlay py-20 z-20">
     {slide.video ? (
       <video
         autoPlay
@@ -83,7 +83,7 @@ export const MediumImpactHero: React.FC<HeroProps> = ({ slides }) => {
   }
 
   return (
-    <div className="w-full relative">
+    <div className="w-full relative max-md:py-[5rem] md:h-[600px] z-20">
       <div className="embla overflow-hidden" ref={emblaRef}>
         <div className="embla__container flex h-full">
           {slides.map((slide, index) => (

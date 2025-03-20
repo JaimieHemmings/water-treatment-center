@@ -60,7 +60,7 @@ const ProductCTA = () => {
                   ease: 'power2.out',
                 }}
               >
-                <CustomLink theme="white" label="Payment Plans" link="/payment-plans" /> 
+                <CustomLink theme="white" label="Payment Plans" link="/payment-options" /> 
               </AnimateIn>         
             </div>
           </div>
