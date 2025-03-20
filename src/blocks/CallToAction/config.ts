@@ -77,12 +77,41 @@ export const CallToAction: Block = {
       required: true,
     },
     {
-      name: 'link',
-      type: 'relationship',
-      relationTo: 'pages',
-      required: true,
+      name: 'lType',
+      label: 'Link Type',
+      type: 'select',
+      options: [
+        {
+          label: 'Page',
+          value: 'page',
+        },
+        {
+          label: 'Support Document',
+          value: 'support',
+        },
+      ],
+      defaultValue: 'page',
       admin: {
         condition: (data, siblingData) => siblingData?.ctaType === 'link',
+      },
+      required: true,
+    },
+    {
+      name: 'pageLink',
+      type: 'relationship',
+      relationTo: 'pages',
+      admin: {
+        condition: (data, siblingData) => siblingData?.lType === 'page',
+      },
+      required: true,
+    },
+    {
+      name: 'supportLink',
+      type: 'relationship',
+      relationTo: 'supporting-documents',
+      required: true,
+      admin: {
+        condition: (data, siblingData) => siblingData?.lType === 'support',
       },
     },
     {

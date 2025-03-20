@@ -10,8 +10,13 @@ import { FormBlock } from "@/blocks/Form/Component";
 interface CallToActionBlockProps {
   title?: string,
   subtitle?: string;
-  link: {
+  lType: string;
+  pageLink: {
     slug: string;
+  };
+  supportLink: {
+    slug: string;
+    association: string;
   };
   linkLabel: string;
   richText: any;
@@ -24,7 +29,9 @@ interface CallToActionBlockProps {
   blocks: any;
 }
 
-export const CallToActionBlock: React.FC<CallToActionBlockProps> = ({ link, linkLabel, richText, backgroundImage, title, subtitle, lightMode, ctaType, blocks }) => {
+export const CallToActionBlock: React.FC<CallToActionBlockProps> = ({ pageLink, supportLink, lType, linkLabel, richText, backgroundImage, title, subtitle, lightMode, ctaType, blocks }) => {
+  supportLink = supportLink || { slug: '', association: '' };
+  pageLink = pageLink || { slug: '' };
   return (
     <section className="bg-darkblue">
       <div className="w-full py-[5rem] relative overflow-hidden">
@@ -95,6 +102,7 @@ export const CallToActionBlock: React.FC<CallToActionBlockProps> = ({ link, link
           </div>
           <div className={`basis-1/2 flex flex-col items-centre ${ctaType === 'form' ? ' p-5 bg-white rounded-xl' : 'max-w-[200px]'} justify-center`}>
           {ctaType === 'link' && (
+            lType && (
             <AnimateIn
               animation={{
                 y: 60,
@@ -104,12 +112,21 @@ export const CallToActionBlock: React.FC<CallToActionBlockProps> = ({ link, link
               }}
             >
               {lightMode && (
-                <CustomLink theme="dark" label={linkLabel} link={`/${link.slug}`} />
+                lType === 'page' ? (
+                  <CustomLink theme="dark" label={linkLabel} link={`/${pageLink.slug}`} />
+                ) : (
+                  <CustomLink theme="dark" label={linkLabel} link={`/products/${supportLink.association}/support/${supportLink.slug}`} />
+                )
               )}
               {!lightMode && (
-                <CustomLink theme="white" label={linkLabel} link={`/${link.slug}`} /> 
+                lType === 'page' ? (
+                  <CustomLink theme="white" label={linkLabel} link={`/${pageLink.slug}`} />
+                ) : (
+                  <CustomLink theme="white" label={linkLabel} link={`/products/${supportLink.association}/support/${supportLink.slug}`} />
+                )
               )}
             </AnimateIn>   
+            )
           )}    
           {ctaType === 'form' && (
             blocks.map((block, index) => {

@@ -340,7 +340,9 @@ export interface CallToActionBlock {
     [k: string]: unknown;
   } | null;
   ctaType: 'link' | 'form';
-  link?: (number | null) | Page;
+  lType?: ('page' | 'support') | null;
+  pageLink?: (number | null) | Page;
+  supportLink?: (number | null) | SupportingDocument;
   linkLabel?: string | null;
   blocks?: FormBlock[] | null;
   id?: string | null;
@@ -1576,7 +1578,9 @@ export interface CallToActionBlockSelect<T extends boolean = true> {
   lightMode?: T;
   richText?: T;
   ctaType?: T;
-  link?: T;
+  lType?: T;
+  pageLink?: T;
+  supportLink?: T;
   linkLabel?: T;
   blocks?:
     | T
