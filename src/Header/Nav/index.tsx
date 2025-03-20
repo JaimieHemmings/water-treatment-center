@@ -48,7 +48,7 @@ export const HeaderNav = ({ docs, supDocs, isOpen, setIsOpen, data, subDocs }: H
   };
   
   return (
-    <nav className={`bg-darkblue max-lg:h-[calc(100vh-65px)] max-lg:py-5 max-lg:w-[250px] max-lg:px-5 lg:container lg:px-0 absolute lg:relative max-lg:border-r-2 left-0 max-lg:top-[65px] max-lg:overflow-y-scroll ${isOpen ? 'block' : 'hidden'} lg:block max-md:border-t-2 border-white`}>
+    <nav className={`bg-darkblue max-lg:h-[calc(100vh-65px)] max-lg:py-5 max-lg:w-[250px] max-lg:px-5 lg:container lg:px-0 absolute lg:relative max-lg:border-r-2 left-0 max-md:top-[65px] max-lg:top-[76px] max-lg:overflow-y-scroll ${isOpen ? 'block' : 'hidden'} lg:block max-md:border-t-2 border-white`}>
       <ul className="flex flex-col lg:flex-row lg:justify-between align-middle lg:text-center">
         {docs.map((item) => {
           const hasDropdownItems = supDocs?.docs.some(
@@ -62,7 +62,7 @@ export const HeaderNav = ({ docs, supDocs, isOpen, setIsOpen, data, subDocs }: H
               <button 
                 aria-controls={`dropdown-${item.slug}`}
                 aria-expanded={isActive}
-                className="px-1 py-2 text-white hover:text-selectiveyellow tracking-wide font-semibold text-base w-full flex gap-2 items-center"
+                className="px-1 py-2 text-white hover:text-selectiveyellow tracking-wide font-semibold text-base lg:text-xs xl:text-base w-full flex gap-2 items-center"
                 onClick={() => handleItemClick(item.slug)}
               >
                 {item.title} 
@@ -116,7 +116,7 @@ export const HeaderNav = ({ docs, supDocs, isOpen, setIsOpen, data, subDocs }: H
             <Link 
               href={`/${item.link.slug}`}
               onClick={handleMenuClick}
-              className="px-1 py-2 text-white hover:text-selectiveyellow tracking-wide font-semibold text-base w-full flex gap-2 items-center lg:justify-start"
+              className="px-1 py-2 text-white hover:text-selectiveyellow tracking-wide font-semibold text-base lg:text-xs xl:text-base w-full flex gap-2 items-center lg:justify-start"
             >
               {item.label}
             </Link>
@@ -126,7 +126,7 @@ export const HeaderNav = ({ docs, supDocs, isOpen, setIsOpen, data, subDocs }: H
             <Link 
               href="/news"
               onClick={handleMenuClick}
-              className="px-1 py-2 text-white hover:text-selectiveyellow tracking-wide font-semibold text-base w-full flex gap-2 items-center lg:justify-start"
+              className="px-1 py-2 text-white hover:text-selectiveyellow tracking-wide font-semibold text-base lg:text-xs xl:text-base w-full flex gap-2 items-center lg:justify-start"
             >
               News
             </Link>
