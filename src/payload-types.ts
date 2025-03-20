@@ -1096,14 +1096,6 @@ export interface Product {
         | null;
       featuresListTwoImage: number | Media;
       cardsSectionTitle: string;
-      cards?:
-        | {
-            title: string;
-            description: string;
-            image: number | Media;
-            id?: string | null;
-          }[]
-        | null;
     };
     details: {
       detailsTitle: string;
@@ -2107,14 +2099,6 @@ export interface ProductsSelect<T extends boolean = true> {
                   };
               featuresListTwoImage?: T;
               cardsSectionTitle?: T;
-              cards?:
-                | T
-                | {
-                    title?: T;
-                    description?: T;
-                    image?: T;
-                    id?: T;
-                  };
             };
         details?:
           | T

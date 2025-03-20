@@ -165,31 +165,6 @@ export const Products: CollectionConfig = {
                       label: 'Cards Section Title',
                       required: true,
                     },
-                    {
-                      name: 'cards',
-                      type: 'array',
-                      label: 'Cards',
-                      minRows: 3,
-                      maxRows: 3,
-                      fields: [
-                        {
-                          name: 'title',
-                          type: 'text',
-                          required: true,
-                        },
-                        {
-                          name: 'description',
-                          type: 'text',
-                          required: true,
-                        },
-                        {
-                          name: 'image',
-                          type: 'upload',
-                          relationTo: 'media',
-                          required: true,
-                        },
-                      ],
-                    },
                   ],
                 },
                 {

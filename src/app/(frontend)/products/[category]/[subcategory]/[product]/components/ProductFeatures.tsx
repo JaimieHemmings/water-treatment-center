@@ -23,12 +23,6 @@ interface ProductImage {
   height: number
 }
 
-interface Card {
-  title: string
-  description: string
-  image: ProductImage
-}
-
 interface Features {
   featuresTitle: string
   featuresSubtitleOne: string
@@ -38,7 +32,6 @@ interface Features {
   featuresListTwo: Feature[]
   featuresListTwoImage: ProductImage
   cardsSectionTitle: string
-  cards: Card[]
   fullWidthHighlightTitle: string
   fullWidthHighlightDescription: string
 }
@@ -182,37 +175,6 @@ const ProductFeatures: React.FC<ProductFeaturesProps> = ({ productData }) => {
                 />
               </AnimateIn>
             )}
-          </div>
-        </div>
-      </section>
-      <section className="bg-antiflashwhite text-jet py-[5rem] w-full">
-        <div className="container">
-          <div className="flex flex-col">
-            <h2 className="text-2xl md:text-4xl text-center pb-5">
-              {productData.content.features.cardsSectionTitle}
-            </h2>
-            <div className="flex flex-col md:flex-row gap-4 justify-between">
-            {productData.content.features.cards.map((card, index) => (
-              <div key={index} className='flex flex-col rounded-xl bg-darkblue overflow-hidden md:basis-1/3'>
-                <div className="relative w-full h-[400px]">
-                  <Image 
-                    src={card.image.url} 
-                    alt={card.image.alt} 
-                    fill 
-                    className="object-cover inset-0"
-                    sizes="(max-width: 768px)"
-                  />
-                </div>
-                <div className="p-5 flex flex-col justify-between">
-                  <span className="text-selectiveyellow font-bold text-xl md:text-2xl">0{index + 1}</span>
-                  <h3 className="text-xl md:text-2xl pb-3 text-antiflashwhite">
-                    {card.title}
-                  </h3>
-                  <p className="text-antiflashwhite prose md:prose-md pb-5">{card.description}</p>
-                </div>
-              </div>
-            ))}
-            </div>
           </div>
         </div>
       </section>

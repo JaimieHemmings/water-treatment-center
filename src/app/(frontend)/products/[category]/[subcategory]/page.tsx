@@ -64,9 +64,12 @@ export default async function SubCategoryData({ params }: Params) {
                       width={500}
                       height={500}
                     />
-                    <h3 className="text-2xl font-semibold text-white">
+                    <h3 className="text-base md:text-lg font-semibold text-white">
                       {product.title}
                     </h3>
+                    <p className="text-white prose md:prose-md">
+                      {product.content.header.excerpt}
+                    </p>
                   </Link>
                 </div>
               ))}
