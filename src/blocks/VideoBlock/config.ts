@@ -11,6 +11,12 @@ export const VideoBlock: Block = {
       type: 'checkbox',
     },
     {
+      name: 'enableGutter',
+      label: 'Enable Gutter',
+      type: 'checkbox',
+      defaultValue: false,
+    },
+    {
       name: 'title',
       label: 'Title',
       type: 'text',

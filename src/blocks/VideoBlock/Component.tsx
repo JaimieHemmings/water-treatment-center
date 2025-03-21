@@ -1,5 +1,4 @@
 import React from 'react'
-import Image from 'next/image'
 import AnimateIn from '@/components/Animations/AnimateIn'
 import CustomLink from '@/components/CustomLink'
 import { FaDroplet } from "react-icons/fa6";
@@ -20,6 +19,7 @@ interface VideoBlockProps {
   preloadImage?: {
     url: string
   }
+  enableGutter?: boolean
 }
 
 const ANIMATION_CONFIG = {
@@ -29,18 +29,6 @@ const ANIMATION_CONFIG = {
   ease: "power2.out",
 } as const
 
-const DecorativeDots: React.FC<{ position: 'top' | 'bottom' }> = ({ position }) => (
-  <Image
-    src="/dots.svg"
-    alt="Decorative dots"
-    className={`absolute ${
-      position === 'top' ? 'top-4 left-0' : 'bottom-4 right-0 scale-x-[-1]'
-    } z-10 w-48 h-72`}
-    height={300}
-    width={200}
-  />
-)
-
 const VideoBlock: React.FC<VideoBlockProps> = ({
   title,
   subtitle,
@@ -49,28 +37,44 @@ const VideoBlock: React.FC<VideoBlockProps> = ({
   link,
   linkLabel,
   videoOnly,
-  preloadImage
+  preloadImage,
+  enableGutter
 }) => {
 
   if (videoOnly) {
     return (
-      <video
-        className="w-full h-auto"
-        loop
-        playsInline
-        controls
-        poster={preloadImage?.url || '/video-poster.jpg'}
-      >
-        <source src={video.url} type="video/mp4" />
-        Your browser does not support the video tag.
-    </video>
+      <>
+      {enableGutter && (
+        <div className="container">
+          <video
+            className="w-full h-auto"
+            loop
+            muted
+            playsInline
+          >
+            <source src={video.url} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      )}
+      {!enableGutter && (
+        <video
+          className="w-full h-auto"
+          loop
+          playsInline
+          controls
+          poster={preloadImage?.url || '/video-poster.jpg'}
+        >
+          <source src={video.url} type="video/mp4" />
+          Your browser does not support the video tag.
+      </video>
+      )}
+    </>
     )
   }
 
   return (
     <section className="relative overflow-hidden py-[5rem] w-full">
-      <DecorativeDots position="top" />
-
       {/* Video Background */}
       <div className="z-0">
         <div className="fixed inset-0">

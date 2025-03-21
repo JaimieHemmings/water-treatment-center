@@ -712,6 +712,7 @@ export interface TwoColumn {
  */
 export interface VideoBlock {
   videoOnly?: boolean | null;
+  enableGutter?: boolean | null;
   title?: string | null;
   subtitle?: string | null;
   contentleft?: string | null;
@@ -1821,6 +1822,7 @@ export interface FaqBlockSelect<T extends boolean = true> {
  */
 export interface VideoBlockSelect<T extends boolean = true> {
   videoOnly?: T;
+  enableGutter?: T;
   title?: T;
   subtitle?: T;
   contentleft?: T;
