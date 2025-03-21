@@ -49,8 +49,9 @@ const VideoBlock: React.FC<VideoBlockProps> = ({
           <video
             className="w-full h-auto"
             loop
-            muted
             playsInline
+            controls
+            poster={preloadImage?.url || '/video-poster.jpg'}
           >
             <source src={video.url} type="video/mp4" />
             Your browser does not support the video tag.
