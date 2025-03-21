@@ -33,11 +33,11 @@ const Header = ({ productData }) => {
             duration: 0.8,
           }}>
             <h2 className="text-2xl md:text-4xl font-semibold text-white pb-5 border-b-2 border-selectiveyellow mb-5 inline-block">
-              {productData.title}
+              {productData.title} 
             </h2>
           </AnimateIn>
           <p className="prose md:prose-md text-white">
-          {productData.content.header.excerpt}
+          {productData.description}
           </p>
           <ul className='list-none list-inside text-white mt-4 flex flex-col gap-4 px-0 pb-5'>
             {productData.content.header.mainFeatures.map((feature, index) => (

@@ -25,12 +25,9 @@ interface ProductImage {
 
 interface Features {
   featuresTitle: string
-  featuresSubtitleOne: string
-  featuresSubtitleTwo: string
-  featuresListOne: Feature[]
-  featuresListOneImage: ProductImage
-  featuresListTwo: Feature[]
-  featuresListTwoImage: ProductImage
+  featuresSubtitle: string
+  featuresList: Feature[]
+  featuresListImage: ProductImage
   cardsSectionTitle: string
   fullWidthHighlightTitle: string
   fullWidthHighlightDescription: string
@@ -63,7 +60,7 @@ const FeatureItem: React.FC<FeatureItemProps> = ({ title, description }) => (
 const ProductFeatures: React.FC<ProductFeaturesProps> = ({ productData }) => {
   return (
     <>
-      <section className="container pt-20 pb-10 md:pb-5 text-white" id="features">
+      <section className="container pt-20 md:py-[5rem] text-white" id="features">
         <div className="text-center">
           <h2 className="text-selectiveyellow inline-block px-2 py-1 mb-5 text-sm tracking-widest">
             <FaDroplet className="inline-block text-selectiveyellow relative -top-[2px] mr-2" />
@@ -98,11 +95,11 @@ const ProductFeatures: React.FC<ProductFeaturesProps> = ({ productData }) => {
               }}
             >
               <h3 className="text-2xl md:text-4xl pb-5 mt-5 md:mt-0">
-                {productData.content.features.featuresSubtitleOne}
+                {productData.content.features.featuresSubtitle}
               </h3>
             </AnimateIn>
             <ul className="py-5 pb-0 flex flex-col gap-8">
-              {productData.content.features.featuresListOne.map((feature, index) => (
+              {productData.content.features.featuresList.map((feature, index) => (
                 <AnimateIn
                   key={index}
                   animation={{
@@ -124,60 +121,6 @@ const ProductFeatures: React.FC<ProductFeaturesProps> = ({ productData }) => {
       {productData.video?.video?.url && (
         <VideoBlock video={productData.video} />
       )}
-      <section className="pb-20 pt-10">
-        <div className="container flex flex-col md:flex-row text-white">
-          <div className="md:basis-1/2 md:p-5">
-          <AnimateIn
-              animation={{
-                y: 50,
-                opacity: 0,
-                duration: 0.8,
-              }}
-            >
-              <h3 className="text-2xl md:text-4xl pb-5">
-                {productData.content.features.featuresSubtitleTwo}
-              </h3>
-            </AnimateIn>
-            <ul className="py-5 flex flex-col gap-8">
-              {productData.content.features.featuresListTwo.map((feature, index) => (
-                <AnimateIn
-                  key={index}
-                  animation={{
-                    y: 50,
-                    opacity: 0,
-                    duration: 0.8,
-                  }}
-                >
-                  <FeatureItem
-                    title={feature.title}
-                    description={feature.description}
-                  />
-                </AnimateIn>
-              ))}
-            </ul>
-          </div>
-          <div className="basis-1/2">
-          {productData.content.features.featuresListTwoImage && (
-              <AnimateIn
-                animation={{
-                  y: 50,
-                  opacity: 0,
-                  rotate: -5,
-                  duration: 0.8,
-                }}
-                className="h-full"
-              >
-                <Image
-                  src={productData.content.features.featuresListTwoImage.url}
-                  alt={productData.content.features.featuresListTwoImage.alt || 'Product image'}
-                  className="object-cover rounded-xl transition-all duration-300"
-                  fill
-                />
-              </AnimateIn>
-            )}
-          </div>
-        </div>
-      </section>
     </>
   );
 };

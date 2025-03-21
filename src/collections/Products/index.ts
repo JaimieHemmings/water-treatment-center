@@ -40,7 +40,11 @@ export const Products: CollectionConfig = {
       name: 'excerpt',
       type: 'textarea',
       defaultValue: 'Enter a short description',
-      required: true,
+    },
+    {
+      name: 'description',
+      type: 'textarea',
+      defaultValue: 'Enter a description',
     },
     {
       name: 'featuredImage',
@@ -78,19 +82,6 @@ export const Products: CollectionConfig = {
                   label: 'Header',
                   fields: [
                     {
-                      name: 'productImage',
-                      label: 'Product Image',
-                      type: 'upload',
-                      relationTo: 'media',
-                      required: true,
-                    },
-                    {
-                      name: 'excerpt',
-                      type: 'textarea',
-                      label: 'Excerpt',
-                      required: true,
-                    },
-                    {
                       name: 'mainFeatures',
                       type: 'array',
                       label: 'Main Features',
@@ -116,14 +107,14 @@ export const Products: CollectionConfig = {
                       required: true,
                     },
                     {
-                      name: 'featuresSubtitleOne',
+                      name: 'featuresSubtitle',
                       type: 'text',
                       required: true,
                     },
                     {
-                      name: 'featuresListOne',
+                      name: 'featuresList',
                       type: 'array',
-                      label: 'Features List One',
+                      label: 'Features List',
                       fields: [
                         {
                           name: 'title',
@@ -136,40 +127,6 @@ export const Products: CollectionConfig = {
                           required: true,
                         },
                       ],
-                    },
-                    {
-                      name: 'featuresSubtitleTwo',
-                      type: 'text',
-                      required: true,
-                    },
-                    {
-                      name: 'featuresListTwo',
-                      type: 'array',
-                      label: 'Features List Two',
-                      fields: [
-                        {
-                          name: 'title',
-                          type: 'text',
-                          required: true,
-                        },
-                        {
-                          name: 'description',
-                          type: 'text',
-                          required: true,
-                        },
-                      ],
-                    },
-                    {
-                      name: 'featuresListTwoImage',
-                      type: 'upload',
-                      relationTo: 'media',
-                      required: true,
-                    },
-                    {
-                      name: 'cardsSectionTitle',
-                      type: 'text',
-                      label: 'Cards Section Title',
-                      required: true,
                     },
                   ],
                 },

@@ -1063,14 +1063,13 @@ export interface CostCalculatorBlock {
 export interface Product {
   id: number;
   title: string;
-  excerpt: string;
+  excerpt?: string | null;
+  description?: string | null;
   featuredImage: number | Media;
   parent: number | ProductCategory;
   category: number | Subcategory;
   content: {
-    header: {
-      productImage: number | Media;
-      excerpt: string;
+    header?: {
       mainFeatures?:
         | {
             description: string;
@@ -1080,24 +1079,14 @@ export interface Product {
     };
     features: {
       featuresTitle: string;
-      featuresSubtitleOne: string;
-      featuresListOne?:
+      featuresSubtitle: string;
+      featuresList?:
         | {
             title: string;
             description: string;
             id?: string | null;
           }[]
         | null;
-      featuresSubtitleTwo: string;
-      featuresListTwo?:
-        | {
-            title: string;
-            description: string;
-            id?: string | null;
-          }[]
-        | null;
-      featuresListTwoImage: number | Media;
-      cardsSectionTitle: string;
     };
     details: {
       detailsTitle: string;
@@ -2065,6 +2054,7 @@ export interface UsersSelect<T extends boolean = true> {
 export interface ProductsSelect<T extends boolean = true> {
   title?: T;
   excerpt?: T;
+  description?: T;
   featuredImage?: T;
   parent?: T;
   category?: T;
@@ -2074,8 +2064,6 @@ export interface ProductsSelect<T extends boolean = true> {
         header?:
           | T
           | {
-              productImage?: T;
-              excerpt?: T;
               mainFeatures?:
                 | T
                 | {
@@ -2087,24 +2075,14 @@ export interface ProductsSelect<T extends boolean = true> {
           | T
           | {
               featuresTitle?: T;
-              featuresSubtitleOne?: T;
-              featuresListOne?:
+              featuresSubtitle?: T;
+              featuresList?:
                 | T
                 | {
                     title?: T;
                     description?: T;
                     id?: T;
                   };
-              featuresSubtitleTwo?: T;
-              featuresListTwo?:
-                | T
-                | {
-                    title?: T;
-                    description?: T;
-                    id?: T;
-                  };
-              featuresListTwoImage?: T;
-              cardsSectionTitle?: T;
             };
         details?:
           | T
