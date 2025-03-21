@@ -37,6 +37,12 @@ export const Products: CollectionConfig = {
       unique: true,
     },
     {
+      name: 'excerpt',
+      type: 'textarea',
+      defaultValue: 'Enter a short description',
+      required: true,
+    },
+    {
       name: 'featuredImage',
       type: 'upload',
       relationTo: 'media',

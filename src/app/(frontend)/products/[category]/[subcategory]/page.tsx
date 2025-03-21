@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
 import React, { cache } from 'react'
@@ -6,6 +5,8 @@ import PageClient from './page.client'
 import Image from 'next/image'
 import { generateMeta } from '@/utilities/generateMeta'
 import { RenderBlocks } from '@/blocks/RenderBlocks'
+import ProductList from './components/ProductList'
+import { FaDroplet } from "react-icons/fa6";
 
 type Params = {
   params: Promise<{
@@ -48,34 +49,32 @@ export default async function SubCategoryData({ params }: Params) {
       </div>
       <div className="flex flex-col bg-darkblue">
         <RenderBlocks blocks={categoryData.content.content} />
-        <div className="bg-darkblue relative z-20 w-full py-[5rem]">
+        <section className="bg-darkblue relative z-20 w-full py-[5rem]">
+          <div className="container mb-[3rem]">
+            <p className="text-sm text-selectiveyellow m-0 pb-5 tracking-widest uppercase">
+              <FaDroplet className="inline-block text-selectiveyellow relative -top-[2px] mr-2" />
+              View the range
+            </p>
+            <h2 className="text-white text-2xl md:text-4xl">
+              {categoryData.title}
+            </h2>
+          </div>
           <div className="container pb-[2rem]">
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap justify-around">
               {products.map((product: any, index: any) => (
-                <div key={index} className="w-full sm:w-[calc(50%-8px)] lg:w-[calc(20%-16px)]">
-                  <Link
-                    className="flex flex-col gap-4"
-                    href={`/products/${category}/${categoryData.slug}/${product.slug}`}
-                  >
-                    <Image
-                      className='rounded-lg'
-                      src={product.content.header.productImage.url}
-                      alt={product.content.header.productImage.alt || 'No alt text available'}
-                      width={500}
-                      height={500}
-                    />
-                    <h3 className="text-base md:text-lg font-semibold text-white">
-                      {product.title}
-                    </h3>
-                    <p className="text-white prose md:prose-md">
-                      {product.content.header.excerpt}
-                    </p>
-                  </Link>
-                </div>
+                <ProductList
+                  key={index}
+                  title={product.title}
+                  excerpt={product.excerpt}
+                  image={product.content.header.productImage}
+                  category={category}
+                  catSlug={categoryData.slug}
+                  slug={product.slug}
+                />
               ))}
             </div>
           </div>
-        </div>
+        </section>
       </div>
     </article>
   )

@@ -1062,6 +1062,7 @@ export interface CostCalculatorBlock {
 export interface Product {
   id: number;
   title: string;
+  excerpt: string;
   featuredImage: number | Media;
   parent: number | ProductCategory;
   category: number | Subcategory;
@@ -2059,6 +2060,7 @@ export interface UsersSelect<T extends boolean = true> {
  */
 export interface ProductsSelect<T extends boolean = true> {
   title?: T;
+  excerpt?: T;
   featuredImage?: T;
   parent?: T;
   category?: T;
