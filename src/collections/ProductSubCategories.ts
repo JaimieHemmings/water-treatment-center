@@ -57,6 +57,16 @@ export const subcategories: CollectionConfig = {
       required: true,
     },
     {
+      name: 'video',
+      type: 'upload',
+      relationTo: 'media',
+    },
+    {
+      name: 'preloadImage',
+      type: 'upload',
+      relationTo: 'media',
+    },
+    {
       type: 'tabs',
       tabs: [
         {

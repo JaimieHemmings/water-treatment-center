@@ -1160,6 +1160,8 @@ export interface Subcategory {
   title: string;
   excerpt?: string | null;
   category: number | ProductCategory;
+  video?: (number | null) | Media;
+  preloadImage?: (number | null) | Media;
   hero: {
     heroImage: number | Media;
   };
@@ -2298,6 +2300,8 @@ export interface SubcategoriesSelect<T extends boolean = true> {
   title?: T;
   excerpt?: T;
   category?: T;
+  video?: T;
+  preloadImage?: T;
   hero?:
     | T
     | {

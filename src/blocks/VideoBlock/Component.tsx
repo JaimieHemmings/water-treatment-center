@@ -45,7 +45,7 @@ const VideoBlock: React.FC<VideoBlockProps> = ({
     return (
       <>
       {enableGutter && (
-        <div className="container">
+        <div className="container pt-[5rem]">
           <video
             className="w-full h-auto"
             loop

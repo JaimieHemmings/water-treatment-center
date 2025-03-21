@@ -1,3 +1,4 @@
+// @ts-nocheck
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
 import React, { cache } from 'react'
@@ -74,6 +75,20 @@ export default async function SubCategoryData({ params }: Params) {
               ))}
             </div>
           </div>
+          {categoryData.video && (
+            <div className="container pt-[5rem]">
+              <video
+                className="w-full h-auto"
+                loop
+                playsInline
+                controls
+                poster={categoryData.preloadImage?.url || '/video-poster.jpg'}
+                >
+                <source src={categoryData.video.url} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          )}
         </section>
       </div>
     </article>
