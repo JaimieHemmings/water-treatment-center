@@ -67,7 +67,7 @@ export default async function SubCategoryData({ params }: Params) {
                   key={index}
                   title={product.title}
                   excerpt={product.excerpt}
-                  image={product.content.header.productImage}
+                  image={product.featuredImage}
                   category={category}
                   catSlug={categoryData.slug}
                   slug={product.slug}
