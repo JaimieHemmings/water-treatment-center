@@ -88,12 +88,12 @@ export const StatsBlock = React.memo(({
             <li
               key={`${stat.title}-${index}`}
               ref={(el) => setRef(el, index)}
-              className="flex items-center justify-between p-5 border-b border-white/20"
+              className="flex items-center justify-start p-5 border-b border-white/20"
             >
-              <span className="text-selectiveyellow text-2xl md:text-4xl font-semibold">
+              <span className="text-selectiveyellow text-2xl md:text-4xl font-semibold min-w-[100px]">
                 {stat.value}
               </span>
-              <span className="text-white text-lg">
+              <span className="pl-4 text-white text-lg">
                 {stat.title}
               </span>
             </li>

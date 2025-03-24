@@ -67,15 +67,15 @@ const CostCalculatorBlock:React.FC<CostCalculatorBlockProps> = ({title, paragrap
             <FaDroplet className="inline-block text-selectiveyellow -top-[2px] relative mr-2" />
             {title}
           </h2>
-          <p className="text-2xl md:text-4xl mb-2 max-w-[50%]">
+          <p className="text-2xl md:text-4xl mb-2 max-w-[50%] text-jet">
             {subtitle}
           </p>
-          <p className="mb-5 prose md:prose-lg max-w-none">
+          <p className="mb-5 prose md:prose-lg max-w-none text-jet">
             {paragraph}
           </p>
         </div>          
         <div className="flex flex-col md:flex-row gap-6 mb-8">
-          <div className="md:basis-2/3 flex flex-row gap-6 justify-around">
+          <div className="md:basis-2/3 flex flex-row gap-6 justify-around text-jet">
             <div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -141,7 +141,7 @@ const CostCalculatorBlock:React.FC<CostCalculatorBlockProps> = ({title, paragrap
           <div className="md:basis-1/3">
             <div className="bg-gray-50 p-6 rounded-lg">
               <h3 className="text-xl font-semibold text-darkblue mb-4">Estimated Costs</h3>
-              <div className="space-y-3">
+              <div className="space-y-3 text-jet">
                 <p className="flex justify-between gap-4">
                   <span>Weekly Cost:</span>
                   <span className="font-semibold">€ {formatCurrency(totalCosts.weekly)}</span>
