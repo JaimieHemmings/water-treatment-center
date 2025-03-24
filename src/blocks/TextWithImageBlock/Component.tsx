@@ -16,6 +16,7 @@ interface TextWithImageBlockProps {
   title: string;
   intro: string;
   content: any;
+  contentSide: any;
   image: {
     originalWidth: number;
     originalHeight: number;
@@ -48,7 +49,8 @@ export const TextWithImageBlock: React.FC<TextWithImageBlockProps> = ({
   link,
   cropImage,
   quote,
-  linkLabel
+  linkLabel,
+  contentSide
 }) => {
   return (
     <section 
@@ -96,9 +98,9 @@ export const TextWithImageBlock: React.FC<TextWithImageBlockProps> = ({
               {quote}
             </p>
           )}
-          {content && (
+          {contentSide && (
             <RichText 
-              data={content}
+              data={contentSide}
               enableGutter={false}
               className={`prose md:prose-lg max-w-none ${darkmode ? '[&_strong]:text-white' : '[&_strong]:text-jet'} my-5`}
             />
@@ -133,6 +135,15 @@ export const TextWithImageBlock: React.FC<TextWithImageBlockProps> = ({
               return null;
             })}
         </div>
+      </div>
+      <div className="container">
+      {content && (
+        <RichText 
+          data={content}
+          enableGutter={false}
+          className={`prose md:prose-lg max-w-none ${darkmode ? '[&_strong]:text-white' : '[&_strong]:text-jet'} my-5`}
+        />
+      )}
       </div>
       
     </section>

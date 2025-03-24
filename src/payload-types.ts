@@ -636,6 +636,21 @@ export interface TextWithImageBlock {
   title?: string | null;
   intro?: string | null;
   quote?: string | null;
+  contentSide?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
   content?: {
     root: {
       type: string;
@@ -1701,6 +1716,7 @@ export interface TextWithImageBlockSelect<T extends boolean = true> {
   title?: T;
   intro?: T;
   quote?: T;
+  contentSide?: T;
   content?: T;
   image?: T;
   link?: T;

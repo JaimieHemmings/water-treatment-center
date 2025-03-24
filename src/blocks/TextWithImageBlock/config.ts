@@ -28,6 +28,18 @@ export const TextWithImageBlock: Block = {
       label: 'Quote',
     },
     {
+      name: 'contentSide',
+      label: 'Content Side',
+      type: 'richText',
+      editor: lexicalEditor({
+        features: ({ rootFeatures }) => {
+          return [
+            ...rootFeatures,
+          ]
+        },
+      }),
+    },
+    {
       name: 'content',
       type: 'richText',
       editor: lexicalEditor({
