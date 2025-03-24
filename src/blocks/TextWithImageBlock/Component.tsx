@@ -1,40 +1,18 @@
 import React from "react";
 import RichText from "@/components/RichText";
-import Image from "next/image";
 import { ThreeColBlock } from "@/blocks/ThreeCol/Component";
 import { AnimateIn } from "@/components/Animations/AnimateIn";
 import { FaDroplet } from "react-icons/fa6";
-import CustomLink from "@/components/CustomLink";
-
-interface Column {
-  title: string;
-  content: string;
-}
+import { Media } from "@/components/Media";
 
 interface TextWithImageBlockProps {
   darkmode: boolean;
   title: string;
   intro: string;
   content: any;
-  contentSide: any;
-  image: {
-    originalWidth: number;
-    originalHeight: number;
-    url: string;
-    alt: string;
-  };
-  link: {
-    slug: string
-  };
+  image: any;
   linkLabel: string;
   cropImage?: boolean;
-  blocks?: {
-    blockType: 'threeColBlock';
-    columns: Column[];
-  }[];
-  additionalSettings?: {
-    ShowThreeColBlock: boolean;
-  };
   quote: string;
 }
 
@@ -44,116 +22,56 @@ export const TextWithImageBlock: React.FC<TextWithImageBlockProps> = ({
   title, 
   intro,
   image,
-  blocks,
-  additionalSettings,
-  link,
   cropImage,
   quote,
-  linkLabel,
-  contentSide
 }) => {
   return (
-    <section 
-      className={`w-full py-[5rem] ${darkmode ? 'bg-darkblue text-white' : 'bg-white text-jet'} text-jet relative overflow-hidden z-20`}
-    >
-      <div className={`container mx-auto px-4 flex ${darkmode ? 'lg:flex-row-reverse flex-col' : 'flex-col-reverse lg:flex-row'} justify-between gap-10 relative z-20`}>
-        <div className={`${darkmode ? 'basis-1/3' : 'basis-1/2 '} h-full relative`}>
-          <AnimateIn
-            animation={{
-              y: 60,
-              opacity: 0,
-              duration: 0.8,
-              rotate: -10,
-              scale: 0.8,
-            }}
-            className="relative h-full w-full m-0 p-5"
-          >
-            <Image
-              src={image.url}
-              alt={image.alt}
-              width={500}
-              height={500}
-              className={`${cropImage ? 'rounded-full' : 'rounded-xl'} object-cover h-auto w-full m-0 max-md:min-h-[200px]`}
-              loading="lazy"
+    <div className={`py-[5rem] ${darkmode ? 'bg-darkblue' : 'bg-white'}`}>
+      <div className="container flex flex-col md:flex-row">
+        <div className="md:w-1/2 h-auto relative mb-5 md:mb-0">
+          {cropImage ? (
+              <Media
+                resource={image}
+                fill
+                imgClassName="rounded-xl object-cover w-full h-auto"
+                loading='lazy'
+                className="h-64"
+              />
+          ) : (
+            <Media
+              resource={image}
+              imgClassName="w-full h-auto"
+              loading='lazy'
             />
-          </AnimateIn>
+          )}
         </div>
-        <div className={`${darkmode ? 'basis-2/3' : 'basis-1/2 '} space-y-6`}>
-        <AnimateIn
-          animation={{
-            y: 60,
-            opacity: 0,
-            duration: 0.8,
-          }}
-        >
-          <div>
-            <h2 className={`text-sm text-selectiveyellow m-0 pb-5 tracking-widest uppercase`}>
-              <FaDroplet className="inline-block text-selectiveyellow mr-2 relative -top-[2px]" />
+        {/* Text Column */}
+        <div className="md:w-1/2 px-6 flex flex-col justify-center">
+          <div className="max-w-prose mx-auto">
+            <h2 className="text-sm tracking-widest mb-4 text-selectiveyellow uppercase">
+              <FaDroplet className="mr-2 relative inline-block -top-[2px]" />
               {title}
             </h2>
-            <p className={`mb-3 ${darkmode ? 'md:text-5xl font-bold' : 'text-2xl md:text-4xl'}`}>{intro}</p>
+            {quote && (
+              <p className={`pl-3 border-l-2 my-5 border-selectiveyellow text-lg opacity-[65%] ${darkmode ? 'text-white' : 'text-jet'}`}>
+                {quote}
+              </p>
+            )}
+            <div className="space-y-4 text-white">
+              <p className={`leading-relaxed mb-3 text-xl md:text-2xl ${darkmode ? 'text-white' : 'text-jet'}`}>
+                {intro}
+              </p>
+              {content && (
+                <RichText 
+                  data={content}
+                  enableGutter={false}
+                  className={`prose md:prose-lg max-w-none ${darkmode ? '[&_strong]:text-white text-white' : '[&_strong]:text-jet text-jet'} my-5 leading-relaxed`}
+                />
+              )}
+            </div>
           </div>
-          {quote && (
-            <p className="pl-3 border-l-2 my-5 border-selectiveyellow text-lg opacity-[65%]">
-              {quote}
-            </p>
-          )}
-          {contentSide && (
-            <RichText 
-              data={contentSide}
-              enableGutter={false}
-              className={`prose md:prose-lg max-w-none ${darkmode ? '[&_strong]:text-white' : '[&_strong]:text-jet'} my-5`}
-            />
-          )}
-          {link && (
-            <CustomLink
-              link={link.slug}
-              theme="dark"
-              label={linkLabel || "Get In Touch"}
-            />
-          )}
-          </AnimateIn>
-          {additionalSettings?.ShowThreeColBlock && blocks?.map((block, index) => {
-            if (block.blockType === 'threeColBlock') {
-              return (
-                <AnimateIn
-                  key={index}
-                  animation={{
-                    y: 60,
-                    opacity: 0,
-                    duration: 0.8,
-                  }}
-                >
-                  <ThreeColBlock
-                    key={index}
-                    columns={block.columns}
-                    darkmode={darkmode}
-                  />
-                </AnimateIn>
-                );
-              }
-              return null;
-            })}
         </div>
-      </div>
-      <div className="container">
-      {content && (
-        <AnimateIn
-          animation={{
-            y: 60,
-            opacity: 0,
-            duration: 0.8,
-          }}
-        >
-          <RichText 
-            data={content}
-            enableGutter={false}
-            className={`prose md:prose-lg max-w-none ${darkmode ? '[&_strong]:text-white' : '[&_strong]:text-jet'} my-5`}
-          />
-        </AnimateIn>
-      )}
-      </div>
-      
-    </section>
+      </div>              
+    </div>
   );
 };

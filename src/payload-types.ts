@@ -636,21 +636,6 @@ export interface TextWithImageBlock {
   title?: string | null;
   intro?: string | null;
   quote?: string | null;
-  contentSide?: {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
   content?: {
     root: {
       type: string;
@@ -667,32 +652,10 @@ export interface TextWithImageBlock {
     [k: string]: unknown;
   } | null;
   image: number | Media;
-  link?: (number | null) | Page;
-  linkLabel?: string | null;
   cropImage?: boolean | null;
-  additionalSettings?: {
-    ShowThreeColBlock?: boolean | null;
-  };
-  blocks?: ThreeColBlock[] | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'textWithImageBlock';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "ThreeColBlock".
- */
-export interface ThreeColBlock {
-  columns?:
-    | {
-        title: string;
-        content: string;
-        id?: string | null;
-      }[]
-    | null;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'threeColBlock';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1716,37 +1679,9 @@ export interface TextWithImageBlockSelect<T extends boolean = true> {
   title?: T;
   intro?: T;
   quote?: T;
-  contentSide?: T;
   content?: T;
   image?: T;
-  link?: T;
-  linkLabel?: T;
   cropImage?: T;
-  additionalSettings?:
-    | T
-    | {
-        ShowThreeColBlock?: T;
-      };
-  blocks?:
-    | T
-    | {
-        threeColBlock?: T | ThreeColBlockSelect<T>;
-      };
-  id?: T;
-  blockName?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "ThreeColBlock_select".
- */
-export interface ThreeColBlockSelect<T extends boolean = true> {
-  columns?:
-    | T
-    | {
-        title?: T;
-        content?: T;
-        id?: T;
-      };
   id?: T;
   blockName?: T;
 }
