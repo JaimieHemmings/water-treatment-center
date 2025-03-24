@@ -138,11 +138,19 @@ export const TextWithImageBlock: React.FC<TextWithImageBlockProps> = ({
       </div>
       <div className="container">
       {content && (
-        <RichText 
-          data={content}
-          enableGutter={false}
-          className={`prose md:prose-lg max-w-none ${darkmode ? '[&_strong]:text-white' : '[&_strong]:text-jet'} my-5`}
-        />
+        <AnimateIn
+          animation={{
+            y: 60,
+            opacity: 0,
+            duration: 0.8,
+          }}
+        >
+          <RichText 
+            data={content}
+            enableGutter={false}
+            className={`prose md:prose-lg max-w-none ${darkmode ? '[&_strong]:text-white' : '[&_strong]:text-jet'} my-5`}
+          />
+        </AnimateIn>
       )}
       </div>
       
