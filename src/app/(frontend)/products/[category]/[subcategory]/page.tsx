@@ -61,7 +61,7 @@ export default async function SubCategoryData({ params }: Params) {
             </h2>
           </div>
           <div className="container pb-[2rem]">
-            <div className="flex flex-wrap justify-around">
+            <div className="flex flex-wrap justify-start">
               {products.map((product: any, index: any) => (
                 <ProductList
                   key={index}

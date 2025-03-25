@@ -35,12 +35,12 @@ const Header = ({ productData }) => {
                 {productData.title} 
               </h2>
             </AnimateIn>
-            <p className="prose md:prose-md">
-            {productData.description}
+            <p>
+              {productData.description}
             </p>
             <ul className='list-none list-inside mt-4 flex flex-col gap-4 px-0 pb-5'>
               {productData.content.header.mainFeatures.map((feature, index) => (
-                <li key={index} className="relative pl-[20px]">
+                <li key={index} className="relative pl-[20px]  prose md:prose-md">
                   <IoIosCheckmark className="absolute top-[-5px] left-[-15px] p-0 m-0 text-4xl text-selectiveyellow"/>
                   {feature.description}
                 </li>

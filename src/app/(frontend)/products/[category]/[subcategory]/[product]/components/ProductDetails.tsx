@@ -1,13 +1,12 @@
 import Image from 'next/image'
 import React from 'react'
-import AnimateIn from '@/components/Animations/AnimateIn'
 import Link from 'next/link'
 import ProductAccordian from './ProductAccordian'
 import { FaDroplet } from 'react-icons/fa6'
 
 const ProductDetails = ({ productData }) => {
   return (
-    <section className="w-full py-[5rem] text-jet bg-antiflashwhite" id="details">
+    <section className="w-full py-[5rem] text-jet bg-white" id="details">
       <div className="container flex md:flex-row flex-col gap-4">
         <div className="md:basis-1/2">
           <h2 className="text-selectiveyellow inline-block px-2 py-1 mb-5 text-sm tracking-widest uppercase">

@@ -1,6 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import Image from 'next/image';
+import { Media } from '@/components/Media';
 
 const Gallery = ({ productData }: { productData: any }) => {
   const thumbnailImages = productData.gallery
@@ -13,14 +14,13 @@ const Gallery = ({ productData }: { productData: any }) => {
 
   return (
     <div className="space-y-4">
-      <div className="relative aspect-square w-full overflow-hidden rounded-xl max-h-[400px]">
-        <Image
-          src={selectedImage.image.url}
-          alt={selectedImage.image.alt || 'No alt text available'}
-          className="object-cover rounded-xl transition-all duration-300"
-          fill
+      <div className="relative w-full rounded-xl">
+        <Media
+          resource={selectedImage.image}
+          imgClassName="w-full h-auto rounded-xl transition-all duration-300"
+          loading='lazy'
+          className="rounded-xl transition-all duration-300"
         />
-        <p>Test</p>
       </div>
 
       <div className="grid grid-cols-4 gap-2">

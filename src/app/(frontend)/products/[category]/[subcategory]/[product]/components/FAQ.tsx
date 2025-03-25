@@ -12,7 +12,7 @@ const FAQ = ({ data }) => {
   }
 
   return (
-    <div className="bg-white text-jet py-[5rem] faq-section">
+    <div className="bg-antiflashwhite text-jet py-[5rem] faq-section">
       <div className="container flex flex-col md:flex-row justify-between">
         <div className="md:basis-1/2 md:p-5">
           <p className="tracking-widest text-selectiveyellow uppercase text-sm mb-5">
