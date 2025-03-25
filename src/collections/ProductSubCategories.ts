@@ -74,11 +74,38 @@ export const subcategories: CollectionConfig = {
           label: 'Hero',
           fields: [
             {
+              name: 'heroType',
+              type: 'select',
+              defaultValue: 'image',
+              options: [
+                {
+                  label: 'Image',
+                  value: 'image',
+                },
+                {
+                  label: 'Video',
+                  value: 'video',
+                },
+              ],
+            },
+            {
+              name: 'heroVideo',
+              label: 'Hero Video',
+              type: 'upload',
+              relationTo: 'media',
+              admin: {
+                condition: (_, siblingData) => siblingData.heroType === 'video',
+              },
+            },
+            {
               name: 'heroImage',
               label: 'Hero Image',
               type: 'upload',
               relationTo: 'media',
               required: true,
+              admin: {
+                condition: (_, siblingData) => siblingData.heroType === 'image',
+              },
             },
           ],
         },

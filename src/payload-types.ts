@@ -1144,8 +1144,10 @@ export interface Subcategory {
   category: number | ProductCategory;
   video?: (number | null) | Media;
   preloadImage?: (number | null) | Media;
-  hero: {
-    heroImage: number | Media;
+  hero?: {
+    heroType?: ('image' | 'video') | null;
+    heroVideo?: (number | null) | Media;
+    heroImage?: (number | null) | Media;
   };
   content: {
     content: (
@@ -2266,6 +2268,8 @@ export interface SubcategoriesSelect<T extends boolean = true> {
   hero?:
     | T
     | {
+        heroType?: T;
+        heroVideo?: T;
         heroImage?: T;
       };
   content?:

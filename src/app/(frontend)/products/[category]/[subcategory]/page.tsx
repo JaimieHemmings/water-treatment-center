@@ -24,16 +24,35 @@ export default async function SubCategoryData({ params }: Params) {
     <article className="bg-darkblue relative z-0">
       <PageClient />
       <div className="relative w-full min-h-[600px] azul-overlay py-[2rem] z-20">
-        {categoryData.hero.heroImage && (
-          <Image
-          // @ts-ignore
-            src={categoryData.hero.heroImage.url}
-            alt="background Image"
-            width={1920}
-            height={1080}
-            className="absolute inset-0 w-full h-full object-cover"
-            priority
-          />
+        {categoryData.hero.heroType == "image" && (
+          categoryData.hero.heroImage && (
+            <Image
+            // @ts-ignore
+              src={categoryData.hero.heroImage.url}
+              alt="background Image"
+              width={1920}
+              height={1080}
+              className="absolute inset-0 w-full h-full object-cover"
+              priority
+            />
+          )
+        )}
+        {categoryData.hero.heroType == "video" && (
+          categoryData.hero.heroVideo && (
+            <video    
+              muted
+              autoPlay
+              loop
+              playsInline        
+              className="absolute inset-0 w-full h-full object-cover"
+            >
+              <source
+                src={categoryData.hero.heroVideo.url}
+                type="video/mp4"
+              />
+              Your browser does not support the video tag.
+            </video>
+          )
         )}
         <div className="container mx-auto my-auto h-full flex flex-row justify-start relative z-10">
           <div className="md:basis-2/3 flex flex-col justify-center items-start h-full pt-[5rem]">
