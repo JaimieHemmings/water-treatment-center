@@ -25,6 +25,11 @@ export const Services: CollectionConfig = {
       unique: true,
     },
     {
+      name: 'intro',
+      type: 'richText',
+      label: 'Breif Introduction'
+    },
+    {
       name: 'description',
       type: 'richText',
       required: true,

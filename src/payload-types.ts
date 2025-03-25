@@ -1166,6 +1166,21 @@ export interface Subcategory {
 export interface Service {
   id: number;
   title: string;
+  intro?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
   description: {
     root: {
       type: string;
@@ -2168,6 +2183,7 @@ export interface WellTestCalculatorSelect<T extends boolean = true> {
  */
 export interface ServicesSelect<T extends boolean = true> {
   title?: T;
+  intro?: T;
   description?: T;
   image?: T;
   features?:

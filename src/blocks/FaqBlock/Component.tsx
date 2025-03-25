@@ -45,11 +45,11 @@ export const FaqBlock: React.FC<FaqBlockProps> = ({
                 <FaDroplet className="inline-block text-selectiveyellow mr-2" />
                 {title}
               </h2>
-              <p className="text-slate-700 text-2xl md:text-4xl font-semibold">
+              <p className="text-textblue text-2xl md:text-4xl font-semibold">
                 {sideTitle}
               </p>
             </div>
-              <p className="text-slate-700 pb-5 prose md:prose-lg">
+              <p className="text-textblue pb-5 prose md:prose-lg">
                 {sideContent}
               </p>
               <div className="w-full flex flex-row justify-start align-middle">

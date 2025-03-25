@@ -73,7 +73,7 @@ export const HeaderNav = ({ docs, supDocs, isOpen, setIsOpen, data, subDocs }: H
               <ul
                 role="menu" className={`
                 lg:absolute 
-                bg-white px-4 py-2 rounded-lg shadow-lg lg:min-w-[200px]
+                bg-white px-4 py-2 rounded-lg shadow-lg md:min-w-[300px]
                 lg:hidden lg:group-hover:grid
                 ${isActive ? 'grid' : 'hidden'}
               `}>

@@ -9,7 +9,7 @@ import { Media } from '@/components/Media';
 
 const Header = ({ productData }) => {
   return (
-    <div className="w-full bg-white text-jet pt-10">
+    <div className="w-full bg-white text-textblue pt-10">
       <div className="container flex flex-col md:flex-row gap-8 py-5">
         <div className="md:basis-1/2 flex flex-col md:pb-20">
           <AnimateIn

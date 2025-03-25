@@ -62,6 +62,9 @@ export default {
         jet: {
           DEFAULT: '#121212',
         },
+        textblue: {
+          DEFAULT: 'rgb(59, 83, 114)',
+        },
         antiflashwhite: {
           DEFAULT: '#F4F7F9',
         },

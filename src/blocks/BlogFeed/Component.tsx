@@ -36,7 +36,7 @@ export default async function BlogFeed() {
               <FaDroplet className="inline-block text-selectiveyellow mr-2" />
               News &amp; Updates
             </h2>
-            <p className="text-jet text-2xl md:text-4xl font-semibold md:max-w-[50%]">Stay Informed About Water Quality and Solutions</p>
+            <p className="text-textblue text-2xl md:text-4xl font-semibold md:max-w-[50%]">Stay Informed About Water Quality and Solutions</p>
           </div>
         </div>
         <ul className="relative pt-[2rem]">
@@ -51,8 +51,8 @@ export default async function BlogFeed() {
                     <p className="text-sm text-teal">
                       {new Date(post.publishedAt).toLocaleDateString('en-GB')}
                     </p>
-                    <h3 className="text-2xl text-jet py-2">{post.title}</h3>
-                    <p className="text-jet pb-[3rem]">{post.meta.description}</p>
+                    <h3 className="text-2xl text-textblue py-2">{post.title}</h3>
+                    <p className="text-textblue pb-[3rem]">{post.meta.description}</p>
                     <div className="flex">
 
                     <CustomLink theme="dark" label="Read More" link={`/news/${post.slug}`} />

@@ -141,3 +141,13 @@ html[data-theme='light'] {
 * {
   font-family: 'gillsans';
 }
+
+p, ul li {
+  font-weight: 400;
+  line-height: 27px;
+  font-size: 18px;
+}
+
+p {
+  margin-bottom: 15px;
+}

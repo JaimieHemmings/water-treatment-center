@@ -20,22 +20,8 @@ export default async function ServicesBlock() {
 
   const { docs } = response
   return (
-    <div className="w-full bg-white text-jet py-[2rem] relative">
-      <Image
-        src="/dots.svg"
-        alt="Decorative dots"
-        className="absolute bottom-4 right-0 z-10 scale-x-[-1] w-48 h-72 md:w-48 md:h-72"
-        height={300}
-        width={200}
-      />
-      <Image
-        src="/dots.svg"
-        alt="Decorative dots"
-        className="absolute top-4 left-0 z-10 w-48 h-72 md:w-48 md:h-72"
-        height={300}
-        width={200}
-      />
-      <div className="container pt-[5rem] flex flex-col justify-normal gap-10 relative z-10">
+    <div className="w-full bg-white text-textblue py-[2rem] relative">
+      <div  className="container pt-[5rem] flex flex-col justify-normal gap-10 relative z-10">
         {docs.map((service, index) => (
           <div key={index} className={`flex flex-col gap-10 py-[2rem] ${index % 2 === 1 ? 'md:flex-row-reverse' : 'md:flex-row'}`}>
             <div className="basis-1/2">
@@ -47,13 +33,16 @@ export default async function ServicesBlock() {
               }}
             >
               <div
-                className="pl-4 border-l-4 border-selectiveyellow"
+                className="mb-3 pl-4 border-l-4 border-selectiveyellow"
               >
                 <h3 className="text-2xl md:text-4xl py-2 text-selectiveyellow font-bold mb-2">
                   {service.title}
                 </h3>
-                <RichText data={service.description} enableGutter={false} className="max-w-none prose md:prose-md mb-10 text-md md:xl mr-0 [&_strong]:font-bold" />
+                {service.intro && (
+                  <RichText data={service.intro} enableGutter={false} className="max-w-none mb-10 text-md md:xl mr-0 [&_strong]:font-bold" />
+                )}
               </div>
+              <RichText data={service.description} enableGutter={false} className="max-w-none mb-10 text-md md:xl mr-0 [&_strong]:font-bold" />
               {service.features && (
                 <ul className="list-none list-inside mt-4">
                   {service.features.map((feature) => (
@@ -90,7 +79,7 @@ export default async function ServicesBlock() {
               )}
             </AnimateIn>
           </div>
-          </div>
+        </div>
         ))}
       </div>
     </div>

@@ -87,11 +87,11 @@ export const CallToActionBlock: React.FC<CallToActionBlockProps> = ({ pageLink, 
               </h2>
               <div>
               {subtitle && (
-                <p className={`text-2xl md:text-4xl pb-4 border-b-2 border-selectiveyellow mb-5 inline-block font-semibold ${lightMode ? 'text-darkblue' : 'text-white'}`}>{subtitle}</p>
+                <p className={`text-2xl md:text-4xl pb-4 border-b-2 border-selectiveyellow mb-5 inline-block font-semibold ${lightMode ? 'text-textblue' : 'text-white'}`}>{subtitle}</p>
               )}
               </div>
               <RichText
-                className={`px-5 md:pl-0 prose md:prose-md lg:prose-lg mb-5 ${lightMode ? 'text-darkblue' : 'text-white'}`}
+                className={`px-5 md:pl-0 prose md:prose-md lg:prose-lg mb-5 ${lightMode ? 'text-textblue' : 'text-white'}`}
                 data={richText}
                 enableGutter={false}
               />
