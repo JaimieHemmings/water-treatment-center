@@ -103,7 +103,7 @@ export const TextWithImageBlock: React.FC<TextWithImageBlockProps> = ({
                   <RichText 
                   data={sideContent}
                   enableGutter={false}
-                  className={`md:columns-2 max-w-none ${darkmode ? '[&_strong]:text-white text-white' : '[&_strong]:text-text-blue text-textblue'} my-5 leading-relaxed font-base`}
+                  className={` max-w-none ${darkmode ? '[&_strong]:text-white text-white' : '[&_strong]:text-text-blue text-textblue'} my-5 leading-relaxed font-base`}
                 />
                 )}
               </AnimateIn>

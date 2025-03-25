@@ -23,7 +23,7 @@ export default async function ServicesBlock() {
     <div className="w-full bg-white text-textblue py-[2rem] relative">
       <div  className="container pt-[5rem] flex flex-col justify-normal gap-10 relative z-10">
         {docs.map((service, index) => (
-          <div key={index} className={`flex flex-col gap-10 py-[2rem] ${index % 2 === 1 ? 'md:flex-row-reverse' : 'md:flex-row'}`}>
+          <div key={index} className={`flex flex-col gap-10 md:py-[2rem] ${index % 2 === 1 ? 'md:flex-row-reverse' : 'md:flex-row'}`}>
             <div className="basis-1/2">
             <AnimateIn
               animation={{
@@ -72,7 +72,7 @@ export default async function ServicesBlock() {
                   fill // Changed to fill property
                   src={service.image.url} 
                   alt={service.image.alt} 
-                  className="absolute inset-0 object-cover rounded-xl"
+                  className="absolute inset-0 object-cover rounded-xl min-h-[500px]"
                   sizes="(max-width: 768px) 100vw, 50vw"
                   priority={index === 0}
                 />
