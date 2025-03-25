@@ -13,6 +13,7 @@ interface TextWithImageBlockProps {
   linkLabel: string;
   cropImage?: boolean;
   quote: string;
+  sideContent: any;
 }
 
 export const TextWithImageBlock: React.FC<TextWithImageBlockProps> = ({ 
@@ -20,6 +21,7 @@ export const TextWithImageBlock: React.FC<TextWithImageBlockProps> = ({
   content, 
   title, 
   intro,
+  sideContent,
   image,
   cropImage,
   quote,
@@ -97,6 +99,13 @@ export const TextWithImageBlock: React.FC<TextWithImageBlockProps> = ({
                 <p className={`pl-3 border-l-2 my-5 border-selectiveyellow text-lg ${darkmode ? 'text-white' : 'text-textblue'}`}>
                   {quote}
                 </p>
+                {sideContent && (
+                  <RichText 
+                  data={sideContent}
+                  enableGutter={false}
+                  className={`md:columns-2 max-w-none ${darkmode ? '[&_strong]:text-white text-white' : '[&_strong]:text-text-blue text-textblue'} my-5 leading-relaxed font-base`}
+                />
+                )}
               </AnimateIn>
             )}
           </div>
