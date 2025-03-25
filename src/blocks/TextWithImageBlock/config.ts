@@ -24,7 +24,7 @@ export const TextWithImageBlock: Block = {
     },
     {
       name: 'quote',
-      type: 'text',
+      type: 'textarea',
       label: 'Quote',
     },
     {

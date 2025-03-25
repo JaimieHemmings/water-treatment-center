@@ -38,40 +38,89 @@ export const TextWithImageBlock: React.FC<TextWithImageBlockProps> = ({
                 className="h-64"
               />
           ) : (
-            <Media
-              resource={image}
-              imgClassName="w-full h-auto"
-              loading='lazy'
-            />
+            <AnimateIn
+              animation={{
+                y: 60,
+                opacity: 0,
+                duration: 1,
+                rotate: -5,
+                ease: 'power2.out',
+              }}
+            >
+              <Media
+                resource={image}
+                className="rounded-xl"
+                imgClassName="w-full h-auto rounded-xl"
+                loading='lazy'
+              />
+            </AnimateIn>
           )}
         </div>
         {/* Text Column */}
         <div className="md:w-1/2 px-6 flex flex-col justify-center">
           <div className="max-w-prose mx-auto">
-            <h2 className="text-sm tracking-widest mb-4 text-selectiveyellow uppercase">
-              <FaDroplet className="mr-2 relative inline-block -top-[2px]" />
-              {title}
-            </h2>
-            {quote && (
-              <p className={`pl-3 border-l-2 my-5 border-selectiveyellow text-lg opacity-[65%] ${darkmode ? 'text-white' : 'text-jet'}`}>
-                {quote}
-              </p>
-            )}
+            <AnimateIn
+              animation={{
+                y: 60,
+                opacity: 0,
+                duration: 1,
+                ease: 'power2.out',
+              }}
+            >
+              <h2 className="text-sm tracking-widest mb-4 text-selectiveyellow uppercase">
+                <FaDroplet className="mr-2 relative inline-block -top-[2px]" />
+                {title}
+              </h2>
+            </AnimateIn>
             <div className="space-y-4 text-white">
-              <p className={`leading-relaxed mb-3 text-xl md:text-2xl ${darkmode ? 'text-white' : 'text-jet'}`}>
-                {intro}
-              </p>
-              {content && (
-                <RichText 
-                  data={content}
-                  enableGutter={false}
-                  className={`prose md:prose-lg max-w-none ${darkmode ? '[&_strong]:text-white text-white' : '[&_strong]:text-jet text-jet'} my-5 leading-relaxed`}
-                />
-              )}
+              <AnimateIn
+                animation={{
+                  y: 60,
+                  opacity: 0,
+                  duration: 1,
+                  ease: 'power2.out',
+                }}
+              >
+                <p className={`leading-relaxed mb-3 text-xl md:text-2xl ${darkmode ? 'text-white' : 'text-jet'}`}>
+                  {intro}
+                </p>
+              </AnimateIn>
             </div>
+            {quote && (
+              <AnimateIn
+                animation={{
+                  y: 60,
+                  opacity: 0,
+                  duration: 1,
+                  ease: 'power2.out',
+                }}
+              >
+                <p className={`pl-3 border-l-2 my-5 border-selectiveyellow text-lg opacity-[65%] ${darkmode ? 'text-white' : 'text-jet'}`}>
+                  {quote}
+                </p>
+              </AnimateIn>
+            )}
           </div>
         </div>
-      </div>              
+      </div>  
+      <div className="container">
+      {content && (
+        <AnimateIn
+          animation={{
+            y: 60,
+            opacity: 0,
+            duration: 1,
+            ease: 'power2.out',
+          }}
+        >
+          <RichText 
+            data={content}
+            enableGutter={false}
+            className={`md:columns-2 prose md:prose-lg max-w-none ${darkmode ? '[&_strong]:text-white text-white' : '[&_strong]:text-jet text-jet'} my-5 leading-relaxed`}
+          />
+        </AnimateIn>
+      )}
+      </div>            
     </div>
   );
 };
