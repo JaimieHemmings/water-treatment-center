@@ -69,17 +69,17 @@ export default async function SubCategoryData({ params }: Params) {
       </div>
       <div className="flex flex-col bg-darkblue">
         <RenderBlocks blocks={categoryData.content.content} />
-        <section className="bg-darkblue relative z-20 w-full py-[5rem]">
-          <div className="container mb-[3rem]">
+        <section className="bg-white relative z-20 w-full py-[5rem]">
+          <div className="container mb-1">
             <p className="text-sm text-selectiveyellow m-0 pb-5 tracking-widest uppercase">
               <FaDroplet className="inline-block text-selectiveyellow relative -top-[2px] mr-2" />
               View the range
             </p>
-            <h2 className="text-white text-2xl md:text-4xl">
+            <h2 className="text-textblue text-2xl md:text-4xl">
               {categoryData.title}
             </h2>
           </div>
-          <div className="container pb-[2rem]">
+          <div className="container py-[2rem]">
             <div className="flex flex-wrap justify-start">
               {products.map((product: any, index: any) => (
                 <ProductList
