@@ -52,7 +52,7 @@ interface ProductFeaturesProps {
 const FeatureItem: React.FC<FeatureItemProps> = ({ title, description }) => (
   <li className="relative pl-[8px]">
     <CiCircleCheck className="absolute top-[5px] left-0 text-2xl text-selectiveyellow"/>
-    <h4 className="text-xl md:text-2xl pl-8 pb-3">{title}</h4>
+    <h4 className="text-xl md:text-2xl pl-8 pb-1">{title}</h4>
     <p className="pl-8">{description}</p>
   </li>
 );
@@ -98,7 +98,7 @@ const ProductFeatures: React.FC<ProductFeaturesProps> = ({ productData }) => {
                 {productData.content.features.featuresSubtitle}
               </h3>
             </AnimateIn>
-            <ul className="py-5 pb-0 flex flex-col gap-8">
+            <ul className="py-5 pb-0 flex flex-col gap-4">
               {productData.content.features.featuresList.map((feature, index) => (
                 <AnimateIn
                   key={index}

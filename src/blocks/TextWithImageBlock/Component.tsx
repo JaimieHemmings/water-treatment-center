@@ -1,6 +1,5 @@
 import React from "react";
 import RichText from "@/components/RichText";
-import { ThreeColBlock } from "@/blocks/ThreeCol/Component";
 import { AnimateIn } from "@/components/Animations/AnimateIn";
 import { FaDroplet } from "react-icons/fa6";
 import { Media } from "@/components/Media";
@@ -116,7 +115,7 @@ export const TextWithImageBlock: React.FC<TextWithImageBlockProps> = ({
           <RichText 
             data={content}
             enableGutter={false}
-            className={`md:columns-2 prose md:prose-lg max-w-none ${darkmode ? '[&_strong]:text-white text-white' : '[&_strong]:text-jet text-jet'} my-5 leading-relaxed`}
+            className={`md:columns-2 prose md:prose-lg max-w-none ${darkmode ? '[&_strong]:text-white text-white' : '[&_strong]:text-jet text-jet'} my-5 leading-relaxed font-base`}
           />
         </AnimateIn>
       )}
