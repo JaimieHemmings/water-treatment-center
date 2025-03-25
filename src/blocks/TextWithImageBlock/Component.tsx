@@ -34,7 +34,7 @@ export const TextWithImageBlock: React.FC<TextWithImageBlockProps> = ({
                 fill
                 imgClassName="rounded-xl object-cover w-full h-auto"
                 loading='lazy'
-                className="h-64"
+                className="min-h-[500px]"
               />
           ) : (
             <AnimateIn
