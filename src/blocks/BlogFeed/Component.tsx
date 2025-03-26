@@ -30,7 +30,7 @@ export default async function BlogFeed() {
   return (
     <section className="relative py-[5rem] z-20 bg-white">
       <div className="container">
-        <div className="sticky top-[100px] md:top-[130px] mx-auto pb-[2rem]">
+        <div className="sticky top-[100px] md:top-[130px] mx-auto">
           <div className="pl-5 border-l-[5px] border-selectiveyellow">
             <h2 className="text-sm md:text-sm text-selectiveyellow m-0 pb-5 tracking-widest uppercase">
               <FaDroplet className="inline-block text-selectiveyellow mr-2" />
