@@ -16,6 +16,13 @@ interface TextWithImageBlockProps {
   sideContent: any;
 }
 
+const fadeIn = {
+  y: 60,
+  opacity: 0,
+  duration: 1,
+  ease: 'power2.out',
+}
+
 export const TextWithImageBlock: React.FC<TextWithImageBlockProps> = ({ 
   darkmode,
   content, 
@@ -60,76 +67,41 @@ export const TextWithImageBlock: React.FC<TextWithImageBlockProps> = ({
         {/* Text Column */}
         <div className="md:w-1/2 px-6 flex flex-col justify-center">
           <div className="max-w-prose mx-auto">
-            <AnimateIn
-              animation={{
-                y: 60,
-                opacity: 0,
-                duration: 1,
-                ease: 'power2.out',
-              }}
-            >
+            <AnimateIn animation={fadeIn}>
               <h2 className="text-sm tracking-widest mb-4 text-selectiveyellow uppercase">
                 <FaDroplet className="mr-2 relative inline-block -top-[2px]" />
                 {title}
               </h2>
             </AnimateIn>
             <div className="space-y-4 text-white">
-              <AnimateIn
-                animation={{
-                  y: 60,
-                  opacity: 0,
-                  duration: 1,
-                  ease: 'power2.out',
-                }}
-              >
+            <AnimateIn animation={fadeIn}>
                 <p className={`leading-relaxed mb-3 text-xl md:text-2xl ${darkmode ? 'text-white' : 'text-textblue'}`}>
                   {intro}
                 </p>
               </AnimateIn>
             </div>
             {quote && (
-              <AnimateIn
-                animation={{
-                  y: 60,
-                  opacity: 0,
-                  duration: 1,
-                  ease: 'power2.out',
-                }}
-              >
+              <AnimateIn animation={fadeIn}>
                 <p className={`pl-3 border-l-2 my-5 border-selectiveyellow text-lg ${darkmode ? 'text-white' : 'text-textblue'}`}>
                   {quote}
                 </p>
               </AnimateIn>
               )}
                 {sideContent && (
-              <AnimateIn
-                animation={{
-                  y: 60,
-                  opacity: 0,
-                  duration: 1,
-                  ease: 'power2.out',
-                }}
-              >
-                  <RichText 
-                  data={sideContent}
-                  enableGutter={false}
-                  className={` max-w-none ${darkmode ? '[&_strong]:text-white text-white' : '[&_strong]:text-text-blue text-textblue'} my-5 leading-relaxed font-base`}
-                />
-                </AnimateIn>
+                  <AnimateIn animation={fadeIn}>
+                    <RichText 
+                      data={sideContent}
+                      enableGutter={false}
+                      className={` max-w-none ${darkmode ? '[&_strong]:text-white text-white' : '[&_strong]:text-text-blue text-textblue'} my-5 leading-relaxed font-base`}
+                    />
+                  </AnimateIn>
                 )}
           </div>
         </div>
       </div>  
       <div className="container">
       {content && (
-        <AnimateIn
-          animation={{
-            y: 60,
-            opacity: 0,
-            duration: 1,
-            ease: 'power2.out',
-          }}
-        >
+        <AnimateIn animation={fadeIn}>
           <RichText 
             data={content}
             enableGutter={false}

@@ -32,6 +32,7 @@ export const TextWithImageBlock: Block = {
       type: 'richText'
     },
     {
+      label: 'Main Content',
       name: 'content',
       type: 'richText',
       editor: lexicalEditor({
@@ -41,7 +42,6 @@ export const TextWithImageBlock: Block = {
           ]
         },
       }),
-      label: 'Content',
     },
     {
       name: 'image',
