@@ -79,6 +79,21 @@ export default async function SubCategoryData({ params }: Params) {
               {categoryData.title}
             </h2>
           </div>
+          <div className="container py-[2rem]">
+            <div className="flex flex-wrap justify-start">
+              {products.map((product: any, index: any) => (
+                <ProductList
+                  key={index}
+                  title={product.title}
+                  excerpt={product.excerpt}
+                  image={product.featuredImage}
+                  category={category}
+                  catSlug={categoryData.slug}
+                  slug={product.slug}
+                />
+              ))}
+            </div>
+          </div>
           {categoryData.video && (
             <div className="container pt-[5rem]">
               <video

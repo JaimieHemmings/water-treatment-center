@@ -35,9 +35,6 @@ export default async function Product({ params }: Props) {
         <ProductFeatures productData={productData} />
         <ProductCTA />
         <ProductDetails productData={productData} />
-        {productData.content.faq && (
-          <FAQ data={productData.content.faq} />
-        )}
         <ServiceDetails />
         </>
       )}

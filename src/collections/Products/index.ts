@@ -195,32 +195,6 @@ export const Products: CollectionConfig = {
                   ],
                 },
                 {
-                  name: 'faq',
-                  label: 'FAQ',
-                  fields: [
-                    {
-                      name: 'content',
-                      type: 'textarea',
-                    },
-                    {
-                      name: 'faq',
-                      type: 'array',
-                      label: 'FAQ',
-                      maxRows: 6,
-                      fields: [
-                        {
-                          name: 'question',
-                          type: 'text',
-                        },
-                        {
-                          name: 'answer',
-                          type: 'textarea',
-                        },
-                      ],
-                    },
-                  ],
-                },
-                {
                   name: 'specs',
                   label: 'Technical Specs',
                   fields: [

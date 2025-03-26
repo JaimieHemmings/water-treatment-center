@@ -1101,16 +1101,6 @@ export interface Product {
         | null;
       brochure?: (number | null) | Media;
     };
-    faq?: {
-      content?: string | null;
-      faq?:
-        | {
-            question?: string | null;
-            answer?: string | null;
-            id?: string | null;
-          }[]
-        | null;
-    };
     specs: {
       numberOfUsers: number;
       sku?: string | null;
@@ -1160,6 +1150,7 @@ export interface Subcategory {
       | TwoColumn
       | VideoBlock
       | YoutubeBlock
+      | ProductsList
     )[];
   };
   meta?: {
@@ -1175,6 +1166,18 @@ export interface Subcategory {
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "productsList".
+ */
+export interface ProductsList {
+  title: string;
+  subtitle: string;
+  subcategory: number | Subcategory;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'productsList';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -2092,18 +2095,6 @@ export interface ProductsSelect<T extends boolean = true> {
                   };
               brochure?: T;
             };
-        faq?:
-          | T
-          | {
-              content?: T;
-              faq?:
-                | T
-                | {
-                    question?: T;
-                    answer?: T;
-                    id?: T;
-                  };
-            };
         specs?:
           | T
           | {
@@ -2287,6 +2278,7 @@ export interface SubcategoriesSelect<T extends boolean = true> {
               twoColumn?: T | TwoColumnSelect<T>;
               videoBlock?: T | VideoBlockSelect<T>;
               youtubeBlock?: T | YoutubeBlockSelect<T>;
+              productsList?: T | ProductsListSelect<T>;
             };
       };
   meta?:
@@ -2301,6 +2293,17 @@ export interface SubcategoriesSelect<T extends boolean = true> {
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "productsList_select".
+ */
+export interface ProductsListSelect<T extends boolean = true> {
+  title?: T;
+  subtitle?: T;
+  subcategory?: T;
+  id?: T;
+  blockName?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
