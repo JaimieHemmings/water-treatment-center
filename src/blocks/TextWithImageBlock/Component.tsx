@@ -99,15 +99,24 @@ export const TextWithImageBlock: React.FC<TextWithImageBlockProps> = ({
                 <p className={`pl-3 border-l-2 my-5 border-selectiveyellow text-lg ${darkmode ? 'text-white' : 'text-textblue'}`}>
                   {quote}
                 </p>
+              </AnimateIn>
+              )}
                 {sideContent && (
+              <AnimateIn
+                animation={{
+                  y: 60,
+                  opacity: 0,
+                  duration: 1,
+                  ease: 'power2.out',
+                }}
+              >
                   <RichText 
                   data={sideContent}
                   enableGutter={false}
                   className={` max-w-none ${darkmode ? '[&_strong]:text-white text-white' : '[&_strong]:text-text-blue text-textblue'} my-5 leading-relaxed font-base`}
                 />
+                </AnimateIn>
                 )}
-              </AnimateIn>
-            )}
           </div>
         </div>
       </div>  

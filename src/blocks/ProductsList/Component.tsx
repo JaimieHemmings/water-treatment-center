@@ -76,7 +76,6 @@ const queryProductsBySubcategory = cache(async ({ subcategory }: { subcategory: 
     collection: 'products',
     where: {
       'category.slug': {
-
         equals: subcategory.slug
       },
     },
