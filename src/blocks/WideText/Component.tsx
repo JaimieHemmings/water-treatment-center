@@ -21,7 +21,6 @@ export const WideTextBlock: React.FC<WideTextBlockProps> = ({
   features,
   darkmode
 }) => {
-  darkmode = true;
   return (
     <div className={`py-[5rem] ${darkmode ? 'bg-darkblue' : 'bg-white'}`}>
       <div className="container">
@@ -37,7 +36,7 @@ export const WideTextBlock: React.FC<WideTextBlockProps> = ({
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-textblue">
             {features.map((feature, index) => (
               <div key={index} className="bg-antiflashwhite p-6 rounded-lg">
-                <h3 className="text-xl mb-3">
+                <h3 className="text-2xl mb-3">
                   {feature.title}
                 </h3>
                 {feature.description && <RichText data={feature.description} enableGutter={false} />}

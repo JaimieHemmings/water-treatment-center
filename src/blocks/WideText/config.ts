@@ -3,6 +3,7 @@ import type { Block } from 'payload'
 export const WideTextBlock: Block = {
   slug: 'wideTextBlock',
   interfaceName: 'WideTextBlock',
+  imageURL: '/block-images/wideTextBlock.png',
   fields: [
     {
       name: 'darkmode',
@@ -33,6 +34,8 @@ export const WideTextBlock: Block = {
       name: 'features',
       label: 'Features',
       type: 'array',
+      minRows: 1,
+      maxRows: 3,
       fields: [
         {
           name: 'title',
