@@ -12,6 +12,7 @@ import { VideoBlock } from '@/blocks/VideoBlock/config'
 import { YoutubeBlock } from '@/blocks/YoutubeBlock/config'
 import { TextWithImageBlock } from '@/blocks/TextWithImageBlock/config'
 import { ProductsList } from '@/blocks/ProductsList/config'
+import { WideTextBlock } from '@/blocks/WideText/config'
 
 import {
   MetaDescriptionField,
@@ -118,7 +119,7 @@ export const subcategories: CollectionConfig = {
               name: 'content',
               label: 'Content',
               type: 'blocks',
-              blocks: [CallToAction, FaqBlock, ImageGrid, ImageList, StatsBlock, TextWithImageBlock, TwoColumnBlock, VideoBlock, YoutubeBlock,ProductsList],
+              blocks: [CallToAction, FaqBlock, ImageGrid, ImageList, StatsBlock, TextWithImageBlock, TwoColumnBlock, VideoBlock, YoutubeBlock,ProductsList, WideTextBlock],
               required: true,
             }],
         },

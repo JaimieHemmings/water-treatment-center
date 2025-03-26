@@ -141,6 +141,7 @@ export interface Page {
     | ImageGrid
     | SplitTextBlock
     | CostCalculatorBlock
+    | WideTextBlock
   )[];
   meta?: {
     title?: string | null;
@@ -1051,6 +1052,55 @@ export interface CostCalculatorBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "WideTextBlock".
+ */
+export interface WideTextBlock {
+  darkmode?: boolean | null;
+  titleStart: string;
+  titleHighlight?: string | null;
+  titleEnd?: string | null;
+  description: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  features?:
+    | {
+        title: string;
+        description: {
+          root: {
+            type: string;
+            children: {
+              type: string;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'wideTextBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "products".
  */
 export interface Product {
@@ -1151,6 +1201,7 @@ export interface Subcategory {
       | VideoBlock
       | YoutubeBlock
       | ProductsList
+      | WideTextBlock
     )[];
   };
   meta?: {
@@ -1550,6 +1601,7 @@ export interface PagesSelect<T extends boolean = true> {
         imageGrid?: T | ImageGridSelect<T>;
         splitTextBlock?: T | SplitTextBlockSelect<T>;
         costCalculatorBlock?: T | CostCalculatorBlockSelect<T>;
+        wideTextBlock?: T | WideTextBlockSelect<T>;
       };
   meta?:
     | T
@@ -1894,6 +1946,26 @@ export interface CostCalculatorBlockSelect<T extends boolean = true> {
   title?: T;
   subtitle?: T;
   paragraph?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "WideTextBlock_select".
+ */
+export interface WideTextBlockSelect<T extends boolean = true> {
+  darkmode?: T;
+  titleStart?: T;
+  titleHighlight?: T;
+  titleEnd?: T;
+  description?: T;
+  features?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        id?: T;
+      };
   id?: T;
   blockName?: T;
 }
@@ -2279,6 +2351,7 @@ export interface SubcategoriesSelect<T extends boolean = true> {
               videoBlock?: T | VideoBlockSelect<T>;
               youtubeBlock?: T | YoutubeBlockSelect<T>;
               productsList?: T | ProductsListSelect<T>;
+              wideTextBlock?: T | WideTextBlockSelect<T>;
             };
       };
   meta?:

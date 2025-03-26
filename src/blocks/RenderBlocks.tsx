@@ -25,6 +25,7 @@ import SplitTextBlock from '@/blocks/SplitTextBlock/Component'
 import HardnessTest from '@/blocks/HardnessTest/Component'
 import CostCalculatorBlock from '@/blocks/CostCalculator/Component'
 import ProductsList from '@/blocks/ProductsList/Component'
+import WideTextBlock from '@/blocks/WideText/Component'
 
 const blockComponents = {
   content: ContentBlock,
@@ -50,6 +51,7 @@ const blockComponents = {
   hardnessTest: HardnessTest,
   costCalculatorBlock: CostCalculatorBlock,
   productsList: ProductsList,
+  wideTextBlock: WideTextBlock,
 }
 
 export const RenderBlocks: React.FC<{
