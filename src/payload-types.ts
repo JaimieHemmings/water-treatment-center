@@ -1074,6 +1074,7 @@ export interface WideTextBlock {
     };
     [k: string]: unknown;
   };
+  enableFeatures?: boolean | null;
   features?:
     | {
         title: string;
@@ -1959,6 +1960,7 @@ export interface WideTextBlockSelect<T extends boolean = true> {
   titleHighlight?: T;
   titleEnd?: T;
   description?: T;
+  enableFeatures?: T;
   features?:
     | T
     | {

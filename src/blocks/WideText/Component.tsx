@@ -11,6 +11,7 @@ interface WideTextBlockProps {
     description: any;
   }[];
   darkmode?: boolean;
+  enableFeatures?: boolean;
 }
 
 export const WideTextBlock: React.FC<WideTextBlockProps> = ({ 
@@ -19,7 +20,8 @@ export const WideTextBlock: React.FC<WideTextBlockProps> = ({
   titleEnd,
   description, 
   features,
-  darkmode
+  darkmode,
+  enableFeatures
 }) => {
   return (
     <div className={`py-[5rem] ${darkmode ? 'bg-darkblue' : 'bg-white'}`}>
@@ -33,18 +35,20 @@ export const WideTextBlock: React.FC<WideTextBlockProps> = ({
           <div className={`${darkmode ? 'text-white' : 'text-textblue'} mb-8`}>
             {description && <RichText data={description} enableGutter={false} />}
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-textblue">
-            {features.map((feature, index) => (
-              <div key={index} className="bg-antiflashwhite p-6 rounded-lg">
-                <h3 className="text-2xl mb-3">
-                  {feature.title}
-                </h3>
-                {feature.description && <RichText data={feature.description} enableGutter={false} />}
-              </div>
-            ))}
+          {enableFeatures && (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-textblue">
+              {features.map((feature, index) => (
+                <div key={index} className="bg-antiflashwhite p-6 rounded-lg">
+                  <h3 className="text-2xl mb-3">
+                    {feature.title}
+                  </h3>
+                  {feature.description && <RichText data={feature.description} enableGutter={false} />}
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
-    </div>
   )
 }
 

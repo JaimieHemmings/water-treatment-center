@@ -3,7 +3,7 @@ import type { Block } from 'payload'
 export const WideTextBlock: Block = {
   slug: 'wideTextBlock',
   interfaceName: 'WideTextBlock',
-  imageURL: '/block-images/wideTextBlock.png',
+  imageURL: '/block-images/wideTextBlock.jpg',
   fields: [
     {
       name: 'darkmode',
@@ -29,6 +29,11 @@ export const WideTextBlock: Block = {
       label: 'Description',
       type: 'richText',
       required: true,
+    },
+    {
+      name: 'enableFeatures',
+      type: 'checkbox',
+      label: 'Enable Features',
     },
     {
       name: 'features',
