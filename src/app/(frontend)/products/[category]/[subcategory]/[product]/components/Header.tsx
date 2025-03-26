@@ -6,24 +6,18 @@ import { GiAutoRepair } from "react-icons/gi";
 import { GrMoney } from "react-icons/gr";
 import AnimateIn from '@/components/Animations/AnimateIn'
 import { Media } from '@/components/Media';
+import CustomLink from '@/components/CustomLink';
 
 const Header = ({ productData }) => {
   return (
     <div className="w-full bg-white text-textblue pt-10">
       <div className="container flex flex-col md:flex-row gap-8 py-5">
         <div className="md:basis-1/2 flex flex-col md:pb-20">
-          <AnimateIn
-            animation={{
-              y: 50,
-              opacity: 0,
-              duration: 0.8,
-            }}>
-              <Media
-                resource={productData.featuredImage}
-                priority
-                imgClassName=''
-              />
-          </AnimateIn>
+          <Media
+            resource={productData.featuredImage}
+            priority
+            imgClassName=''
+          />
         </div>
         <div className="md:basis-1/2 p-5">
           <AnimateIn animation={{
@@ -66,6 +60,9 @@ const Header = ({ productData }) => {
                 Installation &amp; maintenance services available
               </li>
             </ul>
+            <div className="mt-2">
+              <CustomLink link={productData.content.media.brochure.url} label={"Download Brochure"} theme="dark" target="_blank" />
+            </div>
         </div>
       </div>
     </div>
