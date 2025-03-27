@@ -34,7 +34,7 @@ export const TextWithImageBlock: React.FC<TextWithImageBlockProps> = ({
   quote,
 }) => {
   return (
-    <section className={`py-[5rem] ${darkmode ? 'bg-darkblue' : 'bg-white'}`}>
+    <section className={`pt-[5rem] pb-[2rem] ${darkmode ? 'bg-darkblue' : 'bg-white'}`}>
       <div className={`container flex flex-col ${ darkmode ? 'md:flex-row-reverse' : 'md:flex-row'}`}>
         <div className="md:w-1/2 h-auto relative mb-5 md:mb-0">
           {cropImage ? (
