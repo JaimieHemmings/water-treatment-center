@@ -1133,7 +1133,6 @@ export interface Product {
         | null;
     };
     details: {
-      detailsTitle: string;
       detailsImage: number | Media;
       details?:
         | {
@@ -2146,7 +2145,6 @@ export interface ProductsSelect<T extends boolean = true> {
         details?:
           | T
           | {
-              detailsTitle?: T;
               detailsImage?: T;
               details?:
                 | T

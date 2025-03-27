@@ -14,7 +14,7 @@ const ProductDetails = ({ productData }) => {
             Details
           </h2>
           <h3 className="text-2xl md:text-4xl">
-            {productData.content.details.detailsTitle}
+            {productData.title} At A Glance
           </h3>
           <ProductAccordian details={productData.content.details} />
           {productData.brochure && (

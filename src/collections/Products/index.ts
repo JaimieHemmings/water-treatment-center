@@ -135,11 +135,6 @@ export const Products: CollectionConfig = {
                   label: 'Details',
                   fields: [
                     {
-                      name: 'detailsTitle',
-                      type: 'text',
-                      required: true,
-                    },
-                    {
                       name: 'detailsImage',
                       type: 'upload',
                       relationTo: 'media',
