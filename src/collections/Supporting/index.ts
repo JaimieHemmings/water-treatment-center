@@ -41,7 +41,7 @@ export const Supporting: CollectionConfig = {
     association: true,
   },
   admin: {
-    defaultColumns: ['title', 'slug', 'updatedAt'],
+    defaultColumns: ['title', 'association', 'updatedAt'],
     useAsTitle: 'title',
     group: 'Product Admin',
   },
