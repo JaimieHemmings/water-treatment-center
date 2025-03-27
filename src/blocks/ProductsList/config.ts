@@ -5,12 +5,6 @@ export const ProductsList: Block = {
   interfaceName: 'productsList',
   fields: [
     {
-      name: 'title',
-      type: 'text',
-      label: 'Title',
-      required: true,
-    },
-    {
       name: 'subcategory',
       type: 'relationship',
       relationTo: 'subcategories',

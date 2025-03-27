@@ -1224,7 +1224,6 @@ export interface Subcategory {
  * via the `definition` "productsList".
  */
 export interface ProductsList {
-  title: string;
   subcategory: number | Subcategory;
   id?: string | null;
   blockName?: string | null;
@@ -2373,7 +2372,6 @@ export interface SubcategoriesSelect<T extends boolean = true> {
  * via the `definition` "productsList_select".
  */
 export interface ProductsListSelect<T extends boolean = true> {
-  title?: T;
   subcategory?: T;
   id?: T;
   blockName?: T;

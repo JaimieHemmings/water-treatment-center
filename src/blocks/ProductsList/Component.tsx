@@ -5,14 +5,32 @@ import { FaDroplet } from "react-icons/fa6"
 import Link from 'next/link'
 import { Media } from '@/components/Media'
 
+interface Product {
+  title: string
+  excerpt: string
+  slug: string
+  featuredImage: any
+  category: {
+    title: string
+    slug: string
+  }
+  parent: {
+    slug: string
+  }
+}
+
+interface SubCategory {
+  slug: string
+  title: string
+}
+
 interface ProductsListProps {
   title: string
-  subcategory: any
+  subcategory: SubCategory
   slug: string
 }
 
 export const ProductsList: React.FC<ProductsListProps> = async ({
-  title, 
   subcategory
 }) => {
   const products = await queryProductsBySubcategory({ subcategory })
@@ -29,12 +47,14 @@ export const ProductsList: React.FC<ProductsListProps> = async ({
           View The Range
         </p>
         <h2 className="text-textblue text-2xl md:text-4xl">
-          {title}
+          {products.length !== 0 && (
+            products[0].category.title
+          )}
         </h2>
       </div>
       <div className="container py-[2rem]">
         <div className="flex flex-wrap justify-start">
-            {products.map((product: any, index: number) => (
+            {products.map((product: Product, index: number) => (
           <div className="w-[50%] lg:w-[33%] xl:w-[25%] flex-shrink-0 h-[400px] mb-4 group px-2" key={index}>
               <div className="bg-white h-full">
                 <Link
@@ -79,7 +99,7 @@ const queryProductsBySubcategory = cache(async ({ subcategory }: { subcategory: 
     },
     depth: 1
   })
-  return result.docs || []
+  return result.docs as Product[] || []
 })
 
 export default ProductsList
