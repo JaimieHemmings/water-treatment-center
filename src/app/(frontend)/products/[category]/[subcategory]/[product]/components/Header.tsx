@@ -60,7 +60,7 @@ const Header = ({ productData }) => {
                 Installation &amp; maintenance services available
               </li>
             </ul>
-              {productData.content.media.brochure.url && (
+              {productData.content.media.brochure && (
                 <div className="mt-2">
                   <CustomLink link={productData.content.media.brochure.url} label={"Download Brochure"} theme="dark" target="_blank" />
                 </div>
