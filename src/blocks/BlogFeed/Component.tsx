@@ -28,7 +28,7 @@ export default async function BlogFeed() {
   const { docs } = response;
  
   return (
-    <section className="relative py-[5rem] z-20 bg-white">
+    <section className="relative py-[3rem] z-20 bg-white">
       <div className="container">
         <div className="sticky top-[100px] md:top-[130px] mx-auto">
           <div className="pl-5 border-l-[5px] border-selectiveyellow">

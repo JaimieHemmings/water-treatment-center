@@ -18,7 +18,7 @@ interface ImageListProps {
 
 export const ImageList: React.FC<ImageListProps> = ({ images }) => {
   return (
-    <section className="bg-white text-jet py-[5rem] w-full relative z-20">
+    <section className="bg-white text-jet pt-[5rem] pb-[2rem] w-full relative z-20">
       <div className="container">
         <div className="flex flex-col md:flex-row gap-4 justify-between">
         {images.map((card, index) => (
