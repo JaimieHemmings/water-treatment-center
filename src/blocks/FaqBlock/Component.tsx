@@ -54,7 +54,7 @@ export const FaqBlock: React.FC<FaqBlockProps> = ({
               </p>
               <div className="w-full flex flex-row justify-start align-middle">
                 <CustomLink
-                  link={linkURL.slug}
+                  link={`/${linkURL.slug}`}
                   theme="dark"
                   label={linkLabel}
                 />
