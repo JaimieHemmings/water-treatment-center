@@ -43,8 +43,7 @@ export const Products: CollectionConfig = {
     },
     {
       name: 'description',
-      type: 'textarea',
-      defaultValue: 'Enter a description',
+      type: 'richText',
     },
     {
       name: 'featuredImage',
@@ -90,7 +89,7 @@ export const Products: CollectionConfig = {
                       fields: [
                         {
                           name: 'description',
-                          type: 'text',
+                          type: 'textarea',
                           required: true,
                         },
                       ],

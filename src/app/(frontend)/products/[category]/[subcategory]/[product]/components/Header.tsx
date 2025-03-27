@@ -7,6 +7,7 @@ import { GrMoney } from "react-icons/gr";
 import AnimateIn from '@/components/Animations/AnimateIn'
 import { Media } from '@/components/Media';
 import CustomLink from '@/components/CustomLink';
+import RichText from '@/components/RichText';
 
 const Header = ({ productData }) => {
   return (
@@ -29,6 +30,11 @@ const Header = ({ productData }) => {
                 {productData.title} 
               </h2>
             </AnimateIn>
+            <RichText
+              className={`px-5 md:pl-0 mb-5 text-textblue`}
+              data={productData.description}
+              enableGutter={false}
+            />
             <p>
               {productData.description}
             </p>
