@@ -39,8 +39,12 @@ export const WideTextBlock: Block = {
       name: 'features',
       label: 'Features',
       type: 'array',
-      minRows: 1,
       maxRows: 3,
+      admin: {
+        condition: (data, siblingData) => {
+          return siblingData?.enableFeatures === true
+        }
+      },
       fields: [
         {
           name: 'title',

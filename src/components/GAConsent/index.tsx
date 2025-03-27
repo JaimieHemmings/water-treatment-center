@@ -7,7 +7,7 @@ import ReactGA from "react-ga4";
 const COOKIE_NAME = 'ga-consent';
 const COOKIE_VALUE = 'accepted';
 const COOKIE_DURATION = 365;
-const GA_MEASUREMENT_ID = 'G-TK0L4CBHEV';
+const GA_MEASUREMENT_ID = 'G-X6C6Y08K6N';
 
 const GAConsent = () => {
   const [showBanner, setShowBanner] = useState(false);

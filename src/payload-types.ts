@@ -263,6 +263,7 @@ export interface SupportingDocument {
       | TestKitForm
       | HardnessTest
       | WellTestCalculator
+      | CostCalculatorBlock
     )[];
   };
   meta?: {
@@ -810,6 +811,18 @@ export interface WellTestCalculator {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CostCalculatorBlock".
+ */
+export interface CostCalculatorBlock {
+  title: string;
+  subtitle: string;
+  paragraph: string;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'costCalculatorBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "ContentBlock".
  */
 export interface ContentBlock {
@@ -1037,18 +1050,6 @@ export interface ReviewBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'reviewBlock';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "CostCalculatorBlock".
- */
-export interface CostCalculatorBlock {
-  title: string;
-  subtitle: string;
-  paragraph: string;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'costCalculatorBlock';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -2223,6 +2224,7 @@ export interface SupportingDocumentsSelect<T extends boolean = true> {
               testKitForm?: T | TestKitFormSelect<T>;
               hardnessTest?: T | HardnessTestSelect<T>;
               wellTestCalculator?: T | WellTestCalculatorSelect<T>;
+              costCalculatorBlock?: T | CostCalculatorBlockSelect<T>;
             };
       };
   meta?:
