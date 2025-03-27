@@ -60,9 +60,11 @@ const Header = ({ productData }) => {
                 Installation &amp; maintenance services available
               </li>
             </ul>
-            <div className="mt-2">
-              <CustomLink link={productData.content.media.brochure.url} label={"Download Brochure"} theme="dark" target="_blank" />
-            </div>
+              {productData.content.media.brochure.url && (
+                <div className="mt-2">
+                  <CustomLink link={productData.content.media.brochure.url} label={"Download Brochure"} theme="dark" target="_blank" />
+                </div>
+              )}
         </div>
       </div>
     </div>
