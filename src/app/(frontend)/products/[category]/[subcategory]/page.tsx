@@ -70,7 +70,7 @@ export default async function SubCategoryData({ params }: Params) {
       <div className="flex flex-col bg-darkblue">
         <RenderBlocks blocks={categoryData.content.content} />
         <section className="bg-white relative z-20 w-full py-[5rem]">
-          <div className="container mb-1">
+          {/* <div className="container mb-1">
             <p className="text-sm text-selectiveyellow m-0 pb-5 tracking-widest uppercase">
               <FaDroplet className="inline-block text-selectiveyellow relative -top-[2px] mr-2" />
               View the range
@@ -78,7 +78,7 @@ export default async function SubCategoryData({ params }: Params) {
             <h2 className="text-textblue text-2xl md:text-4xl">
               {categoryData.title}
             </h2>
-          </div>
+          </div> */}
           {categoryData.video && (
             <div className="container pt-[5rem]">
               <video
