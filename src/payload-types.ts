@@ -1225,7 +1225,6 @@ export interface Subcategory {
  */
 export interface ProductsList {
   title: string;
-  subtitle: string;
   subcategory: number | Subcategory;
   id?: string | null;
   blockName?: string | null;
@@ -2375,7 +2374,6 @@ export interface SubcategoriesSelect<T extends boolean = true> {
  */
 export interface ProductsListSelect<T extends boolean = true> {
   title?: T;
-  subtitle?: T;
   subcategory?: T;
   id?: T;
   blockName?: T;
