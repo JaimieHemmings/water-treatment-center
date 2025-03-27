@@ -69,17 +69,8 @@ export default async function SubCategoryData({ params }: Params) {
       </div>
       <div className="flex flex-col bg-darkblue">
         <RenderBlocks blocks={categoryData.content.content} />
-        <section className="bg-white relative z-20 w-full py-[5rem]">
-          {/* <div className="container mb-1">
-            <p className="text-sm text-selectiveyellow m-0 pb-5 tracking-widest uppercase">
-              <FaDroplet className="inline-block text-selectiveyellow relative -top-[2px] mr-2" />
-              View the range
-            </p>
-            <h2 className="text-textblue text-2xl md:text-4xl">
-              {categoryData.title}
-            </h2>
-          </div> */}
           {categoryData.video && (
+          <section className="bg-white relative z-20 w-full py-[5rem]">
             <div className="container pt-[5rem]">
               <video
                 className="w-full h-auto"
@@ -92,8 +83,8 @@ export default async function SubCategoryData({ params }: Params) {
                 Your browser does not support the video tag.
               </video>
             </div>
+          </section>
           )}
-        </section>
       </div>
     </article>
   )
