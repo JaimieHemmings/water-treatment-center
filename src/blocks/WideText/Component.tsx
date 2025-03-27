@@ -24,7 +24,7 @@ export const WideTextBlock: React.FC<WideTextBlockProps> = ({
   enableFeatures
 }) => {
   return (
-    <div className={`pt-[5rem] ${darkmode ? 'bg-darkblue' : 'bg-white'}`}>
+    <section className={`pt-[5rem] ${darkmode ? 'bg-darkblue' : 'bg-white'}`}>
       <div className="container">
         <h2
           className={`${darkmode ? 'text-white' : 'text-textblue'} text-2xl md:text-4xl mb-4`}>
@@ -48,7 +48,7 @@ export const WideTextBlock: React.FC<WideTextBlockProps> = ({
             </div>
           )}
         </div>
-      </div>
+      </section>
   )
 }
 
