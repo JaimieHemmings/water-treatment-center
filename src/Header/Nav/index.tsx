@@ -48,7 +48,7 @@ export const HeaderNav = ({ docs, supDocs, isOpen, setIsOpen, data, subDocs }: H
   };
   
   return (
-    <nav className={`bg-darkblue max-lg:h-[calc(100vh-65px)] max-lg:py-5 max-lg:w-[250px] max-lg:px-5 lg:container lg:px-0 absolute lg:relative max-lg:border-r-2 left-0 max-md:top-[65px] max-lg:top-[76px] max-lg:overflow-y-scroll ${isOpen ? 'block' : 'hidden'} lg:block max-md:border-t-2 border-white`}>
+    <nav className={`bg-darkblue max-lg:h-[calc(100vh-65px)] max-lg:py-5 max-lg:w-[300px] max-lg:px-5 lg:container lg:px-0 absolute lg:relative max-lg:border-r-2 left-0 max-md:top-[65px] max-lg:top-[76px] max-lg:overflow-y-scroll ${isOpen ? 'block' : 'hidden'} lg:block max-md:border-t-2 border-white`}>
       <ul className="flex flex-col lg:flex-row lg:justify-between align-middle lg:text-center">
         {docs.map((item) => {
           const hasDropdownItems = supDocs?.docs.some(
