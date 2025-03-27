@@ -35,12 +35,9 @@ const Header = ({ productData }) => {
               data={productData.description}
               enableGutter={false}
             />
-            <p>
-              {productData.description}
-            </p>
             <ul className='list-none list-inside mt-4 flex flex-col gap-4 px-0 pb-5'>
               {productData.content.header.mainFeatures.map((feature, index) => (
-                <li key={index} className="relative pl-[20px]  prose md:prose-md">
+                <li key={index} className="relative pl-[20px] text-textblue">
                   <IoIosCheckmark className="absolute top-[-5px] left-[-15px] p-0 m-0 text-4xl text-selectiveyellow"/>
                   {feature.description}
                 </li>
