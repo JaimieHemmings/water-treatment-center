@@ -7,14 +7,12 @@ import { Media } from '@/components/Media'
 
 interface ProductsListProps {
   title: string
-  subtitle: string
   subcategory: any
   slug: string
 }
 
 export const ProductsList: React.FC<ProductsListProps> = async ({
   title, 
-  subtitle, 
   subcategory
 }) => {
   const products = await queryProductsBySubcategory({ subcategory })
@@ -28,7 +26,7 @@ export const ProductsList: React.FC<ProductsListProps> = async ({
       <div className="container mb-1">
         <p className="text-sm text-selectiveyellow m-0 mb-1 tracking-widest uppercase">
           <FaDroplet className="inline-block text-selectiveyellow relative -top-[2px] mr-2" />
-          {subtitle}
+          View The Range
         </p>
         <h2 className="text-textblue text-2xl md:text-4xl">
           {title}

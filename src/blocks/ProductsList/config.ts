@@ -11,12 +11,6 @@ export const ProductsList: Block = {
       required: true,
     },
     {
-      name: 'subtitle',
-      type: 'text',
-      label: 'Subtitle',
-      required: true,
-    },
-    {
       name: 'subcategory',
       type: 'relationship',
       relationTo: 'subcategories',
