@@ -1217,6 +1217,7 @@ export interface Subcategory {
       | YoutubeBlock
       | ProductsList
       | WideTextBlock
+      | CostCalculatorBlock
     )[];
   };
   meta?: {
@@ -2366,6 +2367,7 @@ export interface SubcategoriesSelect<T extends boolean = true> {
               youtubeBlock?: T | YoutubeBlockSelect<T>;
               productsList?: T | ProductsListSelect<T>;
               wideTextBlock?: T | WideTextBlockSelect<T>;
+              costCalculatorBlock?: T | CostCalculatorBlockSelect<T>;
             };
       };
   meta?:
