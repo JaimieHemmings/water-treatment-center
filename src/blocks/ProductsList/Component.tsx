@@ -40,7 +40,7 @@ export const ProductsList: React.FC<ProductsListProps> = async ({
   }
 
   return (
-    <section className="bg-white relative z-20 w-full md:py-[5rem]">
+    <section className="bg-white relative z-20 w-full py-[2rem]">
       <div className="container mb-1">
         <p className="text-sm text-selectiveyellow m-0 mb-1 tracking-widest uppercase">
           <FaDroplet className="inline-block text-selectiveyellow relative -top-[2px] mr-2" />
