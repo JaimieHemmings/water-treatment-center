@@ -1,5 +1,4 @@
 import React from 'react';
-import Image from 'next/image';
 import AnimateIn from '@/components/Animations/AnimateIn';
 import { CiCircleCheck } from "react-icons/ci";
 import Gallery from './Gallery';
@@ -60,10 +59,10 @@ const FeatureItem: React.FC<FeatureItemProps> = ({ title, description }) => (
 const ProductFeatures: React.FC<ProductFeaturesProps> = ({ productData }) => {
   return (
     <>
-      <section className="pt-20 md:py-[5rem] text-textblue bg-white" id="features">
+      <section className="pt-20 md:py-[5rem] text-white bg-darkblue" id="features">
         <div className="container">
           <div className="w-full flex flex-col md:flex-row-reverse gap-4 pt-10 pb-10 md:pb-0">
-            <div className="md:basis-1/2 h-full bg-darkblue rounded-xl p-5 md:sticky md:top-[120px]">
+            <div className="md:basis-1/2 h-full bg-selectiveyellow rounded-xl p-5 md:sticky md:top-[120px]">
               {productData.content.media && (
                 <Gallery productData={productData.content.media} />
               )}

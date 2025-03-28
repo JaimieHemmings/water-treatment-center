@@ -29,7 +29,7 @@ const Gallery = ({ productData }: { productData: any }) => {
             key={index}
             onClick={() => handleImageClick(image)}
             className={`relative aspect-square w-full overflow-hidden rounded-lg transition-all duration-300
-              ${selectedImage.image.url === image.image.url ? 'ring-2 ring-blue-500' : 'hover:opacity-75'}`}
+              ${selectedImage.image.url === image.image.url ? 'ring-2 ring-darkblue' : 'hover:opacity-75'}`}
           >
             <Image
               src={image.image.url}
