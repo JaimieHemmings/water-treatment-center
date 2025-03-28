@@ -14,6 +14,7 @@ type HeaderNavProps = {
   }>;
   supDocs: {
     docs: Array<{
+      order?: number;
       title: string;
       slug: string;
       association: {
@@ -22,6 +23,7 @@ type HeaderNavProps = {
     }>;
   };
   subDocs?: Array<{
+    order?: number;
     category: {
       slug: string;
     };
@@ -79,6 +81,7 @@ export const HeaderNav = ({ docs, supDocs, isOpen, setIsOpen, data, subDocs }: H
               `}>
                   {subDocs
                     ?.filter((subItem) => subItem.category.slug === item.slug)
+                    .sort((a, b) => (a.order || 0) - (b.order || 0))
                     .map((subItem) => (
                       <li key={subItem.slug}>
                         <Link
@@ -95,6 +98,7 @@ export const HeaderNav = ({ docs, supDocs, isOpen, setIsOpen, data, subDocs }: H
                 {hasDropdownItems && 
                   supDocs.docs
                     .filter((supItem) => supItem.association.slug === item.slug)
+                    .sort((a, b) => (a.order || 0) - (b.order || 0))
                     .map((supItem) => (
                       <li key={supItem.slug}>
                         <Link

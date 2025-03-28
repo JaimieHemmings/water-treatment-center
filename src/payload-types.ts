@@ -241,6 +241,7 @@ export interface Media {
  */
 export interface SupportingDocument {
   id: number;
+  order?: number | null;
   title: string;
   association: number | ProductCategory;
   hero: {
@@ -2268,6 +2269,7 @@ export interface ProductsSelect<T extends boolean = true> {
  * via the `definition` "supporting-documents_select".
  */
 export interface SupportingDocumentsSelect<T extends boolean = true> {
+  order?: T;
   title?: T;
   association?: T;
   hero?:

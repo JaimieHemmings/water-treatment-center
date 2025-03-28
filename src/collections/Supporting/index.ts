@@ -40,6 +40,7 @@ export const Supporting: CollectionConfig = {
     title: true,
     slug: true,
     association: true,
+    order: true,
   },
   admin: {
     defaultColumns: ['title', 'association', 'updatedAt'],
@@ -47,6 +48,15 @@ export const Supporting: CollectionConfig = {
     group: 'Product Admin',
   },
   fields: [
+    {
+      name: 'order',
+      label: 'Order',
+      type: 'number',
+      defaultValue: 0,
+      admin: {
+        position: 'sidebar',
+      },
+    },
     {
       name: 'title',
       type: 'text',
