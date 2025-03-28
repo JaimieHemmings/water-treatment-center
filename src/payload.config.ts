@@ -28,13 +28,21 @@ import TestKitRequests from './collections/TestKitRequests'
 import HardnessResults from './collections/water-hardness-results'
 import WellTestResults from './collections/WellTestResults'
 
+import { resendAdapter } from '@payloadcms/email-resend'
+
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
 export default buildConfig({
   admin: {
     meta: {
-      description: 'A fully-featured CMS for Node.js apps',
+      description: 'The Water Treatment Centre | Water Softener & Filter Specialists',
+      keywords: 'water softener, water filter, water treatment, hardness test, water hardness',
+      title: 'The Water Treatment Centre | Water Softener & Filter Specialists',
+      ogDescription: 'The Water Treatment Centre | Water Softener & Filter Specialists',
+      ogTitle: 'The Water Treatment Centre | Water Softener & Filter Specialists',
+      ogType: 'website',
+      ogUrl: 'https://www.thewatertreatmentcentre.ie',
       titleImage: '/logo.png',
     },
     components: {
