@@ -14,6 +14,7 @@ import { TextWithImageBlock } from '@/blocks/TextWithImageBlock/config'
 import { ProductsList } from '@/blocks/ProductsList/config'
 import { WideTextBlock } from '@/blocks/WideText/config'
 import { CostCalculatorBlock } from '@/blocks/CostCalculator/config'
+import { SplitTextBlock } from '@/blocks/SplitTextBlock/config'
 
 import {
   MetaDescriptionField,
@@ -120,7 +121,7 @@ export const subcategories: CollectionConfig = {
               name: 'content',
               label: 'Content',
               type: 'blocks',
-              blocks: [CallToAction, FaqBlock, ImageGrid, ImageList, StatsBlock, TextWithImageBlock, TwoColumnBlock, VideoBlock, YoutubeBlock,ProductsList, WideTextBlock, CostCalculatorBlock],
+              blocks: [CallToAction, FaqBlock, ImageGrid, ImageList, StatsBlock, TextWithImageBlock, TwoColumnBlock, VideoBlock, YoutubeBlock,ProductsList, WideTextBlock, CostCalculatorBlock, SplitTextBlock],
               required: true,
             }],
         },

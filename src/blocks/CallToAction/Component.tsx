@@ -91,7 +91,7 @@ export const CallToActionBlock: React.FC<CallToActionBlockProps> = ({ pageLink, 
               )}
               </div>
               <RichText
-                className={`px-5 md:pl-0 prose md:prose-md lg:prose-lg mb-5 ${lightMode ? 'text-textblue' : 'text-white'}`}
+                className={`px-5 md:pl-0 mb-5 [&>p]:text-2xl ${lightMode ? 'text-textblue' : 'text-white'}`}
                 data={richText}
                 enableGutter={false}
               />
