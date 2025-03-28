@@ -31,6 +31,15 @@ export const Products: CollectionConfig = {
   },
   fields: [
     {
+      name: 'order',
+      label: 'Order',
+      type: 'number',
+      defaultValue: 0,
+      admin: {
+        position: 'sidebar',
+      },
+    },
+    {
       name: 'title',
       type: 'text',
       required: true,
