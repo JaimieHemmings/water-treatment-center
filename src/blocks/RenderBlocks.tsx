@@ -26,6 +26,7 @@ import HardnessTest from '@/blocks/HardnessTest/Component'
 import CostCalculatorBlock from '@/blocks/CostCalculator/Component'
 import ProductsList from '@/blocks/ProductsList/Component'
 import WideTextBlock from '@/blocks/WideText/Component'
+import LinkListBlock from '@/blocks/LinkListBlock/Component'
 
 const blockComponents = {
   content: ContentBlock,
@@ -52,6 +53,7 @@ const blockComponents = {
   costCalculatorBlock: CostCalculatorBlock,
   productsList: ProductsList,
   wideTextBlock: WideTextBlock,
+  linkListBlock: LinkListBlock,
 }
 
 export const RenderBlocks: React.FC<{

@@ -264,6 +264,7 @@ export interface SupportingDocument {
       | HardnessTest
       | WellTestCalculator
       | CostCalculatorBlock
+      | LinkListBlock
     )[];
   };
   meta?: {
@@ -820,6 +821,59 @@ export interface CostCalculatorBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'costCalculatorBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "LinkListBlock".
+ */
+export interface LinkListBlock {
+  title: string;
+  richText?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  section?:
+    | {
+        subtitle?: string | null;
+        richText?: {
+          root: {
+            type: string;
+            children: {
+              type: string;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        } | null;
+        listItem?:
+          | {
+              text?: string | null;
+              link?: string | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'linkListBlock';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -2240,6 +2294,7 @@ export interface SupportingDocumentsSelect<T extends boolean = true> {
               hardnessTest?: T | HardnessTestSelect<T>;
               wellTestCalculator?: T | WellTestCalculatorSelect<T>;
               costCalculatorBlock?: T | CostCalculatorBlockSelect<T>;
+              linkListBlock?: T | LinkListBlockSelect<T>;
             };
       };
   meta?:
@@ -2270,6 +2325,30 @@ export interface HardnessTestSelect<T extends boolean = true> {
  * via the `definition` "WellTestCalculator_select".
  */
 export interface WellTestCalculatorSelect<T extends boolean = true> {
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "LinkListBlock_select".
+ */
+export interface LinkListBlockSelect<T extends boolean = true> {
+  title?: T;
+  richText?: T;
+  section?:
+    | T
+    | {
+        subtitle?: T;
+        richText?: T;
+        listItem?:
+          | T
+          | {
+              text?: T;
+              link?: T;
+              id?: T;
+            };
+        id?: T;
+      };
   id?: T;
   blockName?: T;
 }

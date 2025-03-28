@@ -25,6 +25,7 @@ import { TestKitForm } from '@/blocks/TestKitForm/config'
 import { HardnessTest } from '@/blocks/HardnessTest/config'
 import { WellTestCalculator } from '@/blocks/WellTestCalculator/config'
 import { CostCalculatorBlock } from '@/blocks/CostCalculator/config'
+import { LinkListBlock } from '@/blocks/LinkListBlock/config'
 
 export const Supporting: CollectionConfig = {
   slug: 'supporting-documents',
@@ -95,7 +96,7 @@ export const Supporting: CollectionConfig = {
               name: 'content',
               label: 'Content',
               type: 'blocks',
-              blocks: [CallToAction, FaqBlock, ImageGrid, ImageList, StatsBlock, TextWithImageBlock, TwoColumnBlock, VideoBlock, YoutubeBlock, SplitTextBlock, TestKitForm, HardnessTest, WellTestCalculator, CostCalculatorBlock],
+              blocks: [CallToAction, FaqBlock, ImageGrid, ImageList, StatsBlock, TextWithImageBlock, TwoColumnBlock, VideoBlock, YoutubeBlock, SplitTextBlock, TestKitForm, HardnessTest, WellTestCalculator, CostCalculatorBlock,LinkListBlock],
               required: true,
             },
           ],
