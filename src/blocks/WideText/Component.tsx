@@ -38,11 +38,11 @@ export const WideTextBlock: React.FC<WideTextBlockProps> = ({
           {enableFeatures && (
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-textblue">
               {features.map((feature, index) => (
-                <div key={index} className="bg-antiflashwhite p-6 rounded-lg">
-                  <h3 className="text-2xl mb-3">
+                <div key={index} className="bg-darkblue p-6 rounded-lg">
+                  <h3 className="text-2xl mb-3 text-selectiveyellow">
                     {feature.title}
                   </h3>
-                  {feature.description && <RichText data={feature.description} enableGutter={false} />}
+                  {feature.description && <RichText data={feature.description} enableGutter={false} className="text-white" />}
                 </div>
               ))}
             </div>
