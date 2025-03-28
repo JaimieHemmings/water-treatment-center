@@ -9,6 +9,7 @@ export default async function HeaderClient({ data }) {
   const response:any = await payload.find({
     collection: 'product-categories',
     depth: 1,
+    pagination: false,
     overrideAccess: false,
     select: {
       title: true,
@@ -25,6 +26,7 @@ export default async function HeaderClient({ data }) {
     collection: 'supporting-documents',
     depth: 1,
     overrideAccess: false,
+    pagination: false,
     select: {
       title: true,
       slug: true,
@@ -35,6 +37,7 @@ export default async function HeaderClient({ data }) {
   const subcategories:any = await payload.find({
     collection: 'subcategories',
     depth: 1,
+    pagination: false,
     overrideAccess: false,
     select: {
       title: true,
@@ -44,7 +47,6 @@ export default async function HeaderClient({ data }) {
   })
 
   const subDocs = subcategories.docs
-
   return (
     <NavBar supportingDocs={supportingDocs} docs={docs} data={data} subDocs={subDocs} />
   )
