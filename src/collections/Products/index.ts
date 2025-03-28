@@ -9,6 +9,7 @@ import {
   OverviewField,
   PreviewField,
 } from '@payloadcms/plugin-seo/fields'
+import { OrderedListFeature } from '@payloadcms/richtext-lexical'
 
 export const Products: CollectionConfig = {
   slug: 'products',
@@ -23,6 +24,7 @@ export const Products: CollectionConfig = {
     slug: true,
     category: true,
     parent: true,
+    order: true,
   },
   admin: {
     defaultColumns: ['title', 'parent', 'category'],

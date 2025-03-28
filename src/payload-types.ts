@@ -1161,6 +1161,7 @@ export interface WideTextBlock {
  */
 export interface Product {
   id: number;
+  order?: number | null;
   title: string;
   excerpt?: string | null;
   description?: {
@@ -2181,6 +2182,7 @@ export interface UsersSelect<T extends boolean = true> {
  * via the `definition` "products_select".
  */
 export interface ProductsSelect<T extends boolean = true> {
+  order?: T;
   title?: T;
   excerpt?: T;
   description?: T;
