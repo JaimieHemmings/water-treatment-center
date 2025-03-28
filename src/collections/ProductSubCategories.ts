@@ -37,6 +37,7 @@ export const subcategories: CollectionConfig = {
     title: true,
     category: true,
     slug: true,
+    order: true,
   },
   admin: {
     defaultColumns: ['title', 'category', 'updatedAt'],
@@ -44,6 +45,17 @@ export const subcategories: CollectionConfig = {
     group: 'Product Admin',
   },
   fields: [
+    {
+      name: 'order',
+      label: 'Order',
+      type: 'number',
+      defaultValue: 0,
+      admin: {
+        position: 'sidebar',
+        description: 'Use this field to control the display order',
+        step: 1
+      },
+    },
     {
       name: 'title',
       type: 'text',

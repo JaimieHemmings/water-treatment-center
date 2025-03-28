@@ -99,7 +99,9 @@ export const HeaderNav = ({ docs, supDocs, isOpen, setIsOpen, data, subDocs }: H
                   supDocs.docs
                     .filter((supItem) => supItem.association.slug === item.slug)
                     .sort((a, b) => (a.order || 0) - (b.order || 0))
-                    .map((supItem) => (
+                    .map((supItem) => {
+                      console.log(supDocs.docs)
+                      return (
                       <li key={supItem.slug}>
                         <Link
                           href={`/products/${item.slug}/support/${supItem.slug}`}
@@ -109,7 +111,8 @@ export const HeaderNav = ({ docs, supDocs, isOpen, setIsOpen, data, subDocs }: H
                           {supItem.title}
                         </Link>
                       </li>
-                    ))
+                    )
+                  })
                 }
               </ul>
             </li>

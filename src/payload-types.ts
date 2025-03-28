@@ -241,6 +241,9 @@ export interface Media {
  */
 export interface SupportingDocument {
   id: number;
+  /**
+   * Use this field to control the display order
+   */
   order?: number | null;
   title: string;
   association: number | ProductCategory;
@@ -1162,6 +1165,9 @@ export interface WideTextBlock {
  */
 export interface Product {
   id: number;
+  /**
+   * Use this field to control the display order
+   */
   order?: number | null;
   title: string;
   excerpt?: string | null;
@@ -1250,6 +1256,10 @@ export interface Product {
  */
 export interface Subcategory {
   id: number;
+  /**
+   * Use this field to control the display order
+   */
+  order?: number | null;
   title: string;
   excerpt?: string | null;
   category: number | ProductCategory;
@@ -2422,6 +2432,7 @@ export interface ProductCategoriesSelect<T extends boolean = true> {
  * via the `definition` "subcategories_select".
  */
 export interface SubcategoriesSelect<T extends boolean = true> {
+  order?: T;
   title?: T;
   excerpt?: T;
   category?: T;

@@ -39,6 +39,8 @@ export const Products: CollectionConfig = {
       defaultValue: 0,
       admin: {
         position: 'sidebar',
+        description: 'Use this field to control the display order',
+        step: 1
       },
     },
     {

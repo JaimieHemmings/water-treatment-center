@@ -31,6 +31,7 @@ export default async function HeaderClient({ data }) {
       title: true,
       slug: true,
       association: true,
+      order: true,
     },
   })
 
@@ -43,6 +44,7 @@ export default async function HeaderClient({ data }) {
       title: true,
       slug: true,
       category: true,
+      order: true,
     },
   })
 
