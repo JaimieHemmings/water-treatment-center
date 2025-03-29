@@ -103,6 +103,25 @@ const WellTestResults: CollectionConfig = {
     afterChange: [
       async ({doc, operation, req}) => {
         if (operation === 'create') {
+
+          const resultsTable = `
+            | Test           | Result         |
+            |----------------|----------------|
+            | Aluminium      | ${doc.aluminium || 'No data provided'}              |
+            | Ammonium       | ${doc.ammonium || 'No data provided'}              |
+            | Total Coliforms| ${doc.coliformsTotal || 'No data provided'}              |
+            | Apparent Color | ${doc.colourApparent || 'No data provided'}              |
+            | Conductivity   | ${doc.conductivity || 'No data provided'}              |
+            | E.Coli         | ${doc.eColi || 'No data provided'}              |
+            | Total Hardness | ${doc.hardnessTotal || 'No data provided'}              |
+            | Iron           | ${doc.iron || 'No data provided'}              |
+            | Manganese      | ${doc.manganese || 'No data provided'}              |
+            | Nitrite        | ${doc.nitrite || 'No data provided'}              |
+            | pH             | ${doc.pH || 'No data provided'}              |
+            | TBC @ 22°C     | ${doc.tbc22c || 'No data provided'}              |
+            | Turbidity      | ${doc.turbidity || 'No data provided'}              |
+          `.replace(/^\s+/gm, ''); 
+
           const sendEmail = await req.payload.sendEmail({
             to: 'info@thewatertreatmentcentre.ie',
             subject: 'New Well Test Results Submission',
@@ -111,7 +130,8 @@ const WellTestResults: CollectionConfig = {
               Email: ${doc.email}
               Phone: ${doc.phone || 'Not provided'}
               
-              Please log into the CMS to view the complete results.
+              Test Results:
+              ${resultsTable}
             `,
           })
         }
