@@ -1432,7 +1432,6 @@ export interface Service {
  */
 export interface TestSubmission {
   id: number;
-  uuid?: string | null;
   name: string;
   email: string;
   image: number | Media;
@@ -2574,7 +2573,6 @@ export interface ProductsListSelect<T extends boolean = true> {
  * via the `definition` "test-submissions_select".
  */
 export interface TestSubmissionsSelect<T extends boolean = true> {
-  uuid?: T;
   name?: T;
   email?: T;
   image?: T;
