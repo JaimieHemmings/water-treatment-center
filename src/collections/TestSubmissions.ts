@@ -13,7 +13,7 @@ const TestSubmissions: CollectionConfig = {
   },
   admin: {
     useAsTitle: 'name',
-    defaultColumns: ['uuid', 'name', 'email', 'createdAt'],
+    defaultColumns: ['name', 'email', 'createdAt'],
     group: 'Form Submissions',
   },
   fields: [
