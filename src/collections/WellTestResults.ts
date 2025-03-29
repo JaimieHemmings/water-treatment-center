@@ -104,7 +104,7 @@ const WellTestResults: CollectionConfig = {
       async ({doc, operation, req}) => {
         if (operation === 'create') {
           const sendEmail = await req.payload.sendEmail({
-            to: 'jaimie.j.hemmings@gmail.com',
+            to: 'info@thewatertreatmentcentre.ie',
             subject: 'New Well Test Results Submission',
             text: `
               New Well Test Results Submission from ${doc.fullname}
