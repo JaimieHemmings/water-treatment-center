@@ -17,6 +17,7 @@ interface Product {
   parent: {
     slug: string
   }
+  order?: number
 }
 
 interface SubCategory {
@@ -54,7 +55,7 @@ export const ProductsList: React.FC<ProductsListProps> = async ({
       </div>
       <div className="container py-[2rem]">
         <div className="flex flex-wrap justify-start">
-            {products.map((product: Product, index: number) => (
+            {products.sort((a, b) => (a.order || 0) - (b.order || 0)).map((product: Product, index: number) => (
           <div className="w-[50%] lg:w-[33%] xl:w-[25%] flex-shrink-0 h-[400px] mb-4 group px-2" key={index}>
               <div className="bg-white h-full">
                 <Link

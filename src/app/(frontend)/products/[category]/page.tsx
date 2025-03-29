@@ -49,7 +49,7 @@ export default async function Post({ params: paramsPromise }: Args) {
         <div className="bg-darkblue relative z-20 w-full py-[5rem]">
           <div className="container pb-[2rem]">
             <div className="flex flex-wrap gap-4">
-              {products.map((product: any, index: any) => (
+              {products.sort((a, b) => (a.order || 0) - (b.order || 0)).map((product: any, index: any) => (
                 <div key={index} className="w-full sm:w-[calc(50%-8px)] lg:w-[calc(20%-16px)]">
                   <Link
                     className="flex flex-col gap-4"
