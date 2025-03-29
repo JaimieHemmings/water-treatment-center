@@ -14,12 +14,12 @@ const Header = ({ productData }) => {
     <div className="w-full bg-white text-textblue pt-10">
       <div className="container flex flex-col md:flex-row gap-8 py-5">
         <div className="md:basis-1/2 flex flex-col md:pb-20 relative">
-          <Media
-            resource={productData.featuredImage}
-            priority
-            className="sticky top-28"
-            imgClassName=''
-          />
+          <div className="sticky top-28">
+            <Media
+              resource={productData.featuredImage}
+              priority
+            />
+          </div>
         </div>
         <div className="md:basis-1/2 p-5">
           <AnimateIn animation={{

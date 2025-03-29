@@ -100,7 +100,6 @@ export const HeaderNav = ({ docs, supDocs, isOpen, setIsOpen, data, subDocs }: H
                     .filter((supItem) => supItem.association.slug === item.slug)
                     .sort((a, b) => (a.order || 0) - (b.order || 0))
                     .map((supItem) => {
-                      console.log(supDocs.docs)
                       return (
                       <li key={supItem.slug}>
                         <Link

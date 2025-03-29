@@ -260,6 +260,39 @@ export const Products: CollectionConfig = {
             },
           ],
         },
+        {
+          name: 'models',
+          label: 'Models',
+          fields: [
+            {
+              name: 'models',
+              type: 'array',
+              label: 'Models',
+              fields: [
+                {
+                  name: 'model',
+                  type: 'text',
+                  required: true,
+                },
+                {
+                  name: 'description',
+                  type: 'textarea',
+                  required: true,
+                },
+                {
+                  name: 'dimensions',
+                  type: 'text',
+                  required: true,
+                },
+                {
+                  name: 'maxUsers',
+                  type: 'number',
+                  required: true,
+                },
+              ],
+            },
+          ]
+        },
       ],
     },
     ...slugField(),

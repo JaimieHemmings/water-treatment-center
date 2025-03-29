@@ -1245,6 +1245,17 @@ export interface Product {
     video?: (number | null) | Media;
     preloadImage?: (number | null) | Media;
   };
+  models?: {
+    models?:
+      | {
+          model: string;
+          description: string;
+          dimensions: string;
+          maxUsers: number;
+          id?: string | null;
+        }[]
+      | null;
+  };
   slug?: string | null;
   slugLock?: boolean | null;
   createdAt: string;
@@ -2268,6 +2279,19 @@ export interface ProductsSelect<T extends boolean = true> {
     | {
         video?: T;
         preloadImage?: T;
+      };
+  models?:
+    | T
+    | {
+        models?:
+          | T
+          | {
+              model?: T;
+              description?: T;
+              dimensions?: T;
+              maxUsers?: T;
+              id?: T;
+            };
       };
   slug?: T;
   slugLock?: T;

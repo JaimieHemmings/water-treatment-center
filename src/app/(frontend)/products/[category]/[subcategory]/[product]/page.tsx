@@ -14,6 +14,7 @@ import AnimateIn from '@/components/Animations/AnimateIn'
 import Bounded from '@/utilities/Bounded'
 import CustomLink from '@/components/CustomLink'
 import FAQ from './components/FAQ'
+import Models from './components/Models'
 
 type Props = {
   params: Promise<{
@@ -30,7 +31,10 @@ export default async function Product({ params }: Props) {
       <PageClient />
       {productData && (
         <>
-        <Header productData={productData} />
+        <Header productData={productData} />    
+        {productData.models.models && productData.models.models.length > 0 && (
+          <Models productData={productData} />
+        )}
         {/* <ProductNav /> */}
         <ProductFeatures productData={productData} />
         <ProductCTA />
