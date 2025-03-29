@@ -99,6 +99,25 @@ const WellTestResults: CollectionConfig = {
     },
   ],
   timestamps: true,
+  hooks: {
+    afterChange: [
+      async ({doc, operation, req}) => {
+        if (operation === 'create') {
+          const sendEmail = await req.payload.sendEmail({
+            to: 'jaimie.j.hemmings@gmail.com',
+            subject: 'New Well Test Results Submission',
+            text: `
+              New Well Test Results Submission from ${doc.fullname}
+              Email: ${doc.email}
+              Phone: ${doc.phone || 'Not provided'}
+              
+              Please log into the CMS to view the complete results.
+            `,
+          })
+        }
+      }
+    ],
+  },
 }
 
 export default WellTestResults
