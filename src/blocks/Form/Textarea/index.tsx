@@ -30,11 +30,11 @@ export const Textarea: React.FC<
 }) => {
   return (
     <Width width={width}>
-      <Label htmlFor={name} className="my-2 text-jet block">
+      <Label htmlFor={name} className="my-2 mt-3 text-jet block">
         {label}*
       </Label>
       <TextAreaComponent
-        className="text-white bg-jet border-2 border-darkblue py-2 text-lg"
+        className="text-jet/60 bg-textblue/40 border-2 border-none ring-0 focus:ring-0 focus:border-none py-3 text-md focus:outline-none drop-shadow-none focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
         placeholder={defaultValue}
         id={name}
         rows={rows}

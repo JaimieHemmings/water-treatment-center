@@ -101,7 +101,7 @@ export const ContactBlock: React.FC<ContactBlockProps> = ({
           { phoneNumbers && (
             phoneNumbers.map((phoneNumber, index) => {
               return (
-                <p key={index} className="pb-5">
+                <p key={index} className="pb-1 mb-0">
                   <MdPhone className="text-white inline mr-3" size={20} />
                   <a className="hover:opacity-50 transition-all" href={`tel:${phoneNumber.phoneNumber}`}>
                     {phoneNumber.phoneNumber}
@@ -122,9 +122,15 @@ export const ContactBlock: React.FC<ContactBlockProps> = ({
             })
           )}
         </div>
-        <div className="basis-1/2 py-[2rem] md:px-5 md:pl-0">
-          <div className="bg-white rounded-xl p-5 py-[2rem] pb-[5rem]">
-            <h3 className="text-2xl md:text-4xl text-jet py-5">Contact Us</h3>
+        <div className="basis-1/2 pb-[2rem] md:px-5 md:pl-0">
+          <div className="bg-white rounded-md p-5">
+            <h3 className="text-sm pb-3 text-selectiveyellow tracking-widest uppercase inline-block py-1">
+              <FaDroplet className="inline-block mr-2 -top-[2px] relative" />
+              Contact Us
+            </h3>
+            <p className="text-textblue text-md pb-5">
+              If you have any questions or need assistance, please fill out the form below and we will get back to you as soon as possible.
+            </p>
           {
             blocks.map((block, index) => {
               if (block.blockType === 'formBlock') {
