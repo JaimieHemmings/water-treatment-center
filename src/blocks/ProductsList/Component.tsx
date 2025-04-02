@@ -54,27 +54,31 @@ export const ProductsList: React.FC<ProductsListProps> = async ({
         </h2>
       </div>
       <div className="container py-[2rem]">
-        <div className="flex flex-wrap justify-start">
+      <div className="flex flex-wrap justify-start -mx-4">
             {products.sort((a, b) => (a.order || 0) - (b.order || 0)).map((product: Product, index: number) => (
-          <div className="w-[50%] lg:w-[33%] xl:w-[25%] flex-shrink-0 h-[400px] mb-4 group px-2" key={index}>
-              <div className="bg-white h-full">
+          <div className="w-1/2 lg:w-1/3 xl:w-1/4 px-4 mb-8" key={index}>
+              <div className="bg-white h-full rounded-lg overflow-hidden shadow-lg">
                 <Link
-                  className="flex flex-col relative overflow-hidden h-full"
+                  className="block relative"
                   href={`/products/${product.parent.slug}/${product.category.slug}/${product.slug}`}
                 >
-                  <Media
-                    resource={product.featuredImage}
-                    fill
-                    imgClassName="w-full h-full transition-transform duration-300 object-cover"
-                    loading='lazy'
-                    className="h-64"
-                  />
-                  <div className="absolute z-20 p-2 md:p-4 bg-darkblue/90 w-full flex flex-col py-3 transition-all duration-300 h-full top-[50%] group-hover:top-0">
-                    <h3 className="text-xl md:text-2xl lg:text-3xl text-white font-medium line-clamp-1 md:line-clamp-2">
+                  <div className="aspect-w-4 aspect-h-3">
+                    <Media
+                      resource={product.featuredImage}
+                      fill
+                      imgClassName="object-cover w-full h-full"
+                      className="h-[500px]"
+                      alt={product.title}
+                      loading='lazy'
+                    />
+                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-darkblue/95 to-transparent 
+                    flex flex-col justify-end p-6 group-hover:translate-y-0 transition-transform duration-300">
+                    <h3 className="text-xl md:text-2xl text-white font-medium mb-3">
                       {product.title}
                     </h3>
-                    <div className="w-1/4 h-[2px] bg-selectiveyellow my-2" />
-                    <p className="text-white text-sm md:text-base line-clamp-3 overflow-hidden group-hover:line-clamp-none">
+                    <div className="w-12 h-[2px] bg-selectiveyellow mb-3" />
+                    <p className="text-white/90 text-base leading-relaxed">
                       {product.excerpt}
                     </p>
                   </div>
