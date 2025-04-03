@@ -79,11 +79,11 @@ export const ProductsList: React.FC<ProductsListProps> = async ({
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-darkblue/95 to-transparent 
                     flex flex-col justify-end p-6 group-hover:translate-y-0 transition-transform duration-300">
-                    <h3 className="text-xl md:text-2xl text-white font-medium mb-3">
+                    <h3 className="text-xl md:text-2xl text-white font-medium mb-3 md:min-h-[64px]">
                       {product.title}
                     </h3>
                     <div className="w-12 h-[2px] bg-selectiveyellow mb-3" />
-                    <p className="text-white/90 text-base leading-relaxed">
+                    <p className="text-white/90 text-base leading-relaxed md:min-h-[130px]">
                       {product.excerpt}
                     </p>
                   </div>
