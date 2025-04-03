@@ -59,7 +59,7 @@ export const ProductsList: React.FC<ProductsListProps> = async ({
           <div className="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 px-4 mb-8" key={index}>
               <div className="bg-white h-full rounded-lg overflow-hidden shadow-lg">
                 <Link
-                  className="block relative"
+                  className="block relative group"
                   href={`/products/${product.parent.slug}/${product.category.slug}/${product.slug}`}
                 >
                   <div className="aspect-w-4 aspect-h-3">
@@ -77,8 +77,21 @@ export const ProductsList: React.FC<ProductsListProps> = async ({
                       loading='lazy'
                     />
                   </div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-darkblue/95 to-transparent 
-                    flex flex-col justify-end p-6 group-hover:translate-y-0 transition-transform duration-300">
+                  <div
+                    className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent to-darkblue/90 group-hover:opacity-100 transition-opacity duration-300"
+                  />
+                  <div className="
+                    absolute
+                    inset-0
+                    flex
+                    flex-col
+                    justify-end
+                    p-6
+                    transition-transform
+                    duration-300
+                    md:translate-y-[10.25rem]
+                    group-hover:translate-y-0
+                  ">
                     <h3 className="text-xl md:text-2xl text-white font-medium mb-3 md:min-h-[64px]">
                       {product.title}
                     </h3>
