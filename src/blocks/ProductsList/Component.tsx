@@ -56,7 +56,7 @@ export const ProductsList: React.FC<ProductsListProps> = async ({
       <div className="container py-[2rem]">
       <div className="flex flex-wrap justify-start -mx-4">
             {products.sort((a, b) => (a.order || 0) - (b.order || 0)).map((product: Product, index: number) => (
-          <div className="w-1/2 lg:w-1/3 xl:w-1/4 px-4 mb-8" key={index}>
+          <div className="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 px-4 mb-8" key={index}>
               <div className="bg-white h-full rounded-lg overflow-hidden shadow-lg">
                 <Link
                   className="block relative"
@@ -65,8 +65,13 @@ export const ProductsList: React.FC<ProductsListProps> = async ({
                   <div className="aspect-w-4 aspect-h-3">
                     <Media
                       resource={product.featuredImage}
-                      fill
-                      imgClassName="object-cover w-full h-full"
+                      imgClassName="
+                        md:object-cover
+                        md:w-full
+                        max-md:w-auto
+                        max-md:mx-auto
+                        h-full
+                      "
                       className="h-[500px]"
                       alt={product.title}
                       loading='lazy'
