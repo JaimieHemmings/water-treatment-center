@@ -81,6 +81,7 @@ export interface Config {
     'hardness-test-results': HardnessTestResult;
     'well-test-results': WellTestResult;
     banners: Banner;
+    quoteRequests: QuoteRequest;
     redirects: Redirect;
     forms: Form;
     'form-submissions': FormSubmission;
@@ -105,6 +106,7 @@ export interface Config {
     'hardness-test-results': HardnessTestResultsSelect<false> | HardnessTestResultsSelect<true>;
     'well-test-results': WellTestResultsSelect<false> | WellTestResultsSelect<true>;
     banners: BannersSelect<false> | BannersSelect<true>;
+    quoteRequests: QuoteRequestsSelect<false> | QuoteRequestsSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
@@ -1508,6 +1510,19 @@ export interface Banner {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "quoteRequests".
+ */
+export interface QuoteRequest {
+  id: number;
+  name: string;
+  email: string;
+  phone: string;
+  model: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1641,6 +1656,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'banners';
         value: number | Banner;
+      } | null)
+    | ({
+        relationTo: 'quoteRequests';
+        value: number | QuoteRequest;
       } | null)
     | ({
         relationTo: 'redirects';
@@ -2640,6 +2659,18 @@ export interface BannersSelect<T extends boolean = true> {
   linkUrl?: T;
   displayDelay?: T;
   isActive?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "quoteRequests_select".
+ */
+export interface QuoteRequestsSelect<T extends boolean = true> {
+  name?: T;
+  email?: T;
+  phone?: T;
+  model?: T;
   updatedAt?: T;
   createdAt?: T;
 }

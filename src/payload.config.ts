@@ -27,7 +27,7 @@ import TestSubmissions from './collections/TestSubmissions'
 import TestKitRequests from './collections/TestKitRequests'
 import HardnessResults from './collections/water-hardness-results'
 import WellTestResults from './collections/WellTestResults'
-
+import QuoteRequests from './collections/QuoteRequests'
 import { resendAdapter } from '@payloadcms/email-resend'
 
 const filename = fileURLToPath(import.meta.url)
@@ -82,7 +82,7 @@ export default buildConfig({
       connectionString: process.env.DATABASE_URI || '',
     },
   }),
-  collections: [Pages, Posts, Media, Users, Products, Supporting, Services, ProductCategories, subcategories, TestSubmissions, TestKitRequests, HardnessResults, WellTestResults, Banner],
+  collections: [Pages, Posts, Media, Users, Products, Supporting, Services, ProductCategories, subcategories, TestSubmissions, TestKitRequests, HardnessResults, WellTestResults, Banner, QuoteRequests],
   cors: [getServerSideURL()].filter(Boolean),
   globals: [Header, Footer],
   secret: process.env.PAYLOAD_SECRET,

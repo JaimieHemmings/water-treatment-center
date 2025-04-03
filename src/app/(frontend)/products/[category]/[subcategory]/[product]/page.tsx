@@ -15,6 +15,7 @@ import Bounded from '@/utilities/Bounded'
 import CustomLink from '@/components/CustomLink'
 import FAQ from './components/FAQ'
 import Models from './components/Models'
+import Quote from './components/Quote'
 
 type Props = {
   params: Promise<{
@@ -40,6 +41,7 @@ export default async function Product({ params }: Props) {
         <ProductCTA />
         <ProductDetails productData={productData} />
         <ServiceDetails />
+        <Quote product={productData.title} />
         </>
       )}
       <section className="bg-darkblue">
