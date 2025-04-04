@@ -13,11 +13,11 @@ const Gallery = ({ productData }: { productData: any }) => {
   };
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-2">
       <div className="relative w-full rounded-xl">
         <Media
           resource={selectedImage.image}
-          imgClassName="w-full h-auto rounded-xl transition-all duration-300"
+          imgClassName="w-full h-auto rounded-md transition-all duration-300"
           loading='lazy'
           className="rounded-xl transition-all duration-300"
         />
@@ -28,7 +28,7 @@ const Gallery = ({ productData }: { productData: any }) => {
           <button
             key={index}
             onClick={() => handleImageClick(image)}
-            className={`relative aspect-square w-full overflow-hidden rounded-lg transition-all duration-300
+            className={`relative aspect-square w-full overflow-hidden rounded-md transition-all duration-300
               ${selectedImage.image.url === image.image.url ? 'ring-2 ring-darkblue' : 'hover:opacity-75'}`}
           >
             <Image
