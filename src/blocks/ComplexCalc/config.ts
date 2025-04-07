@@ -10,4 +10,7 @@ export const ComplexCalcBlock: Block = {
       label: 'Intro Text',
     }
   ],
+  labels: {
+    singular: 'Complex Calculator Block',
+    plural: 'Complex Calculator Blocks',  }
 }

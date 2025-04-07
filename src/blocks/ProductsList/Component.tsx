@@ -62,17 +62,16 @@ export const ProductsList: React.FC<ProductsListProps> = async ({
                   className="block relative group"
                   href={`/products/${product.parent.slug}/${product.category.slug}/${product.slug}`}
                 >
-                  <div className="aspect-w-4 aspect-h-3">
+                  <div className="aspect-w-4 aspect-h-3 max-md:h-[400px]">
                     <Media
                       resource={product.featuredImage}
                       imgClassName="
                         md:object-cover
                         md:w-full
-                        max-md:w-auto
-                        max-md:mx-auto
-                        h-full
+                        max-md:w-full
+                        max-md:h-auto
                       "
-                      className="h-[500px]"
+                      className="md:h-[500px]"
                       alt={product.title}
                       loading='lazy'
                     />
@@ -88,7 +87,7 @@ export const ProductsList: React.FC<ProductsListProps> = async ({
                     p-6
                     bg-textblue/60
                   ">
-                    <h3 className="text-xl md:text-2xl text-white font-medium mb-3 md:min-h-[64px]">
+                    <h3 className="text-md md:text-2xl text-white font-medium mb-3 md:min-h-[64px]">
                       {product.title}
                     </h3>
                     <div className="w-12 h-[2px] bg-selectiveyellow mb-3" />
