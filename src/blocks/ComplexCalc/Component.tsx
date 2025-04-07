@@ -1,5 +1,6 @@
 'use client';
 import React, { useState } from 'react'
+import RichText from '@/components/RichText';
 
 const householdProducts = [
   'Calgon',
@@ -39,7 +40,11 @@ const defaultLimescaleDamage = {
   'Electric Showers': 4.00
 }
 
-const ComplexCalcBlock: React.FC = () => {
+interface ComplexCalcBlockProps {
+  introText?: any
+}
+
+const ComplexCalcBlock: React.FC<ComplexCalcBlockProps> = ({ introText }) => {
   const [expenses, setExpenses] = useState<{ [key: string]: number }>({
     ...defaultHouseholdExpenses,
     ...defaultLimescaleDamage
@@ -74,12 +79,13 @@ const ComplexCalcBlock: React.FC = () => {
       <div className="mb-5">
 
         <h2 className="text-2xl md:text-4xl font-bold mb-3 text-center text-white">Cost Calculator</h2>
-        <p className="text-white text-center mb-1">
-          This calculator helps you estimate the costs associated with household products and limescale damage over time.
-        </p>
-        <p className="text-white text-center">
-          Enter your weekly expenses for each item to see the annual, 5-year, and 10-year costs.
-        </p>
+        {introText && (
+          <RichText
+            className="px-5 md:pl-0 mb-5"
+            data={introText}
+            enableGutter={false}
+          />
+        )}
       </div>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

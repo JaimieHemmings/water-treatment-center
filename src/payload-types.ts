@@ -1224,6 +1224,21 @@ export interface WideTextBlock {
  * via the `definition` "Complex Calculator".
  */
 export interface ComplexCalculator {
+  introText?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'complexCalcBlock';
@@ -2153,6 +2168,7 @@ export interface WideTextBlockSelect<T extends boolean = true> {
  * via the `definition` "Complex Calculator_select".
  */
 export interface ComplexCalculatorSelect {
+  introText?: boolean;
   id?: boolean;
   blockName?: boolean;
 }
