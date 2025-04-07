@@ -27,6 +27,7 @@ import CostCalculatorBlock from '@/blocks/CostCalculator/Component'
 import ProductsList from '@/blocks/ProductsList/Component'
 import WideTextBlock from '@/blocks/WideText/Component'
 import LinkListBlock from '@/blocks/LinkListBlock/Component'
+import ComplexCalcBlock from '@/blocks/ComplexCalc/Component'
 
 const blockComponents = {
   content: ContentBlock,
@@ -54,6 +55,7 @@ const blockComponents = {
   productsList: ProductsList,
   wideTextBlock: WideTextBlock,
   linkListBlock: LinkListBlock,
+  complexCalcBlock: ComplexCalcBlock,
 }
 
 export const RenderBlocks: React.FC<{

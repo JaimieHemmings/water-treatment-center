@@ -7,6 +7,7 @@ import CustomLink from '@/components/CustomLink';
 import { HeaderNav } from './Nav';
 import SearchForm from './SearchForm';
 import { Fade as Hamburger } from 'hamburger-react'
+import { FaWhatsapp } from "react-icons/fa";
 
 const NavBar = ({docs, supportingDocs, data, subDocs}) => {
   const [isOpen, setIsOpen] = useState(false)
@@ -31,6 +32,15 @@ const NavBar = ({docs, supportingDocs, data, subDocs}) => {
                 <IoPhonePortraitSharp />
                 <span>086 1715686</span>
               </a>
+            </div>
+            <div className="flex items-center max-lg:hidden">
+              <Link
+                className="text-white hover:text-selectiveyellow"
+                href="https://wa.me/353861715686?text=Hi!%20I'd%20like%20some%20more%20infomation%20about%20water%20filtration%20systems."
+                target="_blank"
+              >
+                <FaWhatsapp className="w-8 h-8" />
+              </Link>
             </div>
             <div
               className="flex max-lg:basis-1/3 lg:hidden justify-between items-center gap-4"

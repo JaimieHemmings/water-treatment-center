@@ -34,7 +34,7 @@ export const ImageList: React.FC<ImageListProps> = ({ images }) => {
             className="md:basis-1/3"
             >
             <div className='flex flex-col rounded-xl overflow-hidden h-full border-[1px] border-t-none'>
-              <div className="relative w-full h-[200px]">
+              <div className="relative w-full h-[350px]">
                 <Image 
                   src={card.image.url} 
                   alt={card.image.alt} 
@@ -44,7 +44,7 @@ export const ImageList: React.FC<ImageListProps> = ({ images }) => {
                   loading="lazy"
                 />
               </div>
-              <div className="p-5 flex flex-col gap-2 h-full border-jet/40 relative">
+              <div className="p-5 flex flex-col gap-2 border-jet/40 relative">
                 <span className="text-white bg-selectiveyellow rounded-full font-bold text-md absolute left-[75%] w-10 h-10 flex items-center justify-center -top-6">
                   0{index + 1}                  
                 </span>

@@ -1,6 +1,6 @@
 'use client';
 import React, { useState } from 'react'
-import { FaQuoteLeft } from 'react-icons/fa'
+import { MdEuroSymbol } from "react-icons/md";
 
 interface QuoteProps {
   product: string
@@ -48,7 +48,7 @@ const Quote: React.FC<QuoteProps> = ({ product }) => {
         onClick={() => setIsOpen(!isOpen)}
         className="bg-white text-darkblue p-4 rounded-r-lg shadow-lg flex items-center gap-2 hover:bg-selectiveyellow/90 transition-all border-selectiveyellow border-r-2 border-b-2 border-t-2 group"
       >
-        <FaQuoteLeft className="group-hover:text-white transition-all duration-300 ease-in-out" />
+        <MdEuroSymbol  className="group-hover:text-white transition-all duration-300 ease-in-out" />
         <span className="writing-mode-vertical-rl group-hover:text-white transition-all duration-300 ease-in-out">
           Request Quote
         </span>

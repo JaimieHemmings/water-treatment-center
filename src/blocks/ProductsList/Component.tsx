@@ -56,8 +56,8 @@ export const ProductsList: React.FC<ProductsListProps> = async ({
       <div className="container py-[2rem]">
       <div className="flex flex-wrap justify-start -mx-4">
             {products.sort((a, b) => (a.order || 0) - (b.order || 0)).map((product: Product, index: number) => (
-          <div className="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 px-4 mb-8" key={index}>
-              <div className="bg-white h-full rounded-lg overflow-hidden shadow-lg">
+          <div className="w-1/2 lg:w-1/3 xl:w-1/4 px-1 md:px-4 mb-8" key={index}>
+              <div className="bg-white h-full rounded-lg overflow-hidden">
                 <Link
                   className="block relative group"
                   href={`/products/${product.parent.slug}/${product.category.slug}/${product.slug}`}
@@ -77,28 +77,21 @@ export const ProductsList: React.FC<ProductsListProps> = async ({
                       loading='lazy'
                     />
                   </div>
-                  <div
-                    className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent to-darkblue/90 group-hover:opacity-100 transition-opacity duration-300"
-                  />
                   <div className="
                     absolute
-                    inset-0
+                    bottom-0
+                    left-0
+                    w-full
                     flex
                     flex-col
                     justify-end
                     p-6
-                    transition-transform
-                    duration-300
-                    md:translate-y-[10.25rem]
-                    group-hover:translate-y-0
+                    bg-textblue/60
                   ">
                     <h3 className="text-xl md:text-2xl text-white font-medium mb-3 md:min-h-[64px]">
                       {product.title}
                     </h3>
                     <div className="w-12 h-[2px] bg-selectiveyellow mb-3" />
-                    <p className="text-white/90 text-base leading-relaxed md:min-h-[130px]">
-                      {product.excerpt}
-                    </p>
                   </div>
                 </Link>
               </div>

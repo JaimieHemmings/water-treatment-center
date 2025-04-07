@@ -5,6 +5,7 @@ import { GoChevronDown } from "react-icons/go";
 import SearchForm from '../SearchForm';
 import CustomLink from '@/components/CustomLink';
 import { IoPhonePortraitSharp } from "react-icons/io5";
+import { FaWhatsapp } from "react-icons/fa";
 
 type HeaderNavProps = {
   docs: Array<{
@@ -151,6 +152,15 @@ export const HeaderNav = ({ docs, supDocs, isOpen, setIsOpen, data, subDocs }: H
           </a>
         </li>
       </ul>
+      <div className="lg:hidden flex items-center mt-3">
+        <Link
+          className="text-white hover:text-selectiveyellow"
+          href="https://wa.me/353861715686?text=Hi!%20I'd%20like%20some%20more%20infomation%20about%20water%20filtration%20systems."
+          target="_blank"
+        >
+          <FaWhatsapp className="w-8 h-8" />
+        </Link>
+      </div>
       <div className="lg:hidden mt-5 lg:mt-10">
         <SearchForm setIsOpen={setIsOpen} isOpen={isOpen} />
       </div>

@@ -200,6 +200,7 @@ export interface Page {
     | SplitTextBlock
     | CostCalculatorBlock
     | WideTextBlock
+    | ComplexCalculator
   )[];
   meta?: {
     title?: string | null;
@@ -1220,6 +1221,15 @@ export interface WideTextBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Complex Calculator".
+ */
+export interface ComplexCalculator {
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'complexCalcBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "products".
  */
 export interface Product {
@@ -1769,6 +1779,7 @@ export interface PagesSelect<T extends boolean = true> {
         splitTextBlock?: T | SplitTextBlockSelect<T>;
         costCalculatorBlock?: T | CostCalculatorBlockSelect<T>;
         wideTextBlock?: T | WideTextBlockSelect<T>;
+        complexCalcBlock?: T | ComplexCalculatorSelect<T>;
       };
   meta?:
     | T
@@ -2136,6 +2147,14 @@ export interface WideTextBlockSelect<T extends boolean = true> {
       };
   id?: T;
   blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Complex Calculator_select".
+ */
+export interface ComplexCalculatorSelect {
+  id?: boolean;
+  blockName?: boolean;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
