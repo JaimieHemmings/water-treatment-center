@@ -2167,10 +2167,10 @@ export interface WideTextBlockSelect<T extends boolean = true> {
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "Complex Calculator_select".
  */
-export interface ComplexCalculatorSelect {
-  introText?: boolean;
-  id?: boolean;
-  blockName?: boolean;
+export interface ComplexCalculatorSelect<T extends boolean = true> {
+  introText?: T;
+  id?: T;
+  blockName?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
