@@ -3,13 +3,13 @@ import configPromise from '@payload-config'
 import { getPayload } from 'payload'
 import { FaDroplet } from "react-icons/fa6"
 import Link from 'next/link'
-import { Media } from '@/components/Media'
+import Image from 'next/image'
 
 interface Product {
   title: string
   excerpt: string
   slug: string
-  featuredImage: any
+  thumbnail: any
   category: {
     title: string
     slug: string
@@ -53,49 +53,28 @@ export const ProductsList: React.FC<ProductsListProps> = async ({
           )}
         </h2>
       </div>
-      <div className="container py-[2rem]">
-      <div className="flex flex-wrap justify-start -mx-4">
-            {products.sort((a, b) => (a.order || 0) - (b.order || 0)).map((product: Product, index: number) => (
-          <div className="w-1/2 lg:w-1/3 xl:w-1/4 px-1 md:px-4 mb-8" key={index}>
-              <div className="bg-white h-full rounded-lg overflow-hidden">
-                <Link
-                  className="block relative group"
-                  href={`/products/${product.parent.slug}/${product.category.slug}/${product.slug}`}
-                >
-                  <div className="aspect-w-4 aspect-h-3 max-md:h-[400px]">
-                    <Media
-                      resource={product.featuredImage}
-                      imgClassName="
-                        md:object-cover
-                        md:w-full
-                        max-md:w-full
-                        max-md:h-auto
-                      "
-                      className="md:h-[500px]"
-                      alt={product.title}
-                      loading='lazy'
-                    />
-                  </div>
-                  <div className="
-                    absolute
-                    bottom-0
-                    left-0
-                    w-full
-                    flex
-                    flex-col
-                    justify-end
-                    p-6
-                    bg-textblue/60
-                  ">
-                    <h3 className="text-md md:text-2xl text-white font-medium mb-3 md:min-h-[64px]">
-                      {product.title}
-                    </h3>
-                    <div className="w-12 h-[2px] bg-selectiveyellow mb-3" />
-                  </div>
-                </Link>
-              </div>
-          </div>
-            ))}
+      <div className="container my-4">
+        <h2 className="sr-only">Products</h2>
+        <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+          {products.sort((a, b) => (a.order || 0) - (b.order || 0)).map((product: Product, index: number) => (
+            <Link
+              href={`/products/${product.parent.slug}/${product.category.slug}/${product.slug}`}
+              className="group relative"
+              key={index}
+            >
+              <Image
+                src={product.thumbnail?.url || "/image-not-found.jpg" }
+                className="aspect-square w-full rounded-lg bg-gray-200 object-cover group-hover:opacity-75 xl:aspect-7/8"
+                alt={product.title}
+                width={600}
+                height={600}
+                loading='lazy'
+              />
+              <h3 className="mt-4 text-sm bg-textblue absolute bottom-0 left-0 right-0 text-center font-semibold py-3 text-white">
+                {product.title}
+              </h3>
+            </Link>
+          ))}
         </div>
       </div>
     </section>

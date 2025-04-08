@@ -1255,6 +1255,10 @@ export interface Product {
   order?: number | null;
   title: string;
   excerpt?: string | null;
+  /**
+   * This image will be used as a thumbnail for the product.
+   */
+  thumbnail?: (number | null) | Media;
   description?: {
     root: {
       type: string;
@@ -2317,6 +2321,7 @@ export interface ProductsSelect<T extends boolean = true> {
   order?: T;
   title?: T;
   excerpt?: T;
+  thumbnail?: T;
   description?: T;
   featuredImage?: T;
   parent?: T;

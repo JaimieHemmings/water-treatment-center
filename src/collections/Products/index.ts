@@ -54,6 +54,14 @@ export const Products: CollectionConfig = {
       defaultValue: 'Enter a short description',
     },
     {
+      name: 'thumbnail',
+      type: 'upload',
+      relationTo: 'media',
+      admin: {
+        description: 'This image will be used as a thumbnail for the product.',
+      }
+    },
+    {
       name: 'description',
       type: 'richText',
     },
