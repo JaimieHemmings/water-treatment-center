@@ -1221,10 +1221,26 @@ export interface WideTextBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "Complex Calculator".
+ * via the `definition` "ComplexCalculator".
  */
 export interface ComplexCalculator {
+  title?: string | null;
   introText?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  SoftenerCalcText?: {
     root: {
       type: string;
       children: {
@@ -2169,10 +2185,12 @@ export interface WideTextBlockSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "Complex Calculator_select".
+ * via the `definition` "ComplexCalculator_select".
  */
 export interface ComplexCalculatorSelect<T extends boolean = true> {
+  title?: T;
   introText?: T;
+  SoftenerCalcText?: T;
   id?: T;
   blockName?: T;
 }
