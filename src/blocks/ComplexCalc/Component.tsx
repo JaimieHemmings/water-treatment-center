@@ -77,31 +77,51 @@ const ComplexCalcBlock: React.FC<ComplexCalcBlockProps> = ({ introText, title,So
 
   // Calculate Total Savings
   const calculateTotal20YearSavings = () => {
-    return Object.entries(expenses).reduce((total, [item, cost]) => {
+    const totalWithoutSoftener = Object.entries(expenses).reduce((total, [item, cost]) => {
+      const annualCost = cost * 52;
+      return total + annualCost;
+    }, 0);
+  
+    const totalWithSoftener = Object.entries(expenses).reduce((total, [item, cost]) => {
       // If item is in limescaleDamage array, apply 100% savings
       if (limescaleDamage.includes(item)) {
-        const weeklyCost = cost * 0; // 100% savings
-        return total + (weeklyCost * 52 * 20);
+        return total; // No cost with softener for limescale damage
       }
       // Otherwise use householdProductsSavings percentage
       const savingsPercentage = householdProductsSavings[item] || 0;
-      const weeklyCost = cost * (1 - (savingsPercentage / 100));
-      return total + (weeklyCost * 52 * 20);
+      const annualCost = cost * 52 * (1 - (savingsPercentage / 100));
+      return total + annualCost;
     }, 0);
+  
+    // Add annual softener cost (€119.90)
+    const annualSoftenerCost = 119.90;
+    
+    // Return the difference (savings)
+    return (totalWithoutSoftener - (totalWithSoftener + annualSoftenerCost)) * 20;
   }
 
   const calculateTotal5YearSavings = () => {
-    return Object.entries(expenses).reduce((total, [item, cost]) => {
+    const totalWithoutSoftener = Object.entries(expenses).reduce((total, [item, cost]) => {
+      const annualCost = cost * 52;
+      return total + annualCost;
+    }, 0);
+  
+    const totalWithSoftener = Object.entries(expenses).reduce((total, [item, cost]) => {
       // If item is in limescaleDamage array, apply 100% savings
       if (limescaleDamage.includes(item)) {
-        const weeklyCost = cost * 0; // 100% savings
-        return total + ((weeklyCost * 52) * 5);
+        return total; // No cost with softener for limescale damage
       }
       // Otherwise use householdProductsSavings percentage
       const savingsPercentage = householdProductsSavings[item] || 0;
-      const weeklyCost = cost * (1 - (savingsPercentage / 100));
-      return Math.abs(total + ((weeklyCost * 52) * 5));
+      const annualCost = cost * 52 * (1 - (savingsPercentage / 100));
+      return total + annualCost;
     }, 0);
+  
+    // Add annual softener cost (€119.90)
+    const annualSoftenerCost = 119.90;
+    
+    // Return the difference (savings)
+    return (totalWithoutSoftener - (totalWithSoftener + annualSoftenerCost)) * 5;
   }
 
   const calculateTotal1YearSavings = () => {
