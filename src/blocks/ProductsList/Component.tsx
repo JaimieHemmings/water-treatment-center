@@ -55,7 +55,7 @@ export const ProductsList: React.FC<ProductsListProps> = async ({
       </div>
       <div className="container my-4">
         <h2 className="sr-only">Products</h2>
-        <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+        <div className="grid grid-cols-2 gap-x-6 gap-y-10 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
           {products.sort((a, b) => (a.order || 0) - (b.order || 0)).map((product: Product, index: number) => (
             <Link
               href={`/products/${product.parent.slug}/${product.category.slug}/${product.slug}`}
