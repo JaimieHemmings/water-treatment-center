@@ -42,7 +42,7 @@ const Quote: React.FC<QuoteProps> = ({ product }) => {
     }
 
   return (
-    <div className="fixed left-0 top-[100px] md:top-[200px] -translate-y-1/2 z-50">
+    <div className="fixed left-0 top-[200px] -translate-y-1/2 z-50">
       {/* Tab Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
