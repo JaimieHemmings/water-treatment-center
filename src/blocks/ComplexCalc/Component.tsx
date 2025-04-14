@@ -339,7 +339,7 @@ const ComplexCalcBlock: React.FC<ComplexCalcBlockProps> = ({ introText, title,So
           </div>
         </div>
       </div>
-      <div className="container bg-white mt-12 py-8 rounded-lg shadow-md px-6">
+      <div className="container bg-white mt-8 py-8 rounded-lg shadow-md px-6">
         <h3 className="text-2xl font-bold mb-6 text-center text-textblue">
           <FaDroplet className="inline-block text-selectiveyellow relative -top-[2px] mr-2" />
           Water Softener Savings
