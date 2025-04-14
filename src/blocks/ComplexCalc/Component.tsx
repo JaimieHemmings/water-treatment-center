@@ -302,8 +302,9 @@ const ComplexCalcBlock: React.FC<ComplexCalcBlockProps> = ({ introText, title,So
                 <p className="text-2xl font-bold text-textblue">€3.50</p>
               </div>
               <div className="text-center">
-                <p className="text-sm uppercase tracking-wider text-gray-500 mb-2">Rent</p>
+                <p className="text-sm uppercase tracking-wider text-gray-500 mb-2">Purchase*</p>
                 <p className="text-2xl font-bold text-textblue">€4.99</p>
+                <p className="text-base opacity-60">*One time purchase spread as a montly cost</p>
               </div>
             </div>
           </div>
