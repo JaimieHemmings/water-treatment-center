@@ -17,7 +17,9 @@ const householdProducts = [
   'Self Care (Hygiene Products)',
   'Washing Powder',
   'Energy Bills',
-  'New Kettles'
+  'New Kettles',
+  'Bottled Water',
+  'Brittany filters',
 ]
 
 const limescaleDamage = [
@@ -35,7 +37,9 @@ const defaultHouseholdExpenses = {
   'Self Care (Hygiene Products)': 6,
   'Washing Powder': 4.00,
   'Energy Bills': 10.00,
-  'New Kettles': 1.00
+  'New Kettles': 1.00,
+  'Bottled Water': 20.00,
+  'Brittany filters': 15.00,
 }
 
 const defaultLimescaleDamage = {
@@ -53,7 +57,9 @@ const householdProductsSavings = {
   'Self Care (Hygiene Products)': 50,
   'Washing Powder': 25,
   'Energy Bills': 30,
-  'New Kettles': 100
+  'New Kettles': 100,
+  'Bottled Water': 100,
+  'Brittany filters': 100,
 }
 
 interface ComplexCalcBlockProps {
@@ -247,19 +253,19 @@ const ComplexCalcBlock: React.FC<ComplexCalcBlockProps> = ({ introText, title,So
 
       {/* Total 20 Year Cost */}
       <div className="mt-8 rounded-lg shadow-sm flex flex-col md:flex-row gap-2 md:gap-4 justify-center items-center">
-        <p className="text-lg sm:text-xl text-center text-textblue bg-gray-100 px-5 py-5 rounded-md w-full md:w-1/3">
+        <p className="text-lg sm:text-xl text-center text-textblue bg-gray-100 px-5 py-5 rounded-md w-full md:w-1/3 mb-0">
           Total 1 Year Cost:
           <span className="block font-semibold">
             €{formatNumber(calculateTotal1YearCost())}
           </span>
         </p>
-        <p className="text-lg sm:text-xl text-center text-textblue bg-gray-100 px-5 py-5 rounded-md w-full md:w-1/3">
+        <p className="text-lg sm:text-xl text-center text-textblue bg-gray-100 px-5 py-5 rounded-md w-full md:w-1/3 mb-0">
           Total 5 Year Cost:
           <span className="block font-semibold">
             €{formatNumber(calculateTotal5YearCost())}
           </span>
         </p>
-        <p className="text-lg sm:text-xl text-center text-textblue bg-gray-100 px-5 py-5 rounded-md w-full md:w-1/3">
+        <p className="text-lg sm:text-xl text-center text-textblue bg-gray-100 px-5 py-5 rounded-md w-full md:w-1/3 mb-0">
           Total 20 Year Cost:
           <span className="block font-semibold">
             €{formatNumber(calculateTotal20YearCost())}
@@ -267,7 +273,7 @@ const ComplexCalcBlock: React.FC<ComplexCalcBlockProps> = ({ introText, title,So
         </p>
       </div>
       {/* Water Softener Costs */}
-      <div className="container bg-white mt-12 py-8 rounded-lg shadow-md px-6">
+      <div className="container bg-white mt-8 py-8 rounded-lg shadow-md px-6">
         <h3 className="text-2xl font-bold mb-6 text-center text-textblue">
           <FaDroplet className="inline-block text-selectiveyellow relative -top-[2px] mr-2" />
           Water Softener Costs
