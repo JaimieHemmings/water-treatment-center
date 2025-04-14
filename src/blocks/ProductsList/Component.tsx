@@ -4,6 +4,7 @@ import { getPayload } from 'payload'
 import { FaDroplet } from "react-icons/fa6"
 import Link from 'next/link'
 import Image from 'next/image'
+import AnimateIn from '@/components/Animations/AnimateIn'
 
 interface Product {
   title: string
@@ -62,17 +63,29 @@ export const ProductsList: React.FC<ProductsListProps> = async ({
               className="group relative"
               key={index}
             >
-              <Image
-                src={product.thumbnail?.url || "/image-not-found.jpg" }
-                className="aspect-square w-full rounded-lg bg-gray-200 object-cover group-hover:opacity-75 xl:aspect-7/8"
-                alt={product.title}
-                width={600}
-                height={600}
-                loading='lazy'
-              />
-              <h3 className="mt-4 text-sm bg-textblue absolute bottom-0 left-0 right-0 text-center font-semibold py-3 text-white">
-                {product.title}
-              </h3>
+              <AnimateIn
+                animation={{
+                  opacity: 0,
+                  duration: 1,
+                  y: 50,
+                  ease: 'power2.out',
+                }}
+              >
+                <Image
+                  src={product.thumbnail?.url || "/image-not-found.jpg" }
+                  className="aspect-square w-full rounded-lg bg-gray-200 object-cover"
+                  alt={product.title}
+                  width={600}
+                  height={600}
+                  loading='lazy'
+                />
+                <div className="absolute bottom-0 left-0 right-0 bg-textblue/70 px-2 pb-3">
+                  <h3 className="mt-4 text-md md:text-xl py-3 text-white">
+                    {product.title}
+                  </h3>
+                  <span className="bg-selectiveyellow w-1/2 h-1 block" />
+                </div>
+              </AnimateIn>
             </Link>
           ))}
         </div>
