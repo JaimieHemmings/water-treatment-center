@@ -20,14 +20,7 @@ const householdProducts = [
   'New Kettles',
   'Bottled Water',
   'Brittany filters',
-]
-
-const limescaleDamage = [
-  'Appliance repairs',
-  'Plumbing Repairs',
-  'Cylinders',
-  'Gas Boilers',
-  'Electric Showers'
+  'Appliance/Plumbing repairs and maintenance',
 ]
 
 const defaultHouseholdExpenses = {
@@ -40,14 +33,7 @@ const defaultHouseholdExpenses = {
   'New Kettles': 1.00,
   'Bottled Water': 20.00,
   'Brittany filters': 15.00,
-}
-
-const defaultLimescaleDamage = {
-  'Appliance repairs': 5.00,
-  'Plumbing Repairs': 7.50,
-  'Cylinders': 3.00,
-  'Gas Boilers': 8.00,
-  'Electric Showers': 4.00
+  'Appliance/Plumbing repairs and maintenance': 5.00,
 }
 
 const householdProductsSavings = {
@@ -60,6 +46,7 @@ const householdProductsSavings = {
   'New Kettles': 100,
   'Bottled Water': 100,
   'Brittany filters': 100,
+  'Appliance/Plumbing repairs and maintenance': 100,
 }
 
 interface ComplexCalcBlockProps {
@@ -71,7 +58,6 @@ interface ComplexCalcBlockProps {
 const ComplexCalcBlock: React.FC<ComplexCalcBlockProps> = ({ introText, title,SoftenerCalcText }) => {
   const [expenses, setExpenses] = useState<{ [key: string]: number }>({
     ...defaultHouseholdExpenses,
-    ...defaultLimescaleDamage
   })
 
   const handleExpenseChange = (item: string, value: string) => {
@@ -89,10 +75,6 @@ const ComplexCalcBlock: React.FC<ComplexCalcBlockProps> = ({ introText, title,So
     }, 0);
   
     const totalWithSoftener = Object.entries(expenses).reduce((total, [item, cost]) => {
-      // If item is in limescaleDamage array, apply 100% savings
-      if (limescaleDamage.includes(item)) {
-        return total; // No cost with softener for limescale damage
-      }
       // Otherwise use householdProductsSavings percentage
       const savingsPercentage = householdProductsSavings[item] || 0;
       const annualCost = cost * 52 * (1 - (savingsPercentage / 100));
@@ -113,11 +95,6 @@ const ComplexCalcBlock: React.FC<ComplexCalcBlockProps> = ({ introText, title,So
     }, 0);
   
     const totalWithSoftener = Object.entries(expenses).reduce((total, [item, cost]) => {
-      // If item is in limescaleDamage array, apply 100% savings
-      if (limescaleDamage.includes(item)) {
-        return total; // No cost with softener for limescale damage
-      }
-      // Otherwise use householdProductsSavings percentage
       const savingsPercentage = householdProductsSavings[item] || 0;
       const annualCost = cost * 52 * (1 - (savingsPercentage / 100));
       return total + annualCost;
@@ -137,11 +114,6 @@ const ComplexCalcBlock: React.FC<ComplexCalcBlockProps> = ({ introText, title,So
     }, 0);
   
     const totalWithSoftener = Object.entries(expenses).reduce((total, [item, cost]) => {
-      // If item is in limescaleDamage array, apply 100% savings
-      if (limescaleDamage.includes(item)) {
-        return total; // No cost with softener for limescale damage
-      }
-      // Otherwise use householdProductsSavings percentage
       const savingsPercentage = householdProductsSavings[item] || 0;
       const annualCost = cost * 52 * (1 - (savingsPercentage / 100));
       return total + annualCost;
@@ -195,40 +167,14 @@ const ComplexCalcBlock: React.FC<ComplexCalcBlockProps> = ({ introText, title,So
         )}
       </div>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 gap-6">
         {/* Household Products Section */}
         <section className="bg-white rounded-lg shadow-sm p-4 sm:p-6">
           <h3 className="text-lg sm:text-xl font-semibold mb-4 text-center">
-            Household Products Spent (€/week)
+            Household Spend (€/week)
           </h3>
-          <div className="grid gap-4 sm:gap-6">
+          <div className="grid gap-4 sm:gap-6 grid-cols-2">
             {householdProducts.map(item => (
-              <div key={item}>
-                <div className="flex flex-col">
-                  <label className="font-medium mb-1 sm:mb-0">
-                    {item}:
-                  </label>
-                  <div className="flex items-center">
-                    <input
-                      type="number"
-                      min="0"
-                      step="0.01"
-                      className="w-full p-3 border border-gray-300 rounded-md mb-3"
-                      value={expenses[item] || ''}
-                      onChange={(e) => handleExpenseChange(item, e.target.value)}
-                    />
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Limescale Damage Section */}
-        <section className="bg-white rounded-lg shadow-sm p-4 sm:p-6">
-          <h3 className="text-lg sm:text-xl font-semibold mb-4 text-center">Limescale Damage Spend (€/week)</h3>
-          <div className="grid gap-4 sm:gap-6">
-            {limescaleDamage.map(item => (
               <div key={item}>
                 <div className="flex flex-col">
                   <label className="font-medium mb-1 sm:mb-0">
@@ -292,7 +238,7 @@ const ComplexCalcBlock: React.FC<ComplexCalcBlockProps> = ({ introText, title,So
             <h4 className="text-lg font-semibold mb-6 text-center text-textblue">
               Monthly Running Costs
             </h4>
-            <div className="grid grid-cols-3 gap-4">
+            <div className="grid grid-cols-2 gap-4">
               <div className="text-center">
                 <p className="text-sm uppercase tracking-wider text-gray-500 mb-2">Salt</p>
                 <p className="text-2xl font-bold text-textblue">€3.50</p>
@@ -300,11 +246,6 @@ const ComplexCalcBlock: React.FC<ComplexCalcBlockProps> = ({ introText, title,So
               <div className="text-center">
                 <p className="text-sm uppercase tracking-wider text-gray-500 mb-2">Servicing</p>
                 <p className="text-2xl font-bold text-textblue">€3.50</p>
-              </div>
-              <div className="text-center">
-                <p className="text-sm uppercase tracking-wider text-gray-500 mb-2">Purchase*</p>
-                <p className="text-2xl font-bold text-textblue">€4.99</p>
-                <p className="text-base opacity-60">*One time purchase spread as a montly cost</p>
               </div>
             </div>
           </div>
@@ -349,12 +290,15 @@ const ComplexCalcBlock: React.FC<ComplexCalcBlockProps> = ({ introText, title,So
           <p className="text-gray-600 leading-relaxed">
             Based on the calculations above, by installing a water softener you could:
           </p>
-          <ul className="mt-4 text-gray-700 space-y-2">
+          <ul className="mt-4 text-gray-700 space-y-2 mb-3">
             <li>Enjoy purer, safer, healthier water</li>
             <li>Protect your appliances from limescale damage</li>
             <li>Reduce your household cleaning costs</li>
             <li>Save money on repairs and replacements</li>
           </ul>
+          <p className="opacity-60">
+            Note: Savings are based on average household expenses and may vary based on individual usage. Up front cost of Water Softener is not included in savings calculations.
+          </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">

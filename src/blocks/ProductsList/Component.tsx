@@ -54,13 +54,13 @@ export const ProductsList: React.FC<ProductsListProps> = async ({
           )}
         </h2>
       </div>
-      <div className="container my-4">
+      <div className="container my-4 max-md:mb-10">
         <h2 className="sr-only">Products</h2>
         <div className="grid grid-cols-2 gap-x-6 gap-y-10 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
           {products.sort((a, b) => (a.order || 0) - (b.order || 0)).map((product: Product, index: number) => (
             <Link
               href={`/products/${product.parent.slug}/${product.category.slug}/${product.slug}`}
-              className="group relative"
+              className="group relative max-md:mt-10"
               key={index}
             >
               <AnimateIn
@@ -79,7 +79,7 @@ export const ProductsList: React.FC<ProductsListProps> = async ({
                   height={600}
                   loading='lazy'
                 />
-                <div className="absolute bottom-0 left-0 right-0 bg-textblue/70 px-2 pb-3">
+                <div className="absolute bottom-0 left-0 right-0 bg-textblue/70 px-2 pb-3 max-md:-bottom-[50px]">
                   <h3 className="mt-4 text-md md:text-xl py-3 text-white">
                     {product.title}
                   </h3>
