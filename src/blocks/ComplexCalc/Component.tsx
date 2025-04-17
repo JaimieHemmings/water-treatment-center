@@ -19,7 +19,7 @@ const householdProducts = [
   'Energy Bills',
   'New Kettles',
   'Bottled Water',
-  'Brittany filters',
+  'Britta filters',
   'Appliance/Plumbing repairs and maintenance',
 ]
 
@@ -32,7 +32,7 @@ const defaultHouseholdExpenses = {
   'Energy Bills': 10.00,
   'New Kettles': 1.00,
   'Bottled Water': 20.00,
-  'Brittany filters': 15.00,
+  'Britta filters': 15.00,
   'Appliance/Plumbing repairs and maintenance': 5.00,
 }
 
@@ -45,7 +45,7 @@ const householdProductsSavings = {
   'Energy Bills': 30,
   'New Kettles': 100,
   'Bottled Water': 100,
-  'Brittany filters': 100,
+  'Britta filters': 100,
   'Appliance/Plumbing repairs and maintenance': 100,
 }
 
