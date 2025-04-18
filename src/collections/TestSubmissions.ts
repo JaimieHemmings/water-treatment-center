@@ -40,6 +40,23 @@ const TestSubmissions: CollectionConfig = {
     },
   ],
   timestamps: true,
+  hooks: {
+    afterChange: [
+      async ({ doc, operation, req }) => {
+        if (operation === 'create') {
+          const sendEmail = await req.payload.sendEmail({
+            to: 'info@thewatertreatmentcentre.ie',
+            subject: 'New Test Submission',
+            text: `
+              New test submission from ${doc.name},
+              Email: ${doc.email},
+              Image: ${doc.image || 'Not provided'},
+            `,
+          })
+        }
+      }
+    ]
+  }
 }
 
 export default TestSubmissions

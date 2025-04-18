@@ -39,6 +39,24 @@ const HardnessResults: CollectionConfig = {
     },
   ],
   timestamps: true,
+  hooks: {
+    afterChange: [
+      async ({ doc, operation, req }) => {
+        if (operation === 'create') {
+          const sendEmail = await req.payload.sendEmail({
+            to: 'info@thewatertreatmentcentre.ie',
+            subject: 'New Water HArdness Test Submission',
+            text: `
+              New water hardness test submission from ${doc.name},
+              Email: ${doc.email},
+              Telephone: ${doc.telephone || 'Not provided'},
+              Hardness: ${doc.hardness || 'Not provided'},
+            `,
+          })
+        }
+      }
+    ]
+  }
 }
 
 export default HardnessResults
