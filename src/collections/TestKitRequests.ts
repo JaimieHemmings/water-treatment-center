@@ -46,6 +46,25 @@ const TestKitRequests: CollectionConfig = {
       type: 'checkbox',
     },
   ],
+  hooks: {
+    afterChange: [
+      async ({doc, operation, req}) => {
+        if (operation === 'create') {
+          const sendEmail = await req.payload.sendEmail({
+            to: 'info@thewatertreatmentcentre.ie',
+            subject: 'New Test Kit Request Submission',
+            text: `
+              New test kit request from ${doc.name},
+              Email: ${doc.email},
+              Telephone: ${doc.telephone || 'Not provided'},
+              Address: ${doc.address || 'Not provided'},
+              Message: ${doc.message || 'Not provided'},
+            `,
+          })
+        }
+      }
+    ],
+  },
   timestamps: true,
 }
 
