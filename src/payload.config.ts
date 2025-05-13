@@ -36,6 +36,10 @@ const dirname = path.dirname(filename)
 export default buildConfig({
   admin: {
     meta: {
+      openGraph: {
+        title: 'The Water Treatment Centre | Water Softener & Filter Specialists',
+        siteName: 'The Water Treatment Centre | Water Softener & Filter Specialists',
+      },
       description: 'The Water Treatment Centre | Water Softener & Filter Specialists',
       keywords: 'water softener, water filter, water treatment, hardness test, water hardness',
       title: 'The Water Treatment Centre | Water Softener & Filter Specialists',
