@@ -42,6 +42,7 @@ export const generateMeta = async (args: {
           ]
         : undefined,
       title,
+      siteName: 'The Water Treatment Centre',
       url: Array.isArray(doc?.slug) ? doc?.slug.join('/') : '/',
     }),
     title,
