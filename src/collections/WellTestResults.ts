@@ -124,6 +124,7 @@ const WellTestResults: CollectionConfig = {
 
           const sendEmail = await req.payload.sendEmail({
             to: 'info@thewatertreatmentcentre.ie',
+            replyTo: doc.email,
             subject: 'New Well Test Results Submission',
             text: `
               New Well Test Results Submission from ${doc.fullname}

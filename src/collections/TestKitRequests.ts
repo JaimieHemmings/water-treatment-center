@@ -53,6 +53,7 @@ const TestKitRequests: CollectionConfig = {
           const sendEmail = await req.payload.sendEmail({
             to: 'info@thewatertreatmentcentre.ie',
             subject: 'New Test Kit Request Submission',
+            replyTo: doc.email,
             text: `
               New test kit request from ${doc.name},
               Email: ${doc.email},

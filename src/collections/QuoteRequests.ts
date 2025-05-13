@@ -46,6 +46,7 @@ const QuoteRequests: CollectionConfig = {
           const sendEmail = await req.payload.sendEmail({
             to: 'info@thewatertreatmentcentre.ie',
             subject: 'New Quote Request Submission',
+            replyTo: doc.email,
             text: `
               New quote request from ${doc.name}
               Email: ${doc.email}

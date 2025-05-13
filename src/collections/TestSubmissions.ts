@@ -46,6 +46,7 @@ const TestSubmissions: CollectionConfig = {
         if (operation === 'create') {
           const sendEmail = await req.payload.sendEmail({
             to: 'info@thewatertreatmentcentre.ie',
+            replyTo: doc.email,
             subject: 'New Test Submission',
             text: `
               New test submission from ${doc.name},

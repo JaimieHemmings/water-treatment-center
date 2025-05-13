@@ -45,6 +45,7 @@ const HardnessResults: CollectionConfig = {
         if (operation === 'create') {
           const sendEmail = await req.payload.sendEmail({
             to: 'info@thewatertreatmentcentre.ie',
+            replyTo: doc.email,
             subject: 'New Water HArdness Test Submission',
             text: `
               New water hardness test submission from ${doc.name},
