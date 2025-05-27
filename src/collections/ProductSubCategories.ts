@@ -53,7 +53,7 @@ export const subcategories: CollectionConfig = {
       admin: {
         position: 'sidebar',
         description: 'Use this field to control the display order',
-        step: 1
+        step: 1,
       },
     },
     {
@@ -81,6 +81,13 @@ export const subcategories: CollectionConfig = {
       name: 'preloadImage',
       type: 'upload',
       relationTo: 'media',
+    },
+    {
+      name: 'brochure',
+      type: 'upload',
+      relationTo: 'media',
+      label: 'Brochure',
+      required: false,
     },
     {
       type: 'tabs',
@@ -133,9 +140,24 @@ export const subcategories: CollectionConfig = {
               name: 'content',
               label: 'Content',
               type: 'blocks',
-              blocks: [CallToAction, FaqBlock, ImageGrid, ImageList, StatsBlock, TextWithImageBlock, TwoColumnBlock, VideoBlock, YoutubeBlock,ProductsList, WideTextBlock, CostCalculatorBlock, SplitTextBlock],
+              blocks: [
+                CallToAction,
+                FaqBlock,
+                ImageGrid,
+                ImageList,
+                StatsBlock,
+                TextWithImageBlock,
+                TwoColumnBlock,
+                VideoBlock,
+                YoutubeBlock,
+                ProductsList,
+                WideTextBlock,
+                CostCalculatorBlock,
+                SplitTextBlock,
+              ],
               required: true,
-            }],
+            },
+          ],
         },
         {
           name: 'meta',
@@ -160,7 +182,7 @@ export const subcategories: CollectionConfig = {
               descriptionPath: 'meta.description',
             }),
           ],
-        }
+        },
       ],
     },
     ...slugField(),

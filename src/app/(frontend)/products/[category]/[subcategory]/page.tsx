@@ -7,7 +7,7 @@ import Image from 'next/image'
 import { generateMeta } from '@/utilities/generateMeta'
 import { RenderBlocks } from '@/blocks/RenderBlocks'
 import ProductList from './components/ProductList'
-import { FaDroplet } from "react-icons/fa6";
+import { FaDroplet } from 'react-icons/fa6'
 
 type Params = {
   params: Promise<{
@@ -24,44 +24,35 @@ export default async function SubCategoryData({ params }: Params) {
     <article className="bg-darkblue relative z-0">
       <PageClient />
       <div className="relative w-full min-h-[600px] azul-overlay py-[2rem] z-20">
-        {categoryData.hero.heroType == "image" && (
-          categoryData.hero.heroImage && (
-            <Image
+        {categoryData.hero.heroType == 'image' && categoryData.hero.heroImage && (
+          <Image
             // @ts-ignore
-              src={categoryData.hero.heroImage.url}
-              alt="background Image"
-              width={1920}
-              height={1080}
-              className="absolute inset-0 w-full h-full object-cover"
-              priority
-            />
-          )
+            src={categoryData.hero.heroImage.url}
+            alt="background Image"
+            width={1920}
+            height={1080}
+            className="absolute inset-0 w-full h-full object-cover"
+            priority
+          />
         )}
-        {categoryData.hero.heroType == "video" && (
-          categoryData.hero.heroVideo && (
-            <video    
-              muted
-              autoPlay
-              loop
-              playsInline        
-              className="absolute inset-0 w-full h-full object-cover"
-            >
-              <source
-                src={categoryData.hero.heroVideo.url}
-                type="video/mp4"
-              />
-              Your browser does not support the video tag.
-            </video>
-          )
+        {categoryData.hero.heroType == 'video' && categoryData.hero.heroVideo && (
+          <video
+            muted
+            autoPlay
+            loop
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover"
+          >
+            <source src={categoryData.hero.heroVideo.url} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
         )}
         <div className="container mx-auto my-auto h-full flex flex-row justify-start relative z-10">
           <div className="md:basis-2/3 flex flex-col justify-center items-start h-full pt-[5rem]">
             <h1 className="text-4xl md:text-[72px] md:leading-[80px] text-white">
               {categoryData.title}
             </h1>
-            <p className="my-5 text-lg text-white">
-            {categoryData.excerpt}
-            </p>
+            <p className="my-5 text-lg text-white">{categoryData.excerpt}</p>
           </div>
         </div>
         <div className="absolute top-0 left-0 w-full h-full bg-jet opacity-60 pointer-events-none"></div>
@@ -69,7 +60,7 @@ export default async function SubCategoryData({ params }: Params) {
       </div>
       <div className="flex flex-col bg-darkblue">
         <RenderBlocks blocks={categoryData.content.content} />
-          {categoryData.video && (
+        {categoryData.video && (
           <section className="bg-white relative z-20 w-full py-[5rem]">
             <div className="container pt-[5rem]">
               <video
@@ -78,14 +69,24 @@ export default async function SubCategoryData({ params }: Params) {
                 playsInline
                 controls
                 poster={categoryData.preloadImage?.url || '/video-poster.jpg'}
-                >
+              >
                 <source src={categoryData.video.url} type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
             </div>
           </section>
-          )}
+        )}
       </div>
+      {categoryData.brochure && (
+        <div className="mt-2">
+          <CustomLink
+            link={categoryData.brochure.url}
+            label={'Download Brochure'}
+            theme="dark"
+            target="_blank"
+          />
+        </div>
+      )}
     </article>
   )
 }
@@ -96,11 +97,11 @@ const queryCategoryBySlug = cache(async ({ slug }: { slug: string }) => {
     collection: 'subcategories',
     where: {
       slug: {
-        equals: slug
+        equals: slug,
       },
     },
   })
-  
+
   return result.docs || []
 })
 
@@ -111,7 +112,7 @@ const queryPostBySlug = cache(async ({ slug }: { slug: string }) => {
     collection: 'products',
     where: {
       'category.slug': {
-        equals: slug
+        equals: slug,
       },
     },
   })

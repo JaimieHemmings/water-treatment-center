@@ -1380,6 +1380,7 @@ export interface Subcategory {
   category: number | ProductCategory;
   video?: (number | null) | Media;
   preloadImage?: (number | null) | Media;
+  brochure?: (number | null) | Media;
   hero?: {
     heroType?: ('image' | 'video') | null;
     heroVideo?: (number | null) | Media;
@@ -2595,6 +2596,7 @@ export interface SubcategoriesSelect<T extends boolean = true> {
   category?: T;
   video?: T;
   preloadImage?: T;
+  brochure?: T;
   hero?:
     | T
     | {
