@@ -38,6 +38,7 @@ export const subcategories: CollectionConfig = {
     category: true,
     slug: true,
     order: true,
+    brochure: true,
   },
   admin: {
     defaultColumns: ['title', 'category', 'updatedAt'],
