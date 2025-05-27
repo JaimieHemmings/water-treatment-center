@@ -8,6 +8,7 @@ import { generateMeta } from '@/utilities/generateMeta'
 import { RenderBlocks } from '@/blocks/RenderBlocks'
 import ProductList from './components/ProductList'
 import { FaDroplet } from 'react-icons/fa6'
+import CustomLink from '@/components/CustomLink'
 
 type Params = {
   params: Promise<{
