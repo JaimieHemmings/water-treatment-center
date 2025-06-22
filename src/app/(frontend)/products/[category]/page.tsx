@@ -64,7 +64,7 @@ export default async function page({ params, searchParams }: Props) {
       </div>
       <div className="flex flex-col bg-darkblue">
         <RenderBlocks blocks={category.content.content} />
-        <ProductsList category={category} />
+        {/* <ProductsList category={category} /> */}
       </div>
     </article>
   )
