@@ -1,4 +1,3 @@
-//@ts-nocheck
 import { getPayload } from 'payload'
 import React, { cache } from 'react'
 import configPromise from '@payload-config'
@@ -9,16 +8,15 @@ import PageClient from './page.client'
 import Image from 'next/image'
 import ProductsList from './ProductsList'
 
-type Args = {
-  params: {
+type Props = {
+  params: Promise<{
     category: string
-  }
+  }>
   searchParams: { [key: string]: string | string[] | undefined }
 }
 
-//@ts-ignore
-export default async function page({ params }: Args) {
-  const slug = params.category
+export default async function page({ params }: Props) {
+  const { category: slug } = await params
 
   if (!slug) {
     // If the slug is missing, show a 404 page.
@@ -84,9 +82,9 @@ const queryCategoryBySlug = cache(async ({ slug }: { slug: string }) => {
   return result.docs || []
 })
 
-export const generateMetadata = async ({ params }: Args) => {
+export const generateMetadata = async ({ params }: Props) => {
   // The slug is the 'category' value from the URL params.
-  const slug = params.category
+  const { category: slug } = await params
 
   if (!slug) {
     return {}
