@@ -1,4 +1,3 @@
-//@ts-nocheck
 import { getPayload } from 'payload'
 import React, { cache } from 'react'
 import configPromise from '@payload-config'
@@ -15,6 +14,7 @@ type Args = {
   }
 }
 
+//@ts-ignore
 export default async function page({ params }: Args) {
   const slug = await params.category
 
