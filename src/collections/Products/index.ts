@@ -36,10 +36,11 @@ export const Products: CollectionConfig = {
       label: 'Order',
       type: 'number',
       defaultValue: 0,
+      min: 0,
       admin: {
         position: 'sidebar',
         description: 'Use this field to control the display order',
-        step: 1
+        step: 1,
       },
     },
     {
@@ -59,7 +60,7 @@ export const Products: CollectionConfig = {
       relationTo: 'media',
       admin: {
         description: 'This image will be used as a thumbnail for the product.',
-      }
+      },
     },
     {
       name: 'description',
@@ -77,7 +78,6 @@ export const Products: CollectionConfig = {
       type: 'relationship',
       relationTo: 'product-categories',
       required: true,
-
     },
     {
       name: 'category',
@@ -158,7 +158,7 @@ export const Products: CollectionConfig = {
                       type: 'upload',
                       relationTo: 'media',
                       required: true,
-                    },         
+                    },
                     {
                       name: 'details',
                       type: 'array',
@@ -177,7 +177,7 @@ export const Products: CollectionConfig = {
                           required: true,
                         },
                       ],
-                    },     
+                    },
                   ],
                 },
                 {
@@ -298,7 +298,7 @@ export const Products: CollectionConfig = {
                 },
               ],
             },
-          ]
+          ],
         },
       ],
     },
@@ -309,7 +309,7 @@ export const Products: CollectionConfig = {
       admin: {
         position: 'sidebar',
         readOnly: true,
-      }
+      },
     },
     {
       name: 'updatedAt',
@@ -317,8 +317,8 @@ export const Products: CollectionConfig = {
       admin: {
         position: 'sidebar',
         readOnly: true,
-      }
-    }
+      },
+    },
   ],
 }
 
