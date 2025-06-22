@@ -9,14 +9,14 @@ import Image from 'next/image'
 import ProductsList from './ProductsList'
 
 type Props = {
-  params: Promise<{
+  params: {
     category: string
-  }>
+  }
   searchParams: { [key: string]: string | string[] | undefined }
 }
 
 export default async function page({ params }: Props) {
-  const { category: slug } = await params
+  const { category: slug } = params
 
   if (!slug) {
     // If the slug is missing, show a 404 page.
@@ -84,7 +84,7 @@ const queryCategoryBySlug = cache(async ({ slug }: { slug: string }) => {
 
 export const generateMetadata = async ({ params }: Props) => {
   // The slug is the 'category' value from the URL params.
-  const { category: slug } = await params
+  const { category: slug } = params
 
   if (!slug) {
     return {}
