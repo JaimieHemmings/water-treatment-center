@@ -8,15 +8,18 @@ import PageClient from './page.client'
 import Image from 'next/image'
 import ProductsList from './ProductsList'
 
+// Updated Props type: params is now a Promise
 type Props = {
-  params: {
+  params: Promise<{
     category: string
-  }
+  }>
   searchParams: { [key: string]: string | string[] | undefined }
 }
 
 export default async function page({ params }: Props) {
-  const { category: slug } = params
+  // Await params before destructuring
+  const resolvedParams = await params
+  const { category: slug } = resolvedParams
 
   if (!slug) {
     // If the slug is missing, show a 404 page.
@@ -83,8 +86,9 @@ const queryCategoryBySlug = cache(async ({ slug }: { slug: string }) => {
 })
 
 export const generateMetadata = async ({ params }: Props) => {
-  // The slug is the 'category' value from the URL params.
-  const { category: slug } = params
+  // Await params here as well
+  const resolvedParams = await params
+  const { category: slug } = resolvedParams
 
   if (!slug) {
     return {}
