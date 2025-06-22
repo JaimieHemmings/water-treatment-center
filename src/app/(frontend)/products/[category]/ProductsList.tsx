@@ -6,7 +6,6 @@ import Image from 'next/image'
 
 export const ProductsList = async ({ category }) => {
   const products = await queryProductsBySlug({ categoryId: category.id })
-  console.log(`content: ${products[0].content.header?.mainFeatures}`)
   return (
     <div className="bg-darkblue relative z-20 w-full py-[5rem]">
       <div className="container pb-[2rem]">

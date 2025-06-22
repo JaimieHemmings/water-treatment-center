@@ -10,13 +10,14 @@ import ProductsList from './ProductsList'
 
 type Args = {
   params: {
-    category?: string
+    category: string
   }
+  searchParams: { [key: string]: string | string[] | undefined }
 }
 
 //@ts-ignore
 export default async function page({ params }: Args) {
-  const slug = await params.category
+  const slug = params.category
 
   if (!slug) {
     // If the slug is missing, show a 404 page.
@@ -84,7 +85,7 @@ const queryCategoryBySlug = cache(async ({ slug }: { slug: string }) => {
 
 export const generateMetadata = async ({ params }: Args) => {
   // The slug is the 'category' value from the URL params.
-  const slug = await params.category
+  const slug = params.category
 
   if (!slug) {
     return {}
