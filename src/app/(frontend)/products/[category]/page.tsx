@@ -8,15 +8,15 @@ import PageClient from './page.client'
 import Image from 'next/image'
 import ProductsList from './ProductsList'
 
-// Updated Props type: params is now a Promise
 type Props = {
   params: Promise<{
     category: string
   }>
-  searchParams: { [key: string]: string | string[] | undefined }
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
 }
 
-export default async function page({ params }: Props) {
+export default async function page({ params, searchParams }: Props) {
+  // Ensure searchParams is destructured here
   // Await params before destructuring
   const resolvedParams = await params
   const { category: slug } = resolvedParams
@@ -85,10 +85,14 @@ const queryCategoryBySlug = cache(async ({ slug }: { slug: string }) => {
   return result.docs || []
 })
 
-export const generateMetadata = async ({ params }: Props) => {
+export const generateMetadata = async ({ params, searchParams }: Props) => {
+  // Ensure searchParams is destructured here
   // Await params here as well
   const resolvedParams = await params
   const { category: slug } = resolvedParams
+
+  // If generateMetadata also uses searchParams, you would await it here too:
+  // const resolvedSearchParams = await searchParams;
 
   if (!slug) {
     return {}
