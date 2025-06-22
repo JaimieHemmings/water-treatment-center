@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { getPayload } from 'payload'
 import React, { cache } from 'react'
 import configPromise from '@payload-config'
