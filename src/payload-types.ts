@@ -203,6 +203,7 @@ export interface Page {
     | CostCalculatorBlock
     | WideTextBlock
     | ComplexCalculator
+    | CountyDisplayBlock
   )[];
   meta?: {
     title?: string | null;
@@ -1263,6 +1264,15 @@ export interface ComplexCalculator {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "County Display Block".
+ */
+export interface CountyDisplayBlock {
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'countyDisplayBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "products".
  */
 export interface Product {
@@ -1883,6 +1893,7 @@ export interface PagesSelect<T extends boolean = true> {
         costCalculatorBlock?: T | CostCalculatorBlockSelect<T>;
         wideTextBlock?: T | WideTextBlockSelect<T>;
         complexCalcBlock?: T | ComplexCalculatorSelect<T>;
+        countyDisplayBlock?: T | CountyDisplayBlockSelect<T>;
       };
   meta?:
     | T
@@ -2261,6 +2272,14 @@ export interface ComplexCalculatorSelect<T extends boolean = true> {
   SoftenerCalcText?: T;
   id?: T;
   blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "County Display Block_select".
+ */
+export interface CountyDisplayBlockSelect {
+  id?: boolean;
+  blockName?: boolean;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

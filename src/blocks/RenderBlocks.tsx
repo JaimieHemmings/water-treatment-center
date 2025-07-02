@@ -28,6 +28,7 @@ import ProductsList from '@/blocks/ProductsList/Component'
 import WideTextBlock from '@/blocks/WideText/Component'
 import LinkListBlock from '@/blocks/LinkListBlock/Component'
 import ComplexCalcBlock from '@/blocks/ComplexCalc/Component'
+import CountyDisplayBlock from './CountyDisplayBlock/Component'
 
 const blockComponents = {
   content: ContentBlock,
@@ -56,6 +57,7 @@ const blockComponents = {
   wideTextBlock: WideTextBlock,
   linkListBlock: LinkListBlock,
   complexCalcBlock: ComplexCalcBlock,
+  countyDisplayBlock: CountyDisplayBlock,
 }
 
 export const RenderBlocks: React.FC<{
@@ -75,9 +77,7 @@ export const RenderBlocks: React.FC<{
             const Block = blockComponents[blockType]
 
             if (Block) {
-              return (
-                <Block {...block} key={index} disableInnerContainer />
-              )
+              return <Block {...block} key={index} disableInnerContainer />
             }
           }
           return null
