@@ -1267,6 +1267,7 @@ export interface ComplexCalculator {
  * via the `definition` "County Display Block".
  */
 export interface CountyDisplayBlock {
+  title?: string | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'countyDisplayBlock';
@@ -2278,6 +2279,7 @@ export interface ComplexCalculatorSelect<T extends boolean = true> {
  * via the `definition` "County Display Block_select".
  */
 export interface CountyDisplayBlockSelect {
+  title?: boolean;
   id?: boolean;
   blockName?: boolean;
 }
