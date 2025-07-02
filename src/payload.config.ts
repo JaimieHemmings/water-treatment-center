@@ -9,6 +9,7 @@ import { buildConfig } from 'payload'
 import { fileURLToPath } from 'url'
 
 import { Media } from './collections/Media'
+import { Counties } from './collections/Counties'
 import { Products } from './collections/Products'
 import { Supporting } from './collections/Supporting'
 import { Services } from './collections/Services'
@@ -86,7 +87,24 @@ export default buildConfig({
       connectionString: process.env.DATABASE_URI || '',
     },
   }),
-  collections: [Pages, Posts, Media, Users, Products, Supporting, Services, ProductCategories, subcategories, TestSubmissions, TestKitRequests, HardnessResults, WellTestResults, Banner, QuoteRequests],
+  collections: [
+    Pages,
+    Posts,
+    Media,
+    Users,
+    Products,
+    Supporting,
+    Services,
+    ProductCategories,
+    subcategories,
+    TestSubmissions,
+    TestKitRequests,
+    HardnessResults,
+    WellTestResults,
+    Banner,
+    QuoteRequests,
+    Counties,
+  ],
   cors: [getServerSideURL()].filter(Boolean),
   globals: [Header, Footer],
   secret: process.env.PAYLOAD_SECRET,
@@ -114,5 +132,5 @@ export default buildConfig({
     defaultFromAddress: process.env.EMAIL_FROM_ADDRESS,
     defaultFromName: process.env.EMAIL_FROM_NAME,
     apiKey: process.env.RESEND_API || '',
-  })
+  }),
 })

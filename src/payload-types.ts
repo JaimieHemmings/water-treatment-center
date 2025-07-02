@@ -82,6 +82,7 @@ export interface Config {
     'well-test-results': WellTestResult;
     banners: Banner;
     quoteRequests: QuoteRequest;
+    counties: County;
     redirects: Redirect;
     forms: Form;
     'form-submissions': FormSubmission;
@@ -107,6 +108,7 @@ export interface Config {
     'well-test-results': WellTestResultsSelect<false> | WellTestResultsSelect<true>;
     banners: BannersSelect<false> | BannersSelect<true>;
     quoteRequests: QuoteRequestsSelect<false> | QuoteRequestsSelect<true>;
+    counties: CountiesSelect<false> | CountiesSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
@@ -1569,6 +1571,67 @@ export interface QuoteRequest {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "counties".
+ */
+export interface County {
+  id: number;
+  title: string;
+  hero?: {
+    type?: ('none' | 'highImpact' | 'mediumImpact' | 'lowImpact') | null;
+    slides?:
+      | {
+          image?: (number | null) | Media;
+          video?: (number | null) | Media;
+          title: string;
+          titleHighlight?: string | null;
+          titleEnd?: string | null;
+          paragraph: string;
+          lType?: ('support' | 'page' | 'noLink') | null;
+          pageLink?: (number | null) | Page;
+          supportLink?: (number | null) | SupportingDocument;
+          linkLabel?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  layout: (
+    | CallToActionBlock
+    | ContentBlock
+    | FormBlock
+    | TextBlock
+    | TwoColumn
+    | ServicesBlock
+    | BlogFeed
+    | ContactBlock
+    | TextWithImageBlock
+    | StatsBlock
+    | BlockRow
+    | ImageList
+    | FaqBlock
+    | VideoBlock
+    | YoutubeBlock
+    | TestKitForm
+    | ReviewBlock
+    | ImageGrid
+    | SplitTextBlock
+    | WideTextBlock
+  )[];
+  meta?: {
+    title?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (number | null) | Media;
+    description?: string | null;
+  };
+  slug?: string | null;
+  slugLock?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1706,6 +1769,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'quoteRequests';
         value: number | QuoteRequest;
+      } | null)
+    | ({
+        relationTo: 'counties';
+        value: number | County;
       } | null)
     | ({
         relationTo: 'redirects';
@@ -2733,6 +2800,69 @@ export interface QuoteRequestsSelect<T extends boolean = true> {
   model?: T;
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "counties_select".
+ */
+export interface CountiesSelect<T extends boolean = true> {
+  title?: T;
+  hero?:
+    | T
+    | {
+        type?: T;
+        slides?:
+          | T
+          | {
+              image?: T;
+              video?: T;
+              title?: T;
+              titleHighlight?: T;
+              titleEnd?: T;
+              paragraph?: T;
+              lType?: T;
+              pageLink?: T;
+              supportLink?: T;
+              linkLabel?: T;
+              id?: T;
+            };
+      };
+  layout?:
+    | T
+    | {
+        cta?: T | CallToActionBlockSelect<T>;
+        content?: T | ContentBlockSelect<T>;
+        formBlock?: T | FormBlockSelect<T>;
+        textBlock?: T | TextBlockSelect<T>;
+        twoColumn?: T | TwoColumnSelect<T>;
+        servicesBlock?: T | ServicesBlockSelect<T>;
+        blogFeed?: T | BlogFeedSelect<T>;
+        contactBlock?: T | ContactBlockSelect<T>;
+        textWithImageBlock?: T | TextWithImageBlockSelect<T>;
+        statsBlock?: T | StatsBlockSelect<T>;
+        blockRow?: T | BlockRowSelect<T>;
+        imageList?: T | ImageListSelect<T>;
+        faqblock?: T | FaqBlockSelect<T>;
+        videoBlock?: T | VideoBlockSelect<T>;
+        youtubeBlock?: T | YoutubeBlockSelect<T>;
+        testKitForm?: T | TestKitFormSelect<T>;
+        reviewBlock?: T | ReviewBlockSelect<T>;
+        imageGrid?: T | ImageGridSelect<T>;
+        splitTextBlock?: T | SplitTextBlockSelect<T>;
+        wideTextBlock?: T | WideTextBlockSelect<T>;
+      };
+  meta?:
+    | T
+    | {
+        title?: T;
+        image?: T;
+        description?: T;
+      };
+  slug?: T;
+  slugLock?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
