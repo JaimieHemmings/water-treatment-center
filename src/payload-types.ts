@@ -1264,7 +1264,7 @@ export interface ComplexCalculator {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "County Display Block".
+ * via the `definition` "CountyDisplayBlock".
  */
 export interface CountyDisplayBlock {
   title?: string | null;
@@ -2276,12 +2276,12 @@ export interface ComplexCalculatorSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "County Display Block_select".
+ * via the `definition` "CountyDisplayBlock_select".
  */
-export interface CountyDisplayBlockSelect {
-  title?: boolean;
-  id?: boolean;
-  blockName?: boolean;
+export interface CountyDisplayBlockSelect<T extends boolean = true> {
+  title?: T;
+  id?: T;
+  blockName?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
