@@ -1,112 +1,85 @@
 import type { Metadata } from 'next'
 
-import { PayloadRedirects } from '@/components/PayloadRedirects'
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
 import { draftMode } from 'next/headers'
 import React, { cache } from 'react'
-import { homeStatic } from '@/endpoints/seed/home-static'
+import Link from 'next/link'
 
-import type { Page as PageType } from '@/payload-types'
+import type { County } from '@/payload-types'
 
-import { RenderBlocks } from '@/blocks/RenderBlocks'
-import { RenderHero } from '@/heros/RenderHero'
 import { generateMeta } from '@/utilities/generateMeta'
 import PageClient from './page.client'
-import { LivePreviewListener } from '@/components/LivePreviewListener'
 
-export async function generateStaticParams() {
-  const payload = await getPayload({ config: configPromise })
-  const pages = await payload.find({
-    collection: 'pages',
-    draft: false,
-    limit: 1000,
-    overrideAccess: false,
-    pagination: false,
-    select: {
-      slug: true,
-    },
-  })
-
-  const params = pages.docs
-    ?.filter((doc) => {
-      return doc.slug !== 'home'
-    })
-    .map(({ slug }) => {
-      return { slug }
-    })
-
-  return params
-}
-
-type Args = {
-  params: Promise<{
-    slug?: string
-  }>
-}
-
-export default async function Page({ params: paramsPromise }: Args) {
-  const { isEnabled: draft } = await draftMode()
-  const { slug = 'home' } = await paramsPromise
-  const url = '/' + slug
-
-  let page: PageType | null
-
-  page = await queryPageBySlug({
-    slug,
-  })
-
-  // Remove this code once your website is seeded
-  if (!page && slug === 'home') {
-    page = homeStatic
-  }
-
-  if (!page) {
-    return <PayloadRedirects url={url} />
-  }
-
-  const { hero, layout } = page
+export default async function CountiesPage() {
+  const counties = await getAllCounties()
 
   return (
-    <article>
+    <article className="container mx-auto px-4 py-8">
       <PageClient />
-      {/* Allows redirects for valid pages too */}
-      <PayloadRedirects disableNotFound url={url} />
+      <div className="max-w-4xl mx-auto">
+        <h1 className="text-4xl font-bold mb-8 text-center">Counties We Serve</h1>
 
-      {draft && <LivePreviewListener />}
+        {counties.length === 0 ? (
+          <p className="text-center text-gray-600">No counties found.</p>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {counties.map((county) => (
+              <div
+                key={county.id}
+                className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 p-6 border border-gray-200"
+              >
+                <h2 className="text-xl font-semibold mb-3 text-gray-800">{county.title}</h2>
 
-      <RenderHero {...hero} />
-      <RenderBlocks blocks={layout} />
+                {county.meta?.description && (
+                  <p className="text-gray-600 text-sm mb-4 line-clamp-3">
+                    {county.meta.description}
+                  </p>
+                )}
+
+                {county.slug && (
+                  <Link
+                    href={`/counties/${county.slug}`}
+                    className="inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors duration-200 text-sm font-medium"
+                  >
+                    Learn More
+                  </Link>
+                )}
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
     </article>
   )
 }
 
-export async function generateMetadata({ params: paramsPromise }): Promise<Metadata> {
-  const { slug = 'home' } = await paramsPromise
-  const page = await queryPageBySlug({
-    slug,
+export async function generateMetadata(): Promise<Metadata> {
+  return generateMeta({
+    doc: {
+      title: 'Counties We Serve',
+      meta: {
+        title: 'Counties We Serve - Water Treatment Services',
+        description:
+          'Explore all the counties where we provide water treatment services. Find your local area for professional water treatment solutions.',
+      },
+    },
   })
-
-  return generateMeta({ doc: page })
 }
 
-const queryPageBySlug = cache(async ({ slug }: { slug: string }) => {
+const getAllCounties = cache(async (): Promise<County[]> => {
   const { isEnabled: draft } = await draftMode()
 
   const payload = await getPayload({ config: configPromise })
 
   const result = await payload.find({
-    collection: 'pages',
+    collection: 'counties',
     draft,
-    limit: 1,
+    limit: 1000,
     pagination: false,
     overrideAccess: draft,
-    where: {
-      slug: {
-        equals: slug,
-      },
-    },
+    sort: 'title', // Sort alphabetically by title
   })
 
-  return result.docs?.[0] || null
+  return result.docs || []
 })
