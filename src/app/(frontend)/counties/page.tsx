@@ -11,19 +11,22 @@ import type { County } from '@/payload-types'
 import { generateMeta } from '@/utilities/generateMeta'
 import PageClient from './page.client'
 
+import Header from './Components/header'
+
 export default async function CountiesPage() {
   const counties = await getAllCounties()
 
   return (
-    <article className="container mx-auto px-4 py-8">
+    <article>
       <PageClient />
-      <div className="max-w-4xl mx-auto">
-        <h1 className="text-4xl font-bold mb-8 text-center">Counties We Serve</h1>
+      <Header />
+      <div className="max-w-4xl mx-auto container py-[5rem]">
+        <h1 className="text-4xl font-bold mb-8 text-center">Water issues by County</h1>
 
         {counties.length === 0 ? (
           <p className="text-center text-gray-600">No counties found.</p>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {counties.map((county) => (
               <div
                 key={county.id}
@@ -78,7 +81,7 @@ const getAllCounties = cache(async (): Promise<County[]> => {
     limit: 1000,
     pagination: false,
     overrideAccess: draft,
-    sort: 'title', // Sort alphabetically by title
+    sort: 'title',
   })
 
   return result.docs || []
