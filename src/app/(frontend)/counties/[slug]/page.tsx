@@ -49,9 +49,7 @@ export default async function Page({ params: paramsPromise }: Args) {
   const { slug = 'home' } = await paramsPromise
   const url = '/' + slug
 
-  let page: County | null
-
-  page = (await queryPageBySlug({
+  const page: County | null = (await queryPageBySlug({
     slug,
   })) as County | null
 
