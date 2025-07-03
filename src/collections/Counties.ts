@@ -57,6 +57,11 @@ export const Counties: CollectionConfig = {
       required: true,
     },
     {
+      name: 'excerptImage',
+      type: 'upload',
+      relationTo: 'media',
+    },
+    {
       type: 'tabs',
       tabs: [
         {

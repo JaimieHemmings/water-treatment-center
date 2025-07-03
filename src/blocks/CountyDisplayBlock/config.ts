@@ -9,6 +9,12 @@ export const CountyDisplayBlock: Block = {
       type: 'text',
       label: 'Title',
     },
+    {
+      name: 'description',
+      type: 'textarea',
+      label: 'Description',
+      required: false,
+    },
   ],
   labels: {
     plural: 'County Display Blocks',

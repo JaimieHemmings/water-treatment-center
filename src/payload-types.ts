@@ -1268,6 +1268,7 @@ export interface ComplexCalculator {
  */
 export interface CountyDisplayBlock {
   title?: string | null;
+  description?: string | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'countyDisplayBlock';
@@ -1587,6 +1588,7 @@ export interface QuoteRequest {
 export interface County {
   id: number;
   title: string;
+  excerptImage?: (number | null) | Media;
   hero?: {
     type?: ('none' | 'highImpact' | 'mediumImpact' | 'lowImpact') | null;
     slides?:
@@ -2280,6 +2282,7 @@ export interface ComplexCalculatorSelect<T extends boolean = true> {
  */
 export interface CountyDisplayBlockSelect<T extends boolean = true> {
   title?: T;
+  description?: T;
   id?: T;
   blockName?: T;
 }
@@ -2828,6 +2831,7 @@ export interface QuoteRequestsSelect<T extends boolean = true> {
  */
 export interface CountiesSelect<T extends boolean = true> {
   title?: T;
+  excerptImage?: T;
   hero?:
     | T
     | {
