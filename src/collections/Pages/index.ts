@@ -30,6 +30,7 @@ import { CostCalculatorBlock } from '@/blocks/CostCalculator/config'
 import { WideTextBlock } from '@/blocks/WideText/config'
 import { ComplexCalcBlock } from '@/blocks/ComplexCalc/config'
 import { CountyDisplayBlock } from '@/blocks/CountyDisplayBlock/config'
+import { ImageGalleryBlock } from '@/blocks/ImageGalleryBlock/config'
 
 import {
   MetaDescriptionField,
@@ -118,6 +119,7 @@ export const Pages: CollectionConfig<'pages'> = {
                 WideTextBlock,
                 ComplexCalcBlock,
                 CountyDisplayBlock,
+                ImageGalleryBlock,
               ],
               required: true,
               admin: {

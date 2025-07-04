@@ -29,6 +29,7 @@ import WideTextBlock from '@/blocks/WideText/Component'
 import LinkListBlock from '@/blocks/LinkListBlock/Component'
 import ComplexCalcBlock from '@/blocks/ComplexCalc/Component'
 import CountyDisplayBlock from './CountyDisplayBlock/Component'
+import ImageGalleryBlock from '@/blocks/ImageGalleryBlock/Component'
 
 const blockComponents = {
   content: ContentBlock,
@@ -58,6 +59,7 @@ const blockComponents = {
   linkListBlock: LinkListBlock,
   complexCalcBlock: ComplexCalcBlock,
   countyDisplayBlock: CountyDisplayBlock,
+  imageGalleryBlock: ImageGalleryBlock,
 }
 
 export const RenderBlocks: React.FC<{

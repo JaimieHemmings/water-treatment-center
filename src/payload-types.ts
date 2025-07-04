@@ -204,6 +204,7 @@ export interface Page {
     | WideTextBlock
     | ComplexCalculator
     | CountyDisplayBlock
+    | ImageGalleryBlock
   )[];
   meta?: {
     title?: string | null;
@@ -1275,6 +1276,21 @@ export interface CountyDisplayBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ImageGalleryBlock".
+ */
+export interface ImageGalleryBlock {
+  Images?:
+    | {
+        image: number | Media;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'imageGalleryBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "products".
  */
 export interface Product {
@@ -1628,6 +1644,7 @@ export interface County {
     | ImageGrid
     | SplitTextBlock
     | WideTextBlock
+    | ImageGalleryBlock
   )[];
   meta?: {
     title?: string | null;
@@ -1897,6 +1914,7 @@ export interface PagesSelect<T extends boolean = true> {
         wideTextBlock?: T | WideTextBlockSelect<T>;
         complexCalcBlock?: T | ComplexCalculatorSelect<T>;
         countyDisplayBlock?: T | CountyDisplayBlockSelect<T>;
+        imageGalleryBlock?: T | ImageGalleryBlockSelect<T>;
       };
   meta?:
     | T
@@ -2283,6 +2301,20 @@ export interface ComplexCalculatorSelect<T extends boolean = true> {
 export interface CountyDisplayBlockSelect<T extends boolean = true> {
   title?: T;
   description?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ImageGalleryBlock_select".
+ */
+export interface ImageGalleryBlockSelect<T extends boolean = true> {
+  Images?:
+    | T
+    | {
+        image?: T;
+        id?: T;
+      };
   id?: T;
   blockName?: T;
 }
@@ -2875,6 +2907,7 @@ export interface CountiesSelect<T extends boolean = true> {
         imageGrid?: T | ImageGridSelect<T>;
         splitTextBlock?: T | SplitTextBlockSelect<T>;
         wideTextBlock?: T | WideTextBlockSelect<T>;
+        imageGalleryBlock?: T | ImageGalleryBlockSelect<T>;
       };
   meta?:
     | T

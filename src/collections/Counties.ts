@@ -29,6 +29,7 @@ import { ReviewBlock } from '@/blocks/ReviewBlock/config'
 import { ImageGrid } from '@/blocks/ImageGrid/config'
 import { SplitTextBlock } from '@/blocks/SplitTextBlock/config'
 import { WideTextBlock } from '@/blocks/WideText/config'
+import { ImageGalleryBlock } from '@/blocks/ImageGalleryBlock/config'
 
 import { authenticated } from '../access/authenticated'
 import { authenticatedOrPublished } from '../access/authenticatedOrPublished'
@@ -94,6 +95,7 @@ export const Counties: CollectionConfig = {
                 ImageGrid,
                 SplitTextBlock,
                 WideTextBlock,
+                ImageGalleryBlock,
               ],
               required: true,
               admin: {
