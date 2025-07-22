@@ -107,10 +107,12 @@ export const TextWithImageBlock: React.FC<TextWithImageBlockProps> = ({
                 <blockquote
                   className={`relative pl-6 my-6 text-lg italic font-light ${darkmode ? 'text-white/90' : 'text-textblue/90'}`}
                 >
-                  <span className="absolute -left-2 -top-2 text-selectiveyellow text-2xl">"</span>
+                  <span className="absolute -left-2 -top-2 text-selectiveyellow text-2xl">
+                    &quot;
+                  </span>
                   {quote}
                   <span className="absolute -right-1 -bottom-3 text-selectiveyellow text-2xl">
-                    "
+                    &quot;
                   </span>
                 </blockquote>
               </AnimateIn>
