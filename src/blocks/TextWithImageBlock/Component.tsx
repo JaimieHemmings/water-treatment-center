@@ -82,9 +82,9 @@ export const TextWithImageBlock: React.FC<TextWithImageBlockProps> = ({
           <div className="max-w-prose mx-auto px-6">
             <AnimateIn animation={fadeIn}>
               <h2
-                className={`text-sm tracking-widest mb-6 uppercase font-semibold ${darkmode ? 'text-selectiveyellow' : 'text-azul'}`}
+                className={`text-sm tracking-widest mb-6 uppercase font-semibold ${darkmode ? 'text-selectiveyellow' : 'text-teal'}`}
               >
-                <FaDroplet className="mr-2 relative inline-block -top-[2px] text-base" />
+                <FaDroplet className="mr-2 relative inline-block -top-[2px] text-teal" />
                 {title}
               </h2>
             </AnimateIn>
