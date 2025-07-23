@@ -69,7 +69,7 @@ export const FaqBlock: React.FC<FaqBlockProps> = ({
                   link={`/${linkURL.slug}`}
                   theme="dark"
                   label={linkLabel}
-                  className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-selectiveyellow to-teal text-white font-semibold rounded-xl hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                  className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-selectiveyellow to-teal text-white font-semibold rounded-xl hover:shadow-xl transition-all duration-300 transform hover:text-white hover:bg-teal/90 border-0"
                 />
               </div>
             </div>
