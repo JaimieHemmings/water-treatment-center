@@ -32,6 +32,7 @@ import { ComplexCalcBlock } from '@/blocks/ComplexCalc/config'
 import { CountyDisplayBlock } from '@/blocks/CountyDisplayBlock/config'
 import { ImageGalleryBlock } from '@/blocks/ImageGalleryBlock/config'
 import { ProblemBlock } from '@/blocks/ProblemBlock/config'
+import { ServicesOverviewBlock } from '@/blocks/ServicesOverviewBlock/config'
 
 import {
   MetaDescriptionField,
@@ -122,6 +123,7 @@ export const Pages: CollectionConfig<'pages'> = {
                 CountyDisplayBlock,
                 ImageGalleryBlock,
                 ProblemBlock,
+                ServicesOverviewBlock,
               ],
               required: true,
               admin: {

@@ -214,6 +214,7 @@ export interface Page {
     | CountyDisplayBlock
     | ImageGalleryBlock
     | ProblemBlock
+    | ServicesOverviewBlock
   )[];
   meta?: {
     title?: string | null;
@@ -1339,6 +1340,15 @@ export interface ProblemBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ServicesOverviewBlock".
+ */
+export interface ServicesOverviewBlock {
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'servicesOverviewBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "products".
  */
 export interface Product {
@@ -1974,6 +1984,7 @@ export interface PagesSelect<T extends boolean = true> {
         countyDisplayBlock?: T | CountyDisplayBlockSelect<T>;
         imageGalleryBlock?: T | ImageGalleryBlockSelect<T>;
         problemBlock?: T | ProblemBlockSelect<T>;
+        servicesOverviewBlock?: T | ServicesOverviewBlockSelect<T>;
       };
   meta?:
     | T
@@ -2400,6 +2411,14 @@ export interface ProblemBlockSelect<T extends boolean = true> {
   ctaSubtitle?: T;
   ctaParagraph?: T;
   ctaLinkText?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ServicesOverviewBlock_select".
+ */
+export interface ServicesOverviewBlockSelect<T extends boolean = true> {
   id?: T;
   blockName?: T;
 }
