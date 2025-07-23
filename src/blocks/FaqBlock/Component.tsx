@@ -1,21 +1,21 @@
-import React from "react";
-import FAQBlockClient from "./client";
-import Image from "next/image";
-import CustomLink from "@/components/CustomLink";
-import { FaDroplet } from "react-icons/fa6";
+import React from 'react'
+import FAQBlockClient from './client'
+import Image from 'next/image'
+import CustomLink from '@/components/CustomLink'
+import { FaDroplet } from 'react-icons/fa6'
 
 interface FaqBlockProps {
-  title: string;
+  title: string
   questions: {
-    question: string;
-    answer: string;
-  },
-  sideTitle: string;
-  sideContent: string;
-  linkLabel: string;
+    question: string
+    answer: string
+  }
+  sideTitle: string
+  sideContent: string
+  linkLabel: string
   linkURL: {
-    slug: string;    
-  };
+    slug: string
+  }
 }
 
 export const FaqBlock: React.FC<FaqBlockProps> = ({
@@ -27,47 +27,62 @@ export const FaqBlock: React.FC<FaqBlockProps> = ({
   linkURL,
 }) => {
   return (
-    <section className="py-[5rem] bg-antiflashwhite text-white relative">
-      <div className="absolute top-0 left-0 w-full h-full z-0">
+    <section className="py-20 bg-gradient-to-br from-antiflashwhite via-white to-antiflashwhite relative overflow-hidden">
+      {/* Background decorative elements */}
+      <div className="absolute top-10 right-10 w-32 h-32 bg-selectiveyellow/5 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-20 left-20 w-40 h-40 bg-teal/5 rounded-full blur-3xl"></div>
+
+      {/* Background image with improved overlay */}
+      <div className="absolute inset-0 z-0">
         <Image
           src="/ripples.jpg"
-          alt="Decorative splash"
-          className="w-full h-full object-cover opacity-20"
+          alt="Decorative water ripples"
+          className="w-full h-full object-cover"
           fill
         />
+        <div className="absolute inset-0 bg-gradient-to-br from-white/90 via-white/85 to-antiflashwhite/90"></div>
       </div>
-      <div className="relative z-10">
-        <div className="container">
-          <div className="flex flex-col md:flex-row gap-4">
-            <div className="flex flex-col gap-4 basis-1/2">
-            <div className="pl-5 border-l-[5px] border-selectiveyellow mb-5">
-              <h2 className="text-sm md:text-sm text-selectiveyellow m-0 pb-5 tracking-widest uppercase">
-                <FaDroplet className="inline-block text-selectiveyellow mr-2" />
+
+      <div className="container relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+          {/* Content Section */}
+          <div className="space-y-8">
+            <div className="space-y-6">
+              <h2 className="text-sm tracking-widest mb-4 uppercase font-semibold text-selectiveyellow flex items-center gap-2">
+                <FaDroplet className="text-selectiveyellow animate-pulse" />
                 {title}
               </h2>
-              <p className="text-textblue text-2xl md:text-4xl font-semibold">
-                {sideTitle}
-              </p>
+
+              <div className="space-y-4">
+                <h3 className="text-3xl md:text-5xl font-bold text-textblue leading-tight">
+                  {sideTitle}
+                </h3>
+                <div className="w-16 h-0.5 bg-gradient-to-r from-selectiveyellow to-teal"></div>
+              </div>
             </div>
-              <p className="text-textblue pb-5 prose md:prose-lg">
-                {sideContent}
-              </p>
-              <div className="w-full flex flex-row justify-start align-middle">
+
+            <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-8 border border-white/50 shadow-lg">
+              <p className="text-textblue/90 leading-relaxed text-lg">{sideContent}</p>
+
+              <div className="pt-6">
                 <CustomLink
                   link={`/${linkURL.slug}`}
                   theme="dark"
                   label={linkLabel}
+                  className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-selectiveyellow to-teal text-white font-semibold rounded-xl hover:shadow-xl transition-all duration-300 transform hover:scale-105"
                 />
               </div>
             </div>
-            <div className="basis-1/2 md:px-5">
-              <FAQBlockClient questions={questions} />
-            </div>
+          </div>
+
+          {/* FAQ Section */}
+          <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 border border-white/50 shadow-xl">
+            <FAQBlockClient questions={questions} />
           </div>
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default FaqBlock;
+export default FaqBlock
