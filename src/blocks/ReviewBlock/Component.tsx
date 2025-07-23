@@ -3,7 +3,7 @@ import ReviewCarousel from './ReviewCarousel'
 import Image from 'next/image'
 import { FaGoogle } from 'react-icons/fa'
 import Link from 'next/link'
-import { FaDroplet } from "react-icons/fa6";
+import { FaDroplet } from 'react-icons/fa6'
 
 interface ReviewBlockProps {
   title: string
@@ -15,46 +15,64 @@ interface ReviewBlockProps {
   youtubeEmbed: string
 }
 
-const ReviewBlock: React.FC<ReviewBlockProps> = ({title, subtitle, reviews, youtubeEmbed}) => {
+const ReviewBlock: React.FC<ReviewBlockProps> = ({ title, subtitle, reviews, youtubeEmbed }) => {
   return (
-    <div className="py-[5rem] relative bg-darkblue z-20">
-      <div className="container flex flex-col lg:flex-row gap-10 py-5 pt-[3rem]">
-        <div className="lg:basis-1/2">
-          <div className="relative w-full rounded-lg overflow-hidden">
-            <div className="pb-5 text-white border-l-[5px] border-selectiveyellow pl-5 mb-5">
-              <h2 className="text-sm md:text-sm text-selectiveyellow m-0 pb-5 tracking-widest uppercase">
-                <FaDroplet className="inline-block text-selectiveyellow mr-2 -top-[4px]" />
+    <section className="py-20 bg-gradient-to-br from-darkblue via-darkblue to-teal relative overflow-hidden">
+      {/* Background decorative elements */}
+      <div className="absolute top-10 right-10 w-32 h-32 bg-selectiveyellow/5 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-20 left-20 w-40 h-40 bg-teal/5 rounded-full blur-3xl"></div>
+
+      <div className="container relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          {/* Content Section */}
+          <div className="space-y-8">
+            <div className="space-y-6">
+              <h2 className="text-sm tracking-widest mb-4 uppercase font-semibold text-selectiveyellow flex items-center gap-2">
+                <FaDroplet className="text-selectiveyellow animate-pulse" />
                 {title}
               </h2>
-              <p className="text-2xl md:text-4xl">{subtitle}</p>
+
+              <div className="space-y-4">
+                <h3 className="text-3xl md:text-5xl font-bold text-white leading-tight">
+                  {subtitle}
+                </h3>
+                <div className="w-16 h-0.5 bg-gradient-to-r from-selectiveyellow to-teal"></div>
+              </div>
+            </div>
+
+            <div className="pt-4">
+              <Link
+                target="_blank"
+                href="https://www.google.com/search?client=firefox-b-d&q=thewatertreatment+centre+ireland#lrd=0x485daf9cb276c2eb:0x6d324757580b9ad2,1,,,,"
+                className="group inline-flex items-center justify-center gap-3 px-8 py-4 bg-white/10 backdrop-blur-sm border border-white/20 text-white font-semibold rounded-xl hover:bg-selectiveyellow hover:border-selectiveyellow hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+              >
+                <FaGoogle className="text-xl group-hover:scale-110 transition-transform duration-300" />
+                <span>Read More Reviews</span>
+              </Link>
             </div>
           </div>
-          <div className="flex-row items-center justify-center mt-5">
-            <Link
-              target="_blank"
-              href="https://www.google.com/search?client=firefox-b-d&q=thewatertreatment+centre+ireland#lrd=0x485daf9cb276c2eb:0x6d324757580b9ad2,1,,,,"
-              className="inline-flex items-center justify-center whitespace-nowrap font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-11 px-8 mt-3 bg-white border border-selectiveyellow text-jet hover:bg-selectiveyellow hover:text-white text-lg"
-              >
-              <span className="flex flex-row items-center justify-center gap-2">
-                <FaGoogle className="text-xl" />
-                Read More Reviews
-              </span>
-            </Link>
+
+          {/* Reviews Section */}
+          <div className="relative">
+            {/* Background logo with improved styling */}
+            <div className="absolute -top-8 -right-8 opacity-5 pointer-events-none">
+              <Image
+                src="/logo-image.png"
+                width={200}
+                height={200}
+                alt="Logo"
+                className="w-48 h-auto rotate-12"
+              />
+            </div>
+
+            {/* Reviews carousel with modern container */}
+            <div className="relative bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 shadow-2xl">
+              <ReviewCarousel reviews={reviews} />
+            </div>
           </div>
         </div>
-        <div className="lg:basis-1/2 relative">
-          <Image 
-            src="/logo-image.png" 
-            width={150} 
-            height={150} 
-            alt="Logo" 
-            className="opacity-10 w-[50%] h-auto -z-1 right-0 bottom-0 absolute" 
-          />
-          
-          <ReviewCarousel reviews={reviews} />
-        </div>
       </div>
-    </div>
+    </section>
   )
 }
 

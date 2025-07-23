@@ -1,80 +1,77 @@
+import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { FaFacebook, FaYoutube, FaPhoneAlt } from "react-icons/fa";
-import { MdEmail } from "react-icons/md";
-import { FaLocationDot } from "react-icons/fa6";
-import { FaTiktok } from "react-icons/fa";
-import { FaInstagram } from "react-icons/fa";
-
+import { FaFacebook, FaYoutube, FaPhoneAlt } from 'react-icons/fa'
+import { MdEmail } from 'react-icons/md'
+import { FaLocationDot } from 'react-icons/fa6'
+import { FaTiktok } from 'react-icons/fa'
+import { FaInstagram } from 'react-icons/fa'
 
 const SOCIAL_LINKS: any = [
-  { 
+  {
     icon: <FaFacebook className="text-white text-4xl" />,
     href: 'https://www.facebook.com/www.thewatertreatmentcentre.ie/?locale=en_GB',
-    alt: 'facebook icon'
+    alt: 'facebook icon',
   },
   {
     icon: <FaYoutube className="text-4xl text-white" />,
     href: 'https://www.youtube.com/channel/UCrZ_V32WasPvf6MpT5aBtwQ',
-    alt: 'youtube icon'
+    alt: 'youtube icon',
   },
   {
     icon: <FaTiktok className="text-white text-4xl" />,
     href: 'https://www.tiktok.com/',
-    alt: 'tiktok icon'
+    alt: 'tiktok icon',
   },
   {
     icon: <FaInstagram className="text-white text-4xl" />,
     href: 'https://www.instagram.com/',
-    alt: 'instagram icon'
-  }
+    alt: 'instagram icon',
+  },
 ]
 
-const PhoneIcon = () => (
-  <FaPhoneAlt className="text-teal text-2xl" />
-)
+const PhoneIcon = () => <FaPhoneAlt className="text-teal text-2xl" />
 
-const EmailIcon = () => (
-  <MdEmail className="text-teal text-2xl" />
-)
+const EmailIcon = () => <MdEmail className="text-teal text-2xl" />
 
-const LocationIcon = () => (
-  <FaLocationDot className="text-teal text-2xl" />
-)
+const LocationIcon = () => <FaLocationDot className="text-teal text-2xl" />
 
 const CONTACT_INFO: any = [
   {
     icon: <PhoneIcon />,
     primary: '057 9333942',
-    href: 'tel:0579333942'
+    href: 'tel:0579333942',
   },
   {
     icon: <PhoneIcon />,
     primary: '086 1715686',
-    href: 'tel:0861715686'
+    href: 'tel:0861715686',
   },
   {
     icon: <EmailIcon />,
     primary: 'info@thewatertreatmentcentre.ie',
-    href: 'mailto:info@thewatertreatmentcentre.ie'
+    href: 'mailto:info@thewatertreatmentcentre.ie',
   },
   {
     icon: <LocationIcon />,
     primary: '13B Axis Business Park, Tullamore, Co Offaly, R35 XK13',
-    isAddress: true
-  }
+    isAddress: true,
+  },
 ]
 
 const SocialLinks: React.FC = () => (
-  <div className="flex gap-4 mt-3 align-middle">
+  <div className="flex gap-4">
     {SOCIAL_LINKS.map((social, index) => (
-      <a 
+      <a
         key={index}
-        className="text-white hover:scale-110" 
+        className="group p-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl hover:bg-selectiveyellow hover:border-selectiveyellow transition-all duration-300 transform hover:scale-110"
         target="_blank"
         href={social.href}
+        rel="noopener noreferrer"
       >
-        {social.icon}
+        <div className="text-white group-hover:text-white transition-colors duration-300 text-xl">
+          {React.cloneElement(social.icon, { className: 'text-xl' })}
+        </div>
       </a>
     ))}
   </div>
@@ -109,9 +106,9 @@ async function getFooterData(): Promise<any> {
           'Content-Type': 'application/json',
         },
         next: {
-          revalidate: 60
-        }
-      }
+          revalidate: 60,
+        },
+      },
     )
 
     if (!res.ok) {
@@ -124,7 +121,7 @@ async function getFooterData(): Promise<any> {
     return {
       siteNavigation: [],
       usefulLinks: [],
-      blurb: ''
+      blurb: '',
     }
   }
 }
@@ -132,112 +129,162 @@ async function getFooterData(): Promise<any> {
 export async function Footer() {
   const footerData = await getFooterData()
   return (
-    <footer className="bg-darkblue pt-9 relative z-20">
-      <div className="mx-auto w-full container px-4 xl:px-0">
-        <div className="flex flex-col justify-between sm:px-[18px] md:flex-row md:px-10 md:gap-4">
-          {/* Logo and Social Section */}
-          <div className="md:w-1/8">
-            <Link href="/">
-              <Image src="/logo.png" alt="logo" width={300} height={100} />
-            </Link>
-            <p className="text-md font-normal text-white/[80%] py-5">
-            {footerData.blurb}
-            </p>
-            <SocialLinks />
-          </div>
+    <footer className="bg-gradient-to-br from-darkblue via-darkblue to-teal relative overflow-hidden">
+      {/* Background decorative elements */}
+      <div className="absolute top-10 left-10 w-32 h-32 bg-selectiveyellow/5 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-20 right-20 w-40 h-40 bg-teal/5 rounded-full blur-3xl"></div>
 
-          {/* Navigation Links Section */}
-          <div className="mt-6 flex w-full flex-col justify-between text-white sm:flex-row md:mt-0 md:w-2/8 md:p-5 md:pt-0">
-            <div>
-              <h2 className="text-md md:text-xl font-medium leading-normal text-selectiveyellow uppercase inline-block pb-2 tracking-widest">Quick Links</h2>
-              <ul>
-              {footerData?.siteNavigation?.map((link, index) => (
-                <li key={index} className="mt-[15px]">
+      <div className="relative z-10 pt-16 pb-8">
+        <div className="container">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+            {/* Logo and Social Section */}
+            <div className="lg:col-span-1 space-y-6">
+              <Link href="/" className="block">
+                <Image
+                  src="/logo.png"
+                  alt="logo"
+                  width={250}
+                  height={80}
+                  className="h-auto w-auto max-w-[250px]"
+                />
+              </Link>
+
+              <p className="text-white/80 leading-relaxed">{footerData.blurb}</p>
+
+              <div className="pt-2">
+                <SocialLinks />
+              </div>
+            </div>
+
+            {/* Navigation Links Section */}
+            <div className="lg:col-span-1 space-y-6">
+              <h3 className="text-lg font-bold text-selectiveyellow uppercase tracking-widest flex items-center gap-2">
+                Quick Links
+                <div className="w-8 h-0.5 bg-gradient-to-r from-selectiveyellow to-teal"></div>
+              </h3>
+
+              <nav className="space-y-3">
+                {footerData?.siteNavigation?.map((link, index) => (
                   <Link
-                    className="text-white text-md uppercase font-normal hover:text-azul"
+                    key={index}
+                    className="block text-white/80 hover:text-selectiveyellow transition-colors duration-300 font-medium"
                     href={`/${link.link.slug}`}
                     title={link.link.title}
                   >
                     {link.link.title}
                   </Link>
-                </li>
-              ))}
-                <li className="mt-[15px]">
-                  <Link
-                    className="text-white uppercase text-md font-normal hover:text-azul"
-                    href="/products"
-                    title="Products"
-                  >
-                    PRODUCTS
-                  </Link>
-                </li>
-                <li className="mt-[15px]">
-                  <Link
-                    className="text-white uppercase text-md font-normal hover:text-azul"
-                    href="/news"
-                    title="News"
-                  >
-                    News
-                  </Link>
-                </li>
-                <li className="mt-[15px]">
-                  <Link
-                    className="text-white uppercase text-md font-normal hover:text-azul"
-                    href="/contact"
-                    title="Contact"
-                  >
-                    Contact
-                  </Link>
-                </li>
-              </ul>
+                ))}
+
+                <Link
+                  className="block text-white/80 hover:text-selectiveyellow transition-colors duration-300 font-medium"
+                  href="/products"
+                  title="Products"
+                >
+                  Products
+                </Link>
+
+                <Link
+                  className="block text-white/80 hover:text-selectiveyellow transition-colors duration-300 font-medium"
+                  href="/news"
+                  title="News"
+                >
+                  News
+                </Link>
+
+                <Link
+                  className="block text-white/80 hover:text-selectiveyellow transition-colors duration-300 font-medium"
+                  href="/contact"
+                  title="Contact"
+                >
+                  Contact
+                </Link>
+              </nav>
             </div>
-          </div>
 
-          {/* Contact Information Section */}
-          <div className="md:w-2/8 pb-5 md:px-5 mt-5 md:mt-0">
-            <h2 className="text-md md:text-xl font-medium leading-normal text-selectiveyellow uppercase inline-block pb-2 tracking-widest">Contact Us</h2>
-            {CONTACT_INFO.map((info, index) => (
-              <ContactSection key={index} info={info} />
-            ))}
-          </div>
+            {/* Contact Information Section */}
+            <div className="lg:col-span-1 space-y-6">
+              <h3 className="text-lg font-bold text-selectiveyellow uppercase tracking-widest flex items-center gap-2">
+                Contact Us
+                <div className="w-8 h-0.5 bg-gradient-to-r from-selectiveyellow to-teal"></div>
+              </h3>
 
+              <div className="space-y-4">
+                {CONTACT_INFO.map((info, index) => (
+                  <div key={index} className="group">
+                    <div className="flex items-start gap-3 p-3 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 transition-all duration-300">
+                      <div className="flex-shrink-0 mt-0.5">{info.icon}</div>
+                      <div className="flex-1 min-w-0">
+                        {info.href ? (
+                          <a
+                            href={info.href}
+                            className="text-white/90 hover:text-selectiveyellow transition-colors duration-300 font-medium break-words"
+                          >
+                            {info.primary}
+                          </a>
+                        ) : info.isAddress ? (
+                          <address className="text-white/90 not-italic font-medium break-words">
+                            {info.primary}
+                          </address>
+                        ) : (
+                          <p className="text-white/90 font-medium break-words">{info.primary}</p>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
 
-          <div className="mt-5 flex w-full flex-col justify-between text-white sm:flex-row md:mt-0 md:w-2/8 md:pb-5">
-            <div>
-            <h2 className="text-md md:text-xl font-medium leading-normal text-selectiveyellow uppercase inline-block pb-2 tracking-widest">Useful Links</h2>
-              <ul>
-              {footerData?.usefulLinks?.map((link, index) => (
-                <li key={index} className="mt-[15px]">
-                  {link.lType === 'cms' && link.CMSLink?.slug && (
-                    <Link
-                      className="text-white text-md font-normal uppercase hover:text-azul"
-                      href={`/${link.CMSLink.slug}`}
-                      title={link.title}
-                      >
-                      {link.label}
-                    </Link>
-                    )}
-                    {link.lType === 'supporting' && link.supportingDocsLink?.pageAssociation && link.supportingDocsLink?.slug && (
+            {/* Useful Links Section */}
+            <div className="lg:col-span-1 space-y-6">
+              <h3 className="text-lg font-bold text-selectiveyellow uppercase tracking-widest flex items-center gap-2">
+                Useful Links
+                <div className="w-8 h-0.5 bg-gradient-to-r from-selectiveyellow to-teal"></div>
+              </h3>
+
+              <nav className="space-y-3">
+                {footerData?.usefulLinks?.map((link, index) => (
+                  <div key={index}>
+                    {link.lType === 'cms' && link.CMSLink?.slug && (
                       <Link
-                        className="text-white text-md font-normal uppercase hover:text-azul"
-                        href={`/products/${link.supportingDocsLink.pageAssociation}/support/${link.supportingDocsLink.slug}`} 
-                        title={link.title} 
+                        className="block text-white/80 hover:text-selectiveyellow transition-colors duration-300 font-medium"
+                        href={`/${link.CMSLink.slug}`}
+                        title={link.title}
                       >
                         {link.label}
                       </Link>
                     )}
-                </li>
-              ))}
-              </ul>
+                    {link.lType === 'supporting' &&
+                      link.supportingDocsLink?.pageAssociation &&
+                      link.supportingDocsLink?.slug && (
+                        <Link
+                          className="block text-white/80 hover:text-selectiveyellow transition-colors duration-300 font-medium"
+                          href={`/products/${link.supportingDocsLink.pageAssociation}/support/${link.supportingDocsLink.slug}`}
+                          title={link.title}
+                        >
+                          {link.label}
+                        </Link>
+                      )}
+                  </div>
+                ))}
+              </nav>
             </div>
           </div>
-        </div>
 
-        {/* Copyright Section */}
-        <div className="flex justify-start pb-8 pt-4 mt-[30px] border-t-[1px] border-selectiveyellow">
-          <p className="text-sm font-normal text-white md:text-md">
-            © Copyright {new Date().getFullYear()}, All Rights Reserved by The Water Treatment Centre
-          </p>
+          {/* Copyright Section */}
+          <div className="border-t border-white/20 pt-8 mt-12">
+            <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+              <div className="flex items-center gap-3">
+                <div className="w-2 h-2 bg-selectiveyellow rounded-full animate-pulse"></div>
+                <p className="text-white/70 text-sm md:text-base">
+                  © Copyright {new Date().getFullYear()}, All Rights Reserved by The Water
+                  Treatment Centre
+                </p>
+              </div>
+
+              <div className="w-12 h-0.5 bg-gradient-to-r from-selectiveyellow to-teal opacity-50"></div>
+            </div>
+          </div>
         </div>
       </div>
     </footer>
