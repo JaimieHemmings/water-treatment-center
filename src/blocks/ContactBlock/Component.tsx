@@ -1,27 +1,27 @@
-import React from "react";
-import { FormBlock } from "@/blocks/Form/Component";
-import { MdPhone, MdEmail, MdLocationOn, MdWarehouse } from "react-icons/md";
-import { FaDroplet } from "react-icons/fa6";
+import React from 'react'
+import { FormBlock } from '@/blocks/Form/Component'
+import { MdPhone, MdEmail, MdLocationOn, MdWarehouse } from 'react-icons/md'
+import { FaDroplet } from 'react-icons/fa6'
 
 interface ContactBlockProps {
-  title: string;
-  subtitleStart: string;
-  subtitleHighlight: string;
-  subtitleEnd: string;
-  blocks: any;
+  title: string
+  subtitleStart: string
+  subtitleHighlight: string
+  subtitleEnd: string
+  blocks: any
   phoneNumbers: {
-    phoneNumber: string;
-  }[];
+    phoneNumber: string
+  }[]
   emailAddresses: {
-    emailAddress: string;
-  }[];
+    emailAddress: string
+  }[]
   showRoomAddresses: {
-    showRoomAddress: string;
-    showRoomOpeningHours: string;
-  }[];
+    showRoomAddress: string
+    showRoomOpeningHours: string
+  }[]
   warehouseAddresses: {
-    warehouseAddress: string;
-  }[];
+    warehouseAddress: string
+  }[]
 }
 
 export const ContactBlock: React.FC<ContactBlockProps> = ({
@@ -36,124 +36,179 @@ export const ContactBlock: React.FC<ContactBlockProps> = ({
   warehouseAddresses,
 }) => {
   return (
-    <section className="w-full pt-10 bg-darkblue text-white">
-      <div className="container flex flex-col md:flex-row-reverse">
-        <div className="basis-1/2 flex flex-col md:px-5">
-          <h2 className="text-selectiveyellow tracking-widest uppercase inline-block py-1 text-sm">
-            <FaDroplet className="inline-block text-selectiveyellow mr-2 -top-[2px] relative" />
-            {title}
-          </h2>
-          <p className="text-2xl md:text-4xl font-semibold pt-2 pb-5">
-            {subtitleStart}{' '}
-            <span className="text-white border-b-2 border-selectiveyellow">
-              {subtitleHighlight}
-            </span>
-            {' '}{subtitleEnd}
-          </p>
-        <div>
-          <h3 className="text-selectiveyellow tracking-widest uppercase inline-block py-1 text-sm pb-5">
-            Showrooms
-          </h3>
-        </div>
-        <div className="pb-5 border-b-[1px] border-white/60 mb-5">
-          { showRoomAddresses && (
-            showRoomAddresses.map((showRoomAddress, index) => {
-              return (
-                <div key={index} className="flex flex-row">
-                  <MdLocationOn className="text-white inline mr-3" size={24} />
-                  <div>
-                    <address className="text-white">
-                    {showRoomAddress.showRoomAddress}
-                    </address>
-                    <p className="text-white">
-                      {showRoomAddress.showRoomOpeningHours}
-                    </p>
-                  </div>
+    <section className="w-full pt-[4rem] bg-gradient-to-br from-darkblue via-darkblue to-teal relative overflow-hidden">
+      {/* Background decorative elements */}
+      <div className="absolute top-20 right-20 w-32 h-32 bg-selectiveyellow/10 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-20 left-20 w-40 h-40 bg-teal/10 rounded-full blur-3xl"></div>
+
+      <div className="container relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+          {/* Contact Information Section */}
+          <div className="order-2 lg:order-1 space-y-8">
+            <div className="text-center lg:text-left">
+              <h2 className="text-sm tracking-widest mb-4 uppercase font-semibold text-selectiveyellow flex items-center justify-center lg:justify-start gap-2">
+                <FaDroplet className="text-selectiveyellow animate-pulse" />
+                {title}
+              </h2>
+              <h3 className="text-3xl md:text-5xl font-bold text-white leading-tight max-w-2xl mx-auto lg:mx-0">
+                {subtitleStart}{' '}
+                <span className="text-selectiveyellow bg-gradient-to-r from-selectiveyellow to-teal bg-clip-text text-transparent">
+                  {subtitleHighlight}
+                </span>{' '}
+                {subtitleEnd}
+              </h3>
+              <div className="w-16 h-0.5 bg-gradient-to-r from-selectiveyellow to-teal mx-auto lg:mx-0 mt-6"></div>
+            </div>
+            <div className="space-y-8">
+              {/* Showrooms Section */}
+              <div className="group">
+                <h4 className="text-lg font-bold text-selectiveyellow mb-4 flex items-center gap-2">
+                  <MdLocationOn className="text-selectiveyellow" size={20} />
+                  Showrooms
+                </h4>
+                <div className="space-y-4">
+                  {showRoomAddresses &&
+                    showRoomAddresses.map((showRoomAddress, index) => (
+                      <div
+                        key={index}
+                        className="bg-white/5 backdrop-blur-sm rounded-xl p-4 border border-white/10 hover:bg-white/10 transition-all duration-300"
+                      >
+                        <div className="flex items-start gap-3">
+                          <MdLocationOn
+                            className="text-selectiveyellow mt-1 flex-shrink-0"
+                            size={20}
+                          />
+                          <div>
+                            <address className="text-white/90 not-italic font-medium">
+                              {showRoomAddress.showRoomAddress}
+                            </address>
+                            <p className="text-white/70 text-sm mt-1">
+                              {showRoomAddress.showRoomOpeningHours}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
                 </div>
-              );
-            })
-          )}
-          </div>
-          <div>
-            <h3 className="text-selectiveyellow tracking-widest uppercase inline-block py-1 text-sm pb-5">
-              Warehouse
-            </h3>
-          </div>
-          <div className="pb-5 border-b-[1px] border-white/60 mb-5">
-          { warehouseAddresses && (
-            warehouseAddresses.map((warehouseAddress, index) => {
-              return (
-                <div key={index} className="flex flex-row">
-                <address>
-                  <MdWarehouse className="text-white inline mr-3" size={24} />
-                   {warehouseAddress.warehouseAddress}
-                </address>
+              </div>
+
+              {/* Warehouse Section */}
+              <div className="group">
+                <h4 className="text-lg font-bold text-selectiveyellow mb-4 flex items-center gap-2">
+                  <MdWarehouse className="text-selectiveyellow" size={20} />
+                  Warehouse
+                </h4>
+                <div className="space-y-4">
+                  {warehouseAddresses &&
+                    warehouseAddresses.map((warehouseAddress, index) => (
+                      <div
+                        key={index}
+                        className="bg-white/5 backdrop-blur-sm rounded-xl p-4 border border-white/10 hover:bg-white/10 transition-all duration-300"
+                      >
+                        <div className="flex items-start gap-3">
+                          <MdWarehouse
+                            className="text-selectiveyellow mt-1 flex-shrink-0"
+                            size={20}
+                          />
+                          <address className="text-white/90 not-italic font-medium">
+                            {warehouseAddress.warehouseAddress}
+                          </address>
+                        </div>
+                      </div>
+                    ))}
                 </div>
-              );
-            })
-          )}
+              </div>
+
+              {/* Contact Section */}
+              <div className="group">
+                <h4 className="text-lg font-bold text-selectiveyellow mb-4 flex items-center gap-2">
+                  <MdPhone className="text-selectiveyellow" size={20} />
+                  Contact Information
+                </h4>
+                <div className="space-y-3">
+                  {phoneNumbers &&
+                    phoneNumbers.map((phoneNumber, index) => (
+                      <a
+                        key={index}
+                        href={`tel:${phoneNumber.phoneNumber}`}
+                        className="flex items-center gap-3 p-3 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 hover:bg-white/10 hover:border-selectiveyellow/30 transition-all duration-300 group"
+                      >
+                        <MdPhone
+                          className="text-selectiveyellow group-hover:scale-110 transition-transform duration-300"
+                          size={18}
+                        />
+                        <span className="text-white/90 font-medium">{phoneNumber.phoneNumber}</span>
+                      </a>
+                    ))}
+
+                  {emailAddresses &&
+                    emailAddresses.map((emailAddress, index) => (
+                      <a
+                        key={index}
+                        href={`mailto:${emailAddress.emailAddress}`}
+                        className="flex items-center gap-3 p-3 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 hover:bg-white/10 hover:border-selectiveyellow/30 transition-all duration-300 group"
+                      >
+                        <MdEmail
+                          className="text-selectiveyellow group-hover:scale-110 transition-transform duration-300"
+                          size={18}
+                        />
+                        <span className="text-white/90 font-medium">
+                          {emailAddress.emailAddress}
+                        </span>
+                      </a>
+                    ))}
+                </div>
+              </div>
+            </div>
           </div>
-          <div>
-            <h3 className="text-selectiveyellow tracking-widest uppercase inline-block py-1 text-sm pb-5">
-              Contact
-            </h3>
-          </div>
-          { phoneNumbers && (
-            phoneNumbers.map((phoneNumber, index) => {
-              return (
-                <p key={index} className="pb-1 mb-0">
-                  <MdPhone className="text-white inline mr-3" size={20} />
-                  <a className="hover:opacity-50 transition-all" href={`tel:${phoneNumber.phoneNumber}`}>
-                    {phoneNumber.phoneNumber}
-                  </a>
+
+          {/* Contact Form Section */}
+          <div className="order-1 lg:order-2">
+            <div className="bg-white/95 backdrop-blur-lg rounded-2xl p-8 shadow-2xl border border-white/20 hover:shadow-3xl transition-all duration-500">
+              <div className="mb-6">
+                <h3 className="text-lg font-bold text-selectiveyellow mb-2 flex items-center gap-2">
+                  <FaDroplet className="text-selectiveyellow animate-pulse" />
+                  Contact Us
+                </h3>
+                <p className="text-textblue/80 leading-relaxed">
+                  If you have any questions or need assistance, please fill out the form below and
+                  we will get back to you as soon as possible.
                 </p>
-              );
-            })
-          )}
-          { emailAddresses && (
-            emailAddresses.map((emailAddress, index) => {
-              return (
-                <p key={index} className="pb-5">
-                  <a className="hover:opacity-50 transition-all" href={`mailto:${emailAddress.emailAddress}`}>
-                  <MdEmail className="text-white inline mr-3" size={20} />{emailAddress.emailAddress}
-                  </a>
-                </p>
-              );
-            })
-          )}
-        </div>
-        <div className="basis-1/2 pb-[2rem] md:px-5 md:pl-0">
-          <div className="bg-white rounded-md p-5">
-            <h3 className="text-sm pb-3 text-selectiveyellow tracking-widest uppercase inline-block py-1">
-              <FaDroplet className="inline-block mr-2 -top-[2px] relative" />
-              Contact Us
-            </h3>
-            <p className="text-textblue text-md pb-5">
-              If you have any questions or need assistance, please fill out the form below and we will get back to you as soon as possible.
-            </p>
-          {
-            blocks.map((block, index) => {
-              if (block.blockType === 'formBlock') {
-                return (
-                  <div key={index}>
-                    <FormBlock
-                      enableIntro={block.enableIntro}
-                      key={index}
-                      form={block.form}
-                      />
-                  </div>
-                );
-              }
-            })
-          }
+                <div className="w-12 h-0.5 bg-gradient-to-r from-selectiveyellow to-teal mt-4"></div>
+              </div>
+
+              <div className="space-y-6">
+                {blocks.map((block, index) => {
+                  if (block.blockType === 'formBlock') {
+                    return (
+                      <div key={index}>
+                        <FormBlock enableIntro={block.enableIntro} form={block.form} />
+                      </div>
+                    )
+                  }
+                  return null
+                })}
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <div className="w-full h-[400px] mt-10">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2385.071664798851!2d-7.520594222353657!3d53.28825127906753!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x485daf9c979383c1%3A0x7b51b2e608ce7bb5!2s13%20Axis%20Business%20Park%2C%20Ballyduff%2C%20Co.%20Offaly%2C%20Ireland!5e0!3m2!1sen!2suk!4v1740387486362!5m2!1sen!2suk" width="600" height="450" style={{ border: 0 }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade"
-        title="Google Maps"
-        className="w-full h-full"></iframe>
+      {/* Map Section */}
+      <div className="w-full mt-16">
+        <div className="overflow-hidden">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2385.071664798851!2d-7.520594222353657!3d53.28825127906753!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x485daf9c979383c1%3A0x7b51b2e608ce7bb5!2s13%20Axis%20Business%20Park%2C%20Ballyduff%2C%20Co.%20Offaly%2C%20Ireland!5e0!3m2!1sen!2suk!4v1740387486362!5m2!1sen!2suk"
+            width="600"
+            height="450"
+            style={{ border: 0 }}
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            title="Google Maps"
+            className="w-full h-96 md:h-[450px]"
+          />
+        </div>
       </div>
     </section>
-  );
-};
+  )
+}
