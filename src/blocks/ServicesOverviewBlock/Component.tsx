@@ -1,8 +1,7 @@
 import React from 'react'
 import { AnimateIn } from '@/components/Animations/AnimateIn'
-import { FaTint, FaHome, FaFlask, FaTools, FaShieldAlt } from 'react-icons/fa'
+import { FaTint, FaHome, FaFlask, FaShieldAlt } from 'react-icons/fa'
 import { FaDroplet } from 'react-icons/fa6'
-import CustomLink from '@/components/CustomLink'
 
 const services = [
   {
@@ -66,7 +65,7 @@ const ServicesOverviewBlock = () => {
               <span className="text-selectiveyellow"> Solutions</span>
             </h2>
             <p className="text-xl text-textblue/80 max-w-3xl mx-auto leading-relaxed">
-              Transform your home's water quality with our comprehensive range of professional
+              Transform your home&apos;s water quality with our comprehensive range of professional
               services, backed by 20+ years of experience serving Irish families.
             </p>
           </AnimateIn>

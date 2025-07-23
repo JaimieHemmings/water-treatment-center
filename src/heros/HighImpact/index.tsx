@@ -92,14 +92,9 @@ export const HighImpactHero: React.FC<HeroProps> = ({ slides }) => {
                     {slide.titleEnd && <span> {slide.titleEnd}</span>}
                   </h1>
 
-                  {slide.subtitle ? (
+                  {slide.subtitle && (
                     <h2 className="text-xl md:text-2xl lg:text-3xl text-white/80 font-light leading-relaxed max-w-3xl">
                       {slide.subtitle}
-                    </h2>
-                  ) : (
-                    <h2 className="text-xl md:text-2xl lg:text-3xl text-white/80 font-light leading-relaxed max-w-3xl">
-                      Transform your home's water quality with our expert water softener
-                      installation and whole house water treatment solutions
                     </h2>
                   )}
 
