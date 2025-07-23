@@ -171,7 +171,15 @@ export interface Page {
           title: string;
           titleHighlight?: string | null;
           titleEnd?: string | null;
+          /**
+           * Optional subtitle for high impact slides
+           */
+          subtitle?: string | null;
           paragraph: string;
+          /**
+           * Show trust elements.
+           */
+          trustElements?: boolean | null;
           lType?: ('support' | 'page' | 'noLink') | null;
           pageLink?: (number | null) | Page;
           supportLink?: (number | null) | SupportingDocument;
@@ -205,6 +213,7 @@ export interface Page {
     | ComplexCalculator
     | CountyDisplayBlock
     | ImageGalleryBlock
+    | ProblemBlock
   )[];
   meta?: {
     title?: string | null;
@@ -1291,6 +1300,45 @@ export interface ImageGalleryBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ProblemBlock".
+ */
+export interface ProblemBlock {
+  items?:
+    | {
+        title: string;
+        icon: 'FaExclamationTriangle' | 'FaCogs' | 'FaCheckCircle';
+        iconColor: 'text-red-500' | 'text-selectiveyellow' | 'text-green-600';
+        listItems?:
+          | {
+              item: string;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * The title for the call-to-action section.
+   */
+  ctaTitle: string;
+  /**
+   * The subtitle for the call-to-action section.
+   */
+  ctaSubtitle: string;
+  /**
+   * The paragraph for the call-to-action section.
+   */
+  ctaParagraph?: string | null;
+  /**
+   * The text for the call-to-action link.
+   */
+  ctaLinkText?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'problemBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "products".
  */
 export interface Product {
@@ -1614,7 +1662,15 @@ export interface County {
           title: string;
           titleHighlight?: string | null;
           titleEnd?: string | null;
+          /**
+           * Optional subtitle for high impact slides
+           */
+          subtitle?: string | null;
           paragraph: string;
+          /**
+           * Show trust elements.
+           */
+          trustElements?: boolean | null;
           lType?: ('support' | 'page' | 'noLink') | null;
           pageLink?: (number | null) | Page;
           supportLink?: (number | null) | SupportingDocument;
@@ -1880,7 +1936,9 @@ export interface PagesSelect<T extends boolean = true> {
               title?: T;
               titleHighlight?: T;
               titleEnd?: T;
+              subtitle?: T;
               paragraph?: T;
+              trustElements?: T;
               lType?: T;
               pageLink?: T;
               supportLink?: T;
@@ -1915,6 +1973,7 @@ export interface PagesSelect<T extends boolean = true> {
         complexCalcBlock?: T | ComplexCalculatorSelect<T>;
         countyDisplayBlock?: T | CountyDisplayBlockSelect<T>;
         imageGalleryBlock?: T | ImageGalleryBlockSelect<T>;
+        problemBlock?: T | ProblemBlockSelect<T>;
       };
   meta?:
     | T
@@ -2315,6 +2374,32 @@ export interface ImageGalleryBlockSelect<T extends boolean = true> {
         image?: T;
         id?: T;
       };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ProblemBlock_select".
+ */
+export interface ProblemBlockSelect<T extends boolean = true> {
+  items?:
+    | T
+    | {
+        title?: T;
+        icon?: T;
+        iconColor?: T;
+        listItems?:
+          | T
+          | {
+              item?: T;
+              id?: T;
+            };
+        id?: T;
+      };
+  ctaTitle?: T;
+  ctaSubtitle?: T;
+  ctaParagraph?: T;
+  ctaLinkText?: T;
   id?: T;
   blockName?: T;
 }
@@ -2876,7 +2961,9 @@ export interface CountiesSelect<T extends boolean = true> {
               title?: T;
               titleHighlight?: T;
               titleEnd?: T;
+              subtitle?: T;
               paragraph?: T;
+              trustElements?: T;
               lType?: T;
               pageLink?: T;
               supportLink?: T;

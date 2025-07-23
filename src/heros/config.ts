@@ -68,10 +68,44 @@ export const hero: Field = {
           label: 'Title End',
         },
         {
+          name: 'subtitle',
+          type: 'text',
+          admin: {
+            condition: (data, siblingData, { path }) => {
+              // Navigate up the path to find the hero type
+              const pathArray = path as (string | number)[]
+              const heroIndex = pathArray.findIndex((segment) => segment === 'hero')
+              if (heroIndex !== -1 && data) {
+                return data.hero?.type === 'highImpact'
+              }
+              return false
+            },
+            description: 'Optional subtitle for high impact slides',
+          },
+        },
+        {
           name: 'paragraph',
           type: 'text',
           label: 'Paragraph',
           required: true,
+        },
+        {
+          name: 'trustElements',
+          type: 'checkbox',
+          label: 'Show Trust Elements',
+          defaultValue: false,
+          admin: {
+            condition: (data, siblingData, { path }) => {
+              // Navigate up the path to find the hero type
+              const pathArray = path as (string | number)[]
+              const heroIndex = pathArray.findIndex((segment) => segment === 'hero')
+              if (heroIndex !== -1 && data) {
+                return data.hero?.type === 'highImpact'
+              }
+              return false
+            },
+            description: 'Show trust elements.',
+          },
         },
         {
           name: 'lType',
@@ -120,4 +154,4 @@ export const hero: Field = {
       ],
     },
   ],
-};
+}
