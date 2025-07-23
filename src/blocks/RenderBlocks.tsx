@@ -32,6 +32,7 @@ import CountyDisplayBlock from './CountyDisplayBlock/Component'
 import ImageGalleryBlock from '@/blocks/ImageGalleryBlock/Component'
 import ProblemBlock from '@/blocks/ProblemBlock/Component'
 import ServicesOverviewBlock from '@/blocks/ServicesOverviewBlock/Component'
+import ChooseUsBlock from '@/blocks/ChooseUsBlock/Component'
 
 const blockComponents = {
   content: ContentBlock,
@@ -64,6 +65,7 @@ const blockComponents = {
   imageGalleryBlock: ImageGalleryBlock,
   problemBlock: ProblemBlock,
   servicesOverviewBlock: ServicesOverviewBlock,
+  chooseUsBlock: ChooseUsBlock,
 }
 
 export const RenderBlocks: React.FC<{

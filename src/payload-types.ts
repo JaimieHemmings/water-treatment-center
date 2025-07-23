@@ -215,6 +215,7 @@ export interface Page {
     | ImageGalleryBlock
     | ProblemBlock
     | ServicesOverviewBlock
+    | ChooseUsBlock
   )[];
   meta?: {
     title?: string | null;
@@ -1349,6 +1350,45 @@ export interface ServicesOverviewBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ChooseUsBlock".
+ */
+export interface ChooseUsBlock {
+  /**
+   * The small title that appears above the main heading.
+   */
+  sectionTitle: string;
+  /**
+   * The main heading for the section.
+   */
+  mainHeading: string;
+  valuePropositions?:
+    | {
+        icon: 'users' | 'certificate' | 'tools' | 'shield' | 'star' | 'award' | 'clock' | 'phone';
+        title: string;
+        description: string;
+        id?: string | null;
+      }[]
+    | null;
+  ctaSection?: {
+    enable?: boolean | null;
+    smallTitle?: string | null;
+    mainTitle?: string | null;
+    description?: string | null;
+    primaryButton?: {
+      label?: string | null;
+      link?: string | null;
+    };
+    secondaryButton?: {
+      label?: string | null;
+      link?: string | null;
+    };
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'chooseUsBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "products".
  */
 export interface Product {
@@ -1985,6 +2025,7 @@ export interface PagesSelect<T extends boolean = true> {
         imageGalleryBlock?: T | ImageGalleryBlockSelect<T>;
         problemBlock?: T | ProblemBlockSelect<T>;
         servicesOverviewBlock?: T | ServicesOverviewBlockSelect<T>;
+        chooseUsBlock?: T | ChooseUsBlockSelect<T>;
       };
   meta?:
     | T
@@ -2419,6 +2460,44 @@ export interface ProblemBlockSelect<T extends boolean = true> {
  * via the `definition` "ServicesOverviewBlock_select".
  */
 export interface ServicesOverviewBlockSelect<T extends boolean = true> {
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ChooseUsBlock_select".
+ */
+export interface ChooseUsBlockSelect<T extends boolean = true> {
+  sectionTitle?: T;
+  mainHeading?: T;
+  valuePropositions?:
+    | T
+    | {
+        icon?: T;
+        title?: T;
+        description?: T;
+        id?: T;
+      };
+  ctaSection?:
+    | T
+    | {
+        enable?: T;
+        smallTitle?: T;
+        mainTitle?: T;
+        description?: T;
+        primaryButton?:
+          | T
+          | {
+              label?: T;
+              link?: T;
+            };
+        secondaryButton?:
+          | T
+          | {
+              label?: T;
+              link?: T;
+            };
+      };
   id?: T;
   blockName?: T;
 }

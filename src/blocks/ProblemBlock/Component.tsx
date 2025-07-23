@@ -56,7 +56,7 @@ const ProblemBlock: React.FC<ProblemBlockProps> = ({
         </h2>
         <div className="w-24 h-1 bg-selectiveyellow mx-auto rounded-full mb-8" />
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-4">
           {items.map((column, index) => {
             const IconComponent = icons[column.icon]
             return (
@@ -113,7 +113,7 @@ const ProblemBlock: React.FC<ProblemBlockProps> = ({
             duration: 0.8,
             delay: 0.8,
           }}
-          className="text-center mt-16"
+          className="text-center mt-4"
         >
           <div className="bg-gradient-to-r from-darkblue to-selectiveyellow rounded-2xl p-8 md:p-12 text-white shadow-2xl">
             <div className="flex items-center justify-center gap-3 mb-4">

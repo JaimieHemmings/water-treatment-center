@@ -71,7 +71,7 @@ const ServicesOverviewBlock = () => {
           </AnimateIn>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {services.map((service, index) => {
             const IconComponent = service.icon
             return (
@@ -87,30 +87,18 @@ const ServicesOverviewBlock = () => {
               >
                 <div className="group relative h-full">
                   {/* Main card */}
-                  <div className="relative bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-500 h-full flex flex-col group-hover:-translate-y-2">
-                    {/* Gradient background overlay on hover */}
-                    <div
-                      className={`absolute inset-0 bg-gradient-to-br ${service.accent} opacity-0 group-hover:opacity-10 rounded-2xl transition-opacity duration-500`}
-                    ></div>
-
+                  <div className="relative p-2 h-full flex flex-col">
                     {/* Icon container */}
                     <div className="relative mb-6">
                       <div className="w-16 h-16 bg-gradient-to-br from-selectiveyellow/10 to-teal/10 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
                         <IconComponent className="text-2xl text-teal group-hover:text-selectiveyellow transition-colors duration-300" />
                       </div>
-
-                      {/* Decorative accent line */}
-                      <div className="w-12 h-0.5 bg-gradient-to-r from-selectiveyellow to-teal opacity-50 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </div>
 
                     {/* Content */}
                     <div className="relative flex-grow">
-                      <h3 className="text-xl font-bold text-textblue mb-4 group-hover:text-darkblue transition-colors duration-300">
-                        {service.title}
-                      </h3>
-                      <p className="text-textblue/80 leading-relaxed mb-6 group-hover:text-textblue transition-colors duration-300">
-                        {service.description}
-                      </p>
+                      <h3 className="text-xl font-bold text-textblue mb-4">{service.title}</h3>
+                      <p className="text-textblue/80 leading-relaxed mb-6">{service.description}</p>
 
                       {/* Feature list */}
                       <ul className="space-y-2 mb-6">
@@ -126,9 +114,6 @@ const ServicesOverviewBlock = () => {
                       </ul>
                     </div>
                   </div>
-
-                  {/* Subtle glow effect */}
-                  <div className="absolute -inset-0.5 bg-gradient-to-r from-selectiveyellow/20 to-teal/20 rounded-2xl blur opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10"></div>
                 </div>
               </AnimateIn>
             )

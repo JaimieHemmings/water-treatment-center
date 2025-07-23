@@ -41,6 +41,7 @@ import {
   OverviewField,
   PreviewField,
 } from '@payloadcms/plugin-seo/fields'
+import { ChooseUsBlock } from '@/blocks/ChooseUsBlock/config'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -124,6 +125,7 @@ export const Pages: CollectionConfig<'pages'> = {
                 ImageGalleryBlock,
                 ProblemBlock,
                 ServicesOverviewBlock,
+                ChooseUsBlock,
               ],
               required: true,
               admin: {
