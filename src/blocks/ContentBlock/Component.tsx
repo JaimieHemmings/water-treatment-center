@@ -52,7 +52,7 @@ Our Process: We listen to understand your situation before recommending the idea
 
               <p className="text-lg text-textblue/90 leading-relaxed font-medium">
                 As a proud family-run business, we deliver exceptional water filtration systems
-                tailored to every property's unique needs.
+                tailored to every property&apos;s unique needs.
               </p>
             </div>
 
@@ -63,7 +63,7 @@ Our Process: We listen to understand your situation before recommending the idea
                   <FaQuoteLeft className="text-white text-sm" />
                 </div>
                 <blockquote className="text-textblue font-semibold text-xl italic leading-relaxed">
-                  "{quoteText}"
+                  &apos;{quoteText}&apos;
                 </blockquote>
               </div>
             )}
