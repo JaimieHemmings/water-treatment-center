@@ -165,7 +165,7 @@ const ChooseUsBlock: React.FC<ChooseUsBlockProps> = (props) => {
               >
                 <div className="group relative h-full bg-white">
                   {/* Main card */}
-                  <div className="relative p-8 h-full flex flex-col bg-white rounded-2xl border border-gray-100 hover:shadow-xl transition-all duration-500 hover:-translate-y-2">
+                  <div className="relative p-8 h-full flex flex-col bg-white rounded-2xl border border-gray-100 hover:shadow-xl transition-all duration-500">
                     {/* Subtle gradient overlay on hover */}
                     <div className="absolute inset-0 bg-gradient-to-br from-selectiveyellow/5 to-teal/5 opacity-0 group-hover:opacity-100 rounded-2xl transition-opacity duration-500"></div>
 
