@@ -216,6 +216,7 @@ export interface Page {
     | ProblemBlock
     | ServicesOverviewBlock
     | ChooseUsBlock
+    | ContentBlock2
   )[];
   meta?: {
     title?: string | null;
@@ -1389,6 +1390,15 @@ export interface ChooseUsBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ContentBlock2".
+ */
+export interface ContentBlock2 {
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'contentBlock2';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "products".
  */
 export interface Product {
@@ -2026,6 +2036,7 @@ export interface PagesSelect<T extends boolean = true> {
         problemBlock?: T | ProblemBlockSelect<T>;
         servicesOverviewBlock?: T | ServicesOverviewBlockSelect<T>;
         chooseUsBlock?: T | ChooseUsBlockSelect<T>;
+        contentBlock2?: T | ContentBlock2Select<T>;
       };
   meta?:
     | T
@@ -2498,6 +2509,14 @@ export interface ChooseUsBlockSelect<T extends boolean = true> {
               link?: T;
             };
       };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ContentBlock2_select".
+ */
+export interface ContentBlock2Select<T extends boolean = true> {
   id?: T;
   blockName?: T;
 }

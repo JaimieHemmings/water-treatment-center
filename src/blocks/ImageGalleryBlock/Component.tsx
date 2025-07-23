@@ -18,8 +18,9 @@ export default function ImageGalleryBlock({ Images }: ImageGalleryBlockType) {
   }
 
   return (
-    <div className="py-16 px-4 container mx-auto">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+    <section className="py-16 px-4 mx-auto bg-gradient-to-br from-darkblue via-darkblue to-selectiveyellow relative overflow-hidden">
+      <h2 className="sr-only">Image Gallery</h2>
+      <div className="container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {validImages.map((image, index) => (
           <div
             key={index}
@@ -138,6 +139,6 @@ export default function ImageGalleryBlock({ Images }: ImageGalleryBlockType) {
           </div>
         </div>
       )}
-    </div>
+    </section>
   )
 }
