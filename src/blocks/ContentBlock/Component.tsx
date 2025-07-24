@@ -69,7 +69,7 @@ Our Process: We listen to understand your situation before recommending the idea
             )}
 
             {/* Main Content */}
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 border border-white/50 shadow-lg">
+            <div className="bg-white/80 rounded-2xl p-8">
               <div className="prose prose-lg max-w-none">
                 <div className="text-textblue/90 leading-relaxed space-y-4">
                   {(content || defaultContent).split('\n\n').map((paragraph, index) => (
