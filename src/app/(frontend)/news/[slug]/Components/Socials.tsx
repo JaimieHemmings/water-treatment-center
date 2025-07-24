@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import React, { useState } from 'react'
 import {
   FaFacebook,
@@ -195,12 +196,12 @@ const Socials: React.FC<SocialsProps> = ({
           <div className="mt-8 text-center">
             <p className="text-textblue/60 text-sm">
               Questions about water treatment?
-              <a
-                href="/contact"
+              <Link
+                href={'/contact'}
                 className="text-selectiveyellow hover:text-teal transition-colors duration-300 font-semibold ml-1"
               >
                 Get in touch with our experts
-              </a>
+              </Link>
             </p>
           </div>
         </div>
