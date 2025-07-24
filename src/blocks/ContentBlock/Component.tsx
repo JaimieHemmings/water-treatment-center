@@ -1,32 +1,31 @@
 import React from 'react'
 import Image from 'next/image'
 import { FaDroplet, FaQuoteLeft } from 'react-icons/fa6'
+import { Media } from '@/components/Media'
 
 interface ContentBlock2Props {
-  title?: string
+  sectionTitle: string
+  title: string
+  introText: string
+  showQuote: boolean
+  quoteText: string
   content?: string
   imageSrc?: string
-  imageAlt?: string
-  showQuote?: boolean
-  quoteText?: string
   className?: string
+  imgCaption?: string
 }
 
 const ContentBlock2: React.FC<ContentBlock2Props> = ({
-  title = 'The Water Treatment Centre',
+  sectionTitle,
+  imgCaption,
+  title,
+  introText,
   content,
   imageSrc = '/technician.png',
-  imageAlt = 'Water treatment specialist',
-  showQuote = true,
+  showQuote,
   quoteText = "Pure water isn't a luxury—it's essential for your home and health.",
   className = '',
 }) => {
-  const defaultContent = `Founded by an Irish family, The Water Treatment Centre puts people first through our core values of Respect, Value, and Support. We build lasting relationships with generations of satisfied customers by respecting your time, delivering on promises, and providing exceptional service.
-
-Our certified specialists handle every aspect of your water treatment journey. From initial consultation—by phone, online, or in our showroom—to seamless whole house water filtration installation by our trained team. You'll join our community of happy customers supported by friendly service experts who handle all maintenance needs, year after year.
-
-Our Process: We listen to understand your situation before recommending the ideal residential water filtration solution. We demonstrate Value by providing reliable water softener systems designed for long-term benefits, protecting your home and investment. Our team offers continuous Support with expert advice and assistance whenever needed.`
-
   return (
     <section className={`py-20 bg-white relative overflow-hidden ${className}`}>
       {/* Background decorative elements */}
@@ -40,7 +39,7 @@ Our Process: We listen to understand your situation before recommending the idea
             <div className="space-y-6">
               <h2 className="text-sm tracking-widest mb-4 uppercase font-semibold text-selectiveyellow flex items-center gap-2">
                 <FaDroplet className="text-selectiveyellow animate-pulse" />
-                Who Are We?
+                {sectionTitle}
               </h2>
 
               <div className="space-y-4">
@@ -50,10 +49,7 @@ Our Process: We listen to understand your situation before recommending the idea
                 <div className="w-16 h-0.5 bg-gradient-to-r from-selectiveyellow to-teal"></div>
               </div>
 
-              <p className="text-lg text-textblue/90 leading-relaxed font-medium">
-                As a proud family-run business, we deliver exceptional water filtration systems
-                tailored to every property&apos;s unique needs.
-              </p>
+              <p className="text-lg text-textblue/90 leading-relaxed font-medium">{introText}</p>
             </div>
 
             {/* Quote Section */}
@@ -72,7 +68,7 @@ Our Process: We listen to understand your situation before recommending the idea
             <div className="bg-white/80 rounded-2xl p-8">
               <div className="prose prose-lg max-w-none">
                 <div className="text-textblue/90 leading-relaxed space-y-4">
-                  {(content || defaultContent).split('\n\n').map((paragraph, index) => (
+                  {content?.split('\n\n').map((paragraph, index) => (
                     <p key={index} className="mb-4 last:mb-0">
                       {paragraph}
                     </p>
@@ -88,11 +84,10 @@ Our Process: We listen to understand your situation before recommending the idea
             <div className="absolute -top-8 -right-8 w-32 h-32 bg-gradient-to-br from-selectiveyellow/20 to-teal/20 rounded-full blur-2xl"></div>
 
             {/* Main image container */}
-            <div className="relative bg-white/60 backdrop-blur-sm rounded-2xl p-8 border border-white/50 shadow-xl">
+            <div className="relative bg-white/60 backdrop-blur-sm rounded-2xl border border-white/50 shadow-xl">
               <div className="relative aspect-square overflow-hidden rounded-xl">
-                <Image
-                  src={imageSrc}
-                  alt={imageAlt}
+                <Media
+                  resource={imageSrc}
                   fill
                   className="object-cover hover:scale-105 transition-transform duration-500"
                 />
@@ -105,7 +100,7 @@ Our Process: We listen to understand your situation before recommending the idea
                 <div className="flex items-center justify-center gap-2 text-white">
                   <FaDroplet className="text-white animate-pulse" />
                   <span className="font-semibold text-sm tracking-widest uppercase">
-                    Certified Specialists
+                    {imgCaption || 'Certified Specialists'}
                   </span>
                 </div>
               </div>

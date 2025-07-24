@@ -1393,6 +1393,17 @@ export interface ChooseUsBlock {
  * via the `definition` "ContentBlock2".
  */
 export interface ContentBlock2 {
+  sectionTitle: string;
+  title: string;
+  introText: string;
+  showQuote?: boolean | null;
+  quoteText?: string | null;
+  content: string;
+  /**
+   * Image relating to text body
+   */
+  imageSrc: number | Media;
+  imgCaption: string;
   id?: string | null;
   blockName?: string | null;
   blockType: 'contentBlock2';
@@ -2517,6 +2528,14 @@ export interface ChooseUsBlockSelect<T extends boolean = true> {
  * via the `definition` "ContentBlock2_select".
  */
 export interface ContentBlock2Select<T extends boolean = true> {
+  sectionTitle?: T;
+  title?: T;
+  introText?: T;
+  showQuote?: T;
+  quoteText?: T;
+  content?: T;
+  imageSrc?: T;
+  imgCaption?: T;
   id?: T;
   blockName?: T;
 }
