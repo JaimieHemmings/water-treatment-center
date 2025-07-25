@@ -44,6 +44,8 @@ import {
 import { ChooseUsBlock } from '@/blocks/ChooseUsBlock/config'
 import { ContentBlock2 } from '@/blocks/ContentBlock/config'
 import { TimelineBlock } from '@/blocks/TimelineBlock/config'
+import { ExpertiseBlock } from '@/blocks/ExpertiseBlock/config'
+import { PhilosophyBlock } from '@/blocks/PhilosophyBlock/config'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -130,6 +132,8 @@ export const Pages: CollectionConfig<'pages'> = {
                 ChooseUsBlock,
                 ContentBlock2,
                 TimelineBlock,
+                ExpertiseBlock,
+                PhilosophyBlock,
               ],
               required: true,
               admin: {

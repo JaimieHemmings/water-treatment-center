@@ -35,6 +35,8 @@ import ServicesOverviewBlock from '@/blocks/ServicesOverviewBlock/Component'
 import ChooseUsBlock from '@/blocks/ChooseUsBlock/Component'
 import ContentBlock2 from '@/blocks/ContentBlock/Component'
 import TimelineBlock from '@/blocks/TimelineBlock/Component'
+import ExpertiseBlock from '@/blocks/ExpertiseBlock/Component'
+import PhilosophyBlock from '@/blocks/PhilosophyBlock/Component'
 
 const blockComponents = {
   content: ContentBlock,
@@ -70,6 +72,8 @@ const blockComponents = {
   chooseUsBlock: ChooseUsBlock,
   contentBlock2: ContentBlock2,
   timelineBlock: TimelineBlock,
+  expertiseBlock: ExpertiseBlock,
+  philosophyBlock: PhilosophyBlock,
 }
 
 export const RenderBlocks: React.FC<{

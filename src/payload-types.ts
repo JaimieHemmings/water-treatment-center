@@ -218,6 +218,8 @@ export interface Page {
     | ChooseUsBlock
     | ContentBlock2
     | TimelineBlock
+    | ExpertiseBlock
+    | PhilosophyBlock
   )[];
   meta?: {
     title?: string | null;
@@ -1430,6 +1432,49 @@ export interface TimelineBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ExpertiseBlock".
+ */
+export interface ExpertiseBlock {
+  sectionTitle: string;
+  mainHeading: string;
+  expertiseColumns?:
+    | {
+        title: string;
+        icon?: ('FaGears' | 'FaWater' | 'FaLocationDot' | 'FaCogs' | 'FaFlask' | 'FaDroplet') | null;
+        items?:
+          | {
+              item: string;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'expertiseBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "PhilosophyBlock".
+ */
+export interface PhilosophyBlock {
+  sectionTitle: string;
+  mainHeading: string;
+  philosophyValues?:
+    | {
+        title: string;
+        description: string;
+        icon?: ('FaCheckCircle' | 'FaHeart' | 'FaLocationDot' | 'FaHandshake' | 'FaStar' | 'FaDroplet') | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'philosophyBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "products".
  */
 export interface Product {
@@ -2069,6 +2114,8 @@ export interface PagesSelect<T extends boolean = true> {
         chooseUsBlock?: T | ChooseUsBlockSelect<T>;
         contentBlock2?: T | ContentBlock2Select<T>;
         timelineBlock?: T | TimelineBlockSelect<T>;
+        expertiseBlock?: T | ExpertiseBlockSelect<T>;
+        philosophyBlock?: T | PhilosophyBlockSelect<T>;
       };
   meta?:
     | T
@@ -2570,6 +2617,47 @@ export interface TimelineBlockSelect<T extends boolean = true> {
     | T
     | {
         year?: T;
+        title?: T;
+        description?: T;
+        icon?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ExpertiseBlock_select".
+ */
+export interface ExpertiseBlockSelect<T extends boolean = true> {
+  sectionTitle?: T;
+  mainHeading?: T;
+  expertiseColumns?:
+    | T
+    | {
+        title?: T;
+        icon?: T;
+        items?:
+          | T
+          | {
+              item?: T;
+              id?: T;
+            };
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "PhilosophyBlock_select".
+ */
+export interface PhilosophyBlockSelect<T extends boolean = true> {
+  sectionTitle?: T;
+  mainHeading?: T;
+  philosophyValues?:
+    | T
+    | {
         title?: T;
         description?: T;
         icon?: T;
