@@ -1,6 +1,7 @@
 import React from 'react'
 import AnimateIn from '@/components/Animations/AnimateIn'
 import { FaDroplet, FaCalendar, FaLocationDot, FaUsers, FaStar } from 'react-icons/fa6'
+import Link from 'next/link'
 
 interface TimelineItem {
   year: string
@@ -190,17 +191,18 @@ const TimelineBlock: React.FC<TimelineBlockProps> = ({
               Your Clean Water Journey Starts Here
             </h3>
             <p className="text-lg opacity-90 mb-6 max-w-2xl mx-auto">
-              From our humble beginnings to becoming Ireland's trusted water treatment specialists,
-              we're here to serve your family with the same dedication and expertise.
+              From our humble beginnings to becoming Ireland&apos;s trusted water treatment
+              specialists, we&apos;re here to serve your family with the same dedication and
+              expertise.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <a
+              <Link
                 href="/contact"
                 className="inline-flex items-center justify-center px-8 py-4 bg-white text-textblue font-bold rounded-xl hover:bg-selectiveyellow hover:text-white transition-all duration-300 hover:shadow-lg hover:shadow-selectiveyellow/25 group"
               >
                 <FaDroplet className="mr-2 group-hover:animate-bounce" />
                 Get Free Expert Advice
-              </a>
+              </Link>
               <div className="flex items-center gap-2 text-sm opacity-90">
                 <FaStar className="text-selectiveyellow" />
                 <span>20+ Years of Excellence • Thousands of Happy Customers</span>
