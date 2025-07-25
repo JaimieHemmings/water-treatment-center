@@ -217,6 +217,7 @@ export interface Page {
     | ServicesOverviewBlock
     | ChooseUsBlock
     | ContentBlock2
+    | TimelineBlock
   )[];
   meta?: {
     title?: string | null;
@@ -1410,6 +1411,25 @@ export interface ContentBlock2 {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TimelineBlock".
+ */
+export interface TimelineBlock {
+  mainHeading: string;
+  timelineItems?:
+    | {
+        year: string;
+        title: string;
+        description: string;
+        icon?: ('FaCalendar' | 'FaUsers' | 'FaLocationDot' | 'FaStar' | 'FaDroplet') | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'timelineBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "products".
  */
 export interface Product {
@@ -2048,6 +2068,7 @@ export interface PagesSelect<T extends boolean = true> {
         servicesOverviewBlock?: T | ServicesOverviewBlockSelect<T>;
         chooseUsBlock?: T | ChooseUsBlockSelect<T>;
         contentBlock2?: T | ContentBlock2Select<T>;
+        timelineBlock?: T | TimelineBlockSelect<T>;
       };
   meta?:
     | T
@@ -2536,6 +2557,24 @@ export interface ContentBlock2Select<T extends boolean = true> {
   content?: T;
   imageSrc?: T;
   imgCaption?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TimelineBlock_select".
+ */
+export interface TimelineBlockSelect<T extends boolean = true> {
+  mainHeading?: T;
+  timelineItems?:
+    | T
+    | {
+        year?: T;
+        title?: T;
+        description?: T;
+        icon?: T;
+        id?: T;
+      };
   id?: T;
   blockName?: T;
 }

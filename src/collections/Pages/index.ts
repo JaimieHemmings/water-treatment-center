@@ -43,6 +43,7 @@ import {
 } from '@payloadcms/plugin-seo/fields'
 import { ChooseUsBlock } from '@/blocks/ChooseUsBlock/config'
 import { ContentBlock2 } from '@/blocks/ContentBlock/config'
+import { TimelineBlock } from '@/blocks/TimelineBlock/config'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -128,6 +129,7 @@ export const Pages: CollectionConfig<'pages'> = {
                 ServicesOverviewBlock,
                 ChooseUsBlock,
                 ContentBlock2,
+                TimelineBlock,
               ],
               required: true,
               admin: {

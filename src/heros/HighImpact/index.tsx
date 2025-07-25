@@ -93,9 +93,9 @@ export const HighImpactHero: React.FC<HeroProps> = ({ slides }) => {
                   </h1>
 
                   {slide.subtitle && (
-                    <h2 className="text-xl md:text-2xl lg:text-3xl text-white/80 font-light leading-relaxed max-w-3xl">
+                    <p className="text-xl md:text-2xl lg:text-3xl text-white/80 font-light leading-relaxed max-w-3xl">
                       {slide.subtitle}
-                    </h2>
+                    </p>
                   )}
 
                   <p className="text-lg md:text-xl text-white/70 leading-relaxed max-w-2xl">

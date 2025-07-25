@@ -76,7 +76,7 @@ export const hero: Field = {
               const pathArray = path as (string | number)[]
               const heroIndex = pathArray.findIndex((segment) => segment === 'hero')
               if (heroIndex !== -1 && data) {
-                return data.hero?.type === 'highImpact'
+                return data.hero?.type === 'highImpact' || data.hero?.type === 'mediumImpact'
               }
               return false
             },
