@@ -144,46 +144,6 @@ const PhilosophyBlock: React.FC<PhilosophyBlockProps> = ({
             )
           })}
         </div>
-
-        {/* Bottom Statement */}
-        <AnimateIn
-          animation={{
-            y: 60,
-            opacity: 0,
-            duration: 0.8,
-            delay: 1.0,
-          }}
-          className="text-center mt-16"
-        >
-          <div className="bg-gradient-to-r from-darkblue to-teal rounded-2xl p-8 md:p-12 text-white shadow-2xl max-w-4xl mx-auto">
-            <div className="flex items-center justify-center gap-3 mb-4">
-              <FaDroplet className="text-selectiveyellow text-xl animate-pulse" />
-              <span className="text-sm tracking-widest uppercase font-semibold">
-                Excellence in Every Drop
-              </span>
-            </div>
-            <h3 className="text-2xl md:text-3xl font-bold mb-4">
-              Experience the Difference Our Values Make
-            </h3>
-            <p className="text-lg opacity-90 mb-6 max-w-2xl mx-auto">
-              When you choose us for your water treatment needs, you're not just getting a service –
-              you're partnering with a team that lives by these core values every single day.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <a
-                href="/contact"
-                className="inline-flex items-center justify-center px-8 py-4 bg-white text-textblue font-bold rounded-xl hover:bg-selectiveyellow hover:text-white transition-all duration-300 hover:shadow-lg hover:shadow-selectiveyellow/25 group"
-              >
-                <FaStar className="mr-2 group-hover:animate-bounce" />
-                Experience Our Philosophy
-              </a>
-              <div className="flex items-center gap-2 text-sm opacity-90">
-                <FaCheckCircle className="text-selectiveyellow" />
-                <span>Quality • Service • Expertise • Honesty</span>
-              </div>
-            </div>
-          </div>
-        </AnimateIn>
       </div>
     </section>
   )
