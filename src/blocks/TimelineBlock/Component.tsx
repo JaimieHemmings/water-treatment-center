@@ -199,7 +199,7 @@ const TimelineBlock: React.FC<TimelineBlockProps> = ({
                 className="inline-flex items-center justify-center px-8 py-4 bg-white text-textblue font-bold rounded-xl hover:bg-selectiveyellow hover:text-white transition-all duration-300 hover:shadow-lg hover:shadow-selectiveyellow/25 group"
               >
                 <FaDroplet className="mr-2 group-hover:animate-bounce" />
-                Get Your Free Assessment
+                Get Free Expert Advice
               </a>
               <div className="flex items-center gap-2 text-sm opacity-90">
                 <FaStar className="text-selectiveyellow" />
