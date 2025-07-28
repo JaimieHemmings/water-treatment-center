@@ -77,25 +77,6 @@ const SocialLinks: React.FC = () => (
   </div>
 )
 
-const ContactSection: React.FC<{ info: any }> = ({ info }) => (
-  <div className="mt-[16px] flex">
-    <div className="flex h-[20px] w-[12px] top-[4px] relative items-center justify-center rounded-[75%]">
-      {info.icon}
-    </div>
-    <div className="ml-[18px]">
-      {info.href ? (
-        <a href={info.href} className="text-md font-medium text-white">
-          {info.primary}
-        </a>
-      ) : info.isAddress ? (
-        <address className="text-white text-md">{info.primary}</address>
-      ) : (
-        <p className="text-[14px] font-medium text-white">{info.primary}</p>
-      )}
-    </div>
-  </div>
-)
-
 async function getFooterData(): Promise<any> {
   try {
     const res = await fetch(
